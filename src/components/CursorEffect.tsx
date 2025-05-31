@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const CursorEffect: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const CursorEffect: React.FC = () => {
         lightEffect.style.top = `${clientY}px`;
       });
       
-      setPosition({ x: clientX, y: clientY });
     };
 
     const onMouseDown = () => {
@@ -103,7 +101,7 @@ const CursorEffect: React.FC = () => {
         document.body.removeChild(lightEffect);
       }
     };
-  }, [clicked]);
+  }, []);
 
   return null; // This component doesn't render anything directly
 };
