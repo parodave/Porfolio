@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
+import { useTranslation } from 'react-i18next';
 
 const Hero: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,9 +35,12 @@ const Hero: React.FC = () => {
     },
   };
 
+  // Textes animés par langue
+  const typewriterTexts = t('hero.typewriter', { returnObjects: true }) as string[];
+
   return (
-    <section 
-      id="hero" 
+    <section
+      id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
       <div className="absolute inset-0 z-0">
@@ -49,20 +54,20 @@ const Hero: React.FC = () => {
           animate="visible"
           className="w-full md:w-3/5"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-sm md:text-base uppercase tracking-widest mb-4 text-gray-400"
           >
             Karim Hammouche
           </motion.h2>
-          
-          <motion.h1 
+
+          <motion.h1
             variants={itemVariants}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
-            Je ne suis pas qu'un développeur.
+            {t("hero.title")}
           </motion.h1>
-          
+
           <motion.div
             variants={itemVariants}
             className="text-xl md:text-2xl text-gray-300 min-h-[3rem] mb-8"
@@ -71,7 +76,7 @@ const Hero: React.FC = () => {
               <div className="flex items-center">
                 <Typewriter
                   options={{
-                    strings: ["J'entreprends.", "J'apprends.", "Je construis l'avenir."],
+                    strings: typewriterTexts,
                     autoStart: true,
                     loop: true,
                     delay: 50,
@@ -81,13 +86,13 @@ const Hero: React.FC = () => {
               </div>
             )}
           </motion.div>
-          
+
           <motion.div variants={itemVariants}>
-            <a 
-              href="#projects" 
+            <a
+              href="#projects"
               className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 inline-block"
             >
-              Voir mes projets
+              {t("hero.cta")}
             </a>
           </motion.div>
         </motion.div>
@@ -104,21 +109,16 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <div className="w-5 h-10 border-2 border-white rounded-full flex justify-center">
-          <motion.div 
-            animate={{ 
-              y: [0, 12, 0],
-            }}
-            transition={{ 
-              repeat: Infinity,
-              duration: 1.5,
-            }}
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
             className="w-1 h-2 bg-white rounded-full mt-2"
           />
         </div>

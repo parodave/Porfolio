@@ -1,3 +1,4 @@
+import LanguageSelector from "./LanguageSelector";
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -18,11 +19,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollPosition > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -38,7 +35,7 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -47,8 +44,13 @@ const Header: React.FC = () => {
           KH.
         </motion.div>
 
+        {/* Langue (visible sur desktop uniquement) */}
+        <div className="hidden md:block ml-4">
+          <LanguageSelector />
+        </div>
+
         {/* Desktop Navigation */}
-        <motion.nav 
+        <motion.nav
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -77,7 +79,7 @@ const Header: React.FC = () => {
         {/* Mobile Menu */}
         <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ 
+          animate={{
             opacity: isOpen ? 1 : 0,
             height: isOpen ? 'auto' : 0,
             display: isOpen ? 'flex' : 'none'
