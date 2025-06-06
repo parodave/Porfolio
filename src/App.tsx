@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CursorEffect from './components/CursorEffect';
+import AgentIA from './components/AgentIA'; // ✅ Import du composant AgentIA
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Experience />
         <Contact />
       </main>
+      <AgentIA />   {/* ✅ Affichage de l’agent IA juste avant le Footer */}
       <Footer />
     </div>
   );
