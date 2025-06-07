@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 🔑 Token Hugging Face
 const HF_TOKEN = import.meta.env.VITE_HF_TOKEN;
-const CHAT_HISTORY_KEY = "agentia-history"; // Clé pour le localStorage
+const CHAT_HISTORY_KEY = "agentia-history";
 
-// Fonction de traduction FR → EN ou EN → FR
 async function translate(text: string, direction: "fr-en" | "en-fr") {
   const model =
     direction === "fr-en"
@@ -23,7 +21,6 @@ async function translate(text: string, direction: "fr-en" | "en-fr") {
   return data?.[0]?.translation_text || text;
 }
 
-// Détection rapide (heuristique)
 function detectLanguage(text: string) {
   const FRWORDS = ["le", "la", "et", "est", "un", "une", "pour", "dans", "que", "qui"];
   const isFrenchQuick =
@@ -32,7 +29,6 @@ function detectLanguage(text: string) {
   return isFrenchQuick ? "fr" : "en";
 }
 
-// 👉 Appel Zephyr Chat API
 const askHF = async (question: string) => {
   const response = await fetch(
     "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
@@ -53,10 +49,10 @@ type ChatMessage = {
   role: "user" | "assistant";
   content: string;
   lang: "fr" | "en";
+  showImgFallback?: boolean;
 };
 
 export default function AgentIA() {
-  // Historique persistant (localStorage)
   const [history, setHistory] = useState<ChatMessage[]>(() => {
     try {
       const saved = localStorage.getItem(CHAT_HISTORY_KEY);
@@ -67,19 +63,19 @@ export default function AgentIA() {
   });
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
+  const [typing, setTyping] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Sauvegarde auto dans localStorage à chaque changement d’historique
   useEffect(() => {
     localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(history));
   }, [history]);
 
-  // Scroll auto en bas à chaque nouveau message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [history, loading]);
+  }, [history, loading, typing]);
 
-  // Envoi avec Entrée (pas Shift+Entrée)
+  const handleReset = () => setHistory([]);
+
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey && !loading && question.trim()) {
       e.preventDefault();
@@ -87,18 +83,12 @@ export default function AgentIA() {
     }
   };
 
-  // Bouton pour effacer l’historique (optionnel)
-  const handleReset = () => setHistory([]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!question.trim()) return;
     setLoading(true);
 
-    // Détection langue
     let detectedLang: "fr" | "en" = detectLanguage(question) as "fr" | "en";
-
-    // Ajoute la question à l’historique
     setHistory((prev) => [
       ...prev,
       { role: "user", content: question, lang: detectedLang },
@@ -106,13 +96,9 @@ export default function AgentIA() {
 
     try {
       let prompt = question;
-      if (detectedLang === "fr") {
-        prompt = await translate(question, "fr-en");
-      }
-      // Appel IA
+      if (detectedLang === "fr") prompt = await translate(question, "fr-en");
       const res = await askHF(prompt);
 
-      // Traduction si besoin
       let answer = res;
       let langResponse: "fr" | "en" = "en";
       if (detectedLang === "fr" && res) {
@@ -124,12 +110,20 @@ export default function AgentIA() {
           ...prev,
           { role: "assistant", content: answer || "Pas de réponse IA.", lang: langResponse },
         ];
-        // ⚡️ Notifie la bulle Messenger !
         if (typeof window !== "undefined" && window.dispatchEvent) {
           window.dispatchEvent(new Event("agentia-new-message"));
         }
         return newHistory;
       });
+      if (answer) {
+        let i = 0;
+        setTyping("");
+        const interval = setInterval(() => {
+          setTyping(answer.slice(0, i + 1));
+          i++;
+          if (i >= answer.length) clearInterval(interval);
+        }, 17);
+      }
     } catch {
       setHistory((prev) => {
         const newHistory = [
@@ -140,7 +134,6 @@ export default function AgentIA() {
             lang: detectedLang,
           },
         ];
-        // ⚡️ Notifie la bulle Messenger aussi en cas d’erreur
         if (typeof window !== "undefined" && window.dispatchEvent) {
           window.dispatchEvent(new Event("agentia-new-message"));
         }
@@ -151,25 +144,37 @@ export default function AgentIA() {
     setQuestion("");
   };
 
+  const handleVideoError = (i: number) => {
+    setHistory((prev) => {
+      const copy = [...prev];
+      copy[i] = { ...copy[i], showImgFallback: true };
+      return copy;
+    });
+  };
+
   return (
-    <div className="bg-gradient-to-br from-neutral-900 to-black rounded-2xl shadow-2xl p-6 flex flex-col items-center max-w-2xl mx-auto my-12">
+    <div className="bg-black rounded-2xl shadow-2xl p-4 flex flex-col items-center w-full max-w-sm mx-auto border border-white">
       <motion.div
         animate={{ scale: [1, 1.14, 1] }}
         transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-        className="h-14 w-14 bg-cyan-500 rounded-full flex items-center justify-center shadow-lg mb-4"
+        className="h-12 w-12 bg-neutral-900 rounded-full flex items-center justify-center shadow-lg mb-2 border border-white"
       >
-        <span className="text-2xl text-white font-bold">🤖</span>
+        <img
+          src="/avatars/robot.png"
+          alt="IA"
+          className="w-8 h-8 rounded-full object-cover"
+        />
       </motion.div>
-      <h2 className="text-2xl text-white font-semibold tracking-wide mb-4">Pose ta question à l'IA !</h2>
+      <h2 className="text-lg text-white font-semibold tracking-wide mb-2">Pose ta question à l'IA !</h2>
       <button
         type="button"
-        className="text-xs text-cyan-400 hover:underline mb-3"
+        className="text-xs text-neutral-400 hover:underline mb-1"
         onClick={handleReset}
         disabled={loading}
       >
         🗑️ Effacer la conversation
       </button>
-      <div className="w-full max-h-96 overflow-y-auto bg-black/40 rounded-xl p-4 mb-5 border border-neutral-800 shadow-inner">
+      <div className="w-full max-h-64 overflow-y-auto bg-neutral-950 rounded-xl p-3 mb-3 border border-neutral-800 shadow-inner">
         <AnimatePresence>
           {history.length === 0 && (
             <motion.div
@@ -181,43 +186,68 @@ export default function AgentIA() {
               La réponse IA apparaîtra ici...
             </motion.div>
           )}
-          {history.map((msg, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              className={`mb-2 flex ${
-                msg.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div className="flex items-end gap-2 max-w-[80%]">
-                {/* Avatar */}
-                {msg.role === "assistant" && (
-                  <span className="bg-cyan-500 rounded-full flex items-center justify-center w-8 h-8 text-xl shadow">
-                    🤖
-                  </span>
-                )}
-                <div
-                  className={`px-4 py-2 rounded-xl shadow-md ${
-                    msg.role === "user"
-                      ? "bg-cyan-600 text-white rounded-br-sm"
-                      : "bg-neutral-800 text-cyan-200 rounded-bl-sm"
-                  }`}
-                >
-                  <span>{msg.content}</span>
-                  <span className="block text-xs text-cyan-300 mt-1">
-                    {msg.lang === "fr" ? "🇫🇷" : "🇬🇧"}
-                  </span>
+          {history.map((msg, i) => {
+            const isLastAssistant = i === history.length - 1 && msg.role === "assistant";
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                className={`mb-1 flex ${
+                  msg.role === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div className="flex items-end gap-2 max-w-[80%]">
+                  {/* Avatar pour l'IA : vidéo si dispo, sinon image */}
+                  {msg.role === "assistant" && (
+                    <div className="w-7 h-7 rounded-full overflow-hidden bg-black border border-white flex items-center justify-center relative">
+                      {msg.showImgFallback ? (
+                        <img
+                          src="/avatars/robot.png"
+                          alt="IA"
+                          className="w-7 h-7 object-cover"
+                        />
+                      ) : (
+                        <video
+                          src="/avatars/robot-video.webm"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-7 h-7 object-cover"
+                          style={{ display: "block" }}
+                          onError={() => handleVideoError(i)}
+                        />
+                      )}
+                    </div>
+                  )}
+                  {/* Avatar image pour user */}
+                  {msg.role === "user" && (
+                    <img
+                      src="/avatars/user.png"
+                      alt="Moi"
+                      className="w-7 h-7 rounded-full shadow object-cover border border-white"
+                    />
+                  )}
+                  <div
+                    className={`px-3 py-2 rounded-xl shadow border ${
+                      msg.role === "user"
+                        ? "bg-white text-black border-neutral-300 rounded-br-sm"
+                        : "bg-neutral-900 text-white border-neutral-700 rounded-bl-sm"
+                    }`}
+                  >
+                    <span>
+                      {isLastAssistant && typing ? typing : msg.content}
+                    </span>
+                    <span className="block text-xs text-neutral-500 mt-1">
+                      {msg.lang === "fr" ? "🇫🇷" : "🇬🇧"}
+                    </span>
+                  </div>
                 </div>
-                {msg.role === "user" && (
-                  <span className="bg-gray-700 rounded-full flex items-center justify-center w-8 h-8 text-xl shadow">
-                    👤
-                  </span>
-                )}
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
         {loading && (
           <motion.div
@@ -225,26 +255,24 @@ export default function AgentIA() {
             animate={{ opacity: 1, scale: 1 }}
             className="flex justify-start"
           >
-            <div className="px-4 py-2 rounded-xl bg-neutral-800 text-cyan-200 shadow-md flex items-center gap-2">
-              <span className="animate-spin inline-block w-4 h-4 border-2 border-t-transparent border-cyan-400 rounded-full" />
+            <div className="px-3 py-2 rounded-xl bg-neutral-900 text-white shadow-md flex items-center gap-2 border border-neutral-700">
+              <span className="animate-spin inline-block w-4 h-4 border-2 border-t-transparent border-neutral-400 rounded-full" />
               <span>L’IA réfléchit...</span>
             </div>
           </motion.div>
         )}
-        {/* Réf pour scroll auto */}
         <div ref={messagesEndRef} />
       </div>
       <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
         <motion.input
-          whileFocus={{ scale: 1.04, boxShadow: "0 0 0 2px #22d3ee" }}
+          whileFocus={{ scale: 1.03, boxShadow: "0 0 0 2px #fff" }}
           type="text"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleInputKeyDown}
           placeholder="Pose ta question en français ou anglais... (Entrée pour envoyer)"
-          className="w-full p-3 rounded-xl bg-neutral-800 text-white placeholder-neutral-400 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition mb-3"
+          className="w-full p-2 rounded-xl bg-neutral-900 text-white placeholder-neutral-400 border border-white focus:outline-none focus:ring-2 focus:ring-white transition mb-2"
           disabled={loading}
-          autoFocus
         />
         <motion.button
           whileTap={{ scale: 0.97 }}
@@ -252,13 +280,13 @@ export default function AgentIA() {
           transition={{ duration: 0.5 }}
           type="submit"
           disabled={loading || !question.trim()}
-          className={`w-full bg-cyan-400 hover:bg-cyan-300 text-black font-bold py-2 rounded-xl mt-2 transition-all shadow-md ${
-            loading || !question.trim() ? "opacity-60 cursor-not-allowed" : ""
-          }`}
+          className={`w-full bg-white text-black font-bold py-2 rounded-xl mt-1 transition-all shadow-md border border-white
+            ${loading || !question.trim() ? "opacity-60 cursor-not-allowed" : ""}
+          `}
         >
           {loading ? (
             <span className="flex items-center justify-center gap-2">
-              <span className="animate-spin inline-block w-5 h-5 border-2 border-t-transparent border-cyan-800 rounded-full" />
+              <span className="animate-spin inline-block w-5 h-5 border-2 border-t-transparent border-neutral-900 rounded-full" />
               Génération...
             </span>
           ) : (
@@ -266,8 +294,8 @@ export default function AgentIA() {
           )}
         </motion.button>
       </form>
-      <div className="mt-2 text-xs text-neutral-500 text-center">
-        ✨ IA multilingue avec avatars, chat animé, historique persistant, notif Messenger, scroll auto, envoi rapide (Entrée).
+      <div className="mt-1 text-xs text-neutral-400 text-center">
+        ✨ IA
       </div>
     </div>
   );
