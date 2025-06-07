@@ -8,7 +8,8 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CursorEffect from './components/CursorEffect';
-import AgentIA from './components/AgentIA'; // ✅ Import du composant AgentIA
+// import AgentIA from './components/AgentIA'; // ⛔️ On ne l’affiche plus en mode intégré
+import FloatingChat from './components/FloatingChat'; // ✅ Widget Messenger
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
         <Experience />
         <Contact />
       </main>
-      <AgentIA />   {/* ✅ Affichage de l’agent IA juste avant le Footer */}
+      {/* <AgentIA />  // ⛔️ Supprime ou commente cette ligne */}
       <Footer />
+      <FloatingChat /> {/* ✅ Widget Messenger, affiché partout */}
     </div>
   );
 }
