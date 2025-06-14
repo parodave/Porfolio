@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
-// Configuration API - SÉCURISÉ avec variables d'environnement
-const HF_TOKEN = import.meta.env.VITE_HF_TOKEN || "";
+// Configuration API
+const HF_TOKEN = ""; // Ajoutez votre clé ici ou laissez vide pour le mode démo
 const LIBRETRANSLATE_URL = "https://libretranslate.de/translate";
 
 // Langues supportées
@@ -17,10 +17,9 @@ const SUPPORTED_LANGUAGES = {
 
 type SupportedLanguage = keyof typeof SUPPORTED_LANGUAGES;
 
-// Fonction de traduction avec LibreTranslate (principal) et Hugging Face (fallback)
+// Fonction de traduction avec LibreTranslate
 async function translateText(text: string, fromLang: string, toLang: string): Promise<string> {
   try {
-    // Essayer LibreTranslate en premier
     const libreResponse = await fetch(LIBRETRANSLATE_URL, {
       method: "POST",
       headers: {
@@ -37,17 +36,10 @@ async function translateText(text: string, fromLang: string, toLang: string): Pr
     if (libreResponse.ok) {
       const libreData = await libreResponse.json();
       if (libreData.translatedText && libreData.translatedText.trim()) {
-        console.log("✅ Traduction LibreTranslate réussie:", fromLang, "→", toLang);
         return libreData.translatedText.trim();
       }
     }
 
-    // Fallback vers Hugging Face pour fr/en seulement
-    if (HF_TOKEN && ((fromLang === "fr" && toLang === "en") || (fromLang === "en" && toLang === "fr"))) {
-      return await translateWithHuggingFace(text, fromLang === "fr" ? "fr-en" : "en-fr");
-    }
-
-    console.log("⚠️ Traduction échouée, utilisation du texte original");
     return text;
 
   } catch (error) {
@@ -56,55 +48,14 @@ async function translateText(text: string, fromLang: string, toLang: string): Pr
   }
 }
 
-// Fonction de traduction Hugging Face (fallback pour fr/en)
-async function translateWithHuggingFace(text: string, direction: "fr-en" | "en-fr"): Promise<string> {
-  try {
-    if (!HF_TOKEN) {
-      return text;
-    }
-
-    const model = direction === "fr-en"
-      ? "Helsinki-NLP/opus-mt-fr-en"
-      : "Helsinki-NLP/opus-mt-en-fr";
-
-    const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${HF_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        inputs: text,
-        options: { wait_for_model: true }
-      }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      const translatedText = data?.[0]?.translation_text;
-      if (translatedText && translatedText.trim()) {
-        console.log("✅ Traduction Hugging Face réussie");
-        return translatedText.trim();
-      }
-    }
-
-    return text;
-  } catch (error) {
-    console.error("❌ Erreur Hugging Face:", error);
-    return text;
-  }
-}
-
-// Détection de langue améliorée
+// Détection de langue
 function detectLanguage(text: string): SupportedLanguage {
   const lowerText = text.toLowerCase();
 
-  // Mots-clés par langue
   const frenchWords = ["le", "la", "et", "est", "un", "une", "pour", "dans", "que", "qui", "comment", "quel", "bonjour", "merci"];
   const spanishWords = ["el", "la", "y", "es", "un", "una", "para", "en", "que", "hola", "gracias", "como", "donde"];
   const englishWords = ["the", "and", "is", "a", "an", "for", "in", "that", "hello", "thank", "how", "what"];
 
-  // Patterns par langue
   const frenchPattern = /[éèàêùçœîôâû]/i;
   const spanishPattern = /[ñáéíóúü]/i;
   const japanesePattern = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/;
@@ -112,13 +63,11 @@ function detectLanguage(text: string): SupportedLanguage {
   const arabicPattern = /[\u0600-\u06FF\u0750-\u077F]/;
   const thaiPattern = /[\u0E00-\u0E7F]/;
 
-  // Détection par scripts (priorité haute)
   if (japanesePattern.test(text)) return "ja";
   if (chinesePattern.test(text)) return "zh";
   if (arabicPattern.test(text)) return "ar";
   if (thaiPattern.test(text)) return "th";
 
-  // Calcul des scores
   const frenchScore = frenchWords.filter(word => lowerText.includes(word)).length + (frenchPattern.test(text) ? 2 : 0);
   const spanishScore = spanishWords.filter(word => lowerText.includes(word)).length + (spanishPattern.test(text) ? 2 : 0);
   const englishScore = englishWords.filter(word => lowerText.includes(word)).length;
@@ -128,101 +77,6 @@ function detectLanguage(text: string): SupportedLanguage {
 
   return "en";
 }
-
-// IA avec Hugging Face
-const askHuggingFaceAI = async (question: string): Promise<string> => {
-  try {
-    if (!HF_TOKEN) {
-      console.warn("⚠️ Token Hugging Face manquant, utilisation des réponses de secours");
-      return askFallbackAI(question);
-    }
-
-    // GPT-2 (principal)
-    const response = await fetch("https://api-inference.huggingface.co/models/gpt2", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${HF_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        inputs: question,
-        parameters: {
-          max_length: 100,
-          temperature: 0.8,
-          do_sample: true,
-          pad_token_id: 50256
-        },
-        options: { wait_for_model: true }
-      }),
-    });
-
-    if (!response.ok) {
-      return await askDistilBertAI(question);
-    }
-
-    const data = await response.json();
-    let generatedText = data?.[0]?.generated_text || "";
-
-    // Nettoyer la réponse
-    if (generatedText && generatedText.length > question.length) {
-      generatedText = generatedText.substring(question.length).trim();
-      const sentences = generatedText.split(/[.!?]/);
-      if (sentences.length > 0 && sentences[0].trim()) {
-        generatedText = sentences[0].trim() + ".";
-      }
-    }
-
-    return generatedText || askFallbackAI(question);
-
-  } catch (error) {
-    console.error("❌ Erreur GPT-2:", error);
-    return await askDistilBertAI(question);
-  }
-};
-
-// DistilGPT2 (fallback)
-const askDistilBertAI = async (question: string): Promise<string> => {
-  try {
-    if (!HF_TOKEN) {
-      return askFallbackAI(question);
-    }
-
-    const response = await fetch("https://api-inference.huggingface.co/models/distilgpt2", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${HF_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        inputs: `Question: ${question}\nAnswer:`,
-        parameters: {
-          max_length: 80,
-          temperature: 0.7,
-          do_sample: true,
-          pad_token_id: 50256
-        },
-        options: { wait_for_model: true }
-      }),
-    });
-
-    if (!response.ok) {
-      return askFallbackAI(question);
-    }
-
-    const data = await response.json();
-    let result = data?.[0]?.generated_text || "";
-
-    if (result.includes("Answer:")) {
-      result = result.split("Answer:")[1]?.trim() || "";
-    }
-
-    return result || askFallbackAI(question);
-
-  } catch (error) {
-    console.error("❌ Erreur DistilGPT2:", error);
-    return askFallbackAI(question);
-  }
-};
 
 // Réponses de secours multilingues
 const askFallbackAI = (question: string): string => {
@@ -283,7 +137,6 @@ const askFallbackAI = (question: string): string => {
 
   const langResponses = responses[detectedLang] || responses.en;
 
-  // Détection d'intentions
   if (lowerQ.includes("hello") || lowerQ.includes("hi") || lowerQ.includes("bonjour") ||
       lowerQ.includes("hola") || lowerQ.includes("こんにちは") || lowerQ.includes("你好") ||
       lowerQ.includes("مرحبا") || lowerQ.includes("สวัสดี")) {
@@ -315,7 +168,7 @@ type ChatMessage = {
   lang: SupportedLanguage;
 };
 
-export default function AgentIA() {
+function ChatWidget() {
   const [history, setHistory] = useState<ChatMessage[]>([]);
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
@@ -325,14 +178,6 @@ export default function AgentIA() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history, loading, typing]);
-
-  useEffect(() => {
-    if (!HF_TOKEN) {
-      console.warn("⚠️ ATTENTION: Variable VITE_HF_TOKEN non trouvée dans .env");
-    } else {
-      console.log("✅ Token Hugging Face chargé correctement");
-    }
-  }, []);
 
   const handleReset = () => {
     setHistory([]);
@@ -353,7 +198,6 @@ export default function AgentIA() {
     setTyping("");
 
     const detectedLang: SupportedLanguage = detectLanguage(question);
-    console.log("🔍 Question détectée en:", detectedLang, "Question:", question);
 
     setHistory((prev) => [
       ...prev,
@@ -364,38 +208,31 @@ export default function AgentIA() {
       let prompt = question;
       let needsTranslation = false;
 
-      // Traduire vers l'anglais si nécessaire
       if (detectedLang !== "en") {
         try {
           prompt = await translateText(question, detectedLang, "en");
           needsTranslation = true;
-          console.log("🔄 Question traduite:", prompt);
         } catch (error) {
-          console.log("⚠️ Traduction échouée, utilisation du texte original");
           prompt = question;
         }
       }
 
-      // Appel à l'IA
-      const response = await askHuggingFaceAI(prompt);
+      const response = askFallbackAI(prompt);
 
       let answer = response;
       let responseLanguage: SupportedLanguage = detectedLang;
 
-      // Traduire la réponse si nécessaire
       if (needsTranslation && detectedLang !== "en" && response) {
         try {
           const translatedAnswer = await translateText(response, "en", detectedLang);
           if (translatedAnswer && translatedAnswer !== response) {
             answer = translatedAnswer;
-            console.log("🔄 Réponse traduite:", answer);
           }
         } catch (error) {
-          console.log("⚠️ Traduction de la réponse échouée");
+          // Keep original answer
         }
       }
 
-      // Vérifier la validité de la réponse
       if (!answer || answer.trim().length === 0) {
         const fallbackMessages: Record<SupportedLanguage, string> = {
           fr: "Je réfléchis à votre question...",
@@ -409,7 +246,6 @@ export default function AgentIA() {
         answer = fallbackMessages[detectedLang] || fallbackMessages.en;
       }
 
-      // Effet de frappe
       let i = 0;
       setTyping("");
       const interval = setInterval(() => {
@@ -452,79 +288,71 @@ export default function AgentIA() {
   };
 
   return (
-    <div className="bg-black rounded-2xl shadow-2xl p-4 flex flex-col items-center w-full max-w-sm mx-auto border border-white">
-      {/* Avatar animé */}
-      <div className="relative">
-        <div className="h-12 w-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg mb-2 border border-white animate-pulse">
-          <span className="text-white text-xl">🤖</span>
+    <div className="bg-black rounded-lg shadow-2xl p-4 flex flex-col w-80 border border-white/20">
+      {/* Header minimaliste */}
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-black">
+              <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-white font-medium text-sm">Agent IA</h3>
+            <p className="text-gray-400 text-xs">Assistant multilingue</p>
+          </div>
         </div>
-        {loading && (
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
-        )}
-        {!HF_TOKEN && (
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full" title="Token API manquant"></div>
-        )}
+
+        <button
+          onClick={handleReset}
+          disabled={loading}
+          className="text-gray-400 hover:text-white transition-colors text-xs"
+        >
+          Effacer
+        </button>
       </div>
 
-      <h2 className="text-lg text-white font-semibold tracking-wide mb-2">
-        IA Multilingue 🌍
-      </h2>
-
-      <button
-        type="button"
-        className="text-xs text-neutral-400 hover:text-white hover:underline mb-3 transition-colors"
-        onClick={handleReset}
-        disabled={loading}
-      >
-        🗑️ Effacer la conversation
-      </button>
-
       {/* Zone de chat */}
-      <div className="w-full max-h-64 overflow-y-auto bg-neutral-950 rounded-xl p-3 mb-3 border border-neutral-800 shadow-inner">
+      <div className="w-full h-64 overflow-y-auto mb-4 space-y-3">
         {history.length === 0 && !loading && !typing && (
-          <div className="text-neutral-500 italic text-center py-4">
-            🤖 IA multilingue prête !
-            <br />
-            <span className="text-xs">Français • English • Español • 日本語 • 中文 • العربية • ไทย</span>
-            {!HF_TOKEN && (
-              <div className="text-yellow-400 text-xs mt-2">
-                ⚠️ Token API manquant - Mode limité
-              </div>
-            )}
+          <div className="text-center py-8">
+            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white/60">
+                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z"/>
+              </svg>
+            </div>
+            <p className="text-white/80 text-sm mb-2">IA prête</p>
+            <p className="text-gray-400 text-xs">7 langues supportées</p>
           </div>
         )}
 
         {history.map((msg, i) => (
           <div
             key={i}
-            className={`mb-3 flex ${
-              msg.role === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
-            <div className="flex items-end gap-2 max-w-[85%]">
-              {/* Avatar IA */}
+            <div className="flex items-start gap-2 max-w-[85%]">
               {msg.role === "assistant" && (
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center border border-white flex-shrink-0">
-                  <span className="text-white text-sm">🤖</span>
+                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 bg-black rounded-full"></div>
                 </div>
               )}
 
-              {/* Avatar utilisateur */}
               {msg.role === "user" && (
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center border border-white flex-shrink-0">
-                  <span className="text-white text-sm">👤</span>
+                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
                 </div>
               )}
 
               <div
-                className={`px-3 py-2 rounded-xl shadow border relative ${
+                className={`px-3 py-2 rounded-lg text-sm ${
                   msg.role === "user"
-                    ? "bg-white text-black border-neutral-300 rounded-br-sm"
-                    : "bg-neutral-900 text-white border-neutral-700 rounded-bl-sm"
+                    ? "bg-white text-black"
+                    : "bg-white/10 text-white border border-white/20"
                 }`}
               >
-                <div className="text-sm">{msg.content}</div>
-                <div className="text-xs text-neutral-500 mt-1 flex items-center gap-1">
+                <div className="leading-relaxed">{msg.content}</div>
+                <div className="text-xs mt-1 opacity-60 flex items-center gap-1">
                   <span>{SUPPORTED_LANGUAGES[msg.lang]?.flag || "🌍"}</span>
                   <span>{SUPPORTED_LANGUAGES[msg.lang]?.name || msg.lang}</span>
                 </div>
@@ -535,13 +363,13 @@ export default function AgentIA() {
 
         {/* Message en cours de frappe */}
         {typing && (
-          <div className="mb-3 flex justify-start">
-            <div className="flex items-end gap-2 max-w-[85%]">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center border border-white">
-                <span className="text-white text-sm">🤖</span>
+          <div className="flex justify-start">
+            <div className="flex items-start gap-2 max-w-[85%]">
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-2 h-2 bg-black rounded-full animate-pulse"></div>
               </div>
-              <div className="px-3 py-2 rounded-xl bg-neutral-900 text-white border border-neutral-700 rounded-bl-sm">
-                <div className="text-sm">{typing}<span className="animate-pulse">|</span></div>
+              <div className="px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 text-sm">
+                {typing}<span className="animate-pulse ml-1">|</span>
               </div>
             </div>
           </div>
@@ -549,18 +377,20 @@ export default function AgentIA() {
 
         {/* Indicateur de chargement */}
         {loading && !typing && (
-          <div className="flex justify-start mb-3">
-            <div className="flex items-end gap-2">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center border border-white">
-                <span className="text-white text-sm">🤖</span>
+          <div className="flex justify-start">
+            <div className="flex items-start gap-2">
+              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-2 h-2 bg-black rounded-full animate-spin"></div>
               </div>
-              <div className="px-3 py-2 rounded-xl bg-neutral-900 text-white shadow-md flex items-center gap-2 border border-neutral-700">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+              <div className="px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="flex space-x-1">
+                    <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
+                    <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                  </div>
+                  <span>IA réfléchit...</span>
                 </div>
-                <span className="text-sm">IA en cours de chargement...</span>
               </div>
             </div>
           </div>
@@ -570,41 +400,74 @@ export default function AgentIA() {
       </div>
 
       {/* Zone de saisie */}
-      <div className="w-full flex flex-col items-center">
+      <div className="space-y-2">
         <input
           type="text"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleInputKeyDown}
-          placeholder="Posez votre question (🇫🇷🇬🇧🇪🇸🇯🇵🇨🇳🇸🇦🇹🇭)..."
-          className="w-full p-3 rounded-xl bg-neutral-900 text-white placeholder-neutral-400 border border-white focus:outline-none focus:ring-2 focus:ring-white transition mb-3"
+          placeholder="Posez votre question..."
+          className="w-full p-3 rounded-lg bg-white/5 text-white placeholder-gray-400 border border-white/20 focus:outline-none focus:border-white/40 transition text-sm"
           disabled={loading}
         />
 
         <button
           onClick={(e) => handleSubmit(e)}
           disabled={loading || !question.trim()}
-          className={`w-full bg-white text-black font-bold py-3 rounded-xl transition-all shadow-md border border-white ${
+          className={`w-full bg-white text-black font-medium py-2 rounded-lg transition text-sm ${
             loading || !question.trim()
-              ? "opacity-60 cursor-not-allowed"
-              : "hover:bg-neutral-100 active:scale-95"
+              ? "opacity-50 cursor-not-allowed"
+              : "hover:bg-white/90"
           }`}
         >
-          {loading ? (
-            <span className="flex items-center justify-center gap-2">
-              <div className="w-5 h-5 border-2 border-t-transparent border-neutral-900 rounded-full animate-spin"></div>
-              Génération...
-            </span>
-          ) : (
-            "Envoyer"
-          )}
+          {loading ? "Génération..." : "Envoyer"}
         </button>
       </div>
+    </div>
+  );
+}
 
-      <div className="mt-2 text-xs text-neutral-400 text-center">
-        ✨ LibreTranslate + Hugging Face
-        {!HF_TOKEN && <span className="text-yellow-400"> (Mode limité)</span>}
-      </div>
+export default function FloatingAgentIA() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Widget de chat */}
+      {isOpen && (
+        <div className="absolute bottom-16 right-0 animate-in slide-in-from-bottom-2 duration-200">
+          <ChatWidget />
+        </div>
+      )}
+
+      {/* Bouton flottant minimaliste */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-12 h-12 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center border ${
+          isOpen
+            ? 'bg-white text-black border-white hover:bg-gray-100'
+            : 'bg-black text-white border-white hover:bg-gray-900'
+        }`}
+      >
+        {/* Icône */}
+        <div className="transition-transform duration-200">
+          {isOpen ? (
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+              <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+              <path d="M12,3C17.5,3 22,6.58 22,11C22,15.42 17.5,19 12,19C10.76,19 9.57,18.82 8.47,18.5C5.55,21 2,21 2,21C4.33,18.67 4.7,17.1 4.75,16.5C3.05,15.07 2,13.13 2,11C2,6.58 6.5,3 12,3Z"/>
+            </svg>
+          )}
+        </div>
+
+        {/* Point de notification */}
+        {!isOpen && (
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border border-black">
+            <div className="w-full h-full bg-white rounded-full animate-pulse"></div>
+          </div>
+        )}
+      </button>
     </div>
   );
 }
