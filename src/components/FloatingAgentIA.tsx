@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AgentIA from "./AgentIA";
+import ChatWidget from "./AgentIA";
 
 export default function FloatingAgentIA() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +10,7 @@ export default function FloatingAgentIA() {
       {isOpen && (
         <div className="absolute bottom-16 right-0 animate-in slide-in-from-bottom-2 duration-200">
           <div className="bg-black rounded-2xl shadow-xl border border-white overflow-hidden">
-            <AgentIA />
+            <ChatWidget />
           </div>
         </div>
       )}

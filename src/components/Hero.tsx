@@ -5,7 +5,7 @@ import Cube3D from './Cube3D';
 import { useTranslation } from 'react-i18next';
 
 const Hero: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
