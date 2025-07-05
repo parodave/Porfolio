@@ -8,7 +8,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
-import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import FloatingAgentIA from "./components/FloatingAgentIA";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
+      <FloatingAgentIA />
     </div>
   );
 }
