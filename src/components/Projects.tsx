@@ -77,9 +77,11 @@ const Projects: React.FC = () => {
               className="project-card group relative overflow-hidden border border-gray-800 bg-darker"
             >
               <div className="relative h-72 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-90"></div>
