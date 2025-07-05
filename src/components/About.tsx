@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 import { resumeData } from '../data/resume';
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -26,7 +28,7 @@ const About: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
@@ -43,7 +45,7 @@ const About: React.FC = () => {
         >
           <motion.div variants={itemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
-              À propos de moi
+              {t('about.title')}
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
             </h2>
 

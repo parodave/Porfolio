@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  VerticalTimeline, 
-  VerticalTimelineElement 
+import { useTranslation } from 'react-i18next';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase } from 'lucide-react';
@@ -18,6 +19,7 @@ interface ExperienceItem {
 }
 
 const Experience: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -49,9 +51,9 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Expériences Professionnelles</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('experience.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Mon parcours professionnel diversifié qui témoigne de ma polyvalence et de ma capacité d'adaptation.
+            {t('experience.subtitle')}
           </p>
         </motion.div>
 
@@ -60,8 +62,8 @@ const Experience: React.FC = () => {
             <VerticalTimelineElement
               key={index}
               className="vertical-timeline-element--work"
-              contentStyle={{ 
-                background: '#111111', 
+              contentStyle={{
+                background: '#111111',
                 color: '#fff',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}

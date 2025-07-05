@@ -190,7 +190,9 @@ function ChatWidget() {
     }
   };
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const handleSubmit = async (
+    e: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
+  ) => {
     e.preventDefault();
     if (!question.trim()) return;
     setLoading(true);
@@ -426,7 +428,9 @@ function ChatWidget() {
   );
 }
 
-export default function FloatingAgentIA() {
+export default ChatWidget;
+
+export function FloatingAgentIA() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

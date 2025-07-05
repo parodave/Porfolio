@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowUpRight, Car, Utensils } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface Project {
   title: string;
@@ -12,27 +13,18 @@ interface Project {
 }
 
 const Projects: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const projects: Project[] = [
-    {
-      title: 'Turfu Driving',
-      description: 'Entreprise de location de véhicules avec système de gestion automatisé via CRM. Gestion complète de la flotte, des réservations et de la maintenance.',
-      image: 'https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      icon: <Car size={24} />,
-      tags: ['Entrepreneuriat', 'Gestion', 'CRM', 'Service client']
-    },
-    {
-      title: '0\'240',
-      description: 'Fast-food avec gestion totale : personnel, budget, approvisionnement et qualité client. Développement de l\'identité de marque et optimisation des processus.',
-      image: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      icon: <Utensils size={24} />,
-      tags: ['Restauration', 'Management', 'Marketing', 'Finance']
-    }
-  ];
+  const projectIcons = [<Car size={24} />, <Utensils size={24} />];
+  const rawProjects = t('projects.items', { returnObjects: true }) as Omit<Project, 'icon'>[];
+  const projects: Project[] = rawProjects.map((proj, idx) => ({
+    ...proj,
+    icon: projectIcons[idx],
+  }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,9 +57,9 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Projets</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Découvrez mes projets entrepreneuriaux et professionnels les plus significatifs.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
