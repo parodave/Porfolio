@@ -5,7 +5,8 @@ const Cube3D: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mountNode = mountRef.current;
+    if (!mountNode) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -13,7 +14,7 @@ const Cube3D: React.FC = () => {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(300, 300);
     renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
+    mountNode.appendChild(renderer.domElement);
 
     // Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -89,8 +90,8 @@ const Cube3D: React.FC = () => {
 
     // Clean up
     return () => {
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountNode) {
+        mountNode.removeChild(renderer.domElement);
       }
       
       // Dispose resources
