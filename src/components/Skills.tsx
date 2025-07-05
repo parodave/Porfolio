@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Terminal, Figma, Database, Github, Settings, Users, Lightbulb, Brain, Rocket } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface Skill {
   name: string;
@@ -10,6 +11,7 @@ interface Skill {
 }
 
 const Skills: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -24,10 +26,10 @@ const Skills: React.FC = () => {
     { name: 'CRM', icon: <Settings size={28} />, category: 'tools' },
     { name: 'Microsoft Office', icon: <Terminal size={28} />, category: 'tools' },
     { name: 'ChatGPT/IA', icon: <Brain size={28} />, category: 'tools' },
-    { name: 'Autonomie', icon: <Rocket size={28} />, category: 'soft' },
-    { name: 'Rigueur', icon: <Settings size={28} />, category: 'soft' },
-    { name: 'Esprit d\'initiative', icon: <Lightbulb size={28} />, category: 'soft' },
-    { name: 'Travail d\'équipe', icon: <Users size={28} />, category: 'soft' },
+    { name: t('skills.softNames.autonomy'), icon: <Rocket size={28} />, category: 'soft' },
+    { name: t('skills.softNames.rigor'), icon: <Settings size={28} />, category: 'soft' },
+    { name: t('skills.softNames.initiative'), icon: <Lightbulb size={28} />, category: 'soft' },
+    { name: t('skills.softNames.teamwork'), icon: <Users size={28} />, category: 'soft' },
   ];
 
   const containerVariants = {
@@ -65,15 +67,15 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Compétences</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('skills.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Un ensemble de compétences techniques et personnelles acquises au cours de mes différentes expériences professionnelles.
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Tech / Web</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">{t('skills.categories.tech')}</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -94,7 +96,7 @@ const Skills: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Outils</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">{t('skills.categories.tools')}</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -115,7 +117,7 @@ const Skills: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Soft Skills</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">{t('skills.categories.soft')}</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"

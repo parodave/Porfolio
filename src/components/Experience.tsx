@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 import { 
   VerticalTimeline, 
   VerticalTimelineElement 
@@ -25,56 +26,18 @@ interface ExperienceItem {
 }
 
 const Experience: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const experienceItems: ExperienceItem[] = [
-    {
-      title: "Développeur Web",
-      company: "Le Wagon Paris",
-      date: "2023",
-      description: "Formation intensive au développement web full-stack. Projets pratiques et travail d'équipe sur des applications web complètes.",
-      icon: <Code />,
-      technologies: ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
-    },
-    {
-      title: "Responsable Opérationnel",
-      company: "Rino Recycling - Brisbane",
-      date: "Nov. 2024 - Avril 2025",
-      description: "Gestion des opérations de recyclage et développement de nouveaux processus d'optimisation.",
-      icon: <Recycle />
-    },
-    {
-      title: "Bibliothécaire & Livreur",
-      company: "France",
-      date: "2020 - 2024",
-      description: "Organisation et gestion du fond documentaire. Service de livraison avec gestion autonome des tournées.",
-      icon: <BookOpen />
-    },
-    {
-      title: "Électricien",
-      company: "SNCF / Maintenance Bouygues",
-      date: "2017 - 2020",
-      description: "Installation et maintenance de systèmes électriques. Résolution de problèmes techniques et respect des normes de sécurité.",
-      icon: <Wrench />
-    },
-    {
-      title: "Service Restauration",
-      company: "Sofitel",
-      date: "2016 - 2017",
-      description: "Service client haut de gamme dans un environnement international.",
-      icon: <Utensils />
-    },
-    {
-      title: "Technicien environnemental",
-      company: "Cœur d'Essonne",
-      date: "2015 - 2016",
-      description: "Analyse et suivi des indicateurs environnementaux. Sensibilisation du public aux questions écologiques.",
-      icon: <Package />
-    }
-  ];
+  const icons = [<Code />, <Recycle />, <BookOpen />, <Wrench />, <Utensils />, <Package />];
+  const rawItems = t('experience.items', { returnObjects: true }) as Omit<ExperienceItem, 'icon'>[];
+  const experienceItems: ExperienceItem[] = rawItems.map((item, idx) => ({
+    ...item,
+    icon: icons[idx],
+  }));
 
   return (
     <section id="experience" className="py-20 bg-darker relative px-6 md:px-10" ref={ref}>
@@ -85,9 +48,9 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Expériences Professionnelles</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('experience.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Mon parcours professionnel diversifié qui témoigne de ma polyvalence et de ma capacité d'adaptation.
+            {t('experience.subtitle')}
           </p>
         </motion.div>
 
