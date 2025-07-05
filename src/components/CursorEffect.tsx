@@ -101,6 +101,7 @@ const CursorEffect: React.FC = () => {
         document.body.removeChild(lightEffect);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null; // This component doesn't render anything directly

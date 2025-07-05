@@ -41,8 +41,7 @@ async function translateText(text: string, fromLang: string, toLang: string): Pr
 
     return text;
 
-  } catch (error) {
-    console.error("❌ Erreur de traduction:", error);
+  } catch {
     return text;
   }
 }
@@ -262,8 +261,7 @@ function ChatWidget() {
         }
       }, 25);
 
-    } catch (error) {
-      console.error("❌ Erreur générale:", error);
+    } catch {
       const errorMessages: Record<SupportedLanguage, string> = {
         fr: "Désolé, une erreur s'est produite. Veuillez réessayer.",
         en: "Sorry, an error occurred. Please try again.",

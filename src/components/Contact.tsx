@@ -40,8 +40,7 @@ const Contact: React.FC = () => {
       } else {
         throw new Error('Failed to send email');
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setError('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.');
     } finally {
       setLoading(false);
