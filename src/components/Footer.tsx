@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -20,26 +20,6 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-          <div className="flex space-x-4">
-            <a 
-              href="https://linkedin.com/in/karim-h-497634248" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a 
-              href="https://github.com/parodave" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={20} />
-            </a>
-          </div>
           
           <button 
             onClick={scrollToTop}

@@ -9,20 +9,31 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import BlogPage from "./components/BlogPage";
+import ArticlePage from "./components/ArticlePage";
+import { Routes, Route } from "react-router-dom";
+
+const HomePage = () => (
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Contact />
+  </main>
+);
 
 function App() {
   return (
     <div>
       <CursorEffect />
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<ArticlePage />} />
+      </Routes>
       <Footer />
       <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
     </div>

@@ -3,5 +3,19 @@
     "title": "Je ne suis pas qu’un développeur.",
     "typewriter": ["J'entreprends.", "J'apprends.", "Je construis l'avenir."],
     "cta": "Voir mes projets"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "blog": {
+    "title": "Blog",
+    "listen": "Écouter l'audio",
+    "back": "Retour aux articles"
   }
 }
