@@ -107,14 +107,6 @@ const Hero: React.FC = () => {
               {t('about.downloadCv')}
             </a>
           </motion.div>
-          <motion.div variants={itemVariants}>
-            <a
-              href="#projects"
-              className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 inline-block"
-            >
-              {t("hero.cta")}
-            </a>
-          </motion.div>
         </motion.div>
 
         <motion.div
