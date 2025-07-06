@@ -1,11 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const Cube3D: React.FC = () => {
+interface Cube3DProps {
+  reduceMotion?: boolean;
+}
+
+const Cube3D: React.FC<Cube3DProps> = ({ reduceMotion = false }) => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mountNode = mountRef.current;
+    if (!mountNode) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -13,7 +18,7 @@ const Cube3D: React.FC = () => {
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(300, 300);
     renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
+    mountNode.appendChild(renderer.domElement);
 
     // Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -72,25 +77,28 @@ const Cube3D: React.FC = () => {
     scene.add(particles);
 
     // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
+    let frameId: number;
 
-      cube.rotation.x += 0.004;
-      cube.rotation.y += 0.004;
-      line.rotation.x += 0.004;
-      line.rotation.y += 0.004;
-      particles.rotation.x += 0.002;
-      particles.rotation.y += 0.002;
+    const animate = () => {
+      if (!reduceMotion) {
+        cube.rotation.x += 0.004;
+        cube.rotation.y += 0.004;
+        line.rotation.x += 0.004;
+        line.rotation.y += 0.004;
+        particles.rotation.x += 0.002;
+        particles.rotation.y += 0.002;
+      }
 
       renderer.render(scene, camera);
+      frameId = requestAnimationFrame(animate);
     };
 
     animate();
 
     // Clean up
     return () => {
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountNode) {
+        mountNode.removeChild(renderer.domElement);
       }
       
       // Dispose resources
@@ -100,6 +108,7 @@ const Cube3D: React.FC = () => {
       particlesGeometry.dispose();
       particlesMaterial.dispose();
       renderer.dispose();
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, []);
 
