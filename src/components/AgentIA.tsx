@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 
 // Configuration API
-const LIBRETRANSLATE_URL = "https://libretranslate.de/translate";
+// The translation endpoint can be customized via environment variable.
+const LIBRETRANSLATE_URL =
+  import.meta.env.VITE_LIBRETRANSLATE_URL || "https://libretranslate.de/translate";
 
 // Langues supportées
 const SUPPORTED_LANGUAGES = {
