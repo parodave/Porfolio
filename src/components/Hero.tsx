@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
 import CompactContactForm from './CompactContactForm';
@@ -26,17 +27,7 @@ const Hero: React.FC = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
+
 
   // Textes animés par langue
   const typewriterTexts = t('hero.typewriter', { returnObjects: true }) as string[];
