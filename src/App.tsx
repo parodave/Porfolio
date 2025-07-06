@@ -17,6 +17,7 @@ import { Routes, Route } from "react-router-dom";
 const HomePage = () => (
   <main>
     <Hero />
+    <Contact variant="compact" />
     <About />
     <Skills />
     <Projects />
