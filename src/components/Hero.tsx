@@ -97,6 +97,16 @@ const Hero: React.FC = () => {
               Discover KR Global Solutions
             </a>
           </motion.div>
+          <motion.div variants={itemVariants} className="mb-4">
+            <a
+              href="/KHBResume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition-colors"
+            >
+              {t('about.downloadCv')}
+            </a>
+          </motion.div>
           <motion.div variants={itemVariants}>
             <a
               href="#projects"
