@@ -1,3 +1,4 @@
+// Moved from pages/api to src/api to avoid Next.js detection on Vercel
 export default function handler(req, res) {
   const projets = [
     {
