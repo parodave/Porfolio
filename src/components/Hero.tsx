@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
               href="https://krglobalsolutionsltd.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-button px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition-colors"
+              className="cta-button px-6 py-3 bg-transparent border border-gray-300 text-white font-semibold rounded hover:ring-1 hover:ring-gray-400 transition-colors"
             >
               Discover KR Global Solutions
             </a>
