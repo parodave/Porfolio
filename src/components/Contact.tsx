@@ -3,12 +3,17 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../supabaseClient';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  variant?: 'default' | 'compact';
+}
+
+const Contact: React.FC<ContactProps> = ({ variant = 'default' }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -37,13 +42,24 @@ const Contact: React.FC = () => {
         EMAILJS_TEMPLATE_ID,
         formRef.current
       );
-      
-      if (result.text === 'OK') {
-        setSuccess(true);
-        formRef.current.reset();
-      } else {
+
+      if (result.text !== 'OK') {
         throw new Error('Failed to send email');
       }
+
+      const formData = new FormData(formRef.current);
+      const { error: supabaseError } = await supabase.from('contacts').insert({
+        name: formData.get('user_name'),
+        email: formData.get('user_email'),
+        message: formData.get('message'),
+      });
+
+      if (supabaseError) {
+        throw supabaseError;
+      }
+
+      setSuccess(true);
+      formRef.current.reset();
     } catch (err) {
       console.error(err);
       setError('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.');
@@ -75,67 +91,72 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-dark relative px-6 md:px-10">
+    <section
+      id={variant === 'compact' ? 'contact-top' : 'contact'}
+      className={`${variant === 'compact' ? 'py-10' : 'py-20'} bg-dark relative px-6 md:px-10`}
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16"
+          animate={inView ? 'visible' : 'hidden'}
+          className={`grid grid-cols-1 ${variant === 'compact' ? '' : 'md:grid-cols-2 gap-16'}`}
         >
-          <motion.div variants={itemVariants}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
-              Contact
-              <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
-            </h2>
-            
-            <div className="space-y-6 text-gray-300">
-              <p>
-                Vous avez un projet en tête ou une opportunité à me proposer ? 
-                N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles 
-                collaborations et défis.
-              </p>
-              
-              <div className="space-y-4 mt-8">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
-                    <span className="text-xl">📧</span>
+          {variant === 'default' && (
+            <motion.div variants={itemVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
+                Contact
+                <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
+              </h2>
+
+              <div className="space-y-6 text-gray-300">
+                <p>
+                  Vous avez un projet en tête ou une opportunité à me proposer ?
+                  N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles
+                  collaborations et défis.
+                </p>
+
+                <div className="space-y-4 mt-8">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
+                      <span className="text-xl">📧</span>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium">Email</h3>
+                      <p className="text-gray-400">karim@karimhammouche.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-medium">Email</h3>
-                    <p className="text-gray-400">karim.hammouche1995@gmail.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
-                    <span className="text-xl">🌐</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium">Réseaux</h3>
-                    <a 
-                      href="https://linkedin.com/in/karim-h-497634248" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      LinkedIn
-                    </a>
-                    {" | "}
-                    <a 
-                      href="https://github.com/parodave" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      GitHub
-                    </a>
+
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
+                      <span className="text-xl">🌐</span>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium">Réseaux</h3>
+                      <a
+                        href="https://linkedin.com/in/karim-h-497634248"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        LinkedIn
+                      </a>
+                      {" | "}
+                      <a
+                        href="https://github.com/parodave"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
           <motion.div variants={itemVariants}>
             {success ? (
@@ -205,7 +226,7 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center py-3 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-70"
+                  className="w-full flex items-center justify-center py-3 border border-white text-white hover:bg-white hover:text-black hover:ring hover:ring-white transition-colors duration-300 disabled:opacity-70"
                 >
                   {loading ? (
                     <span className="flex items-center">
