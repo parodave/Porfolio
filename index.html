@@ -1,22 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Web developer portfolio of Karim Hammouche with projects, blog, and professional experience." />
+    <meta name="keywords" content="Karim Hammouche, web developer, portfolio, JavaScript, React" />
+    <meta name="author" content="Karim Hammouche" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://karimhammouche.com" />
+    <meta property="og:title" content="Karim Hammouche | Portfolio" />
+    <meta property="og:description" content="Web developer portfolio of Karim Hammouche with projects, blog, and professional experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://karimhammouche.com" />
+    <meta property="og:image" content="/vite.svg" />
     <title>Karim Hammouche | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6RBR3M7Z1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-T6RBR3M7Z1');
+    <script type="module">
+      const GA_ID = import.meta.env.VITE_GA_ID;
+      if (GA_ID) {
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      }
     </script>
   </head>
   <body>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { containerVariants, itemVariants as defaultItemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
 import { ArrowUpRight, Car, Utensils } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -28,26 +29,9 @@ const Projects: React.FC = () => {
     icon: projectIcons[idx],
   }));
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   const itemVariants = {
+    ...defaultItemVariants,
     hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
   };
 
   return (

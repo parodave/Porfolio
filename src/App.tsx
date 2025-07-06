@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,8 +10,8 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
 import ScrollToHash from "./components/ScrollToHash";
-import BlogPage from "./components/BlogPage";
-import ArticlePage from "./components/ArticlePage";
+const BlogPage = React.lazy(() => import("./components/BlogPage"));
+const ArticlePage = React.lazy(() => import("./components/ArticlePage"));
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
 
@@ -46,11 +46,13 @@ function App() {
       <CursorEffect />
       <ScrollToHash />
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:slug" element={<ArticlePage />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<ArticlePage />} />
+        </Routes>
+      </Suspense>
       <Footer />
       <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
     </div>

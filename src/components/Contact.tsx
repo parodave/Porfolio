@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle } from 'lucide-react';
 import CompactContactForm from './CompactContactForm';
@@ -68,27 +69,7 @@ const Contact: React.FC = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <section id="contact" className="py-20 bg-dark relative px-6 md:px-10">
