@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import SocialLinks from './SocialLinks';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -20,8 +21,15 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-          
-          <button 
+          <a
+            href="mailto:karim@karimhammouche.com"
+            className="text-gray-400 hover:text-white transition-colors"
+            aria-label="Envoyer un email"
+          >
+            karim@karimhammouche.com
+          </a>
+          <SocialLinks />
+          <button
             onClick={scrollToTop}
             className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
             aria-label="Retour en haut"
