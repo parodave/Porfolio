@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "title": "I'm more than just a developer.",
+    "typewriter": ["I build.", "I learn.", "I shape the future."],
+    "cta": "View my projects"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "blog": {
+    "title": "Blog",
+    "listen": "Listen to audio",
+    "back": "Back to articles"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": [
+      "Passionate about technology and entrepreneurship, I began my career as an electrician at SNCF before moving into web development. This unusual path gave me valuable versatility and adaptability.",
+      "An entrepreneur at heart, I founded and managed several businesses, including a car rental company and a fast-food restaurant. These experiences taught me to solve complex problems, manage teams and develop a strategic vision.",
+      "Recently I worked for Rino Recycling in Brisbane, where I put my technical skills and creativity to work on innovative projects."
+    ],
+    "quote": "Each project I touch is an opportunity to go further than expected of me.",
+    "personalInfoTitle": "Personal Information",
+    "details": [
+      { "label": "Name", "value": "Karim Hammouche" },
+      { "label": "Age", "value": "29 years old" },
+      { "label": "Nationality", "value": "French" },
+      { "label": "Currently", "value": "in Thailand (2025)" }
+    ],
+    "careerTitle": "Career Path",
+    "careerList": [
+      "Former electrician (SNCF), environmental technician and delivery agent",
+      "Web developer trained at Le Wagon Paris (2023)",
+      "Entrepreneur: car rental and fast-food",
+      "Recent experience: Rino Recycling in Brisbane (Nov. 2024 – April 2025)"
+    ],
+    "downloadCv": "Download my resume"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "My diverse professional background demonstrates my versatility and adaptability.",
+    "items": [
+      {
+        "title": "Web Developer",
+        "company": "Le Wagon Paris",
+        "date": "2023",
+        "description": "Intensive full-stack web development training. Practical projects and teamwork on complete web applications.",
+        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+      },
+      {
+        "title": "Operations Manager",
+        "company": "Rino Recycling - Brisbane",
+        "date": "Nov. 2024 - Apr. 2025",
+        "description": "Management of recycling operations and development of new optimization processes."
+      },
+      {
+        "title": "Librarian & Courier",
+        "company": "France",
+        "date": "2020 - 2024",
+        "description": "Organization and management of the document collection. Delivery service with autonomous route management."
+      },
+      {
+        "title": "Electrician",
+        "company": "SNCF / Maintenance Bouygues",
+        "date": "2017 - 2020",
+        "description": "Installation and maintenance of electrical systems. Troubleshooting and compliance with safety standards."
+      },
+      {
+        "title": "Restaurant Service",
+        "company": "Sofitel",
+        "date": "2016 - 2017",
+        "description": "High-end customer service in an international environment."
+      },
+      {
+        "title": "Environmental Technician",
+        "company": "Cœur d'Essonne",
+        "date": "2015 - 2016",
+        "description": "Analysis and monitoring of environmental indicators. Raising public awareness of ecological issues."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Discover my most significant entrepreneurial and professional projects.",
+    "items": [
+      {
+        "title": "KR Global Solutions LTD",
+        "description": "SaaS platform delivering global digital solutions with AI integration.",
+        "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "link": ""
+      },
+      {
+        "title": "FelizBella",
+        "description": "Cosmetics brand with e-commerce focus and online marketing.",
+        "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "link": ""
+      },
+      {
+        "title": "KHH Projects",
+        "description": "Automated short-term rental management for Airbnb properties.",
+        "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "link": ""
+      },
+      {
+        "title": "Domaine Harrach",
+        "description": "Organic fruit farm practicing sustainable agriculture.",
+        "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "link": ""
+      },
+      {
+        "title": "TLFH",
+        "description": "Logistics company overseeing delivery operations in Paris.",
+        "image": "https://images.pexels.com/photos/616966/pexels-photo-616966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "link": ""
+      },
+      {
+        "title": "Wash Center",
+        "description": "Laundry service offering modern and efficient cleaning solutions.",
+        "image": "https://images.pexels.com/photos/460995/pexels-photo-460995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "link": ""
+      },
+      {
+        "title": "Turfu Driving",
+        "description": "Vehicle rental company with automated management system via CRM. Complete management of the fleet, bookings and maintenance.",
+        "image": "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "link": ""
+      },
+      {
+        "title": "0'240",
+        "description": "Fast-food with full management: staff, budget, supply and customer quality. Brand identity development and process optimization.",
+        "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "link": ""
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "A set of technical and personal skills acquired throughout my various professional experiences.",
+    "categories": {
+      "tech": "Tech / Web",
+      "tools": "Tools",
+      "soft": "Soft Skills"
+    },
+    "softNames": {
+      "autonomy": "Autonomy",
+      "rigor": "Rigor",
+      "initiative": "Initiative",
+      "teamwork": "Teamwork"
+    }
+  }
+}
