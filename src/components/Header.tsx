@@ -12,12 +12,12 @@ const Header: React.FC = () => {
 
   const { t } = useTranslation();
   const navItems = [
-    { label: t("nav.home"), href: "#hero" },
-    { label: t("nav.about"), href: "#about" },
-    { label: t("nav.skills"), href: "#skills" },
-    { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.experience"), href: "#experience" },
-    { label: t("nav.contact"), href: "#contact" },
+    { label: t("nav.home"), to: "/#hero" },
+    { label: t("nav.about"), to: "/#about" },
+    { label: t("nav.skills"), to: "/#skills" },
+    { label: t("nav.projects"), to: "/#projects" },
+    { label: t("nav.experience"), to: "/#experience" },
+    { label: t("nav.contact"), to: "/#contact" },
     { label: t("nav.blog"), to: "/blog" },
   ];
 
@@ -72,23 +72,13 @@ const Header: React.FC = () => {
           className="hidden md:flex space-x-8"
         >
           {navItems.map((item, index) => (
-            item.to ? (
-              <Link
-                key={index}
-                to={item.to}
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={item.href}
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                {item.label}
-              </a>
-            )
+            <Link
+              key={index}
+              to={item.to}
+              className="text-white hover:text-gray-300 transition-colors duration-300"
+            >
+              {item.label}
+            </Link>
           ))}
         </motion.nav>
 
@@ -115,25 +105,14 @@ const Header: React.FC = () => {
       >
         <div className="flex flex-col items-center space-y-8 w-full">
           {navItems.map((item, index) => (
-            item.to ? (
-              <Link
-                key={index}
-                to={item.to}
-                onClick={() => setIsOpen(false)}
-                className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
-              >
-                {item.label}
-              </a>
-            )
+            <Link
+              key={index}
+              to={item.to}
+              onClick={() => setIsOpen(false)}
+              className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
+            >
+              {item.label}
+            </Link>
           ))}
           <SocialLinks />
         </div>
