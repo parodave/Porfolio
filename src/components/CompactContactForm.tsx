@@ -8,44 +8,54 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
 
 interface CompactContactFormProps {
   id?: string;
+  formRef?: React.RefObject<HTMLFormElement>;
+  handleSubmit?: (e: React.FormEvent) => void;
+  loading?: boolean;
+  error?: string;
 }
 
-const CompactContactForm: React.FC<CompactContactFormProps> = ({ id }) => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
+const CompactContactForm: React.FC<CompactContactFormProps> = ({
+  id,
+  formRef,
+  handleSubmit,
+  loading,
+  error,
+}) => {
+  const internalFormRef = useRef<HTMLFormElement>(null);
+  const [internalLoading, setInternalLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [internalError, setInternalError] = useState('');
 
   useEffect(() => {
     emailjs.init(EMAILJS_PUBLIC_KEY);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const internalHandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formRef.current) return;
+    if (!internalFormRef.current) return;
     try {
-      setLoading(true);
-      setError('');
+      setInternalLoading(true);
+      setInternalError('');
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        formRef.current
+        internalFormRef.current
       );
       if (result.text === 'OK') {
         setSuccess(true);
-        formRef.current.reset();
+        internalFormRef.current.reset();
       } else {
         throw new Error('Failed to send email');
       }
     } catch (err) {
       console.error(err);
-      setError("Une erreur est survenue. Veuillez réessayer plus tard.");
+      setInternalError("Une erreur est survenue. Veuillez réessayer plus tard.");
     } finally {
-      setLoading(false);
+      setInternalLoading(false);
     }
   };
 
-  if (success) {
+  if (success && !handleSubmit) {
     return (
       <div className="p-4 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2">
         <CheckCircle size={20} />
@@ -57,8 +67,8 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({ id }) => {
   return (
     <form
       id={id}
-      ref={formRef}
-      onSubmit={handleSubmit}
+      ref={formRef ?? internalFormRef}
+      onSubmit={handleSubmit ?? internalHandleSubmit}
       className="space-y-4 p-4 border border-gray-800 bg-darker"
     >
       <div>
@@ -103,14 +113,16 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({ id }) => {
         ></textarea>
       </div>
 
-      {error && <div className="text-red-500 text-sm">{error}</div>}
+      {(error ?? internalError) && (
+        <div className="text-red-500 text-sm">{error ?? internalError}</div>
+      )}
 
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading ?? internalLoading}
         className="w-full flex items-center justify-center py-2 text-sm border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-70"
       >
-        {loading ? (
+        {(loading ?? internalLoading) ? (
           <span className="flex items-center">
             <svg
               className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
