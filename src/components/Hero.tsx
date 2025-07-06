@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
 import { useTranslation } from 'react-i18next';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     setMounted(true);
@@ -73,17 +75,21 @@ const Hero: React.FC = () => {
             className="text-xl md:text-2xl text-gray-300 min-h-[3rem] mb-8"
           >
             {mounted && (
-              <div className="flex items-center">
-                <Typewriter
-                  options={{
-                    strings: typewriterTexts,
-                    autoStart: true,
-                    loop: true,
-                    delay: 50,
-                    deleteSpeed: 30,
-                  }}
-                />
-              </div>
+              reduceMotion ? (
+                <span>{typewriterTexts[0]}</span>
+              ) : (
+                <div className="flex items-center">
+                  <Typewriter
+                    options={{
+                      strings: typewriterTexts,
+                      autoStart: true,
+                      loop: true,
+                      delay: 50,
+                      deleteSpeed: 30,
+                    }}
+                  />
+                </div>
+              )
             )}
           </motion.div>
 
@@ -152,11 +158,15 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.5,
+            delay: reduceMotion ? 0 : 0.3,
+            ease: 'easeOut',
+          }}
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <Cube3D />
+            <Cube3D reduceMotion={reduceMotion} />
           </div>
         </motion.div>
       </div>
@@ -164,13 +174,17 @@ const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        transition={{
+          delay: reduceMotion ? 0 : 1.2,
+          duration: reduceMotion ? 0 : 0.8,
+          ease: 'easeOut',
+        }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <div className="w-5 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
+            animate={reduceMotion ? { y: 0 } : { y: [0, 12, 0] }}
+            transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.2 }}
             className="w-1 h-2 bg-white rounded-full mt-2"
           />
         </div>
