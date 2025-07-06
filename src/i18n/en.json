@@ -1,8 +1,21 @@
 {
   "hero": {
     "title": "I'm more than just a developer.",
-    "typewriter": ["I build.", "I learn.", "I shape the future."],
-    "cta": "See my projects"
+    "typewriter": ["I build.", "I learn.", "I shape the future."]
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "blog": {
+    "title": "Blog",
+    "listen": "Listen to audio",
+    "back": "Back to articles"
   },
   "about": {
     "title": "About Me",

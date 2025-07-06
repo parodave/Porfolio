@@ -41,7 +41,8 @@ async function translateText(text: string, fromLang: string, toLang: string): Pr
 
     return text;
 
-  } catch {
+  } catch (error) {
+    console.error("❌ Erreur de traduction:", error);
     return text;
   }
 }
@@ -190,7 +191,7 @@ function ChatWidget() {
   };
 
   const handleSubmit = async (
-    e: React.MouseEvent | React.KeyboardEvent,
+    e: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
   ) => {
     e.preventDefault();
     if (!question.trim()) return;
@@ -261,7 +262,8 @@ function ChatWidget() {
         }
       }, 25);
 
-    } catch {
+    } catch (error) {
+      console.error("❌ Erreur générale:", error);
       const errorMessages: Record<SupportedLanguage, string> = {
         fr: "Désolé, une erreur s'est produite. Veuillez réessayer.",
         en: "Sorry, an error occurred. Please try again.",

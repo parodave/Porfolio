@@ -1,42 +1,42 @@
-import React, { Suspense, lazy } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import CursorEffect from "./components/CursorEffect";
+import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import BlogPage from "./components/BlogPage";
+import ArticlePage from "./components/ArticlePage";
+import { Routes, Route } from "react-router-dom";
 
-const Header = lazy(() => import("./components/Header"));
-const Hero = lazy(() => import("./components/Hero"));
-const About = lazy(() => import("./components/About"));
-const Skills = lazy(() => import("./components/Skills"));
-const Projects = lazy(() => import("./components/Projects"));
-const Experience = lazy(() => import("./components/Experience"));
-const Contact = lazy(() => import("./components/Contact"));
-const Footer = lazy(() => import("./components/Footer"));
-const CursorEffect = lazy(() => import("./components/CursorEffect"));
-const FloatingAgentIA = lazy(() => import("./components/FloatingAgentIA"));
+const HomePage = () => (
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Contact />
+  </main>
+);
 
 function App() {
   return (
-
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <Suspense fallback={null}>
-        <CursorEffect />
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
-        </main>
-        <Footer />
-        <FloatingAgentIA />
-      </Suspense>
-    </motion.div>
-
-
+    <div>
+      <CursorEffect />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<ArticlePage />} />
+      </Routes>
+      <Footer />
+      <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
+    </div>
   );
 }
 

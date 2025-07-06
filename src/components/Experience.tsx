@@ -2,19 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import { 
-  VerticalTimeline, 
-  VerticalTimelineElement 
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { 
-  Code, 
-  Recycle, 
-  BookOpen, 
-  Package, 
-  Wrench, 
-  Utensils 
-} from 'lucide-react';
+import { Briefcase } from 'lucide-react';
+import { resumeData } from '../data/resume';
 
 interface ExperienceItem {
   title: string;
@@ -22,7 +16,6 @@ interface ExperienceItem {
   date: string;
   description: string;
   icon: React.ReactNode;
-  technologies?: string[];
 }
 
 const Experience: React.FC = () => {
@@ -32,12 +25,22 @@ const Experience: React.FC = () => {
     threshold: 0.1,
   });
 
-  const icons = [<Code />, <Recycle />, <BookOpen />, <Wrench />, <Utensils />, <Package />];
-  const rawItems = t('experience.items', { returnObjects: true }) as Omit<ExperienceItem, 'icon'>[];
-  const experienceItems: ExperienceItem[] = rawItems.map((item, idx) => ({
-    ...item,
-    icon: icons[idx],
-  }));
+  const experienceItems: ExperienceItem[] = [
+    ...resumeData.experience.map((exp) => ({
+      title: exp.title,
+      company: exp.company,
+      date: exp.dates,
+      description: exp.tasks ? exp.tasks.join(' ') : '',
+      icon: <Briefcase />,
+    })),
+    ...resumeData.entrepreneurialProjects.map((proj) => ({
+      title: proj.name,
+      company: proj.role,
+      date: proj.dates,
+      description: proj.details.join(' '),
+      icon: <Briefcase />,
+    })),
+  ];
 
   return (
     <section id="experience" className="py-20 bg-darker relative px-6 md:px-10" ref={ref}>
@@ -59,8 +62,8 @@ const Experience: React.FC = () => {
             <VerticalTimelineElement
               key={index}
               className="vertical-timeline-element--work"
-              contentStyle={{ 
-                background: '#111111', 
+              contentStyle={{
+                background: '#111111',
                 color: '#fff',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}
@@ -71,21 +74,7 @@ const Experience: React.FC = () => {
             >
               <h3 className="timeline-content-title">{item.title}</h3>
               <h4 className="timeline-content-subtitle text-gray-400">{item.company}</h4>
-              <p className="timeline-content-desc">
-                {item.description}
-              </p>
-              {item.technologies && (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {item.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex} 
-                      className="px-2 py-1 text-xs border border-gray-700 text-gray-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <p className="timeline-content-desc">{item.description}</p>
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>
