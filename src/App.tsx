@@ -1,4 +1,4 @@
-import React from "react";
+import { motion } from "framer-motion";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,11 +8,15 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
-import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import FloatingAgentIA from "./components/FloatingAgentIA";
 
 function App() {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <CursorEffect />
       <Header />
       <main>
@@ -24,8 +28,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
-    </div>
+      <FloatingAgentIA />
+    </motion.div>
   );
 }
 
