@@ -8,6 +8,12 @@ Install dependencies:
 npm install
 ```
 
+Enable repository Git hooks:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 Run the development server:
 
 ```bash
