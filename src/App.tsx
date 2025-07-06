@@ -1,14 +1,16 @@
+import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import CursorEffect from "./components/CursorEffect";
-import FloatingAgentIA from "./components/FloatingAgentIA";
+
+const Hero = lazy(() => import("./components/Hero"));
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Experience = lazy(() => import("./components/Experience"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
+const CursorEffect = lazy(() => import("./components/CursorEffect"));
+const FloatingAgentIA = lazy(() => import("./components/FloatingAgentIA"));
 
 function App() {
   return (
@@ -17,18 +19,20 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <CursorEffect />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-      <FloatingAgentIA />
+      <Suspense fallback={null}>
+        <CursorEffect />
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+        <FloatingAgentIA />
+      </Suspense>
     </motion.div>
   );
 }
