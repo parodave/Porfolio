@@ -60,3 +60,7 @@ npm run lint
 
 This project does not yet include automated tests, but you can add your
 preferred framework and run them with `npm test` once configured.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

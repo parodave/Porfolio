@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
 import { useTranslation } from 'react-i18next';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     setMounted(true);
@@ -73,17 +75,21 @@ const Hero: React.FC = () => {
             className="text-xl md:text-2xl text-gray-300 min-h-[3rem] mb-8"
           >
             {mounted && (
-              <div className="flex items-center">
-                <Typewriter
-                  options={{
-                    strings: typewriterTexts,
-                    autoStart: true,
-                    loop: true,
-                    delay: 50,
-                    deleteSpeed: 30,
-                  }}
-                />
-              </div>
+              reduceMotion ? (
+                <span>{typewriterTexts[0]}</span>
+              ) : (
+                <div className="flex items-center">
+                  <Typewriter
+                    options={{
+                      strings: typewriterTexts,
+                      autoStart: true,
+                      loop: true,
+                      delay: 50,
+                      deleteSpeed: 30,
+                    }}
+                  />
+                </div>
+              )
             )}
           </motion.div>
 
@@ -92,9 +98,29 @@ const Hero: React.FC = () => {
               href="https://krglobalsolutionsltd.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-button px-6 py-3 bg-transparent border border-gray-300 text-white font-semibold rounded hover:ring-1 hover:ring-gray-400 transition-colors"
+              className="Btn-Container"
             >
-              Discover KR Global Solutions
+              <span className="text">let's go!</span>
+              <span className="icon-Container">
+                <svg
+                  width="16"
+                  height="19"
+                  viewBox="0 0 16 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
+                  <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
+                  <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
+                </svg>
+              </span>
             </a>
           </motion.div>
           <motion.div variants={itemVariants} className="mb-4">
@@ -102,17 +128,29 @@ const Hero: React.FC = () => {
               href="/KHBResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-button px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition-colors"
+              className="Btn-Container"
             >
-              {t('about.downloadCv')}
-            </a>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <a
-              href="#projects"
-              className="px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 inline-block"
-            >
-              {t("hero.cta")}
+              <span className="text">let's go!</span>
+              <span className="icon-Container">
+                <svg
+                  width="16"
+                  height="19"
+                  viewBox="0 0 16 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
+                  <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
+                  <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
+                  <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
+                  <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
+                </svg>
+              </span>
             </a>
           </motion.div>
         </motion.div>
@@ -120,11 +158,15 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.5,
+            delay: reduceMotion ? 0 : 0.3,
+            ease: 'easeOut',
+          }}
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <Cube3D />
+            <Cube3D reduceMotion={reduceMotion} />
           </div>
         </motion.div>
       </div>
@@ -132,13 +174,17 @@ const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        transition={{
+          delay: reduceMotion ? 0 : 1.2,
+          duration: reduceMotion ? 0 : 0.8,
+          ease: 'easeOut',
+        }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <div className="w-5 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
+            animate={reduceMotion ? { y: 0 } : { y: [0, 12, 0] }}
+            transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.2 }}
             className="w-1 h-2 bg-white rounded-full mt-2"
           />
         </div>
