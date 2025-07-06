@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const CursorEffect: React.FC = () => {
   const [clicked, setClicked] = useState(false);
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) return;
     // Check if device has non-touch primary input
     // Don't apply effects on touch devices
     const isTouchDevice = () => {

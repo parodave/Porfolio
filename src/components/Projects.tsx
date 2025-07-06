@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowUpRight, Car, Utensils } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 interface Project {
   title: string;
@@ -14,6 +15,7 @@ interface Project {
 
 const Projects: React.FC = () => {
   const { t } = useTranslation();
+  const reduceMotion = usePrefersReducedMotion();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -54,7 +56,7 @@ const Projects: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: reduceMotion ? 0 : 0.5, ease: 'easeOut' }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
@@ -77,10 +79,10 @@ const Projects: React.FC = () => {
               className="project-card group relative overflow-hidden border border-gray-800 bg-darker"
             >
               <div className="relative h-72 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-90"></div>
               </div>
