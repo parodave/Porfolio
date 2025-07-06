@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CursorEffect: React.FC = () => {
   const [clicked, setClicked] = useState(false);
+  const clickedRef = useRef(false);
+
+  useEffect(() => {
+    clickedRef.current = clicked;
+  }, [clicked]);
 
   useEffect(() => {
     // Check if device has non-touch primary input
@@ -63,7 +68,7 @@ const CursorEffect: React.FC = () => {
         });
         
         link.addEventListener('mouseleave', () => {
-          if (!clicked) {
+          if (!clickedRef.current) {
             cursorDot.classList.remove('active');
           }
         });
