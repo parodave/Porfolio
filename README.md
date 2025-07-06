@@ -20,6 +20,7 @@ Required variables:
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 - `VITE_LIBRETRANSLATE_URL`
+- `VITE_GA_ID`
 
 `VITE_LIBRETRANSLATE_URL` should point to a LibreTranslate instance. You can
 use the public instance at `https://libretranslate.com/translate`, or run your
