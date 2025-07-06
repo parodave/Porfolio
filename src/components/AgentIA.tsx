@@ -175,10 +175,19 @@ function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [typing, setTyping] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const typingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history, loading, typing]);
+
+  useEffect(() => {
+    return () => {
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+    };
+  }, []);
 
   const handleReset = () => {
     setHistory([]);
@@ -251,11 +260,16 @@ function ChatWidget() {
 
       let i = 0;
       setTyping("");
-      const interval = setInterval(() => {
+      if (typingIntervalRef.current) {
+        clearInterval(typingIntervalRef.current);
+      }
+      typingIntervalRef.current = setInterval(() => {
         setTyping(answer.slice(0, i + 1));
         i++;
         if (i >= answer.length) {
-          clearInterval(interval);
+          if (typingIntervalRef.current) {
+            clearInterval(typingIntervalRef.current);
+          }
           setHistory((prev) => [
             ...prev,
             { role: "assistant", content: answer, lang: responseLanguage },
