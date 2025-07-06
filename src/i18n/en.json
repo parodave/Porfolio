@@ -1,8 +1,7 @@
 {
   "hero": {
     "title": "I'm more than just a developer.",
-    "typewriter": ["I build.", "I learn.", "I shape the future."],
-
+    "typewriter": ["I build.", "I learn.", "I shape the future."]
   },
   "nav": {
     "home": "Home",

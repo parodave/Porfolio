@@ -1,8 +1,7 @@
 {
   "hero": {
     "title": "Je ne suis pas qu’un développeur.",
-    "typewriter": ["J'entreprends.", "J'apprends.", "Je construis l'avenir."],
-
+    "typewriter": ["J'entreprends.", "J'apprends.", "Je construis l'avenir."]
   },
   "nav": {
     "home": "Accueil",
