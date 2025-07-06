@@ -82,7 +82,10 @@ const Skills: React.FC = () => {
           </p>
         </motion.div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div
+          ref={ref}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+        >
           <div>
             <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
               {t('skills.categories.tech')}
@@ -91,7 +94,7 @@ const Skills: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
             >
               {filterSkills('development').map((skill, index) => (
                 <motion.div
@@ -112,7 +115,7 @@ const Skills: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
             >
               {filterSkills('ai').map((skill, index) => (
                 <motion.div
@@ -135,7 +138,7 @@ const Skills: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
             >
               {filterSkills('tools').map((skill, index) => (
                 <motion.div
@@ -159,7 +162,7 @@ const Skills: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4"
             >
               {filterSkills('soft').map((skill, index) => (
                 <motion.div

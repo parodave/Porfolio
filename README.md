@@ -19,6 +19,12 @@ Required variables:
 - `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
+- `VITE_LIBRETRANSLATE_URL`
+
+`VITE_LIBRETRANSLATE_URL` should point to a LibreTranslate instance. You can
+use the public instance at `https://libretranslate.com/translate`, or run your
+own server by following the instructions at
+<https://github.com/LibreTranslate/LibreTranslate>.
 
 ## Installation
 
@@ -54,3 +60,7 @@ npm run lint
 
 This project does not yet include automated tests, but you can add your
 preferred framework and run them with `npm test` once configured.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
