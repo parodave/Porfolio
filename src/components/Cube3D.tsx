@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-const Cube3D: React.FC = () => {
+interface Cube3DProps {
+  reduceMotion?: boolean;
+}
+
+const Cube3D: React.FC<Cube3DProps> = ({ reduceMotion = false }) => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -73,17 +77,20 @@ const Cube3D: React.FC = () => {
     scene.add(particles);
 
     // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
+    let frameId: number;
 
-      cube.rotation.x += 0.004;
-      cube.rotation.y += 0.004;
-      line.rotation.x += 0.004;
-      line.rotation.y += 0.004;
-      particles.rotation.x += 0.002;
-      particles.rotation.y += 0.002;
+    const animate = () => {
+      if (!reduceMotion) {
+        cube.rotation.x += 0.004;
+        cube.rotation.y += 0.004;
+        line.rotation.x += 0.004;
+        line.rotation.y += 0.004;
+        particles.rotation.x += 0.002;
+        particles.rotation.y += 0.002;
+      }
 
       renderer.render(scene, camera);
+      frameId = requestAnimationFrame(animate);
     };
 
     animate();
@@ -101,6 +108,7 @@ const Cube3D: React.FC = () => {
       particlesGeometry.dispose();
       particlesMaterial.dispose();
       renderer.dispose();
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, []);
 
