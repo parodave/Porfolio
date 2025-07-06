@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import SocialLinks from './SocialLinks';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
@@ -113,24 +114,8 @@ const Contact: React.FC = () => {
                     <span className="text-xl">🌐</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium">Réseaux</h3>
-                    <a 
-                      href="https://linkedin.com/in/karim-h-497634248" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      LinkedIn
-                    </a>
-                    {" | "}
-                    <a 
-                      href="https://github.com/parodave" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      GitHub
-                    </a>
+                    <h3 className="text-lg font-medium mb-2">Réseaux</h3>
+                    <SocialLinks />
                   </div>
                 </div>
               </div>
