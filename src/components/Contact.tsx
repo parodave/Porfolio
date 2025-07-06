@@ -5,7 +5,6 @@ import { useInView } from 'react-intersection-observer';
 import { CheckCircle } from 'lucide-react';
 import CompactContactForm from './CompactContactForm';
 import emailjs from '@emailjs/browser';
-import { supabase } from '../supabaseClient';
 import SocialLinks from './SocialLinks';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
@@ -36,10 +35,8 @@ const Contact: React.FC = () => {
       setLoading(true);
       setError('');
 
-      const formData = new FormData(formRef.current);
-      const name = formData.get('user_name') as string;
-      const email = formData.get('user_email') as string;
-      const message = formData.get('message') as string;
+      // Extracting form data is no longer required now that we no longer
+      // persist messages using Supabase.
 
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
@@ -48,14 +45,6 @@ const Contact: React.FC = () => {
       );
 
       if (result.text === 'OK') {
-        const { error: supabaseError } = await supabase
-          .from('contact_messages')
-          .insert({ name, email, message });
-
-        if (supabaseError) {
-          console.error('Supabase insert error:', supabaseError);
-        }
-
         setSuccess(true);
         formRef.current.reset();
       } else {
