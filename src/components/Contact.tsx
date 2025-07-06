@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { CheckCircle } from 'lucide-react';
 import CompactContactForm from './CompactContactForm';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../supabaseClient';
 import SocialLinks from './SocialLinks';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
@@ -15,7 +16,7 @@ const Contact: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -27,20 +28,33 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formRef.current) return;
-    
+
     try {
       setLoading(true);
       setError('');
-      
+
+      const formData = new FormData(formRef.current);
+      const name = formData.get('user_name') as string;
+      const email = formData.get('user_email') as string;
+      const message = formData.get('message') as string;
+
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         formRef.current
       );
-      
+
       if (result.text === 'OK') {
+        const { error: supabaseError } = await supabase
+          .from('contact_messages')
+          .insert({ name, email, message });
+
+        if (supabaseError) {
+          console.error('Supabase insert error:', supabaseError);
+        }
+
         setSuccess(true);
         formRef.current.reset();
       } else {
@@ -48,7 +62,7 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      setError('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.');
+      setError("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer plus tard.");
     } finally {
       setLoading(false);
     }
@@ -91,14 +105,14 @@ const Contact: React.FC = () => {
               Contact
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
             </h2>
-            
+
             <div className="space-y-6 text-gray-300">
               <p>
                 Vous avez un projet en tête ou une opportunité à me proposer ? 
                 N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles 
                 collaborations et défis.
               </p>
-              
+
               <div className="space-y-4 mt-8">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
@@ -109,7 +123,7 @@ const Contact: React.FC = () => {
                     <p className="text-gray-400">karim.hammouche1995@gmail.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
                     <span className="text-xl">🌐</span>
