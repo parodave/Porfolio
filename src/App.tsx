@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import ScrollToHash from "./components/ScrollToHash";
 import BlogPage from "./components/BlogPage";
 import ArticlePage from "./components/ArticlePage";
 import { Routes, Route } from "react-router-dom";
@@ -28,6 +29,7 @@ function App() {
   return (
     <div>
       <CursorEffect />
+      <ScrollToHash />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
