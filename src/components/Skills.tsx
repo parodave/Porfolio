@@ -154,6 +154,7 @@ const Skills: React.FC = () => {
             <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
               {t('skills.categories.soft')}
             </h3>
+
             <motion.div
               variants={containerVariants}
               initial="hidden"

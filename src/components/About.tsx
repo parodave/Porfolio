@@ -33,6 +33,7 @@ const About: React.FC = () => {
     },
   };
 
+
   return (
     <section id="about" className="py-20 bg-dark relative px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
