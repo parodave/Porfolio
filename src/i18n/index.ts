@@ -10,19 +10,21 @@ import zh from "./zh.json";
 import ar from "./ar.json";
 import th from "./th.json";
 
+export const resources = {
+  fr: { translation: fr },
+  en: { translation: en },
+  es: { translation: es },
+  ja: { translation: ja },
+  zh: { translation: zh },
+  ar: { translation: ar },
+  th: { translation: th },
+} as const;
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      fr: { translation: fr },
-      en: { translation: en },
-      es: { translation: es },
-      ja: { translation: ja },
-      zh: { translation: zh },
-      ar: { translation: ar },
-      th: { translation: th },
-    },
+    resources,
     fallbackLng: "fr",
     interpolation: {
       escapeValue: false,
