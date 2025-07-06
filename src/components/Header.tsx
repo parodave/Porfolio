@@ -2,18 +2,23 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
+import SocialLinks from "./SocialLinks";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const { t } = useTranslation();
   const navItems = [
-    { name: "Accueil", href: "#hero" },
-    { name: "À propos", href: "#about" },
-    { name: "Compétences", href: "#skills" },
-    { name: "Projets", href: "#projects" },
-    { name: "Expérience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { label: t("nav.home"), href: "#hero" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.experience"), href: "#experience" },
+    { label: t("nav.contact"), href: "#contact" },
+    { label: t("nav.blog"), to: "/blog" },
   ];
 
   useEffect(() => {
@@ -32,23 +37,27 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-
-        {/* KH. logo animé */}
-        <motion.a
-          href="/"
-          initial={{ opacity: 0, scale: 0.6, rotate: -10 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 70,
-            damping: 10,
-          }}
-          className="text-2xl font-bold text-white drop-shadow-xl tracking-wide"
-        >
-          KH.
-        </motion.a>
+        <div className="flex items-center space-x-4">
+          {/* KH. logo animé */}
+          <motion.a
+            href="/"
+            initial={{ opacity: 0, scale: 0.6, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 70,
+              damping: 10,
+            }}
+            className="text-2xl font-bold text-white drop-shadow-xl tracking-wide"
+          >
+            KH.
+          </motion.a>
+          <div className="hidden md:block">
+            <SocialLinks />
+          </div>
+        </div>
 
         {/* Sélecteur de langue */}
         <div className="hidden md:block ml-4">
@@ -63,13 +72,23 @@ const Header: React.FC = () => {
           className="hidden md:flex space-x-8"
         >
           {navItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className="text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              {item.name}
-            </a>
+            item.to ? (
+              <Link
+                key={index}
+                to={item.to}
+                className="text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={index}
+                href={item.href}
+                className="text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                {item.label}
+              </a>
+            )
           ))}
         </motion.nav>
 
@@ -96,15 +115,27 @@ const Header: React.FC = () => {
       >
         <div className="flex flex-col items-center space-y-8 w-full">
           {navItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
-            >
-              {item.name}
-            </a>
+            item.to ? (
+              <Link
+                key={index}
+                to={item.to}
+                onClick={() => setIsOpen(false)}
+                className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={index}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                {item.label}
+              </a>
+            )
           ))}
+          <SocialLinks />
         </div>
       </motion.div>
     </header>

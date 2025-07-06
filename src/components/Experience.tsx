@@ -1,19 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  VerticalTimeline, 
-  VerticalTimelineElement 
+import { useTranslation } from 'react-i18next';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { 
-  Code, 
-  Recycle, 
-  BookOpen, 
-  Package, 
-  Wrench, 
-  Utensils 
-} from 'lucide-react';
+import { Briefcase } from 'lucide-react';
+import { resumeData } from '../data/resume';
 
 interface ExperienceItem {
   title: string;
@@ -21,59 +16,30 @@ interface ExperienceItem {
   date: string;
   description: string;
   icon: React.ReactNode;
-  technologies?: string[];
 }
 
 const Experience: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   const experienceItems: ExperienceItem[] = [
-    {
-      title: "Développeur Web",
-      company: "Le Wagon Paris",
-      date: "2023",
-      description: "Formation intensive au développement web full-stack. Projets pratiques et travail d'équipe sur des applications web complètes.",
-      icon: <Code />,
-      technologies: ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
-    },
-    {
-      title: "Responsable Opérationnel",
-      company: "Rino Recycling - Brisbane",
-      date: "Nov. 2024 - Avril 2025",
-      description: "Gestion des opérations de recyclage et développement de nouveaux processus d'optimisation.",
-      icon: <Recycle />
-    },
-    {
-      title: "Bibliothécaire & Livreur",
-      company: "France",
-      date: "2020 - 2024",
-      description: "Organisation et gestion du fond documentaire. Service de livraison avec gestion autonome des tournées.",
-      icon: <BookOpen />
-    },
-    {
-      title: "Électricien",
-      company: "SNCF / Maintenance Bouygues",
-      date: "2017 - 2020",
-      description: "Installation et maintenance de systèmes électriques. Résolution de problèmes techniques et respect des normes de sécurité.",
-      icon: <Wrench />
-    },
-    {
-      title: "Service Restauration",
-      company: "Sofitel",
-      date: "2016 - 2017",
-      description: "Service client haut de gamme dans un environnement international.",
-      icon: <Utensils />
-    },
-    {
-      title: "Technicien environnemental",
-      company: "Cœur d'Essonne",
-      date: "2015 - 2016",
-      description: "Analyse et suivi des indicateurs environnementaux. Sensibilisation du public aux questions écologiques.",
-      icon: <Package />
-    }
+    ...resumeData.experience.map((exp) => ({
+      title: exp.title,
+      company: exp.company,
+      date: exp.dates,
+      description: exp.tasks ? exp.tasks.join(' ') : '',
+      icon: <Briefcase />,
+    })),
+    ...resumeData.entrepreneurialProjects.map((proj) => ({
+      title: proj.name,
+      company: proj.role,
+      date: proj.dates,
+      description: proj.details.join(' '),
+      icon: <Briefcase />,
+    })),
   ];
 
   return (
@@ -85,9 +51,9 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Expériences Professionnelles</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('experience.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Mon parcours professionnel diversifié qui témoigne de ma polyvalence et de ma capacité d'adaptation.
+            {t('experience.subtitle')}
           </p>
         </motion.div>
 
@@ -96,8 +62,8 @@ const Experience: React.FC = () => {
             <VerticalTimelineElement
               key={index}
               className="vertical-timeline-element--work"
-              contentStyle={{ 
-                background: '#111111', 
+              contentStyle={{
+                background: '#111111',
                 color: '#fff',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}
@@ -108,21 +74,7 @@ const Experience: React.FC = () => {
             >
               <h3 className="timeline-content-title">{item.title}</h3>
               <h4 className="timeline-content-subtitle text-gray-400">{item.company}</h4>
-              <p className="timeline-content-desc">
-                {item.description}
-              </p>
-              {item.technologies && (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {item.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex} 
-                      className="px-2 py-1 text-xs border border-gray-700 text-gray-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <p className="timeline-content-desc">{item.description}</p>
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>

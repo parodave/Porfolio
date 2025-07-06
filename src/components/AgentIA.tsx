@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
 // Configuration API
-const HF_TOKEN = ""; // Ajoutez votre clé ici ou laissez vide pour le mode démo
 const LIBRETRANSLATE_URL = "https://libretranslate.de/translate";
 
 // Langues supportées
@@ -187,11 +186,13 @@ function ChatWidget() {
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey && !loading && question.trim()) {
       e.preventDefault();
-      handleSubmit(e as any);
+      handleSubmit(e);
     }
   };
 
-  const handleSubmit = async (e: React.MouseEvent) => {
+  const handleSubmit = async (
+    e: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
+  ) => {
     e.preventDefault();
     if (!question.trim()) return;
     setLoading(true);
@@ -212,7 +213,7 @@ function ChatWidget() {
         try {
           prompt = await translateText(question, detectedLang, "en");
           needsTranslation = true;
-        } catch (error) {
+        } catch {
           prompt = question;
         }
       }
@@ -220,7 +221,7 @@ function ChatWidget() {
       const response = askFallbackAI(prompt);
 
       let answer = response;
-      let responseLanguage: SupportedLanguage = detectedLang;
+      const responseLanguage: SupportedLanguage = detectedLang;
 
       if (needsTranslation && detectedLang !== "en" && response) {
         try {
@@ -228,7 +229,7 @@ function ChatWidget() {
           if (translatedAnswer && translatedAnswer !== response) {
             answer = translatedAnswer;
           }
-        } catch (error) {
+        } catch {
           // Keep original answer
         }
       }
@@ -427,7 +428,9 @@ function ChatWidget() {
   );
 }
 
-export default function FloatingAgentIA() {
+export default ChatWidget;
+
+export function FloatingAgentIA() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

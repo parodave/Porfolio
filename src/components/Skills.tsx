@@ -1,33 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Terminal, Figma, Database, Github, Settings, Users, Lightbulb, Brain, Rocket } from 'lucide-react';
+import { Code, Settings, Users, Brain } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { resumeData } from '../data/resume';
 
 interface Skill {
   name: string;
   icon: React.ReactNode;
-  category: 'tech' | 'tools' | 'soft';
+  category: 'development' | 'tools' | 'ai' | 'soft';
 }
 
 const Skills: React.FC = () => {
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   const skills: Skill[] = [
-    { name: 'HTML/CSS', icon: <Code size={28} />, category: 'tech' },
-    { name: 'Ruby on Rails', icon: <Terminal size={28} />, category: 'tech' },
-    { name: 'GitHub', icon: <Github size={28} />, category: 'tech' },
-    { name: 'Figma', icon: <Figma size={28} />, category: 'tech' },
-    { name: 'Web3', icon: <Database size={28} />, category: 'tech' },
-    { name: 'CRM', icon: <Settings size={28} />, category: 'tools' },
-    { name: 'Microsoft Office', icon: <Terminal size={28} />, category: 'tools' },
-    { name: 'ChatGPT/IA', icon: <Brain size={28} />, category: 'tools' },
-    { name: 'Autonomie', icon: <Rocket size={28} />, category: 'soft' },
-    { name: 'Rigueur', icon: <Settings size={28} />, category: 'soft' },
-    { name: 'Esprit d\'initiative', icon: <Lightbulb size={28} />, category: 'soft' },
-    { name: 'Travail d\'équipe', icon: <Users size={28} />, category: 'soft' },
+    ...resumeData.technicalSkills.development.map((name) => ({
+      name,
+      icon: <Code size={28} />,
+      category: 'development' as const,
+    })),
+    ...resumeData.technicalSkills.tools.map((name) => ({
+      name,
+      icon: <Settings size={28} />,
+      category: 'tools' as const,
+    })),
+    ...resumeData.technicalSkills.ai_web3.map((name) => ({
+      name,
+      icon: <Brain size={28} />,
+      category: 'ai' as const,
+    })),
+    ...resumeData.technicalSkills.softSkills.map((name) => ({
+      name,
+      icon: <Users size={28} />,
+      category: 'soft' as const,
+    })),
   ];
 
   const containerVariants = {
@@ -47,13 +58,13 @@ const Skills: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.4,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
 
-  const filterSkills = (category: 'tech' | 'tools' | 'soft') => {
-    return skills.filter(skill => skill.category === category);
+  const filterSkills = (category: 'development' | 'tools' | 'ai' | 'soft') => {
+    return skills.filter((skill) => skill.category === category);
   };
 
   return (
@@ -65,22 +76,24 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Compétences</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('skills.title')}</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Un ensemble de compétences techniques et personnelles acquises au cours de mes différentes expériences professionnelles.
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Tech / Web</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+              {t('skills.categories.tech')}
+            </h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              animate={inView ? 'visible' : 'hidden'}
               className="grid grid-cols-2 gap-4"
             >
-              {filterSkills('tech').map((skill, index) => (
+              {filterSkills('development').map((skill, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
@@ -94,11 +107,34 @@ const Skills: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Outils</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">IA &amp; Web3</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              animate={inView ? 'visible' : 'hidden'}
+              className="grid grid-cols-2 gap-4"
+            >
+              {filterSkills('ai').map((skill, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="skill-icon flex flex-col items-center justify-center bg-dark border border-gray-800 p-6 rounded-md"
+                >
+                  <div className="text-white mb-3">{skill.icon}</div>
+                  <span className="text-sm text-gray-300">{skill.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+              {t('skills.categories.tools')}
+            </h3>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
               className="grid grid-cols-2 gap-4"
             >
               {filterSkills('tools').map((skill, index) => (
@@ -115,11 +151,16 @@ const Skills: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">Soft Skills</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+              {t('skills.categories.soft')}
+            </h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+              {t('skills.categories.soft')}
+            </h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              animate={inView ? "visible" : "hidden"}
+              animate={inView ? 'visible' : 'hidden'}
               className="grid grid-cols-2 gap-4"
             >
               {filterSkills('soft').map((skill, index) => (
