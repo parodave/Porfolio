@@ -3,7 +3,7 @@ import { articles } from '../data/articles';
 import { useTranslation } from 'react-i18next';
 
 const BlogPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <section className="min-h-screen py-20 bg-dark text-white px-6 md:px-10">
       <div className="max-w-3xl mx-auto">
@@ -15,7 +15,7 @@ const BlogPage = () => {
                 to={`/blog/${article.slug}`}
                 className="text-xl text-blue-400 hover:underline"
               >
-                {article.title}
+                {article.title[i18n.language] ?? article.title.en}
               </Link>
             </li>
           ))}
