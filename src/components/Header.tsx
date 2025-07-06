@@ -86,7 +86,7 @@ const Header: React.FC = () => {
         <button
           className="md:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close Menu" : "Open Menu"}
+          aria-label={isOpen ? t('header.closeMenu') : t('header.openMenu')}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

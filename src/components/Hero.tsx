@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-sm md:text-base uppercase tracking-widest mb-4 text-gray-400"
           >
-            Karim Hammouche
+            {t('hero.name')}
           </motion.h2>
 
           <motion.h1
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
               rel="noopener noreferrer"
               className="cta-button px-6 py-3 bg-transparent border border-gray-300 text-white font-semibold rounded hover:ring-1 hover:ring-gray-400 transition-colors"
             >
-              Discover KR Global Solutions
+              {t('hero.discoverKr')}
             </a>
           </motion.div>
           <motion.div variants={itemVariants} className="mb-4">
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
             className="w-1 h-2 bg-white rounded-full mt-2"
           />
         </div>
-        <p className="mt-2 text-sm text-gray-400">Scroll</p>
+        <p className="mt-2 text-sm text-gray-400">{t('hero.scroll')}</p>
       </motion.div>
     </section>
   );

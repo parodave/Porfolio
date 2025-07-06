@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -15,7 +17,7 @@ const Footer: React.FC = () => {
         <div className="mb-6 md:mb-0">
           <p className="text-lg font-bold">KH.</p>
           <p className="text-gray-400 text-sm mt-2">
-            &copy; {new Date().getFullYear()} Karim Hammouche. Tous droits réservés.
+            {t('footer.rights', { year: new Date().getFullYear() })}
           </p>
         </div>
         
@@ -24,9 +26,9 @@ const Footer: React.FC = () => {
           <button 
             onClick={scrollToTop}
             className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
-            aria-label="Retour en haut"
+            aria-label={t('footer.backToTop')}
           >
-            <span>Haut de page</span>
+            <span>{t('footer.backToTop')}</span>
             <ArrowUp size={16} />
           </button>
         </div>

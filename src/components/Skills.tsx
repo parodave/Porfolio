@@ -107,7 +107,7 @@ const Skills: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">IA &amp; Web3</h3>
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">{t('skills.categories.ai')}</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"

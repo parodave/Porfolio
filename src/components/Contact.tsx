@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
@@ -13,6 +14,7 @@ const Contact: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const { t } = useTranslation();
   
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -46,7 +48,7 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      setError('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.');
+      setError(t('contact.error'));
     } finally {
       setLoading(false);
     }
@@ -86,16 +88,12 @@ const Contact: React.FC = () => {
         >
           <motion.div variants={itemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
-              Contact
+              {t('contact.title')}
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
             </h2>
             
             <div className="space-y-6 text-gray-300">
-              <p>
-                Vous avez un projet en tête ou une opportunité à me proposer ? 
-                N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles 
-                collaborations et défis.
-              </p>
+              <p>{t('contact.description')}</p>
               
               <div className="space-y-4 mt-8">
                 <div className="flex items-center space-x-4">
@@ -103,7 +101,7 @@ const Contact: React.FC = () => {
                     <span className="text-xl">📧</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium">Email</h3>
+                    <h3 className="text-lg font-medium">{t('contact.emailTitle')}</h3>
                     <p className="text-gray-400">karim.hammouche1995@gmail.com</p>
                   </div>
                 </div>
@@ -113,7 +111,7 @@ const Contact: React.FC = () => {
                     <span className="text-xl">🌐</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium">Réseaux</h3>
+                    <h3 className="text-lg font-medium">{t('contact.socialsTitle')}</h3>
                     <a 
                       href="https://linkedin.com/in/karim-h-497634248" 
                       target="_blank" 
@@ -141,22 +139,22 @@ const Contact: React.FC = () => {
             {success ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-8 border border-gray-800 bg-darker">
                 <CheckCircle size={48} className="text-green-500 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Message envoyé !</h3>
+                <h3 className="text-2xl font-bold mb-2">{t('contact.successTitle')}</h3>
                 <p className="text-gray-400">
-                  Merci pour votre message. Je vous répondrai dans les plus brefs délais.
+                  {t('contact.successText')}
                 </p>
                 <button
                   onClick={() => setSuccess(false)}
                   className="mt-6 px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
                 >
-                  Envoyer un autre message
+                  {t('contact.sendAnother')}
                 </button>
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 p-8 border border-gray-800 bg-darker">
                 <div>
                   <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
-                    Nom
+                    {t('contact.nameLabel')}
                   </label>
                   <input
                     type="text"
@@ -164,13 +162,13 @@ const Contact: React.FC = () => {
                     name="user_name"
                     required
                     className="w-full bg-dark border border-gray-700 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors"
-                    placeholder="Votre nom"
+                    placeholder={t('contact.namePlaceholder') as string}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="user_email" className="block text-sm font-medium text-gray-300 mb-1">
-                    Email
+                    {t('contact.emailLabel')}
                   </label>
                   <input
                     type="email"
@@ -178,13 +176,13 @@ const Contact: React.FC = () => {
                     name="user_email"
                     required
                     className="w-full bg-dark border border-gray-700 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors"
-                    placeholder="votre@email.com"
+                    placeholder={t('contact.emailPlaceholder') as string}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                    Message
+                    {t('contact.messageLabel')}
                   </label>
                   <textarea
                     id="message"
@@ -192,7 +190,7 @@ const Contact: React.FC = () => {
                     required
                     rows={6}
                     className="w-full bg-dark border border-gray-700 text-white px-4 py-3 focus:outline-none focus:border-white transition-colors"
-                    placeholder="Votre message..."
+                    placeholder={t('contact.messagePlaceholder') as string}
                   ></textarea>
                 </div>
                 
@@ -213,18 +211,18 @@ const Contact: React.FC = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Envoi en cours...
+                      {t('contact.loading')}
                     </span>
                   ) : (
                     <span className="flex items-center">
                       <Send size={18} className="mr-2" />
-                      Envoyer le message
+                      {t('contact.send')}
                     </span>
                   )}
                 </button>
                 
                 <p className="text-xs text-gray-500 text-center mt-4">
-                  En soumettant ce formulaire, vous acceptez que vos données soient utilisées uniquement pour que je puisse vous contacter.
+                  {t('contact.consent')}
                 </p>
               </form>
             )}
