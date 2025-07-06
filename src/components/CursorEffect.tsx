@@ -46,35 +46,38 @@ const CursorEffect: React.FC = () => {
       cursorDot.classList.remove('active');
     };
 
-    const handleLinkHovers = () => {
-      const links = document.querySelectorAll(
-        'a, button, input, textarea, [role="button"]'
-      );
-      links.forEach((link) => {
-        link.addEventListener('mouseenter', () => {
-          cursorDot.classList.add('active');
-        });
-        link.addEventListener('mouseleave', () => {
-          if (!clickedRef.current) {
-            cursorDot.classList.remove('active');
-          }
-        });
-      });
+    const selectable = 'a, button, input, textarea, [role="button"]';
+
+    const onPointerOver = (e: PointerEvent) => {
+      const target = (e.target as HTMLElement).closest(selectable);
+      if (target) {
+        cursorDot.classList.add('active');
+      }
+    };
+
+    const onPointerOut = (e: PointerEvent) => {
+      const target = (e.target as HTMLElement).closest(selectable);
+      if (
+        target &&
+        !(target as HTMLElement).contains(e.relatedTarget as Node) &&
+        !clickedRef.current
+      ) {
+        cursorDot.classList.remove('active');
+      }
     };
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mousedown', onMouseDown);
     document.addEventListener('mouseup', onMouseUp);
-    handleLinkHovers();
-
-    const observer = new MutationObserver(handleLinkHovers);
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('pointerover', onPointerOver);
+    document.addEventListener('pointerout', onPointerOut);
 
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mousedown', onMouseDown);
       document.removeEventListener('mouseup', onMouseUp);
-      observer.disconnect();
+      document.removeEventListener('pointerover', onPointerOver);
+      document.removeEventListener('pointerout', onPointerOut);
 
       if (cursorDot.parentElement) cursorDot.remove();
       if (lightEffect.parentElement) lightEffect.remove();
