@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
+import CompactContactForm from './CompactContactForm';
 import { useTranslation } from 'react-i18next';
 
 const Hero: React.FC = () => {
@@ -85,6 +86,10 @@ const Hero: React.FC = () => {
                 />
               </div>
             )}
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="mb-8">
+            <CompactContactForm id="compact-contact" />
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-4">
