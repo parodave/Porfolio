@@ -6,7 +6,7 @@ export interface Article {
   audio: string;
 }
 
-import { beepAudio } from './audio';
+// Audio and image files are stored on S3
 
 export const articles: Article[] = [
   {
@@ -14,6 +14,6 @@ export const articles: Article[] = [
     slug: 'premier-article',
     title: 'Bienvenue sur mon blog',
     content: `Ceci est le premier article de mon blog. Il contient un court extrait audio pour accompagner la lecture.`,
-    audio: beepAudio
+    audio: 'https://example-bucket.s3.amazonaws.com/audio/beep.wav'
   }
 ];

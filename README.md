@@ -19,6 +19,11 @@ Required variables:
 - `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_S3_BUCKET`
+
+These AWS variables are used by the S3 client to upload assets such as article audio, images and your CV PDF.
 
 ## Installation
 
