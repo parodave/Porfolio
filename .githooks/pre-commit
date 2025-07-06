@@ -1,0 +1,7 @@
+#!/bin/sh
+branch=$(git symbolic-ref --quiet --short HEAD)
+# Block Unicode names: ensure branch only contains ASCII
+if printf '%s' "$branch" | grep -q '[^ -~]'; then
+  echo "Error: branch name contains non-ASCII characters" >&2
+  exit 1
+fi
