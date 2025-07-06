@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "我不仅仅是开发者。",
+    "typewriter": ["我学习。", "我创造。", "我构建未来。"],
+    "cta": "查看我的项目"
+  },
+  "nav": {
+    "home": "主页",
+    "about": "关于我",
+    "skills": "技能",
+    "projects": "项目",
+    "experience": "经历",
+    "contact": "联系",
+    "blog": "博客"
+  },
+  "blog": {
+    "title": "博客",
+    "listen": "收听音频",
+    "back": "返回文章列表"
+  }
+}

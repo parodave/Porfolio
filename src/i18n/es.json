@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Soy más que un desarrollador.",
+    "typewriter": ["Aprendo.", "Creo.", "Construyo el futuro."],
+    "cta": "Ver mis proyectos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto",
+    "blog": "Blog"
+  },
+  "blog": {
+    "title": "Blog",
+    "listen": "Escuchar audio",
+    "back": "Volver a los artículos"
+  }
+}
