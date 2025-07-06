@@ -4,6 +4,10 @@ import { useInView } from 'react-intersection-observer';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
+
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
@@ -16,7 +20,7 @@ const Contact: React.FC = () => {
   });
 
   useEffect(() => {
-    emailjs.init("w2jrqSt-GwSCQR7zM");
+    emailjs.init(EMAILJS_PUBLIC_KEY);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,8 +33,8 @@ const Contact: React.FC = () => {
       setError('');
       
       const result = await emailjs.sendForm(
-        'default_service', 
-        'template_2isjmxk',
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         formRef.current
       );
       
