@@ -12,6 +12,8 @@ import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi qu
 import ScrollToHash from "./components/ScrollToHash";
 import BlogPage from "./components/BlogPage";
 import ArticlePage from "./components/ArticlePage";
+import AdminUpload from "./components/AdminUpload";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { Routes, Route } from "react-router-dom";
 
 const HomePage = () => (
@@ -35,6 +37,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<ArticlePage />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminUpload />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
       <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
