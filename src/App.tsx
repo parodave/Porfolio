@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 
 const Header = lazy(() => import("./components/Header"));
