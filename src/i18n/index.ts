@@ -9,6 +9,7 @@ import ja from "./ja.json";
 import zh from "./zh.json";
 import ar from "./ar.json";
 import th from "./th.json";
+import ru from "./ru.json";
 
 i18n
   .use(LanguageDetector)
@@ -22,6 +23,7 @@ i18n
       zh: { translation: zh },
       ar: { translation: ar },
       th: { translation: th },
+      ru: { translation: ru },
     },
     fallbackLng: "fr",
     interpolation: {

@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "title": "Я больше, чем просто разработчик.",
+    "typewriter": ["Я строю.", "Я учусь.", "Я формирую будущее."],
+    "cta": "Смотреть мои проекты"
+  },
+  "nav": {
+    "home": "Главная",
+    "about": "Обо мне",
+    "skills": "Навыки",
+    "projects": "Проекты",
+    "experience": "Опыт",
+    "contact": "Контакты",
+    "blog": "Блог"
+  },
+  "blog": {
+    "title": "Блог",
+    "listen": "Слушать аудио",
+    "back": "Назад к статьям"
+  },
+  "about": {
+    "title": "Обо мне",
+    "paragraphs": [
+      "Увлечённый технологиями и предпринимательством, я начал свою карьеру электриком в SNCF, прежде чем перейти в веб‑разработку. Этот необычный путь дал мне ценную универсальность и способность адаптироваться.",
+      "Будучи предпринимателем в душе, я создал и управлял несколькими бизнесами, включая компанию по аренде автомобилей и ресторан быстрого питания. Эти опыты научили меня решать сложные задачи, управлять командами и вырабатывать стратегическое видение.",
+      "Недавно я работал в Rino Recycling в Брисбене, где применил свои технические навыки и креативность в инновационных проектах."
+    ],
+    "quote": "Каждый проект, к которому я прикасаюсь, — это возможность сделать больше, чем от меня ожидают.",
+    "personalInfoTitle": "Личная информация",
+    "details": [
+      { "label": "Имя", "value": "Karim Hammouche" },
+      { "label": "Возраст", "value": "29 лет" },
+      { "label": "Национальность", "value": "Француз" },
+      { "label": "Сейчас", "value": "в Таиланде (2025)" }
+    ],
+    "careerTitle": "Карьерный путь",
+    "careerList": [
+      "Бывший электрик (SNCF), экологический техник и курьер",
+      "Веб‑разработчик, обученный в Le Wagon Paris (2023)",
+      "Предприниматель: аренда авто и фастфуд",
+      "Недавний опыт: Rino Recycling в Брисбене (ноя. 2024 – апр. 2025)"
+    ],
+    "downloadCv": "Скачать мое резюме"
+  },
+  "experience": {
+    "title": "Профессиональный опыт",
+    "subtitle": "Мой разнообразный профессиональный опыт демонстрирует мою универсальность и способность адаптироваться.",
+    "items": [
+      {
+        "title": "Веб‑разработчик",
+        "company": "Le Wagon Paris",
+        "date": "2023",
+        "description": "Интенсивное обучение full-stack веб‑разработке. Практические проекты и командная работа над полноценными веб‑приложениями.",
+        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+      },
+      {
+        "title": "Операционный менеджер",
+        "company": "Rino Recycling - Brisbane",
+        "date": "ноя. 2024 - апр. 2025",
+        "description": "Управление операциями по переработке и разработка новых процессов оптимизации."
+      },
+      {
+        "title": "Библиотекарь и курьер",
+        "company": "France",
+        "date": "2020 - 2024",
+        "description": "Организация и ведение документного фонда. Доставка с самостоятельным планированием маршрутов."
+      },
+      {
+        "title": "Электрик",
+        "company": "SNCF / Maintenance Bouygues",
+        "date": "2017 - 2020",
+        "description": "Установка и обслуживание электрических систем. Поиск неисправностей и соблюдение норм безопасности."
+      },
+      {
+        "title": "Работа в ресторане",
+        "company": "Sofitel",
+        "date": "2016 - 2017",
+        "description": "Высококлассное обслуживание клиентов в международной среде."
+      },
+      {
+        "title": "Экологический техник",
+        "company": "Cœur d'Essonne",
+        "date": "2015 - 2016",
+        "description": "Анализ и мониторинг экологических показателей. Повышение осведомлённости населения об экологических вопросах."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Проекты",
+    "subtitle": "Откройте для себя мои наиболее значимые предпринимательские и профессиональные проекты.",
+    "items": [
+      {
+        "title": "KR Global Solutions LTD",
+        "description": "Платформа SaaS, предоставляющая глобальные цифровые решения с интеграцией ИИ.",
+        "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "link": ""
+      },
+      {
+        "title": "FelizBella",
+        "description": "Бренд косметики с акцентом на электронную коммерцию и онлайн‑маркетинг.",
+        "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "link": ""
+      },
+      {
+        "title": "KHH Projects",
+        "description": "Автоматизированное управление краткосрочной арендой объектов Airbnb.",
+        "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "link": ""
+      },
+      {
+        "title": "Domaine Harrach",
+        "description": "Ферма органических фруктов, практикующая устойчивое сельское хозяйство.",
+        "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "link": ""
+      },
+      {
+        "title": "TLFH",
+        "description": "Логистическая компания, контролирующая операции доставки в Париже.",
+        "image": "https://images.pexels.com/photos/616966/pexels-photo-616966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "link": ""
+      },
+      {
+        "title": "Wash Center",
+        "description": "Прачечная, предлагающая современные и эффективные решения для стирки.",
+        "image": "https://images.pexels.com/photos/460995/pexels-photo-460995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "link": ""
+      },
+      {
+        "title": "Turfu Driving",
+        "description": "Компания по аренде автомобилей с автоматизированной системой управления через CRM. Полное управление автопарком, бронированиями и обслуживанием.",
+        "image": "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "link": ""
+      },
+      {
+        "title": "0'240",
+        "description": "Фастфуд с полным управлением: персонал, бюджет, снабжение и качество обслуживания. Разработка бренда и оптимизация процессов.",
+        "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "link": ""
+      }
+    ]
+  },
+  "skills": {
+    "title": "Навыки",
+    "subtitle": "Набор технических и личных навыков, приобретённых в ходе различных профессиональных опытов.",
+    "categories": {
+      "tech": "Tech / Web",
+      "tools": "Инструменты",
+      "soft": "Soft Skills"
+    },
+    "softNames": {
+      "autonomy": "Самостоятельность",
+      "rigor": "Тщательность",
+      "initiative": "Инициативность",
+      "teamwork": "Командная работа"
+    }
+  }
+}
