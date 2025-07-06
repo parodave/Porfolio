@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChatWidget from "./AgentIA";
+import ChatWidget from "./ChatWidget";
 
 export default function FloatingAgentIA() {
   const [isOpen, setIsOpen] = useState(false);
