@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../supabaseClient';
 
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
@@ -25,20 +26,33 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formRef.current) return;
-    
+
     try {
       setLoading(true);
       setError('');
-      
+
+      const formData = new FormData(formRef.current);
+      const name = formData.get('user_name') as string;
+      const email = formData.get('user_email') as string;
+      const message = formData.get('message') as string;
+
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         formRef.current
       );
-      
+
       if (result.text === 'OK') {
+        const { error: supabaseError } = await supabase
+          .from('contact_messages')
+          .insert({ name, email, message });
+
+        if (supabaseError) {
+          console.error('Supabase insert error:', supabaseError);
+        }
+
         setSuccess(true);
         formRef.current.reset();
       } else {
@@ -46,7 +60,7 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      setError('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer plus tard.');
+      setError("Une erreur est survenue lors de l'envoi du message. Veuillez r\xE9essayer plus tard.");
     } finally {
       setLoading(false);
     }
