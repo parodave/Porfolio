@@ -23,7 +23,7 @@ const Projects: React.FC = () => {
   });
 
   const projectIcons = [<Car size={24} />, <Utensils size={24} />];
-  const rawProjects = t('projects.items', { returnObjects: true }) as Omit<Project, 'icon'>[];
+  const rawProjects = t('projects.items', { returnObjects: true });
   const projects: Project[] = rawProjects.map((proj, idx) => ({
     ...proj,
     icon: projectIcons[idx],

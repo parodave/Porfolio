@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
 
 
   // Textes animés par langue
-  const typewriterTexts = t('hero.typewriter', { returnObjects: true }) as string[];
+  const typewriterTexts = t('hero.typewriter', { returnObjects: true });
 
   return (
     <section
