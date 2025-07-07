@@ -9,7 +9,8 @@ const resumes = [
   { label: 'IT - DevOps Engineer', file: '/cv-it-devops.pdf' },
   { label: 'CN - Product Manager', file: '/cv-cn-product.pdf' },
   { label: 'JA - Software Engineer', file: '/cv-ja-software.pdf' },
-  { label: 'PT - Cybersecurity', file: '/cv-pt-cyber.pdf' }
+  { label: 'PT - Cybersecurity', file: '/cv-pt-cyber.pdf' },
+  { label: 'Universel', file: '/cv-universal.pdf' }
 ];
 
 const ResumeSelector: React.FC = () => {
