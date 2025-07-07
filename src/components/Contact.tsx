@@ -88,7 +88,12 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium">Email</h3>
-                    <p className="text-gray-400">karim.hammouche1995@gmail.com</p>
+                    <a
+                      href="mailto:karim.hammouche1995@gmail.com"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      karim.hammouche1995@gmail.com
+                    </a>
                   </div>
                 </div>
 

@@ -28,8 +28,6 @@ const Hero: React.FC = () => {
     },
   };
 
-
-
   // Textes animés par langue
   const typewriterTexts = t('hero.typewriter', { returnObjects: true });
 
@@ -84,10 +82,6 @@ const Hero: React.FC = () => {
                 </div>
               )
             )}
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="mb-8">
-            <CompactContactForm id="compact-contact" />
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-4">

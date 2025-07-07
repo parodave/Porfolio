@@ -17,7 +17,7 @@ const Header: React.FC = () => {
     { label: t("nav.skills"), to: "/#skills" },
     { label: t("nav.projects"), to: "/#projects" },
     { label: t("nav.experience"), to: "/#experience" },
-    { label: t("nav.contact"), to: "/#compact-contact" },
+    { label: t("nav.contact"), to: "/#contact" },
     { label: t("nav.blog"), to: "/blog" },
   ];
 
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Language selector */}
-        <div className="hidden md:flex items-center ml-4 space-x-4">
+        <div className="hidden md:flex items-center ms-4 space-x-4">
           <LanguageSelector />
         </div>
 

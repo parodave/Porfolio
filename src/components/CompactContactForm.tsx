@@ -127,7 +127,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         {(loading ?? internalLoading) ? (
           <span className="flex items-center">
             <svg
-              className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+              className="animate-spin -ms-1 me-2 h-4 w-4 text-current"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -150,7 +150,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           </span>
         ) : (
           <span className="flex items-center">
-            <Send size={18} className="mr-2" />
+            <Send size={18} className="me-2" />
             Envoyer le message
           </span>
         )}

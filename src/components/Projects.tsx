@@ -74,7 +74,7 @@ const Projects: React.FC = () => {
               <div className="p-8 relative z-10">
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center mr-4">
+                    <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center me-4">
                       {project.icon}
                     </div>
                     <h3 className="text-2xl font-bold">{project.title}</h3>
