@@ -27,7 +27,11 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   const [internalError, setInternalError] = useState('');
 
   useEffect(() => {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    try {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    } catch (err) {
+      console.error('EmailJS init error', err);
+    }
   }, []);
 
   const internalHandleSubmit = async (e: React.FormEvent) => {
@@ -41,8 +45,10 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        internalFormRef.current
+        internalFormRef.current,
+        EMAILJS_PUBLIC_KEY
       );
+      console.log('EmailJS result:', result);
       if (result.text === 'OK') {
         setSuccess(true);
         internalFormRef.current.reset();
