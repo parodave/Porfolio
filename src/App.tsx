@@ -8,12 +8,27 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
-import FloatingAgentIA from "./components/FloatingAgentIA"; // ✅ Assure-toi que ce fichier existe bien
+import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
 const BlogPage = React.lazy(() => import("./components/BlogPage"));
 const ArticlePage = React.lazy(() => import("./components/ArticlePage"));
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
+
+// 📈 Fonction pour initialiser Google Analytics
+const initGA = (id: string) => {
+  const script = document.createElement("script");
+  script.setAttribute("async", "");
+  script.setAttribute("src", `https://www.googletagmanager.com/gtag/js?id=${id}`);
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: any[]) {
+    window.dataLayer.push(args);
+  }
+  gtag("js", new Date());
+  gtag("config", id);
+};
 
 const HomePage = () => (
   <main>
@@ -27,7 +42,7 @@ const HomePage = () => (
 );
 
 function App() {
-  // Update the <html> lang attribute whenever the i18n language changes
+  // 🧠 Langue
   useEffect(() => {
     const updateLang = (lng: string) => {
       document.documentElement.lang = lng;
@@ -40,6 +55,14 @@ function App() {
     return () => {
       i18n.off("languageChanged", updateLang);
     };
+  }, []);
+
+  // 📊 Init Google Analytics uniquement en production (pas en localhost)
+  useEffect(() => {
+    if (window.location.hostname !== "localhost") {
+      const GA_ID = import.meta.env.VITE_GA_ID;
+      if (GA_ID) initGA(GA_ID);
+    }
   }, []);
 
   return (
@@ -55,7 +78,7 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
-      <FloatingAgentIA /> {/* ✅ Ton agent IA est intégré ici */}
+      <FloatingAgentIA />
     </div>
   );
 }

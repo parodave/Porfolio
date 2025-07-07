@@ -2,13 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
+// ✅ Récupération des clés depuis le .env
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
 
 interface CompactContactFormProps {
   id?: string;
-  formRef?: React.RefObject<HTMLFormElement>;
   handleSubmit?: (e: React.FormEvent) => void;
   loading?: boolean;
   error?: string;
@@ -16,7 +16,6 @@ interface CompactContactFormProps {
 
 const CompactContactForm: React.FC<CompactContactFormProps> = ({
   id,
-  formRef,
   handleSubmit,
   loading,
   error,
@@ -26,13 +25,16 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   const [success, setSuccess] = useState(false);
   const [internalError, setInternalError] = useState('');
 
+  // ✅ Initialisation d'EmailJS avec la clé publique
   useEffect(() => {
     emailjs.init(EMAILJS_PUBLIC_KEY);
   }, []);
 
+  // ✅ Soumission du formulaire avec gestion complète
   const internalHandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!internalFormRef.current) return;
+
     try {
       setInternalLoading(true);
       setInternalError('');
@@ -41,11 +43,12 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         EMAILJS_TEMPLATE_ID,
         internalFormRef.current
       );
+
       if (result.text === 'OK') {
         setSuccess(true);
         internalFormRef.current.reset();
       } else {
-        throw new Error('Failed to send email');
+        throw new Error('Email non envoyé');
       }
     } catch (err) {
       console.error(err);
@@ -67,7 +70,9 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   return (
     <form
       id={id}
-      ref={formRef ?? internalFormRef}
+      ref={(el) => {
+        internalFormRef.current = el;
+      }}
       onSubmit={handleSubmit ?? internalHandleSubmit}
       className="space-y-4 max-w-md w-full rounded-2xl bg-zinc-900 p-6 md:p-8 text-sm text-white border border-gray-800"
     >
