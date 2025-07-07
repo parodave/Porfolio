@@ -68,7 +68,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-darker relative px-6 md:px-10">
+    <section id="skills" className="py-20 bg-light dark:bg-darker relative px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ const Skills: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('skills.title')}</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
             {t('skills.subtitle')}
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ const Skills: React.FC = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
         >
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-300 dark:border-gray-800">
               {t('skills.categories.tech')}
             </h3>
             <motion.div
@@ -100,17 +100,17 @@ const Skills: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="skill-icon flex flex-col items-center justify-center bg-dark border border-gray-800 p-6 rounded-md"
+                  className="skill-icon flex flex-col items-center justify-center bg-white dark:bg-dark border border-gray-300 dark:border-gray-800 p-6 rounded-md"
                 >
-                  <div className="text-white mb-3">{skill.icon}</div>
-                  <span className="text-sm text-gray-300">{skill.name}</span>
+                  <div className="text-black dark:text-white mb-3">{skill.icon}</div>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">IA &amp; Web3</h3>
+          <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-300 dark:border-gray-800">IA &amp; Web3</h3>
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -121,17 +121,17 @@ const Skills: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="skill-icon flex flex-col items-center justify-center bg-dark border border-gray-800 p-6 rounded-md"
+                  className="skill-icon flex flex-col items-center justify-center bg-white dark:bg-dark border border-gray-300 dark:border-gray-800 p-6 rounded-md"
                 >
-                  <div className="text-white mb-3">{skill.icon}</div>
-                  <span className="text-sm text-gray-300">{skill.name}</span>
+                  <div className="text-black dark:text-white mb-3">{skill.icon}</div>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-300 dark:border-gray-800">
               {t('skills.categories.tools')}
             </h3>
             <motion.div
@@ -144,17 +144,17 @@ const Skills: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="skill-icon flex flex-col items-center justify-center bg-dark border border-gray-800 p-6 rounded-md"
+                  className="skill-icon flex flex-col items-center justify-center bg-white dark:bg-dark border border-gray-300 dark:border-gray-800 p-6 rounded-md"
                 >
-                  <div className="text-white mb-3">{skill.icon}</div>
-                  <span className="text-sm text-gray-300">{skill.name}</span>
+                  <div className="text-black dark:text-white mb-3">{skill.icon}</div>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-800">
+            <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-300 dark:border-gray-800">
               {t('skills.categories.soft')}
             </h3>
 
@@ -168,10 +168,10 @@ const Skills: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="skill-icon flex flex-col items-center justify-center bg-dark border border-gray-800 p-6 rounded-md"
+                  className="skill-icon flex flex-col items-center justify-center bg-white dark:bg-dark border border-gray-300 dark:border-gray-800 p-6 rounded-md"
                 >
-                  <div className="text-white mb-3">{skill.icon}</div>
-                  <span className="text-sm text-gray-300">{skill.name}</span>
+                  <div className="text-black dark:text-white mb-3">{skill.icon}</div>
+                  <span className="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
                 </motion.div>
               ))}
             </motion.div>

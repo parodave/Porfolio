@@ -9,6 +9,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase } from 'lucide-react';
 import { resumeData } from '../data/resume';
+import { useTheme } from '../hooks/useTheme';
 
 interface ExperienceItem {
   title: string;
@@ -24,6 +25,7 @@ const Experience: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { theme } = useTheme();
 
   const experienceItems: ExperienceItem[] = [
     ...resumeData.experience.map((exp) => ({
@@ -43,7 +45,7 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-darker relative px-6 md:px-10" ref={ref}>
+    <section id="experience" className="py-20 bg-light dark:bg-darker relative px-6 md:px-10" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -57,19 +59,13 @@ const Experience: React.FC = () => {
           </p>
         </motion.div>
 
-        <VerticalTimeline lineColor="rgba(255, 255, 255, 0.2)" animate={inView}>
+        <VerticalTimeline lineColor={theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0,0,0,0.2)'} animate={inView}>
           {experienceItems.map((item, index) => (
             <VerticalTimelineElement
               key={index}
               className="vertical-timeline-element--work"
-              contentStyle={{
-                background: '#111111',
-                color: '#fff',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
-              }}
-              contentArrowStyle={{ borderRight: '7px solid #111111' }}
               date={item.date}
-              iconStyle={{ background: '#1a1a1a', color: '#fff' }}
+              iconStyle={{ background: theme === 'dark' ? '#1a1a1a' : '#e5e7eb', color: theme === 'dark' ? '#fff' : '#000' }}
               icon={item.icon}
             >
               <h3 className="timeline-content-title">{item.title}</h3>

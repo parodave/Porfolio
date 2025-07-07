@@ -35,7 +35,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-dark relative px-6 md:px-10">
+    <section id="projects" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
             {t('projects.subtitle')}
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
             <motion.div 
               key={index} 
               variants={itemVariants}
-              className="project-card group relative overflow-hidden border border-gray-800 bg-darker"
+              className="project-card group relative overflow-hidden border border-gray-300 dark:border-gray-800 bg-white dark:bg-darker"
             >
               <div className="relative h-72 overflow-hidden">
                 <img
@@ -68,13 +68,13 @@ const Projects: React.FC = () => {
                   alt={project.title}
                   className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-darker to-transparent opacity-90"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-darker to-transparent opacity-90"></div>
               </div>
               
               <div className="p-8 relative z-10">
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center me-4">
+                    <div className="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mr-4">
                       {project.icon}
                     </div>
                     <h3 className="text-2xl font-bold">{project.title}</h3>
@@ -84,13 +84,13 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
                 
-                <p className="text-gray-400 mb-6">{project.description}</p>
+                <p className="text-gray-700 dark:text-gray-400 mb-6">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex} 
-                      className="px-3 py-1 text-xs border border-gray-700 text-gray-300"
+                      className="px-3 py-1 text-xs border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300"
                     >
                       {tag}
                     </span>
