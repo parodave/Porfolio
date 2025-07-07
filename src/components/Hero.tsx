@@ -28,7 +28,6 @@ const Hero: React.FC = () => {
     },
   };
 
-  // Textes animés par langue
   const typewriterTexts = t('hero.typewriter', { returnObjects: true });
 
   return (
@@ -37,7 +36,7 @@ const Hero: React.FC = () => {
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-radial from-dark to-darker opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-radial from-light to-light dark:from-dark dark:to-darker opacity-60"></div>
       </div>
 
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
@@ -49,7 +48,7 @@ const Hero: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-sm md:text-base uppercase tracking-widest mb-4 text-gray-400"
+            className="text-sm md:text-base uppercase tracking-widest mb-4 text-gray-500 dark:text-gray-400"
           >
             Karim Hammouche
           </motion.h2>
@@ -63,7 +62,7 @@ const Hero: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="text-xl md:text-2xl text-gray-300 min-h-[3rem] mb-8"
+            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 min-h-[3rem] mb-8"
           >
             {mounted && (
               reduceMotion ? (
@@ -98,6 +97,16 @@ const Hero: React.FC = () => {
               >
                 Découvrir KR Global Solutions
               </button>
+
+              <button
+                onClick={() =>
+                  window.open('/KHBResume.pdf', '_blank', 'noopener,noreferrer')
+                }
+                className="bg-zinc-200 text-black rounded-lg px-4 py-2 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
+              >
+                Télécharger le CV
+              </button>
+
               <ResumeSelector />
             </div>
           </motion.div>
@@ -129,14 +138,14 @@ const Hero: React.FC = () => {
         }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
-        <div className="w-5 h-10 border-2 border-white rounded-full flex justify-center">
+        <div className="w-5 h-10 border-2 border-gray-500 dark:border-white rounded-full flex justify-center">
           <motion.div
             animate={reduceMotion ? { y: 0 } : { y: [0, 12, 0] }}
             transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.2 }}
-            className="w-1 h-2 bg-white rounded-full mt-2"
+            className="w-1 h-2 bg-gray-500 dark:bg-white rounded-full mt-2"
           />
         </div>
-        <p className="mt-2 text-sm text-gray-400">Scroll</p>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Scroll</p>
       </motion.div>
     </section>
   );

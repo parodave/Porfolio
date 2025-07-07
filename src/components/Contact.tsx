@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
 
 
   return (
-    <section id="contact" className="py-20 bg-dark relative px-6 md:px-10">
+    <section id="contact" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
@@ -74,7 +74,7 @@ const Contact: React.FC = () => {
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
             </h2>
 
-            <div className="space-y-6 text-gray-300">
+            <div className="space-y-6 text-gray-700 dark:text-gray-300">
               <p>
                 Vous avez un projet en tête ou une opportunité à me proposer ? 
                 N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles 
@@ -83,14 +83,14 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4 mt-8">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 border border-gray-300 dark:border-white rounded-full flex items-center justify-center">
                     <span className="text-xl">📧</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-medium">Email</h3>
                     <a
                       href="mailto:karim.hammouche1995@gmail.com"
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
                     >
                       karim.hammouche1995@gmail.com
                     </a>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 border border-gray-300 dark:border-white rounded-full flex items-center justify-center">
                     <span className="text-xl">🌐</span>
                   </div>
                   <div>
@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
 
           <motion.div variants={itemVariants}>
             {success ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-8 border border-gray-800 bg-darker">
+              <div className="h-full flex flex-col items-center justify-center text-center p-8 border border-gray-300 dark:border-gray-800 bg-white dark:bg-darker">
                 <CheckCircle size={48} className="text-green-500 mb-4" />
                 <h3 className="text-2xl font-bold mb-2">Message envoyé !</h3>
                 <p className="text-gray-400">
