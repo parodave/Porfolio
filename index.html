@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -17,7 +17,7 @@
     <title>Karim Hammouche | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
     <!-- Google Analytics -->
     <script type="module">
@@ -36,6 +36,15 @@
     </script>
   </head>
   <body>
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.body.classList.add('dark');
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

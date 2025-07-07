@@ -18,9 +18,14 @@ const SocialLinks: React.FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
-        className="w-5 h-5 text-white hover:opacity-80 transition rounded"
+        className="relative group w-5 h-5 text-white hover:opacity-80 transition rounded"
       >
         <Icon className="w-full h-full" />
+        <span
+          className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-700 bg-opacity-75 px-2 py-0.5 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          {label}
+        </span>
       </a>
     ))}
   </div>

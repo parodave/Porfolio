@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'sans-serif'],
+        sans: ['Noto Sans', 'sans-serif'],
       },
       colors: {
         primary: '#ffffff',
