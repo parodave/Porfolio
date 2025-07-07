@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
-import CompactContactForm from './CompactContactForm';
 import SocialLinks from './SocialLinks';
 
 const Footer: React.FC = () => {
@@ -13,10 +12,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="py-10 bg-darker border-t border-gray-800 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Formulaire compact en haut du footer */}
-        <CompactContactForm />
-
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Colonne gauche */}
           <div className="mb-6 md:mb-0 text-center md:text-left">

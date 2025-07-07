@@ -57,7 +57,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
 
   if (success && !handleSubmit) {
     return (
-      <div className="p-4 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2">
+      <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
         <CheckCircle size={20} />
         <span>Message envoyé !</span>
       </div>
@@ -69,7 +69,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       id={id}
       ref={formRef ?? internalFormRef}
       onSubmit={handleSubmit ?? internalHandleSubmit}
-      className="space-y-4 max-w-md rounded-xl bg-zinc-900 p-4 text-sm text-white"
+      className="space-y-4 max-w-md w-full rounded-2xl bg-zinc-900 p-6 md:p-8 text-sm text-white border border-gray-800"
     >
       <div>
         <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
