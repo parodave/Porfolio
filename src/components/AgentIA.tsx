@@ -42,18 +42,6 @@ function detectLanguage(text: string): SupportedLanguage {
   return "en";
 }
 
-const fallbackResponse = (lang: SupportedLanguage) => {
-  const replies = {
-    fr: "Je réfléchis à votre question...",
-    en: "I'm thinking about your question...",
-    es: "Estoy pensando en tu pregunta...",
-    ja: "あなたの質問について考えています...",
-    zh: "我正在思考你的问题...",
-    ar: "أفكر في سؤالك...",
-    th: "ฉันกำลังคิดเกี่ยวกับคำถามของคุณ...",
-  };
-  return replies[lang] || replies.en;
-};
 
 const askFallbackAI = (q: string) => {
   return `🤖 ${q}? Très bonne question !`;
@@ -99,7 +87,9 @@ export default function ChatWidget() {
       try {
         const translated = await translateText(response, "en", lang);
         if (translated) answer = translated;
-      } catch {}
+      } catch {
+        /* empty */
+      }
     }
 
     let i = 0;

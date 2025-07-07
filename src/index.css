@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-}
-
-.dark {
   color-scheme: dark;
 }
 
@@ -15,7 +11,7 @@ html {
 }
 
 body {
-  @apply bg-light text-black dark:bg-darker dark:text-white font-sans m-0 p-0 overflow-x-hidden;
+  @apply bg-black text-white font-sans m-0 p-0 overflow-x-hidden;
   opacity: 1 !important;
 }
 
@@ -140,82 +136,7 @@ body {
   }
 }
 
-/* Theme toggle slider */
-.theme-toggle {
-  @apply relative inline-block w-12 h-6 align-middle select-none;
-}
 
-.theme-toggle input {
-  @apply hidden;
-}
-
-.theme-toggle .slider {
-  @apply absolute inset-0 cursor-pointer bg-gray-300 dark:bg-gray-600 rounded-full transition-colors;
-}
-
-.theme-toggle .slider:before {
-  content: '\2605'; /* star */
-  @apply absolute left-1 top-1 text-yellow-400 text-sm transition-transform;
-}
-
-.theme-toggle .slider:after {
-  content: '\2601'; /* cloud */
-  @apply absolute right-1 top-1 text-gray-600 text-sm opacity-0 transition-opacity;
-}
-
-.theme-toggle input:checked + .slider:before {
-  transform: translateX(18px);
-  @apply text-white;
-}
-
-.theme-toggle input:checked + .slider:after {
-  @apply opacity-100;
-}
-
-/* Button component from Uiverse.io by vinodjangid07 */
-.Btn-Container {
-  display: flex;
-  width: 170px;
-  height: fit-content;
-  background-color: #1d2129;
-  border-radius: 40px;
-  box-shadow: 0px 5px 10px #bebebe;
-  justify-content: space-between;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-}
-
-.icon-Container {
-  width: 45px;
-  height: 45px;
-  background-color: #f59aff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 3px solid #1d2129;
-}
-
-.text {
-  width: calc(170px - 45px);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.1em;
-  letter-spacing: 1.2px;
-}
-
-.icon-Container svg {
-  transition-duration: 1.5s;
-}
-
-.Btn-Container:hover .icon-Container svg {
-  transition-duration: 1.5s;
-  animation: arrow 1s linear infinite;
-}
 
 @keyframes arrow {
   0% {
