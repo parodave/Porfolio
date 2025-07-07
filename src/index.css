@@ -55,7 +55,6 @@ body.dark {
   z-index: 1;
 }
 
-
 .timeline-content-title {
   @apply font-medium text-lg text-black dark:text-white;
 }
@@ -74,7 +73,7 @@ body.dark {
 }
 
 .vertical-timeline-element-content-arrow {
-  @apply border-r-white dark:border-r-dark;
+  @apply ltr:border-r-white rtl:border-l-white dark:ltr:border-r-dark dark:rtl:border-l-dark;
 }
 
 /* Remove FOUC handling as it's causing initial visibility issues */
@@ -140,8 +139,6 @@ body.dark {
     scroll-behavior: auto;
   }
 }
-
-
 
 @keyframes arrow {
   0% {
