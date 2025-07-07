@@ -1,5 +1,13 @@
 import { detectLanguage, SupportedLanguage } from './language';
 
+type ResponseCategory = {
+  greeting: string[];
+  howAreYou: string[];
+  name: string[];
+  help: string[];
+  generic: string[];
+};
+
 export function askFallbackAI(question: string): string {
   const lowerQ = question.toLowerCase();
   const detectedLang = detectLanguage(question);
@@ -54,7 +62,7 @@ export function askFallbackAI(question: string): string {
       help: ['ฉันสามารถช่วยตอบคำถามได้', 'ฉันอยู่ที่นี่เพื่อแชท'],
       generic: ['น่าสนใจมาก!', 'คุณช่วยเล่าให้ฟังมากกว่านี้ได้ไหม?'],
     },
-  } as Record<SupportedLanguage, any>;
+  } as Record<SupportedLanguage, ResponseCategory>;
 
   const langResponses = responses[detectedLang] || responses.en;
 
