@@ -35,10 +35,12 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
+      {/* 🌫️ Background gradient */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-radial from-light to-light dark:from-dark dark:to-darker opacity-60"></div>
       </div>
 
+      {/* 💬 Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
         <motion.div
           variants={containerVariants}
@@ -83,6 +85,7 @@ const Hero: React.FC = () => {
             )}
           </motion.div>
 
+          {/* 🌐 Boutons et sélecteur */}
           <motion.div variants={itemVariants} className="mb-4">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
@@ -112,6 +115,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
+        {/* 🔲 Cube 3D */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -128,6 +132,7 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
+      {/* 🖱️ Animation scroll */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
