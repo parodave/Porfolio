@@ -6,7 +6,7 @@
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and populate the values for EmailJS:
+Copy `.env.example` to `.env` and populate your EmailJS public key:
 
 ```bash
 cp .env.example .env
@@ -15,8 +15,6 @@ cp .env.example .env
 Required variables:
 
 - `VITE_EMAILJS_PUBLIC_KEY`
-- `VITE_EMAILJS_SERVICE_ID`
-- `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_LIBRETRANSLATE_URL`
 - `VITE_GA_ID`
 

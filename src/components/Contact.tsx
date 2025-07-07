@@ -1,60 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
-import { CheckCircle } from 'lucide-react';
-import CompactContactForm from './CompactContactForm';
-import emailjs from '@emailjs/browser';
+import ContactForm from './ContactForm';
 import SocialLinks from './SocialLinks';
 
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
-
 const Contact: React.FC = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
-
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  useEffect(() => {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formRef.current) return;
-
-    try {
-      setLoading(true);
-      setError('');
-
-
-      const result = await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current
-      );
-
-      if (result.text === 'OK') {
-        setSuccess(true);
-        formRef.current.reset();
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (err) {
-      console.error(err);
-      setError('❌ Une erreur est survenue');
-    } finally {
-      setLoading(false);
-    }
-  };
 
 
 
@@ -111,19 +66,7 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            {success ? (
-              <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
-                <CheckCircle size={20} />
-                <span>✅ Message envoyé avec succès</span>
-              </div>
-            ) : (
-              <CompactContactForm
-                formRef={formRef}
-                handleSubmit={handleSubmit}
-                loading={loading}
-                error={error}
-              />
-            )}
+            <ContactForm />
           </motion.div>
         </motion.div>
       </div>
