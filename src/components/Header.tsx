@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
 import SocialLinks from "./SocialLinks";
-import ThemeToggle from "./ThemeToggle";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -60,10 +59,9 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Language selector and theme toggle */}
+        {/* Language selector */}
         <div className="hidden md:flex items-center ml-4 space-x-4">
           <LanguageSelector />
-          <ThemeToggle />
         </div>
 
         {/* Menu desktop */}
@@ -117,7 +115,6 @@ const Header: React.FC = () => {
             </Link>
           ))}
           <SocialLinks />
-          <ThemeToggle />
         </div>
       </motion.div>
     </header>
