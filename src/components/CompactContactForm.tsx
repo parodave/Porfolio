@@ -31,6 +31,8 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   }, []);
 
   const internalHandleSubmit = async (e: React.FormEvent) => {
+    console.log('submit OK');
+    console.log('formRef', internalFormRef.current);
     e.preventDefault();
     if (!internalFormRef.current) return;
     try {
@@ -48,7 +50,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         throw new Error('Failed to send email');
       }
     } catch (err) {
-      console.error(err);
+      console.error('EmailJS error', err);
       setInternalError('❌ Une erreur est survenue');
     } finally {
       setInternalLoading(false);
@@ -78,7 +80,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         <input
           type="text"
           id="name"
-          name="name"
+          name="user_name"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="Votre nom"
@@ -92,7 +94,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         <input
           type="email"
           id="email"
-          name="email"
+          name="user_email"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="votre@email.com"
