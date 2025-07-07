@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import Cube3D from './Cube3D';
+import CompactContactForm from './CompactContactForm';
+import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -26,9 +28,6 @@ const Hero: React.FC = () => {
     },
   };
 
-
-
-  // Textes animés par langue
   const typewriterTexts = t('hero.typewriter', { returnObjects: true });
 
   return (
@@ -84,30 +83,32 @@ const Hero: React.FC = () => {
             )}
           </motion.div>
 
+          <motion.div variants={itemVariants} className="mb-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() =>
+                  window.open(
+                    'https://krglobalsolutionsltd.com/',
+                    '_blank',
+                    'noopener,noreferrer'
+                  )
+                }
+                className="bg-zinc-800 text-white rounded-lg px-4 py-2 hover:bg-zinc-700 transition-all"
+              >
+                Découvrir KR Global Solutions
+              </button>
 
-          <motion.div variants={itemVariants} className="mb-4">
-            <button
-              onClick={() =>
-                window.open(
-                  'https://krglobalsolutionsltd.com/',
-                  '_blank',
-                  'noopener,noreferrer'
-                )
-              }
-              className="bg-zinc-200 text-black rounded-lg px-4 py-2 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
-            >
-              let's go!
-            </button>
-          </motion.div>
-          <motion.div variants={itemVariants} className="mb-4">
-            <button
-              onClick={() =>
-                window.open('/KHBResume.pdf', '_blank', 'noopener,noreferrer')
-              }
-              className="bg-zinc-200 text-black rounded-lg px-4 py-2 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
-            >
-              let's go!
-            </button>
+              <button
+                onClick={() =>
+                  window.open('/KHBResume.pdf', '_blank', 'noopener,noreferrer')
+                }
+                className="bg-zinc-200 text-black rounded-lg px-4 py-2 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
+              >
+                Télécharger le CV
+              </button>
+
+              <ResumeSelector />
+            </div>
           </motion.div>
         </motion.div>
 
