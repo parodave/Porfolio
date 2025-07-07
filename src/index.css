@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -11,8 +11,12 @@ html {
 }
 
 body {
-  @apply bg-black text-white font-sans m-0 p-0 overflow-x-hidden;
+  @apply bg-white text-black font-sans m-0 p-0 overflow-x-hidden;
   opacity: 1 !important;
+}
+
+body.dark {
+  @apply bg-black text-white;
 }
 
 ::selection {
@@ -51,25 +55,26 @@ body {
   z-index: 1;
 }
 
+
 .timeline-content-title {
-  @apply text-white font-medium text-lg;
+  @apply font-medium text-lg text-black dark:text-white;
 }
 
 .timeline-content-desc {
-  @apply text-secondary font-light;
+  @apply font-light text-gray-700 dark:text-secondary;
 }
 
 /* For React Vertical Timeline Component */
 .vertical-timeline-element--work .vertical-timeline-element-content {
-  @apply bg-dark border border-gray-800 rounded-lg;
+  @apply bg-white border border-gray-300 rounded-lg dark:bg-dark dark:border-gray-800;
 }
 
 .vertical-timeline-element-icon {
-  @apply bg-gray-800 text-white flex items-center justify-center;
+  @apply bg-gray-200 text-black flex items-center justify-center dark:bg-gray-800 dark:text-white;
 }
 
 .vertical-timeline-element-content-arrow {
-  @apply border-r-dark;
+  @apply border-r-white dark:border-r-dark;
 }
 
 /* Remove FOUC handling as it's causing initial visibility issues */

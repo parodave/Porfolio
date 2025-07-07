@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import LanguageSelector from "./LanguageSelector";
+import ThemeToggle from "./ThemeToggle";
 import SocialLinks from "./SocialLinks";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -33,7 +34,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-10 ${
-        scrolled ? "bg-darker/90 backdrop-blur-md shadow-md" : "bg-transparent"
+        scrolled ? "bg-light/90 dark:bg-darker/90 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -50,7 +51,7 @@ const Header: React.FC = () => {
               stiffness: 70,
               damping: 10,
             }}
-            className="text-2xl font-bold text-white drop-shadow-xl tracking-wide"
+            className="text-2xl font-bold text-black dark:text-white drop-shadow-xl tracking-wide"
           >
             KH.
           </motion.a>
@@ -59,9 +60,10 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Language selector */}
+        {/* Language selector + theme toggle */}
         <div className="hidden md:flex items-center ml-4 space-x-4">
           <LanguageSelector />
+          <ThemeToggle />
         </div>
 
         {/* Menu desktop */}
@@ -75,7 +77,7 @@ const Header: React.FC = () => {
             <Link
               key={index}
               to={item.to}
-              className="text-white hover:text-gray-300 transition-colors duration-300"
+              className="text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-300 transition-colors duration-300"
             >
               {item.label}
             </Link>
@@ -84,7 +86,7 @@ const Header: React.FC = () => {
 
         {/* Bouton menu mobile */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-black dark:text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close Menu" : "Open Menu"}
         >
@@ -101,7 +103,7 @@ const Header: React.FC = () => {
           display: isOpen ? "flex" : "none",
         }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 top-16 bg-darker flex-col items-center pt-10 z-40 md:hidden"
+        className="fixed inset-0 top-16 bg-white dark:bg-darker flex-col items-center pt-10 z-40 md:hidden"
       >
         <div className="flex flex-col items-center space-y-8 w-full">
           {navItems.map((item, index) => (
@@ -109,12 +111,13 @@ const Header: React.FC = () => {
               key={index}
               to={item.to}
               onClick={() => setIsOpen(false)}
-              className="text-xl text-white hover:text-gray-300 transition-colors duration-300"
+              className="text-xl text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-300 transition-colors duration-300"
             >
               {item.label}
             </Link>
           ))}
           <SocialLinks />
+          <ThemeToggle />
         </div>
       </motion.div>
     </header>
