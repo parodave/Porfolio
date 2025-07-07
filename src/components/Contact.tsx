@@ -35,8 +35,6 @@ const Contact: React.FC = () => {
       setLoading(true);
       setError('');
 
-      // Extracting form data is no longer required now that we no longer
-      // persist messages using Supabase.
 
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,

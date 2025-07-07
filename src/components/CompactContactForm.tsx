@@ -69,7 +69,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       id={id}
       ref={formRef ?? internalFormRef}
       onSubmit={handleSubmit ?? internalHandleSubmit}
-      className="space-y-4 p-4 border border-gray-800 bg-darker"
+      className="space-y-4 max-w-md rounded-xl bg-zinc-900 p-4 text-sm text-white"
     >
       <div>
         <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -80,7 +80,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           id="user_name"
           name="user_name"
           required
-          className="w-full bg-dark border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-white transition-colors"
+          className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="Votre nom"
         />
       </div>
@@ -94,7 +94,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           id="user_email"
           name="user_email"
           required
-          className="w-full bg-dark border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-white transition-colors"
+          className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="votre@email.com"
         />
       </div>
@@ -108,7 +108,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           name="message"
           required
           rows={4}
-          className="w-full bg-dark border border-gray-700 text-white px-3 py-2 text-sm focus:outline-none focus:border-white transition-colors"
+          className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="Votre message..."
         ></textarea>
       </div>
@@ -120,7 +120,9 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       <button
         type="submit"
         disabled={loading ?? internalLoading}
-        className="w-full flex items-center justify-center py-2 text-sm border border-white text-white hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-70"
+        className={`w-full flex items-center justify-center py-2 text-sm rounded-lg bg-white text-black font-medium transition ${
+          loading ?? internalLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/90'
+        }`}
       >
         {(loading ?? internalLoading) ? (
           <span className="flex items-center">
