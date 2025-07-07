@@ -4,7 +4,7 @@ const LanguageSelector = () => (
   <select
     onChange={(e) => i18n.changeLanguage(e.target.value)}
     defaultValue={i18n.language}
-    className="bg-black text-white border px-2 py-1 rounded ml-4"
+    className="bg-black text-white border px-2 py-1 rounded ms-4"
     aria-label="Select language"
   >
     <option value="fr">🇫🇷 Français</option>

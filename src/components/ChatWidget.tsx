@@ -190,7 +190,7 @@ export default function ChatWidget() {
               </div>
               <div className="px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 text-sm">
                 {typing}
-                <span className="animate-pulse ml-1">|</span>
+                  <span className="animate-pulse ms-1">|</span>
               </div>
             </div>
           </div>
