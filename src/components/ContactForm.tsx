@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
+
 export default function ContactForm() {
   const form = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState<"success" | "error" | "loading" | null>(null);
@@ -11,8 +14,8 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_i30ke34",
-        "template_2isjmxk",
+        serviceId,
+        templateId,
         form.current!,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
