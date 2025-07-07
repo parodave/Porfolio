@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error(err);
-      setError("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer plus tard.");
+      setError('❌ Une erreur est survenue');
     } finally {
       setLoading(false);
     }
@@ -112,18 +112,9 @@ const Contact: React.FC = () => {
 
           <motion.div variants={itemVariants}>
             {success ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-8 border border-gray-300 dark:border-gray-800 bg-white dark:bg-darker">
-                <CheckCircle size={48} className="text-green-500 mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Message envoyé !</h3>
-                <p className="text-gray-400">
-                  Merci pour votre message. Je vous répondrai dans les plus brefs délais.
-                </p>
-                <button
-                  onClick={() => setSuccess(false)}
-                  className="mt-6 px-6 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
-                >
-                  Envoyer un autre message
-                </button>
+              <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
+                <CheckCircle size={20} />
+                <span>✅ Message envoyé avec succès</span>
               </div>
             ) : (
               <CompactContactForm

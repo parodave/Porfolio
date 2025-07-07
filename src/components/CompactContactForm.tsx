@@ -49,7 +49,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       }
     } catch (err) {
       console.error(err);
-      setInternalError("Une erreur est survenue. Veuillez réessayer plus tard.");
+      setInternalError('❌ Une erreur est survenue');
     } finally {
       setInternalLoading(false);
     }
@@ -59,7 +59,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
     return (
       <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
         <CheckCircle size={20} />
-        <span>Message envoyé !</span>
+        <span>✅ Message envoyé avec succès</span>
       </div>
     );
   }
@@ -72,13 +72,13 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       className="space-y-4 max-w-md w-full rounded-2xl bg-zinc-900 p-6 md:p-8 text-sm text-white border border-gray-800"
     >
       <div>
-        <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
           Nom
         </label>
         <input
           type="text"
-          id="user_name"
-          name="user_name"
+          id="name"
+          name="name"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="Votre nom"
@@ -86,13 +86,13 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       </div>
 
       <div>
-        <label htmlFor="user_email" className="block text-sm font-medium text-gray-300 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
           Email
         </label>
         <input
           type="email"
-          id="user_email"
-          name="user_email"
+          id="email"
+          name="email"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="votre@email.com"
