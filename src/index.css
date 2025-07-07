@@ -69,7 +69,7 @@ body {
 }
 
 .vertical-timeline-element-content-arrow {
-  @apply border-r-dark;
+  @apply ltr:border-r-dark rtl:border-l-dark;
 }
 
 /* Remove FOUC handling as it's causing initial visibility issues */
