@@ -60,7 +60,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Language selector */}
-        <div className="hidden md:flex items-center ml-4 space-x-4">
+        <div className="hidden md:flex items-center ms-4 space-x-4">
           <LanguageSelector />
         </div>
 
