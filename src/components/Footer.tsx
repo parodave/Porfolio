@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Colonne gauche */}
-          <div className="mb-6 md:mb-0 text-center md:text-left">
+          <div className="mb-6 md:mb-0 text-center md:text-left rtl:md:text-right">
             <p className="text-lg font-bold">KH.</p>
             <p className="text-gray-400 text-sm mt-2">
               &copy; {new Date().getFullYear()} Karim Hammouche. Tous droits réservés.
