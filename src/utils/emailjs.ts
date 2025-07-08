@@ -1,14 +1,11 @@
 // src/utils/emailjs.ts
 import emailjs from '@emailjs/browser';
 
-export const sendEmail = async (
-  formData: { name: string; email: string; message: string },
-  formElement: HTMLFormElement
-) => {
+export const sendEmail = async (formElement: HTMLFormElement) => {
   return emailjs.sendForm(
-    'service_i30ke34',
-    'template_wnyg66p',
+    import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
     formElement,
-    'w2jrqSt-GwSCQR7zM'
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
   );
 };
