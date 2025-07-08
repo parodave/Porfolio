@@ -1,16 +1,15 @@
 import React from 'react';
 
 const resumes = [
-  { label: 'FR - Développeur Web', file: '/cv-fr-dev.pdf' },
-  { label: 'EN - Project Manager', file: '/cv-en-pm.pdf' },
-  { label: 'AR - Fullstack', file: '/cv-ar-fullstack.pdf' },
-  { label: 'ES - Marketing', file: '/cv-es-marketing.pdf' },
-  { label: 'DE - Data Scientist', file: '/cv-de-data.pdf' },
-  { label: 'IT - DevOps Engineer', file: '/cv-it-devops.pdf' },
-  { label: 'CN - Product Manager', file: '/cv-cn-product.pdf' },
-  { label: 'JA - Software Engineer', file: '/cv-ja-software.pdf' },
-  { label: 'PT - Cybersecurity', file: '/cv-pt-cyber.pdf' },
-  { label: 'Universel', file: '/cv-universal.pdf' }
+  { label: '🇫🇷 Français - CV', file: '/cv-fr.pdf' },
+  { label: '🇬🇧 Anglais - Resume', file: '/cv-en.pdf' },
+  { label: '🇪🇸 Espagnol - CV', file: '/cv-es.pdf' },
+  { label: '🇷🇺 Russe - Резюме', file: '/cv-ru.pdf' },
+  { label: '🇨🇳 Chinois - 简历', file: '/cv-zh.pdf' },
+  { label: '🇯🇵 Japonais - 履歴書', file: '/cv-ja.pdf' },
+  { label: '🇹🇭 Thaï - ประวัติย่อ', file: '/cv-th.pdf' },
+  { label: '🇸🇦 Arabe - السيرة الذاتية', file: '/cv-ar.pdf' },
+  { label: '🌐 Universel - CV (EN)', file: '/cv-universal.pdf' },
 ];
 
 const ResumeSelector: React.FC = () => {
@@ -26,15 +25,15 @@ const ResumeSelector: React.FC = () => {
     <select
       onChange={handleChange}
       defaultValue=""
-      className="bg-zinc-800 text-white border px-3 py-2 rounded"
+      className="bg-zinc-800 text-white border border-zinc-600 rounded-md px-4 py-2"
       aria-label="Sélectionner un CV"
     >
       <option value="" disabled>
         Choisissez un CV
       </option>
-      {resumes.map((r) => (
-        <option key={r.file} value={r.file}>
-          {r.label}
+      {resumes.map(({ label, file }) => (
+        <option key={file} value={file}>
+          {label}
         </option>
       ))}
     </select>
