@@ -100,15 +100,6 @@ const Hero: React.FC = () => {
                 Découvrir KR Global Solutions
               </button>
 
-              <button
-                onClick={() =>
-                  window.open('/KHBResume.pdf', '_blank', 'noopener,noreferrer')
-                }
-                className="bg-zinc-200 text-black rounded-lg px-4 py-2 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
-              >
-                Télécharger le CV
-              </button>
-
               <ResumeSelector />
             </div>
           </motion.div>

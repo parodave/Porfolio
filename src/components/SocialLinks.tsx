@@ -2,7 +2,7 @@ import React from 'react';
 import { Twitter, Github, Linkedin, Globe, Handshake } from 'lucide-react';
 
 const links = [
-  { href: 'https://twitter.com/parodave', label: 'Twitter', Icon: Twitter },
+  { href: 'https://x.com/Parodave000', label: 'Twitter', Icon: Twitter },
   { href: 'https://github.com/parodave', label: 'GitHub', Icon: Github },
   { href: 'https://linkedin.com/in/karim-h-497634248', label: 'LinkedIn', Icon: Linkedin },
   { href: 'https://krglobalsolutionsltd.com/', label: 'KR Global Solutions', Icon: Globe },
