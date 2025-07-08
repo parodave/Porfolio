@@ -27,7 +27,6 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   const [success, setSuccess] = useState(false);
   const [internalError, setInternalError] = useState('');
 
-  // ✅ Initialisation d'EmailJS avec la clé publique
   useEffect(() => {
     try {
       emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -36,7 +35,6 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
     }
   }, []);
 
-  // ✅ Soumission du formulaire avec gestion complète
   const internalHandleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!internalFormRef.current) return;
@@ -50,6 +48,9 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         internalFormRef.current,
         EMAILJS_PUBLIC_KEY
       );
+
+      console.log('EmailJS result:', result);
+
       if (result.text === 'OK') {
         setSuccess(true);
         internalFormRef.current.reset();
