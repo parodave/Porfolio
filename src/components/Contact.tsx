@@ -1,23 +1,23 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
+<<<<<<< HEAD
 import { CheckCircle } from 'lucide-react';
 import CompactContactForm from './CompactContactForm';
 import { sendEmail } from '../utils/emailjs';
+=======
+import ContactForm from './ContactForm';
+>>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
 import SocialLinks from './SocialLinks';
 
 const Contact: React.FC = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
-
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+<<<<<<< HEAD
   useEffect(() => {
     // Rien à faire ici car init est géré dans utils/emailjs.ts
   }, []);
@@ -45,6 +45,9 @@ const Contact: React.FC = () => {
       setLoading(false);
     }
   };
+=======
+
+>>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
 
   return (
     <section id="contact" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
@@ -99,19 +102,7 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            {success ? (
-              <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
-                <CheckCircle size={20} />
-                <span>✅ Message envoyé avec succès</span>
-              </div>
-            ) : (
-              <CompactContactForm
-                formRef={formRef}
-                handleSubmit={handleSubmit}
-                loading={loading}
-                error={error}
-              />
-            )}
+            <ContactForm />
           </motion.div>
         </motion.div>
       </div>

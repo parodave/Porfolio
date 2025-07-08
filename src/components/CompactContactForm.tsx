@@ -27,11 +27,17 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
 
   // ✅ Initialisation d'EmailJS avec la clé publique
   useEffect(() => {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    try {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    } catch (err) {
+      console.error('EmailJS init error', err);
+    }
   }, []);
 
   // ✅ Soumission du formulaire avec gestion complète
   const internalHandleSubmit = async (e: React.FormEvent) => {
+    console.log('submit OK');
+    console.log('formRef', internalFormRef.current);
     e.preventDefault();
     if (!internalFormRef.current) return;
 
@@ -41,9 +47,14 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        internalFormRef.current
+        internalFormRef.current,
+        EMAILJS_PUBLIC_KEY
       );
+<<<<<<< HEAD
 
+=======
+      console.log('EmailJS result:', result);
+>>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
       if (result.text === 'OK') {
         setSuccess(true);
         internalFormRef.current.reset();
@@ -51,7 +62,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         throw new Error('Email non envoyé');
       }
     } catch (err) {
-      console.error(err);
+      console.error('EmailJS error', err);
       setInternalError('❌ Une erreur est survenue');
     } finally {
       setInternalLoading(false);
@@ -83,7 +94,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         <input
           type="text"
           id="name"
-          name="name"
+          name="user_name"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="Votre nom"
@@ -97,7 +108,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         <input
           type="email"
           id="email"
-          name="email"
+          name="user_email"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
           placeholder="votre@email.com"

@@ -6,7 +6,7 @@
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and populate the values for EmailJS:
+Copy `.env.example` to `.env` and populate your EmailJS configuration:
 
 ```bash
 cp .env.example .env
