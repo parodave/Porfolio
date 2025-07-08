@@ -9,6 +9,7 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
 
 interface CompactContactFormProps {
   id?: string;
+  formRef?: React.RefObject<HTMLFormElement>;
   handleSubmit?: (e: React.FormEvent) => void;
   loading?: boolean;
   error?: string;
@@ -16,6 +17,7 @@ interface CompactContactFormProps {
 
 const CompactContactForm: React.FC<CompactContactFormProps> = ({
   id,
+  formRef,
   handleSubmit,
   loading,
   error,
@@ -36,8 +38,6 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
 
   // ✅ Soumission du formulaire avec gestion complète
   const internalHandleSubmit = async (e: React.FormEvent) => {
-    console.log('submit OK');
-    console.log('formRef', internalFormRef.current);
     e.preventDefault();
     if (!internalFormRef.current) return;
 
@@ -50,11 +50,6 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         internalFormRef.current,
         EMAILJS_PUBLIC_KEY
       );
-<<<<<<< HEAD
-
-=======
-      console.log('EmailJS result:', result);
->>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
       if (result.text === 'OK') {
         setSuccess(true);
         internalFormRef.current.reset();
@@ -81,9 +76,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   return (
     <form
       id={id}
-      ref={(el) => {
-        internalFormRef.current = el;
-      }}
+      ref={formRef ?? internalFormRef}
       onSubmit={handleSubmit ?? internalHandleSubmit}
       className="space-y-4 max-w-md w-full rounded-2xl bg-zinc-900 p-6 md:p-8 text-sm text-white border border-gray-800"
     >

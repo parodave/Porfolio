@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
-import ContactForm from './ContactForm';
+import { CheckCircle } from 'lucide-react';
+import CompactContactForm from './CompactContactForm';
+import { sendEmail } from '../utils/emailjs';
 import SocialLinks from './SocialLinks';
 
 const Contact: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    // EmailJS est initialisé dans CompactContactForm
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    try {
+      setLoading(true);
+      setError('');
+      const result = await sendEmail(formRef.current);
+      if (result.text === 'OK') {
+        setSuccess(true);
+        formRef.current.reset();
+      } else {
+        throw new Error('Email non envoyé');
+      }
+    } catch (err) {
+      console.error('sendEmail error', err);
+      setError('❌ Une erreur est survenue');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
@@ -30,9 +59,8 @@ const Contact: React.FC = () => {
 
             <div className="space-y-6 text-gray-700 dark:text-gray-300">
               <p>
-                Vous avez un projet en tête ou une opportunité à me proposer ?
-                N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles
-                collaborations et défis.
+                Vous avez un projet en tête ou une opportunité à me proposer ? N&apos;hésitez pas à me
+                contacter. Je suis toujours ouvert aux nouvelles collaborations et défis.
               </p>
 
               <div className="space-y-4 mt-8">
@@ -65,7 +93,20 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <ContactForm />
+            {success ? (
+              <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
+                <CheckCircle size={20} />
+                <span>✅ Message envoyé avec succès</span>
+              </div>
+            ) : (
+              <CompactContactForm
+                id="contact-form"
+                formRef={formRef}
+                handleSubmit={handleSubmit}
+                loading={loading}
+                error={error}
+              />
+            )}
           </motion.div>
         </motion.div>
       </div>
