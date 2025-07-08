@@ -2,13 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
-<<<<<<< HEAD
-import { CheckCircle } from 'lucide-react';
-import CompactContactForm from './CompactContactForm';
-import { sendEmail } from '../utils/emailjs';
-=======
 import ContactForm from './ContactForm';
->>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
 import SocialLinks from './SocialLinks';
 
 const Contact: React.FC = () => {
@@ -17,37 +11,6 @@ const Contact: React.FC = () => {
     threshold: 0.1,
   });
 
-<<<<<<< HEAD
-  useEffect(() => {
-    // Rien à faire ici car init est géré dans utils/emailjs.ts
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formRef.current) return;
-
-    try {
-      setLoading(true);
-      setError('');
-      const result = await sendEmail(formRef.current);
-
-      if (result.text === 'OK') {
-        setSuccess(true);
-        formRef.current.reset();
-      } else {
-        throw new Error('Email non envoyé');
-      }
-    } catch (err) {
-      console.error(err);
-      setError('❌ Une erreur est survenue');
-    } finally {
-      setLoading(false);
-    }
-  };
-=======
-
->>>>>>> f2b00579bf7877988a8e6f59654fd38007ac0244
 
   return (
     <section id="contact" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
