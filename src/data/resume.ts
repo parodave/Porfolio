@@ -37,7 +37,8 @@ export interface ResumeData {
 }
 
 export const resumeData: ResumeData = {
-  summary: "Web application developer with a strong background in business management, electrotechnical maintenance, and team leadership. Skilled in modern web technologies and AI integration. Fast learner, autonomous, and comfortable working both independently and collaboratively.",
+  summary:
+    "Web application developer with a strong background in business management, electrotechnical maintenance, and team leadership. Skilled in modern web technologies and AI integration. Fast learner, autonomous, and comfortable working both independently and collaboratively.",
   education: [
     {
       school: "Duke Language School",
@@ -93,9 +94,13 @@ export const resumeData: ResumeData = {
       location: "Brisbane, Australia",
       dates: "Oct 2024 – Apr 2025",
       tasks: [
-        "Operated and maintained industrial recycling equipment",
-        "Ensured safety compliance and material logistics",
-        "Performed customer service during on-site visits"
+        "Operated and monitored industrial recycling equipment",
+        "Performed regular maintenance and troubleshooting",
+        "Sorted and processed recyclable materials according to quality standards",
+        "Ensured workplace safety and compliance with health regulations",
+        "Collaborated with team members and reported technical issues",
+        "Assisted with logistics and material flow within the facility",
+        "Delivered basic customer service during on-site visits"
       ]
     },
     {
