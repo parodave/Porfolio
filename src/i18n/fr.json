@@ -91,28 +91,28 @@
     "items": [
       {
         "title": "KR Global Solutions LTD",
-        "description": "SaaS platform delivering global digital solutions with AI integration.",
+        "description": "Développement SaaS personnalisé avec intégration de l'IA et automatisation\nCréation et gestion de boutiques e-commerce\nAutomatisation des processus métier (API, outils no-code/low-code)\nDesign UX/UI et développement full-stack\nGestion de projets freelance et lancements de produits internes\nStratégie digitale, hébergement et infrastructure technique",
         "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["SaaS", "AI", "Automation", "Digital"],
         "link": ""
       },
       {
         "title": "FelizBella",
-        "description": "Cosmetics brand with e-commerce focus and online marketing.",
+        "description": "Création de marque cosmétique avec identité visuelle et packaging\nConfiguration e-commerce sur Shopify et stratégie marketing\nVentes en ligne B2C et support client\nGestion des fournisseurs et des stocks\nPublicité payante (Meta Ads, Google Ads)",
         "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
         "link": ""
       },
       {
         "title": "KHH Projects",
-        "description": "Automated short-term rental management for Airbnb properties.",
+        "description": "Investissement dans des biens immobiliers en location courte durée\nGestion automatisée de propriétés Airbnb\nOptimisation de la rentabilité grâce aux outils digitaux\nDéveloppement d’un portefeuille international",
         "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Real estate", "Automation", "Airbnb", "Management"],
         "link": ""
       },
       {
         "title": "Domaine Harrach",
-        "description": "Organic fruit farm practicing sustainable agriculture.",
+        "description": "Projet de ferme fruitière bio de 3 hectares\nPratiques agricoles durables\nStratégie de distribution alimentaire locale\nPlanification des cultures et développement commercial",
         "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
         "link": ""
