@@ -91,28 +91,28 @@
     "items": [
       {
         "title": "KR Global Solutions LTD",
-        "description": "SaaS platform delivering global digital solutions with AI integration.",
+        "description": "تطوير برمجيات SaaS مخصصة مع دمج الذكاء الاصطناعي والأتمتة\nإنشاء وإدارة متاجر إلكترونية\nأتمتة العمليات التجارية (API، أدوات لا/قليلة الكود)\nتصميم UX/UI وتطوير شامل\nإدارة مشاريع حرة وإطلاق منتجات داخلية\nاستراتيجية رقمية، استضافة وبنية تقنية",
         "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["SaaS", "AI", "Automation", "Digital"],
         "link": ""
       },
       {
         "title": "FelizBella",
-        "description": "Cosmetics brand with e-commerce focus and online marketing.",
+        "description": "إنشاء علامة تجارية لمستحضرات التجميل مع الهوية البصرية والتغليف\nإعداد متجر Shopify واستراتيجية التسويق\nمبيعات B2C عبر الإنترنت ودعم العملاء\nإدارة الموردين والمخزون\nإعلانات مدفوعة (Meta Ads، Google Ads)",
         "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
         "link": ""
       },
       {
         "title": "KHH Projects",
-        "description": "Automated short-term rental management for Airbnb properties.",
+        "description": "استثمار في العقارات المؤجرة قصيرة الأجل\nإدارة آلية لممتلكات Airbnb\nتحسين الربحية عبر أدوات رقمية\nتطوير محفظة دولية",
         "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Real estate", "Automation", "Airbnb", "Management"],
         "link": ""
       },
       {
         "title": "Domaine Harrach",
-        "description": "Organic fruit farm practicing sustainable agriculture.",
+        "description": "مشروع مزرعة فواكه عضوية على مساحة 3 هكتارات\nممارسات زراعية مستدامة\nاستراتيجية توزيع الغذاء محليًا\nتخطيط المحاصيل وتطوير الأعمال",
         "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
         "link": ""
