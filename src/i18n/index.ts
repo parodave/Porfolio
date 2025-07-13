@@ -1,17 +1,17 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import HttpBackend from "i18next-http-backend";
 
 import fr from "./fr.json";
 import en from "./en.json";
+import frProjects from "./projects/fr.json";
+import enProjects from "./projects/en.json";
 
 export const resources = {
-  fr: { translation: fr },
-  en: { translation: en },
+  fr: { translation: fr, projects: frProjects },
+  en: { translation: en, projects: enProjects },
 } as const;
 
 i18n
-  .use(HttpBackend)
   .use(initReactI18next)
   .init({
     resources,
@@ -19,9 +19,6 @@ i18n
     fallbackLng: "fr",
     ns: ["translation", "projects"],
     defaultNS: "translation",
-    backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
-    },
     interpolation: {
       escapeValue: false,
     },
