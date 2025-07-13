@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <ErrorBoundary fallback={<div className="text-red-500">Erreur de chargement de la Lune</div>}>
+            <ErrorBoundary>
               <Moon3D reduceMotion={reduceMotion} />
             </ErrorBoundary>
             <div className={`planet-info${mounted ? ' show' : ''}`}>
