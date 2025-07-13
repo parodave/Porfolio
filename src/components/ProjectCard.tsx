@@ -29,14 +29,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <ArrowUpRight size={20} />
         </a>
       )}
-      <img src={image} alt={title} className="w-full h-48 object-cover rounded-t-lg" />
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-48 object-cover rounded-t-lg transition-transform duration-500 ease-out group-hover:scale-105"
+      />
     </div>
     <div className="p-4">
       <h3 className="font-bold text-lg mb-2">{title}</h3>
-      <p className="text-gray-300 mb-3">{description}</p>
+      <p className="text-gray-700 dark:text-gray-400 mb-3">{description}</p>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, idx) => (
-          <span key={idx} className="text-xs px-2 py-1 rounded bg-gray-700/50">
+          <span
+            key={idx}
+            className="text-xs px-3 py-1 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded"
+          >
             {tag}
           </span>
         ))}
