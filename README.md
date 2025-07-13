@@ -60,6 +60,29 @@ npm run lint
 This project does not yet include automated tests, but you can add your
 preferred framework and run them with `npm test` once configured.
 
+## Adding Blog Articles
+
+Blog posts are defined in `src/data/blogData.ts`. Each entry is keyed by its
+slug and contains French and English fields. To add a new article, append an
+object with the following structure:
+
+```ts
+export const blogData = {
+  'my-new-post': {
+    slug: 'my-new-post',
+    title: { fr: 'Titre FR', en: 'English title' },
+    summary: { fr: 'Résumé...', en: 'Summary...' },
+    content: { fr: 'Contenu...', en: 'Content...' },
+    date: '2025-01-01',
+    audio: '/path/to/audio.mp3',
+    pdf: { fr: '/post-fr.pdf', en: '/post-en.pdf' },
+  },
+};
+```
+
+Simply add your article to the exported object and restart the development
+server.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

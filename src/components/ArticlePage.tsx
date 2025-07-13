@@ -1,11 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
-import { articles } from '../data/articles';
+import { blogData } from '../data/blogData';
 import { useTranslation } from 'react-i18next';
 
 const ArticlePage = () => {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
-  const article = articles.find((a) => a.slug === slug);
+  const article = slug ? blogData[slug] : undefined;
 
   if (!article) {
     return null;
