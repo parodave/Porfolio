@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
-import { OrbitControls } from '@react-three/drei';
-import Moon from './Moon';
+import Moon3D from './Moon3D';
 import ErrorBoundary from './ErrorBoundary';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
@@ -115,14 +112,7 @@ const Hero: React.FC = () => {
         >
           <div className="relative w-64 h-64 animate-float">
             <ErrorBoundary fallback={<div className="text-red-500">Erreur de chargement de la Lune</div>}>
-              <Canvas camera={{ position: [0, 0, 5], fov: 45 }} style={{ background: 'transparent' }}>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[5, 5, 5]} intensity={1} />
-                <Suspense fallback={<div className="text-gray-400">Chargement de la Lune...</div>}>
-                  <Moon />
-                  <OrbitControls enableZoom={false} />
-                </Suspense>
-              </Canvas>
+              <Moon3D reduceMotion={reduceMotion} />
             </ErrorBoundary>
             <div className={`planet-info${mounted ? ' show' : ''}`}>
               <h2>Lune</h2>
