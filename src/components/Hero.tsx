@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* 🔲 Cube 3D */}
+        {/* 🌕 Moon 3D */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
