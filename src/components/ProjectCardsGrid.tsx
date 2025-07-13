@@ -4,7 +4,7 @@ import ProjectCard from './ProjectCard';
 import { projects } from '../data/projects';
 
 const ProjectCardsGrid: React.FC = () => {
-  const { t } = useTranslation('projects');
+  const { t, i18n } = useTranslation('projects');
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -12,7 +12,7 @@ const ProjectCardsGrid: React.FC = () => {
         <ProjectCard
           key={project.id}
           title={t(`${project.id}.title`)}
-          description={t(`${project.id}.description`)}
+          description={project.description[i18n.language]}
           image={project.image}
           tags={project.tags}
           link={project.url}
