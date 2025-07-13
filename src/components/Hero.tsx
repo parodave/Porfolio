@@ -118,6 +118,10 @@ const Hero: React.FC = () => {
         >
           <div className="relative w-64 h-64 animate-float">
             <Cube3D reduceMotion={reduceMotion} />
+            <div className={`planet-info${mounted ? ' show' : ''}`}>
+              <h2>Moon</h2>
+              <p>Earth's only natural satellite, the Moon influences our tides and culture.</p>
+            </div>
           </div>
         </motion.div>
       </div>
