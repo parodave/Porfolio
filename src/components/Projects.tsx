@@ -2,26 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants as defaultItemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
-import {
-  ArrowUpRight,
-  Car,
-  Utensils,
-  Globe,
-  Brush,
-  Home,
-  Leaf,
-  Truck,
-  Sparkles,
-} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import ProjectCard from './ProjectCard';
 
 interface Project {
   title: string;
   description: string;
   image: string;
-  icon: React.ReactNode;
   tags: string[];
+  link?: string; // <- rendu optionnel comme dans ProjectCard
 }
 
 const Projects: React.FC = () => {
@@ -32,21 +22,9 @@ const Projects: React.FC = () => {
     threshold: 0.1,
   });
 
-  const projectIcons = [
-    <Globe size={24} />,
-    <Brush size={24} />,
-    <Home size={24} />,
-    <Leaf size={24} />,
-    <Truck size={24} />,
-    <Sparkles size={24} />,
-    <Car size={24} />,
-    <Utensils size={24} />,
-  ];
-  const rawProjects = t('projects.items', { returnObjects: true });
-  const projects: Project[] = rawProjects.map((proj, idx) => ({
-    ...proj,
-    icon: projectIcons[idx % projectIcons.length],
-  }));
+  // ✅ Récupération localisée depuis les fichiers de traduction
+  const rawProjects = t('projects.items', { returnObjects: true }) as Project[];
+  const projects: Project[] = rawProjects;
 
   const itemVariants = {
     ...defaultItemVariants,
@@ -72,50 +50,18 @@ const Projects: React.FC = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {projects.map((project, index) => (
-            <motion.div 
-              key={index} 
-              variants={itemVariants}
-              className="project-card group relative overflow-hidden border border-gray-300 dark:border-gray-800 bg-white dark:bg-darker"
-            >
-              <div className="relative h-72 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-darker to-transparent opacity-90"></div>
-              </div>
-              
-              <div className="p-8 relative z-10">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mr-4">
-                      {project.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold">{project.title}</h3>
-                  </div>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowUpRight size={24} />
-                  </span>
-                </div>
-                
-                <p className="text-gray-700 dark:text-gray-400 mb-6">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex} 
-                      className="px-3 py-1 text-xs border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <motion.div key={index} variants={itemVariants}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                tags={project.tags}
+                link={project.link}
+              />
             </motion.div>
           ))}
         </motion.div>
