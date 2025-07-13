@@ -141,14 +141,15 @@ export default function ChatWidget() {
             </svg>
           </div>
           <div>
-            <h3 className="text-white font-medium text-sm">{t('chatWidget.title')}</h3>
-            <p className="text-gray-400 text-xs">{t('chatWidget.subtitle')}</p>
+            <h3 className="text-white font-medium text-sm">{t('chat.title')}</h3>
+            <p className="text-gray-400 text-xs">{t('chat.subtitle')}</p>
           </div>
         </div>
         <button onClick={handleReset} disabled={loading} className="text-gray-400 hover:text-white transition-colors text-xs">
-          {t('chatWidget.clear')}
+          {t('chat.clear')}
         </button>
       </div>
+
       <div className="w-full h-64 overflow-y-auto mb-4 space-y-3">
         {history.length === 0 && !loading && !typing && (
           <div className="text-center py-8">
@@ -157,23 +158,17 @@ export default function ChatWidget() {
                 <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" />
               </svg>
             </div>
-            <p className="text-white/80 text-sm mb-2">{t('chatWidget.ready')}</p>
-            <p className="text-gray-400 text-xs">{t('chatWidget.supported')}</p>
+            <p className="text-white/80 text-sm mb-2">{t('chat.ready')}</p>
+            <p className="text-gray-400 text-xs">{t('chat.supported')}</p>
           </div>
         )}
+
         {history.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className="flex items-start gap-2 max-w-[85%]">
-              {msg.role === 'assistant' && (
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-black rounded-full" />
-                </div>
-              )}
-              {msg.role === 'user' && (
-                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full" />
-                </div>
-              )}
+              <div className={`w-6 h-6 ${msg.role === 'user' ? 'bg-white/20' : 'bg-white'} rounded-full flex items-center justify-center flex-shrink-0 mt-1`}>
+                <div className={`w-2 h-2 ${msg.role === 'user' ? 'bg-white' : 'bg-black'} rounded-full`} />
+              </div>
               <div className={`px-3 py-2 rounded-lg text-sm ${msg.role === 'user' ? 'bg-white text-black' : 'bg-white/10 text-white border border-white/20'}`}>
                 <div className="leading-relaxed">{msg.content}</div>
                 <div className="text-xs mt-1 opacity-60 flex items-center gap-1">
@@ -184,6 +179,7 @@ export default function ChatWidget() {
             </div>
           </div>
         ))}
+
         {typing && (
           <div className="flex justify-start">
             <div className="flex items-start gap-2 max-w-[85%]">
@@ -192,11 +188,12 @@ export default function ChatWidget() {
               </div>
               <div className="px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 text-sm">
                 {typing}
-                  <span className="animate-pulse ms-1">|</span>
+                <span className="animate-pulse ms-1">|</span>
               </div>
             </div>
           </div>
         )}
+
         {loading && !typing && (
           <div className="flex justify-start">
             <div className="flex items-start gap-2">
@@ -210,7 +207,7 @@ export default function ChatWidget() {
                     <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
                     <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                   </div>
-                  <span>{t('chatWidget.thinking')}</span>
+                  <span>{t('chat.thinking')}</span>
                 </div>
               </div>
             </div>
@@ -218,13 +215,14 @@ export default function ChatWidget() {
         )}
         <div ref={messagesEndRef} />
       </div>
+
       <div className="space-y-2">
         <input
           type="text"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleInputKeyDown}
-          placeholder={t('chatWidget.placeholder')}
+          placeholder={t('chat.placeholder')}
           className="w-full p-3 rounded-lg bg-white/5 text-white placeholder-gray-400 border border-white/20 focus:outline-none focus:border-white/40 transition text-sm"
           disabled={loading}
         />
@@ -233,7 +231,7 @@ export default function ChatWidget() {
           disabled={loading || !question.trim()}
           className={`w-full bg-white text-black font-medium py-2 rounded-lg transition text-sm ${loading || !question.trim() ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/90'}`}
         >
-          {loading ? t('chatWidget.generating') : t('chatWidget.send')}
+          {loading ? t('chat.generating') : t('chat.send')}
         </button>
       </div>
     </div>

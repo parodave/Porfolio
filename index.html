@@ -40,9 +40,8 @@
       (function() {
         const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
-          document.body.classList.add('dark');
-        }
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.className = theme;
       })();
     </script>
     <div id="root"></div>

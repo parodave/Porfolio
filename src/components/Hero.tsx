@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
-import BlackHoleBackground from './BlackHoleBackground';
+import BlackHole from './BlackHole';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Animated black hole background */}
-      <BlackHoleBackground show />
+      <BlackHole />
 
       {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
