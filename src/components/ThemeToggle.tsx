@@ -1,8 +1,8 @@
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from '../hooks/useTheme';
+import useDarkMode from '../hooks/useDarkMode';
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const [theme, toggleTheme] = useDarkMode();
   const Icon = theme === 'dark' ? Sun : Moon;
   return (
     <button
