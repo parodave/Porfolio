@@ -1,4 +1,5 @@
 import { Component, ReactNode } from 'react';
+import i18n from '../i18n';
 
 interface Props {
   children: ReactNode;
@@ -21,7 +22,7 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? <div>Une erreur est survenue.</div>;
+      return this.props.fallback ?? <div>{i18n.t('errorBoundary.default')}</div>;
     }
     return this.props.children;
   }

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ChatWidget from "./ChatWidget";
+import { useTranslation } from "react-i18next";
 
 export default function FloatingAgentIA() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -23,7 +25,7 @@ export default function FloatingAgentIA() {
             ? "bg-white text-black border-white hover:bg-gray-100"
             : "bg-black text-white border-white hover:bg-gray-900"
         }`}
-        aria-label={isOpen ? "Fermer l'agent IA" : "Ouvrir l'agent IA"}
+        aria-label={isOpen ? t('chat.closeAria') : t('chat.openAria')}
       >
         {/* Icône de chat ou croix */}
         <div>

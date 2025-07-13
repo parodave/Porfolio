@@ -6,7 +6,9 @@
       "Я учусь.",
       "Я формирую будущее."
     ],
-    "cta": "Посмотреть мои проекты"
+    "cta": "Посмотреть мои проекты",
+    "krButton": "Discover KR Global Solutions",
+    "scroll": "Scroll"
   },
   "nav": {
     "home": "Дом",
@@ -56,7 +58,10 @@
       "Предприниматель: прокат автомобилей и быстрого питания",
       "Недавний опыт: переработка Рино в Брисбене (ноябрь 2024 - апрель 2025 г.)"
     ],
-    "downloadCv": "Скачать мое резюме"
+    "downloadCv": "Скачать мое резюме",
+    "languagesTitle": "Languages",
+    "certificationsTitle": "Certifications",
+    "educationTitle": "Education"
   },
   "experience": {
     "title": "Профессиональный опыт",
@@ -222,5 +227,60 @@
       "initiative": "Инициатива",
       "teamwork": "Командная работа"
     }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Do you have a project in mind or an opportunity for me? Feel free to contact me. I'm always open to new collaborations and challenges.",
+    "emailLabel": "Email",
+    "networkLabel": "Networks",
+    "success": "✅ Message sent successfully",
+    "error": "❌ An error occurred",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message...",
+      "sending": "Sending...",
+      "send": "Send message",
+      "disclaimer": "By submitting this form, you agree your data will be used only so I can contact you."
+    }
+  },
+  "chat": {
+    "title": "AI Agent",
+    "subtitle": "Multilingual assistant",
+    "clear": "Clear",
+    "placeholder": "Ask your question...",
+    "loading": "Generating...",
+    "send": "Send",
+    "fallback": "🤖 {{question}}? Great question!",
+    "openAria": "Open AI agent",
+    "closeAria": "Close AI agent"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "emailAria": "Send an email",
+    "backToTop": "Back to top",
+    "backToTopAria": "Back to top"
+  },
+  "resumeSelector": {
+    "ariaLabel": "Select a resume",
+    "defaultOption": "Choose a resume"
+  },
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "errorBoundary": {
+    "default": "An error occurred."
+  },
+  "moon": {
+    "loading": "Loading the Moon...",
+    "error": "Error loading the Moon."
+  },
+  "article": {
+    "audioNotSupported": "Your browser does not support the audio element."
   }
 }

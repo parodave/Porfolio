@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
                 }
                 className="bg-zinc-800 text-white rounded-lg px-4 py-2 hover:bg-zinc-700 transition-all"
               >
-                Découvrir KR Global Solutions
+                {t('hero.krButton')}
               </button>
               <ResumeSelector />
             </div>
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
             className="w-1 h-2 bg-gray-500 dark:bg-white rounded-full mt-2"
           />
         </div>
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Défilement</p>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{t('hero.scroll')}</p>
       </motion.div>
     </section>
   );

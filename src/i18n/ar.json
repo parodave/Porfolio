@@ -1,8 +1,14 @@
 {
   "hero": {
     "title": "أنا لست مجرد مطور.",
-    "typewriter": ["أنا أتعلم.", "أنا أبتكر.", "أنا أبني المستقبل."],
-    "cta": "عرض مشاريعي"
+    "typewriter": [
+      "أنا أتعلم.",
+      "أنا أبتكر.",
+      "أنا أبني المستقبل."
+    ],
+    "cta": "عرض مشاريعي",
+    "krButton": "Discover KR Global Solutions",
+    "scroll": "Scroll"
   },
   "nav": {
     "home": "الرئيسية",
@@ -28,10 +34,22 @@
     "quote": "Each project I touch is an opportunity to go further than expected of me.",
     "personalInfoTitle": "Personal Information",
     "details": [
-      { "label": "Name", "value": "Karim Hammouche" },
-      { "label": "Age", "value": "29 years old" },
-      { "label": "Nationality", "value": "French" },
-      { "label": "Currently", "value": "in Thailand (2025)" }
+      {
+        "label": "Name",
+        "value": "Karim Hammouche"
+      },
+      {
+        "label": "Age",
+        "value": "29 years old"
+      },
+      {
+        "label": "Nationality",
+        "value": "French"
+      },
+      {
+        "label": "Currently",
+        "value": "in Thailand (2025)"
+      }
     ],
     "careerTitle": "Career Path",
     "careerList": [
@@ -40,7 +58,10 @@
       "Entrepreneur: car rental and fast-food",
       "Recent experience: Rino Recycling in Brisbane (Nov. 2024 – April 2025)"
     ],
-    "downloadCv": "Download my resume"
+    "downloadCv": "Download my resume",
+    "languagesTitle": "Languages",
+    "certificationsTitle": "Certifications",
+    "educationTitle": "Education"
   },
   "experience": {
     "title": "Professional Experience",
@@ -51,7 +72,12 @@
         "company": "Le Wagon Paris",
         "date": "2023",
         "description": "Intensive full-stack web development training. Practical projects and teamwork on complete web applications.",
-        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+        "technologies": [
+          "Ruby on Rails",
+          "JavaScript",
+          "HTML/CSS",
+          "SQL"
+        ]
       },
       {
         "title": "Operations Manager",
@@ -93,56 +119,96 @@
         "title": "KR Global Solutions LTD",
         "description": "تطوير برمجيات SaaS مخصصة مع دمج الذكاء الاصطناعي والأتمتة\nإنشاء وإدارة متاجر إلكترونية\nأتمتة العمليات التجارية (API، أدوات لا/قليلة الكود)\nتصميم UX/UI وتطوير شامل\nإدارة مشاريع حرة وإطلاق منتجات داخلية\nاستراتيجية رقمية، استضافة وبنية تقنية",
         "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "tags": [
+          "SaaS",
+          "AI",
+          "Automation",
+          "Digital"
+        ],
         "link": ""
       },
       {
         "title": "FelizBella",
         "description": "إنشاء علامة تجارية لمستحضرات التجميل مع الهوية البصرية والتغليف\nإعداد متجر Shopify واستراتيجية التسويق\nمبيعات B2C عبر الإنترنت ودعم العملاء\nإدارة الموردين والمخزون\nإعلانات مدفوعة (Meta Ads، Google Ads)",
         "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "tags": [
+          "Cosmetics",
+          "E-commerce",
+          "Marketing",
+          "SEO"
+        ],
         "link": ""
       },
       {
         "title": "KHH Projects",
         "description": "استثمار في العقارات المؤجرة قصيرة الأجل\nإدارة آلية لممتلكات Airbnb\nتحسين الربحية عبر أدوات رقمية\nتطوير محفظة دولية",
         "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "tags": [
+          "Real estate",
+          "Automation",
+          "Airbnb",
+          "Management"
+        ],
         "link": ""
       },
       {
         "title": "Domaine Harrach",
         "description": "مشروع مزرعة فواكه عضوية على مساحة 3 هكتارات\nممارسات زراعية مستدامة\nاستراتيجية توزيع الغذاء محليًا\nتخطيط المحاصيل وتطوير الأعمال",
         "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "tags": [
+          "Agriculture",
+          "Organic",
+          "Sustainability",
+          "Farm"
+        ],
         "link": ""
       },
       {
         "title": "TLFH",
         "description": "Logistics company overseeing delivery operations in Paris.",
         "image": "https://images.pexels.com/photos/616966/pexels-photo-616966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "tags": [
+          "Logistics",
+          "Management",
+          "B2B",
+          "Compliance"
+        ],
         "link": ""
       },
       {
         "title": "Wash Center",
         "description": "Laundry service offering modern and efficient cleaning solutions.",
         "image": "https://images.pexels.com/photos/460995/pexels-photo-460995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "tags": [
+          "Laundry",
+          "Operations",
+          "Service",
+          "Optimization"
+        ],
         "link": ""
       },
       {
         "title": "Turfu Driving",
         "description": "Vehicle rental company with automated management system via CRM. Complete management of the fleet, bookings and maintenance.",
         "image": "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "tags": [
+          "Entrepreneurship",
+          "Management",
+          "CRM",
+          "Customer service"
+        ],
         "link": ""
       },
       {
         "title": "0'240",
         "description": "Fast-food with full management: staff, budget, supply and customer quality. Brand identity development and process optimization.",
         "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "tags": [
+          "Restaurant",
+          "Management",
+          "Marketing",
+          "Finance"
+        ],
         "link": ""
       }
     ]
@@ -161,5 +227,60 @@
       "initiative": "Initiative",
       "teamwork": "Teamwork"
     }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Do you have a project in mind or an opportunity for me? Feel free to contact me. I'm always open to new collaborations and challenges.",
+    "emailLabel": "Email",
+    "networkLabel": "Networks",
+    "success": "✅ Message sent successfully",
+    "error": "❌ An error occurred",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message...",
+      "sending": "Sending...",
+      "send": "Send message",
+      "disclaimer": "By submitting this form, you agree your data will be used only so I can contact you."
+    }
+  },
+  "chat": {
+    "title": "AI Agent",
+    "subtitle": "Multilingual assistant",
+    "clear": "Clear",
+    "placeholder": "Ask your question...",
+    "loading": "Generating...",
+    "send": "Send",
+    "fallback": "🤖 {{question}}? Great question!",
+    "openAria": "Open AI agent",
+    "closeAria": "Close AI agent"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "emailAria": "Send an email",
+    "backToTop": "Back to top",
+    "backToTopAria": "Back to top"
+  },
+  "resumeSelector": {
+    "ariaLabel": "Select a resume",
+    "defaultOption": "Choose a resume"
+  },
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "errorBoundary": {
+    "default": "An error occurred."
+  },
+  "moon": {
+    "loading": "Loading the Moon...",
+    "error": "Error loading the Moon."
+  },
+  "article": {
+    "audioNotSupported": "Your browser does not support the audio element."
   }
 }

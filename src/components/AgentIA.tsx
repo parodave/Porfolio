@@ -1,5 +1,6 @@
 // src/components/ChatWidget.tsx
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const LIBRETRANSLATE_URL =
   import.meta.env.VITE_LIBRETRANSLATE_URL || "https://libretranslate.de/translate";
@@ -43,13 +44,17 @@ function detectLanguage(text: string): SupportedLanguage {
 }
 
 
-const askFallbackAI = (q: string) => {
-  return `🤖 ${q}? Très bonne question !`;
+const askFallbackAI = (
+  q: string,
+  t: (key: string, options: { question: string }) => string,
+) => {
+  return t('chat.fallback', { question: q });
 };
 
 type ChatMessage = { role: "user" | "assistant"; content: string; lang: SupportedLanguage };
 
 export default function ChatWidget() {
+  const { t } = useTranslation();
   const [history, setHistory] = useState<ChatMessage[]>([]);
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
@@ -80,7 +85,7 @@ export default function ChatWidget() {
     let prompt = question;
     if (lang !== "en") prompt = await translateText(question, lang, "en");
 
-    const response = askFallbackAI(prompt);
+    const response = askFallbackAI(prompt, t);
     let answer = response;
 
     if (lang !== "en") {
@@ -110,16 +115,16 @@ export default function ChatWidget() {
   return (
     <div className="bg-black rounded-lg shadow-2xl p-4 flex flex-col w-80 border border-white/20">
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-black"><path d="M12,2A10,10 0 1,1 2,12A10,10 0 0,1 12,2Z" /></svg>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-black"><path d="M12,2A10,10 0 1,1 2,12A10,10 0 0,1 12,2Z" /></svg>
+            </div>
+            <div>
+              <h3 className="text-white font-medium text-sm">{t('chat.title')}</h3>
+              <p className="text-gray-400 text-xs">{t('chat.subtitle')}</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-white font-medium text-sm">Agent IA</h3>
-            <p className="text-gray-400 text-xs">Assistant multilingue</p>
-          </div>
-        </div>
-        <button onClick={handleReset} disabled={loading} className="text-gray-400 hover:text-white text-xs">Effacer</button>
+        <button onClick={handleReset} disabled={loading} className="text-gray-400 hover:text-white text-xs">{t('chat.clear')}</button>
       </div>
 
       <div className="w-full h-64 overflow-y-auto mb-4 space-y-3">
@@ -168,7 +173,7 @@ export default function ChatWidget() {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           disabled={loading}
-          placeholder="Posez votre question..."
+          placeholder={t('chat.placeholder')}
           className="w-full p-3 rounded-lg bg-white/5 text-white placeholder-gray-400 border border-white/20 text-sm"
         />
         <button
@@ -178,7 +183,7 @@ export default function ChatWidget() {
             loading || !question.trim() ? "opacity-50 cursor-not-allowed" : "hover:bg-white/90"
           }`}
         >
-          {loading ? "Génération..." : "Envoyer"}
+          {loading ? t('chat.loading') : t('chat.send')}
         </button>
       </form>
     </div>

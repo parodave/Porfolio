@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
       }
     } catch (err) {
       console.error('sendEmail error', err);
-      setError('❌ Une erreur est survenue');
+      setError(t('contact.error'));
     } finally {
       setLoading(false);
     }
@@ -53,15 +53,12 @@ const Contact: React.FC = () => {
         >
           <motion.div variants={itemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 inline-block relative">
-              Contact
+              {t('contact.title')}
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white" />
             </h2>
 
             <div className="space-y-6 text-gray-700 dark:text-gray-300">
-              <p>
-                Vous avez un projet en tête ou une opportunité à me proposer ? N&apos;hésitez pas à me
-                contacter. Je suis toujours ouvert aux nouvelles collaborations et défis.
-              </p>
+              <p>{t('contact.intro')}</p>
 
               <div className="space-y-4 mt-8">
                 <div className="flex items-center space-x-4">
@@ -69,7 +66,7 @@ const Contact: React.FC = () => {
                     <span className="text-xl">📧</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium">Email</h3>
+                    <h3 className="text-lg font-medium">{t('contact.emailLabel')}</h3>
                     <a
                       href="mailto:karim@karimhammouche.com"
                       className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
@@ -84,7 +81,7 @@ const Contact: React.FC = () => {
                     <span className="text-xl">🌐</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium mb-2">Réseaux</h3>
+                    <h3 className="text-lg font-medium mb-2">{t('contact.networkLabel')}</h3>
                     <SocialLinks />
                   </div>
                 </div>
@@ -96,7 +93,7 @@ const Contact: React.FC = () => {
             {success ? (
               <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
                 <CheckCircle size={20} />
-                <span>✅ Message envoyé avec succès</span>
+                <span>{t('contact.success')}</span>
               </div>
             ) : (
               <CompactContactForm

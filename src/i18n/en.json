@@ -1,8 +1,14 @@
 {
   "hero": {
     "title": "I'm more than just a developer.",
-    "typewriter": ["I build.", "I learn.", "I shape the future."],
-    "cta": "View my projects"
+    "typewriter": [
+      "I build.",
+      "I learn.",
+      "I shape the future."
+    ],
+    "cta": "View my projects",
+    "krButton": "Discover KR Global Solutions",
+    "scroll": "Scroll"
   },
   "nav": {
     "home": "Home",
@@ -28,10 +34,22 @@
     "quote": "Each project I touch is an opportunity to go further than expected of me.",
     "personalInfoTitle": "Personal Information",
     "details": [
-      { "label": "Name", "value": "Karim Hammouche" },
-      { "label": "Age", "value": "29 years old" },
-      { "label": "Nationality", "value": "French" },
-      { "label": "Currently", "value": "in Thailand (2025)" }
+      {
+        "label": "Name",
+        "value": "Karim Hammouche"
+      },
+      {
+        "label": "Age",
+        "value": "29 years old"
+      },
+      {
+        "label": "Nationality",
+        "value": "French"
+      },
+      {
+        "label": "Currently",
+        "value": "in Thailand (2025)"
+      }
     ],
     "careerTitle": "Career Path",
     "careerList": [
@@ -40,7 +58,10 @@
       "Entrepreneur: car rental and fast-food",
       "Recent experience: Rino Recycling in Brisbane (Nov. 2024 – April 2025)"
     ],
-    "downloadCv": "Download my resume"
+    "downloadCv": "Download my resume",
+    "languagesTitle": "Languages",
+    "certificationsTitle": "Certifications",
+    "educationTitle": "Education"
   },
   "experience": {
     "title": "Professional Experience",
@@ -51,7 +72,12 @@
         "company": "Le Wagon Paris",
         "date": "2023",
         "description": "Intensive full-stack web development training. Practical projects and teamwork on complete web applications.",
-        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+        "technologies": [
+          "Ruby on Rails",
+          "JavaScript",
+          "HTML/CSS",
+          "SQL"
+        ]
       },
       {
         "title": "Operations Manager",
@@ -100,7 +126,12 @@
           "Digital strategy, hosting, and technical infrastructure"
         ],
         "image": "https://images.pexels.com/photos/3771076/pexels-photo-3771076.jpeg",
-        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "tags": [
+          "SaaS",
+          "AI",
+          "Automation",
+          "Digital"
+        ],
         "link": "https://krglobalsolutionsltd.com/"
       },
       {
@@ -113,7 +144,12 @@
           "Paid advertising (Meta Ads, Google Ads)"
         ],
         "image": "https://images.pexels.com/photos/14766611/pexels-photo-14766611.jpeg",
-        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "tags": [
+          "Cosmetics",
+          "E-commerce",
+          "Marketing",
+          "SEO"
+        ],
         "link": ""
       },
       {
@@ -125,7 +161,12 @@
           "International portfolio development"
         ],
         "image": "https://images.pexels.com/photos/21273694/pexels-photo-21273694.jpeg",
-        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "tags": [
+          "Real estate",
+          "Automation",
+          "Airbnb",
+          "Management"
+        ],
         "link": ""
       },
       {
@@ -137,14 +178,24 @@
           "Crop planning and business development"
         ],
         "image": "https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg",
-        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "tags": [
+          "Agriculture",
+          "Organic",
+          "Sustainability",
+          "Farm"
+        ],
         "link": ""
       },
       {
         "title": "TLFH",
         "description": "Logistics company overseeing delivery operations in Paris.",
         "image": "https://images.pexels.com/photos/6169058/pexels-photo-6169058.jpeg",
-        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "tags": [
+          "Logistics",
+          "Management",
+          "B2B",
+          "Compliance"
+        ],
         "link": ""
       },
       {
@@ -156,7 +207,12 @@
           "Service quality improvement and profitability"
         ],
         "image": "https://images.pexels.com/photos/6872572/pexels-photo-6872572.jpeg",
-        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "tags": [
+          "Laundry",
+          "Operations",
+          "Service",
+          "Optimization"
+        ],
         "link": ""
       },
       {
@@ -169,7 +225,12 @@
           "Business expansion and partnerships"
         ],
         "image": "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg",
-        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "tags": [
+          "Entrepreneurship",
+          "Management",
+          "CRM",
+          "Customer service"
+        ],
         "link": ""
       },
       {
@@ -181,7 +242,12 @@
           "Supplier negotiation and cost control"
         ],
         "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "tags": [
+          "Restaurant",
+          "Management",
+          "Marketing",
+          "Finance"
+        ],
         "link": ""
       }
     ]
@@ -200,5 +266,60 @@
       "initiative": "Initiative",
       "teamwork": "Teamwork"
     }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Do you have a project in mind or an opportunity for me? Feel free to contact me. I'm always open to new collaborations and challenges.",
+    "emailLabel": "Email",
+    "networkLabel": "Networks",
+    "success": "✅ Message sent successfully",
+    "error": "❌ An error occurred",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message...",
+      "sending": "Sending...",
+      "send": "Send message",
+      "disclaimer": "By submitting this form, you agree your data will be used only so I can contact you."
+    }
+  },
+  "chat": {
+    "title": "AI Agent",
+    "subtitle": "Multilingual assistant",
+    "clear": "Clear",
+    "placeholder": "Ask your question...",
+    "loading": "Generating...",
+    "send": "Send",
+    "fallback": "🤖 {{question}}? Great question!",
+    "openAria": "Open AI agent",
+    "closeAria": "Close AI agent"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "emailAria": "Send an email",
+    "backToTop": "Back to top",
+    "backToTopAria": "Back to top"
+  },
+  "resumeSelector": {
+    "ariaLabel": "Select a resume",
+    "defaultOption": "Choose a resume"
+  },
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "errorBoundary": {
+    "default": "An error occurred."
+  },
+  "moon": {
+    "loading": "Loading the Moon...",
+    "error": "Error loading the Moon."
+  },
+  "article": {
+    "audioNotSupported": "Your browser does not support the audio element."
   }
 }
