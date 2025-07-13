@@ -1,34 +1,34 @@
 {
   "kr": {
     "title": "KR Global Solutions",
-    "description": "Corporate website for KR Global Solutions."
+    "description": "Tech and e-commerce services with automation expertise."
   },
   "felizbella": {
-    "title": "Feliz Bella",
-    "description": "E-commerce platform for a beauty salon."
+    "title": "FelizBella",
+    "description": "E-commerce and branding project for a natural cosmetics line."
   },
-  "realestate": {
-    "title": "Real Estate Agency",
-    "description": "Site showcasing property listings."
+  "khh": {
+    "title": "KHH Global Projects",
+    "description": "Experimental and cultural side-projects with web hosting and design."
   },
-  "rino": {
-    "title": "Rino Recycling",
-    "description": "Management tools for a recycling facility."
+  "domaine": {
+    "title": "Domaine Harrach",
+    "description": "Local organic farming venture with digital branding support."
   },
-  "logistics": {
-    "title": "Logistics Management",
-    "description": "Application for coordinating deliveries."
-  },
-  "cleaning": {
-    "title": "Cleaning Service",
-    "description": "Platform for booking cleaning services."
-  },
-  "rental": {
-    "title": "Car Rental Company",
-    "description": "Online car rental booking system."
-  },
-  "restaurant": {
+  "fastfood": {
     "title": "Fast-Food Restaurant",
-    "description": "Ordering site for a fast-food franchise."
+    "description": "Management and marketing for a restaurant franchise."
+  },
+  "turfu": {
+    "title": "Turfu Driving",
+    "description": "UX/UI and branding for an innovative driving school."
+  },
+  "tlfh": {
+    "title": "TLFH",
+    "description": "Tech and visual consulting for a fashion platform."
+  },
+  "wash": {
+    "title": "Wash Center",
+    "description": "Website redesign and SEO for a local laundry service."
   }
 }
