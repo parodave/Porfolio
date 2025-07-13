@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import Moon3D from './Moon3D';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
+import { OrbitControls } from '@react-three/drei';
+import Moon from './Moon';
+import ErrorBoundary from './ErrorBoundary';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
@@ -110,7 +114,16 @@ const Hero: React.FC = () => {
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <Moon3D reduceMotion={reduceMotion} />
+            <ErrorBoundary fallback={<div className="text-red-500">Erreur de chargement de la Lune</div>}>
+              <Canvas camera={{ position: [0, 0, 5], fov: 45 }} style={{ background: 'transparent' }}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} intensity={1} />
+                <Suspense fallback={<div className="text-gray-400">Chargement de la Lune...</div>}>
+                  <Moon />
+                  <OrbitControls enableZoom={false} />
+                </Suspense>
+              </Canvas>
+            </ErrorBoundary>
             <div className={`planet-info${mounted ? ' show' : ''}`}>
               <h2>Lune</h2>
               <p>Seul satellite naturel de la Terre, la Lune influence nos marées et notre culture.</p>
