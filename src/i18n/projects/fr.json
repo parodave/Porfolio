@@ -1,34 +1,26 @@
 {
   "kr": {
-    "title": "KR Global Solutions",
-    "description": "Services tech et e-commerce avec expertise en automatisation."
+    "title": "KR Global Solutions"
   },
   "felizbella": {
-    "title": "FelizBella",
-    "description": "Projet e-commerce et branding pour une ligne de cosmétiques naturels."
+    "title": "FelizBella"
   },
   "khh": {
-    "title": "KHH Global Projects",
-    "description": "Projets expérimentaux et culturels avec hébergement et design."
+    "title": "KHH Global Projects"
   },
   "domaine": {
-    "title": "Domaine Harrach",
-    "description": "Exploitation agricole biologique locale avec soutien digital."
+    "title": "Domaine Harrach"
   },
   "fastfood": {
-    "title": "Restaurant Fast-food",
-    "description": "Gestion et marketing pour une franchise de restauration rapide."
+    "title": "Restaurant Fast-food"
   },
   "turfu": {
-    "title": "Turfu Driving",
-    "description": "UX/UI et branding pour une auto-école innovante."
+    "title": "Turfu Driving"
   },
   "tlfh": {
-    "title": "TLFH",
-    "description": "Conseil tech et visuel pour une plateforme de mode."
+    "title": "TLFH"
   },
   "wash": {
-    "title": "Wash Center",
-    "description": "Refonte de site et SEO pour un service de blanchisserie local."
+    "title": "Wash Center"
   }
 }

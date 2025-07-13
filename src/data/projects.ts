@@ -2,7 +2,10 @@ export interface Project {
   id: string;
   image: string;
   tags: string[];
-  description: Record<string, string>;
+  description: {
+    en: string;
+    fr: string;
+  };
   url?: string;
 }
 
