@@ -2,7 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants as defaultItemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
-import { ArrowUpRight, Car, Utensils } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Car,
+  Utensils,
+  Globe,
+  Brush,
+  Home,
+  Leaf,
+  Truck,
+  Sparkles,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -22,11 +32,20 @@ const Projects: React.FC = () => {
     threshold: 0.1,
   });
 
-  const projectIcons = [<Car size={24} />, <Utensils size={24} />];
+  const projectIcons = [
+    <Globe size={24} />,
+    <Brush size={24} />,
+    <Home size={24} />,
+    <Leaf size={24} />,
+    <Truck size={24} />,
+    <Sparkles size={24} />,
+    <Car size={24} />,
+    <Utensils size={24} />,
+  ];
   const rawProjects = t('projects.items', { returnObjects: true });
   const projects: Project[] = rawProjects.map((proj, idx) => ({
     ...proj,
-    icon: projectIcons[idx],
+    icon: projectIcons[idx % projectIcons.length],
   }));
 
   const itemVariants = {
