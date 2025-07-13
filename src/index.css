@@ -20,6 +20,7 @@ html.light {
 }
 
 html.dark {
+  color-scheme: dark;
   @apply bg-black text-white;
 }
 
