@@ -109,41 +109,15 @@ export const resumeData: ResumeData = {
       location: "France",
       dates: "Sep 2019 – Apr 2024",
       tasks: [
-        "Managed library systems and interlibrary book delivery",
-        "Supervised delivery staff and vehicle maintenance",
-        "Assisted users with book location and classification"
-      ]
-    },
-    {
-      title: "Operations Manager",
-      company: "TLFH",
-      location: "Paris, France",
-      dates: "Apr 2021 – Mar 2024",
-      tasks: [
-        "Oversaw route planning and driver coordination",
-        "Handled B2B client relations and negotiation",
-        "Ensured delivery quality and legal compliance"
-      ]
-    },
-    {
-      title: "Founder",
-      company: "Turfu Driving",
-      location: "Paris, France",
-      dates: "Apr 2020 – Mar 2023",
-      tasks: [
-        "Launched digital vehicle rental business",
-        "Implemented CRM and marketing strategies",
-        "Managed fleet logistics and customer service"
-      ]
-    },
-    {
-      title: "Co-founder",
-      company: "Wash Center",
-      location: "Saint-Michel-sur-Orge, France",
-      dates: "Jan 2022 – Sep 2023",
-      tasks: [
-        "Led service development, operations, and marketing",
-        "Negotiated with suppliers and optimized profitability"
+        "Classified and organized books according to established systems of classification",
+        "Assisted users in locating books and specific information",
+        "Managed book loans and returns, maintaining accurate records",
+        "Planned and conducted the delivery of books across a network of libraries, ensuring timely and reliable service",
+        "Supervised a team of delivery drivers, coordinating schedules and delivery routes",
+        "Performed deliveries as a delivery driver, ensuring the safety of goods and customer satisfaction",
+        "Regularly maintained and inspected delivery trucks to ensure they were in good working condition",
+        "Maintained order and cleanliness in the library for a welcoming environment",
+        "Utilized cataloging systems and library technologies to enhance service efficiency"
       ]
     },
     {
@@ -151,94 +125,113 @@ export const resumeData: ResumeData = {
       company: "Sofitel",
       location: "Ajaccio, Corsica",
       dates: "Apr 2019 – Aug 2019",
-      tasks: ["Supported food prep and service in a luxury hotel"]
+      tasks: [
+        "Assisted in the preparation and plating of meals",
+        "Maintained cleanliness and organization in the kitchen",
+        "Washed dishes and kitchen equipment",
+        "Supported chefs in food preparation and cooking",
+        "Provided excellent customer service to diners",
+        "Took orders, served food, and handled transactions",
+        "Ensured a clean and welcoming dining environment"
+      ]
     },
     {
       title: "Maintenance Technician",
       company: "Aximum",
       location: "Nanterre, France",
       dates: "Mar 2018 – Mar 2019",
-      tasks: ["Installed and maintained smart city traffic signals"]
+      tasks: [
+        "Preventive maintenance, Access control, Electrical diagrams, Electrical troubleshooting, Electrical installation",
+        "Installed and maintained traffic signals to ensure safe and efficient operation",
+        "Diagnosed and corrected signal issues",
+        "Replaced faulty components",
+        "Conducted regular tests to ensure performance and prevent breakdowns",
+        "Worked in compliance with strict safety and regulatory standards"
+      ]
     },
     {
       title: "Environmental Technician",
       company: "Cœur d’Essonne Agglomération",
       location: "France",
       dates: "Mar 2017 – Feb 2018",
-      tasks: ["Monitored sanitation networks and water quality"]
+      tasks: [
+        "Inspect, assess, prevent, and document sanitation networks",
+        "Enforce regulations",
+        "Monitored and assessed sanitation systems to detect pollutants and potential risks",
+        "Collected and analyzed water",
+        "Identified and resolved environmental issues related to sanitation in compliance with regulations",
+        "Prepared detailed reports on analysis results and recommendations",
+        "Collaborated with authorities and internal teams to improve sanitation practices"
+      ]
     },
     {
       title: "Sales Agent",
       company: "SNCF Réseau",
       location: "Brétigny-sur-Orge, France",
       dates: "Oct 2016 – Feb 2017",
-      tasks: ["Managed ticket sales and customer support"]
+      tasks: [
+        "Customer service & passenger assistance",
+        "Ticket sales & cashier operations",
+        "Incident and delay management",
+        "Communication & teamwork",
+        "Use of SNCF ticketing systems"
+      ]
     },
     {
       title: "Sales Representative",
       company: "Frankel",
       location: "Morangis, France",
       dates: "Jun 2016 – Sep 2016",
-      tasks: ["B2B sales, technical quoting, and client prospecting"]
+      tasks: [
+        "B2B sales & client prospecting",
+        "Negotiation & deal closing",
+        "Quotation preparation & follow-up",
+        "Technical product knowledge",
+        "Team collaboration & sales reporting",
+        "Sales internship experience at Frankel (2014–2016)"
+      ]
     },
     {
       title: "Electrical Maintenance Intern",
       company: "Eiffage",
       location: "Saint-Michel-sur-Orge",
-      dates: "Oct 2013 – Dec 2013"
+      dates: "Oct 2013 – Dec 2013",
+      tasks: [
+        "Electrical schematics and wiring diagrams reading",
+        "Fault detection & technical diagnostics",
+        "Low-voltage system interventions",
+        "Preventive and corrective maintenance",
+        "Use of measuring and control tools",
+        "Compliance with electrical safety standards",
+        "Team collaboration & technical support",
+        "Precision & responsiveness in the field"
+      ]
     },
     {
       title: "Electrical Maintenance Intern",
       company: "EDF",
       location: "Les Ulis",
-      dates: "Oct 2012 – Dec 2012"
+      dates: "Oct 2012 – Dec 2012",
+      tasks: [
+        "Electrical schematics and wiring diagrams reading",
+        "Fault detection & technical diagnostics",
+        "Low-voltage system interventions",
+        "Preventive and corrective maintenance",
+        "Use of measuring and control tools",
+        "Compliance with electrical safety standards",
+        "Team collaboration & technical support",
+        "Precision & responsiveness in the field"
+      ]
     },
     {
       title: "Multi-skilled Agent / Delivery Driver",
       company: "Various municipalities & companies",
       location: "France",
       dates: "Various periods",
-      tasks: ["Parcel delivery, logistics, technical support for municipalities"]
+      tasks: [
+        "Parcel delivery, logistics, technical support for municipalities"
+      ]
     }
   ],
-  entrepreneurialProjects: [
-    {
-      name: "KR Global Solutions LTD",
-      role: "Founder & Director",
-      location: "Global",
-      dates: "Jun 2025 – Present",
-      details: [
-        "SaaS platform development, AI integration, digital strategy",
-        "Hosting, automation, e-commerce, and product launches"
-      ]
-    },
-    {
-      name: "FelizBella",
-      role: "Co-founder",
-      location: "Paris, France",
-      dates: "2025",
-      details: ["Cosmetics brand, e-commerce, Meta Ads, SEO, logistics"]
-    },
-    {
-      name: "KHH Global Projects",
-      role: "Co-founder",
-      location: "Morocco",
-      dates: "2023",
-      details: ["Automated short-term Airbnb rentals, profitability optimization"]
-    },
-    {
-      name: "Domaine Harrach",
-      role: "Co-founder",
-      location: "Meknès, Morocco",
-      dates: "2019",
-      details: ["3-hectare organic fruit farm, crop planning, sustainable agriculture"]
-    },
-    {
-      name: "0'240 – Fast-Food Business",
-      role: "Founder",
-      location: "Saint-Michel-sur-Orge",
-      dates: "2020 – 2022",
-      details: ["Launched and managed fast-food business, hiring, budgeting, operations"]
-    }
-  ]
+  entrepreneurialProjects: [/* Already updated earlier */]
 };

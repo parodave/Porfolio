@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import Cube3D from './Cube3D';
+import Moon3D from './Moon3D';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* 🔲 Cube 3D */}
+        {/* 🌕 Moon 3D */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <Cube3D reduceMotion={reduceMotion} />
+            <Moon3D reduceMotion={reduceMotion} />
           </div>
         </motion.div>
       </div>
