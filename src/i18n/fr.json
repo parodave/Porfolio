@@ -2,7 +2,9 @@
   "hero": {
     "title": "Je ne suis pas qu’un développeur.",
     "typewriter": ["J'entreprends.", "J'apprends.", "Je construis l'avenir."],
-    "cta": "Voir mes projets"
+    "cta": "Voir mes projets",
+    "discoverKr": "Découvrir KR Global Solutions",
+    "scroll": "Défilement"
   },
   "nav": {
     "home": "Accueil",
@@ -40,7 +42,10 @@
       "Entrepreneur: location de voitures et fast-food",
       "Expérience récente: Rino Recycling à Brisbane (nov. 2024 – avril 2025)"
     ],
-    "downloadCv": "Télécharger mon CV"
+    "downloadCv": "Télécharger mon CV",
+    "languagesTitle": "Langues",
+    "certificationsTitle": "Certifications",
+    "educationTitle": "Éducation"
   },
   "experience": {
     "title": "Expériences Professionnelles",
@@ -161,5 +166,53 @@
       "initiative": "Esprit d'initiative",
       "teamwork": "Travail d'équipe"
     }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Vous avez un projet en tête ou une opportunité à me proposer ? N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles collaborations et défis.",
+    "networks": "Réseaux",
+    "success": "✅ Message envoyé avec succès",
+    "error": "❌ Une erreur est survenue"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "emailAria": "Envoyer un email",
+    "backToTop": "Haut de page"
+  },
+  "resumeSelector": {
+    "aria": "Sélectionner un CV",
+    "choose": "Choisissez un CV"
+  },
+  "contactForm": {
+    "nameLabel": "Nom",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Email",
+    "emailPlaceholder": "votre@email.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Votre message...",
+    "sending": "Envoi en cours...",
+    "send": "Envoyer le message",
+    "success": "✅ Message envoyé avec succès",
+    "error": "❌ Une erreur est survenue",
+    "disclaimer": "En soumettant ce formulaire, vous acceptez que vos données soient utilisées uniquement pour que je puisse vous contacter."
+  },
+  "chatWidget": {
+    "title": "Agent IA",
+    "subtitle": "Assistant multilingue",
+    "clear": "Effacer",
+    "ready": "IA prête",
+    "supported": "7 langues supportées",
+    "thinking": "IA réfléchit...",
+    "placeholder": "Posez votre question...",
+    "generating": "Génération...",
+    "send": "Envoyer"
+  },
+  "floatingAgentIA": {
+    "open": "Ouvrir l'agent IA",
+    "close": "Fermer l'agent IA"
+  },
+  "moon": {
+    "loader": "Chargement de la Lune...",
+    "error": "Erreur de chargement de la Lune."
   }
 }

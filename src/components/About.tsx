@@ -32,14 +32,14 @@ const About: React.FC = () => {
 
             <p className="text-gray-700 dark:text-gray-300 mb-6">{resumeData.summary}</p>
 
-            <h3 className="text-xl font-semibold mb-2">Langues</h3>
+            <h3 className="text-xl font-semibold mb-2">{t('about.languagesTitle')}</h3>
             <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
               {resumeData.languages.map((lang) => (
                 <li key={lang}>{lang}</li>
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold mb-2 mt-6">Certifications</h3>
+            <h3 className="text-xl font-semibold mb-2 mt-6">{t('about.certificationsTitle')}</h3>
             <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
               {resumeData.certifications.map((cert) => (
                 <li key={cert}>{cert}</li>
@@ -48,7 +48,7 @@ const About: React.FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="bg-white dark:bg-darker p-8 border border-gray-300 dark:border-gray-800">
-            <h3 className="text-2xl font-semibold mb-6">Éducation</h3>
+            <h3 className="text-2xl font-semibold mb-6">{t('about.educationTitle')}</h3>
             <ul className="space-y-4">
               {resumeData.education.map((edu) => (
                 <li key={edu.school} className="border-b border-gray-300 dark:border-gray-800 pb-3">

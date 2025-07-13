@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const resumes = [
   { label: '🇫🇷 Français - CV', file: '/cv-fr.pdf' },
@@ -13,6 +14,7 @@ const resumes = [
 ];
 
 const ResumeSelector: React.FC = () => {
+  const { t } = useTranslation();
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const url = e.target.value;
     if (url) {
@@ -26,10 +28,10 @@ const ResumeSelector: React.FC = () => {
       onChange={handleChange}
       defaultValue=""
       className="bg-zinc-800 text-white border border-zinc-600 rounded-md px-4 py-2"
-      aria-label="Sélectionner un CV"
+      aria-label={t('resumeSelector.aria')}
     >
       <option value="" disabled>
-        Choisissez un CV
+        {t('resumeSelector.choose')}
       </option>
       {resumes.map(({ label, file }) => (
         <option key={file} value={file}>
