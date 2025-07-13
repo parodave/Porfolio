@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
 
 // ✅ Récupération des clés depuis le .env
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!;
@@ -22,6 +23,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
   loading,
   error,
 }) => {
+  const { t } = useTranslation();
   const internalFormRef = useRef<HTMLFormElement>(null);
   const [internalLoading, setInternalLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -59,7 +61,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
       }
     } catch (err) {
       console.error('EmailJS error', err);
-      setInternalError('❌ Une erreur est survenue');
+      setInternalError(t('contactForm.error'));
     } finally {
       setInternalLoading(false);
     }
@@ -69,7 +71,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
     return (
       <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
         <CheckCircle size={20} />
-        <span>✅ Message envoyé avec succès</span>
+        <span>{t('contactForm.success')}</span>
       </div>
     );
   }
@@ -83,7 +85,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
     >
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-          Nom
+          {t('contactForm.nameLabel')}
         </label>
         <input
           type="text"
@@ -91,13 +93,13 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           name="user_name"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
-          placeholder="Votre nom"
+          placeholder={t('contactForm.namePlaceholder')}
         />
       </div>
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
-          Email
+          {t('contactForm.emailLabel')}
         </label>
         <input
           type="email"
@@ -105,13 +107,13 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           name="user_email"
           required
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
-          placeholder="votre@email.com"
+          placeholder={t('contactForm.emailPlaceholder')}
         />
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-          Message
+          {t('contactForm.messageLabel')}
         </label>
         <textarea
           id="message"
@@ -119,7 +121,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
           required
           rows={4}
           className="w-full rounded-lg bg-white/5 placeholder-gray-400 border border-white/20 p-3 focus:outline-none focus:border-white/40"
-          placeholder="Votre message..."
+          placeholder={t('contactForm.messagePlaceholder')}
         ></textarea>
       </div>
 
@@ -156,18 +158,18 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Envoi en cours...
+            {t('contactForm.sending')}
           </span>
         ) : (
           <span className="flex items-center">
             <Send size={18} className="me-2" />
-            Envoyer le message
+            {t('contactForm.send')}
           </span>
         )}
       </button>
 
       <p className="text-xs text-gray-500 text-center mt-2">
-        En soumettant ce formulaire, vous acceptez que vos données soient utilisées uniquement pour que je puisse vous contacter.
+        {t('contactForm.disclaimer')}
       </p>
     </form>
   );

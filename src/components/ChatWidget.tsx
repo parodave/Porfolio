@@ -149,6 +149,7 @@ export default function ChatWidget() {
           {t('chat.clear')}
         </button>
       </div>
+
       <div className="w-full h-64 overflow-y-auto mb-4 space-y-3">
         {history.length === 0 && !loading && !typing && (
           <div className="text-center py-8">
@@ -161,19 +162,13 @@ export default function ChatWidget() {
             <p className="text-gray-400 text-xs">{t('chat.supported')}</p>
           </div>
         )}
+
         {history.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className="flex items-start gap-2 max-w-[85%]">
-              {msg.role === 'assistant' && (
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-black rounded-full" />
-                </div>
-              )}
-              {msg.role === 'user' && (
-                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full" />
-                </div>
-              )}
+              <div className={`w-6 h-6 ${msg.role === 'user' ? 'bg-white/20' : 'bg-white'} rounded-full flex items-center justify-center flex-shrink-0 mt-1`}>
+                <div className={`w-2 h-2 ${msg.role === 'user' ? 'bg-white' : 'bg-black'} rounded-full`} />
+              </div>
               <div className={`px-3 py-2 rounded-lg text-sm ${msg.role === 'user' ? 'bg-white text-black' : 'bg-white/10 text-white border border-white/20'}`}>
                 <div className="leading-relaxed">{msg.content}</div>
                 <div className="text-xs mt-1 opacity-60 flex items-center gap-1">
@@ -184,6 +179,7 @@ export default function ChatWidget() {
             </div>
           </div>
         ))}
+
         {typing && (
           <div className="flex justify-start">
             <div className="flex items-start gap-2 max-w-[85%]">
@@ -192,11 +188,12 @@ export default function ChatWidget() {
               </div>
               <div className="px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 text-sm">
                 {typing}
-                  <span className="animate-pulse ms-1">|</span>
+                <span className="animate-pulse ms-1">|</span>
               </div>
             </div>
           </div>
         )}
+
         {loading && !typing && (
           <div className="flex justify-start">
             <div className="flex items-start gap-2">
@@ -218,6 +215,7 @@ export default function ChatWidget() {
         )}
         <div ref={messagesEndRef} />
       </div>
+
       <div className="space-y-2">
         <input
           type="text"
