@@ -91,56 +91,95 @@
     "items": [
       {
         "title": "KR Global Solutions LTD",
-        "description": "SaaS platform delivering global digital solutions with AI integration.",
-        "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "Custom SaaS development with AI integration and automation",
+          "E-commerce store creation and management",
+          "Business process automation (API, no-code/low-code tools)",
+          "UX/UI design and full-stack development",
+          "Freelance project management and internal product launches",
+          "Digital strategy, hosting, and technical infrastructure"
+        ],
+        "image": "https://images.pexels.com/photos/3771076/pexels-photo-3771076.jpeg",
         "tags": ["SaaS", "AI", "Automation", "Digital"],
-        "link": ""
+        "link": "https://krglobalsolutionsltd.com/"
       },
       {
         "title": "FelizBella",
-        "description": "Cosmetics brand with e-commerce focus and online marketing.",
-        "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "Cosmetics brand creation with branding and packaging",
+          "Shopify e-commerce setup and marketing strategy",
+          "B2C online sales and customer support",
+          "Supplier relations and inventory management",
+          "Paid advertising (Meta Ads, Google Ads)"
+        ],
+        "image": "https://images.pexels.com/photos/14766611/pexels-photo-14766611.jpeg",
         "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
         "link": ""
       },
       {
         "title": "KHH Projects",
-        "description": "Automated short-term rental management for Airbnb properties.",
-        "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "Investment in short-term rental properties",
+          "Automated Airbnb property management",
+          "Profitability optimization through digital tools",
+          "International portfolio development"
+        ],
+        "image": "https://images.pexels.com/photos/21273694/pexels-photo-21273694.jpeg",
         "tags": ["Real estate", "Automation", "Airbnb", "Management"],
         "link": ""
       },
       {
         "title": "Domaine Harrach",
-        "description": "Organic fruit farm practicing sustainable agriculture.",
-        "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "3-hectare organic fruit farm project",
+          "Sustainable agriculture practices",
+          "Local food distribution strategy",
+          "Crop planning and business development"
+        ],
+        "image": "https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg",
         "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
         "link": ""
       },
       {
         "title": "TLFH",
         "description": "Logistics company overseeing delivery operations in Paris.",
-        "image": "https://images.pexels.com/photos/616966/pexels-photo-616966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "image": "https://images.pexels.com/photos/6169058/pexels-photo-6169058.jpeg",
         "tags": ["Logistics", "Management", "B2B", "Compliance"],
         "link": ""
       },
       {
         "title": "Wash Center",
-        "description": "Laundry service offering modern and efficient cleaning solutions.",
-        "image": "https://images.pexels.com/photos/460995/pexels-photo-460995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "Car cleaning service for B2B and B2C",
+          "Launch, team management, and local outreach",
+          "Supplier negotiation and logistics",
+          "Service quality improvement and profitability"
+        ],
+        "image": "https://images.pexels.com/photos/6872572/pexels-photo-6872572.jpeg",
         "tags": ["Laundry", "Operations", "Service", "Optimization"],
         "link": ""
       },
       {
         "title": "Turfu Driving",
-        "description": "Vehicle rental company with automated management system via CRM. Complete management of the fleet, bookings and maintenance.",
-        "image": "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "description": [
+          "Digital vehicle rental company",
+          "Fleet management and CRM automation",
+          "Digital marketing strategy",
+          "Customer relationship management",
+          "Business expansion and partnerships"
+        ],
+        "image": "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg",
         "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
         "link": ""
       },
       {
         "title": "0'240",
-        "description": "Fast-food with full management: staff, budget, supply and customer quality. Brand identity development and process optimization.",
+        "description": [
+          "Founded and ran a fast-food restaurant",
+          "Staff recruitment, budgeting, and operations",
+          "Customer service and product quality",
+          "Supplier negotiation and cost control"
+        ],
         "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "tags": ["Restaurant", "Management", "Marketing", "Finance"],
         "link": ""

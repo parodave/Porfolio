@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
+import Moon3D from './Moon3D';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
-import Cube3D from './Cube3D';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -98,18 +98,19 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* ✅ Cube 3D + infos planète */}
+        {/* 🌕 Moon 3D + infos planète */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
             duration: reduceMotion ? 0.5 : 0.3,
+            delay: reduceMotion ? 0 : 0.3,
             ease: 'easeOut',
           }}
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <Cube3D reduceMotion={reduceMotion} />
+            <Moon3D reduceMotion={reduceMotion} />
             <div className={`planet-info${mounted ? ' show' : ''}`}>
               <h2>Lune</h2>
               <p>Seul satellite naturel de la Terre, la Lune influence nos marées et notre culture.</p>
