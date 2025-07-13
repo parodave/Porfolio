@@ -50,12 +50,12 @@
   "experience": {
     "title": "Expériences Professionnelles",
     "subtitle": "Mon parcours professionnel diversifié qui témoigne de ma polyvalence et de ma capacité d'adaptation.",
-    "items": [/* contenu inchangé, tronqué ici pour lisibilité */]
+    "items": []
   },
   "projects": {
     "title": "Projets",
     "subtitle": "Découvrez mes projets entrepreneuriaux et professionnels les plus significatifs.",
-    "items": [/* contenu inchangé, tronqué ici pour lisibilité */]
+    "items": []
   },
   "skills": {
     "title": "Compétences",
