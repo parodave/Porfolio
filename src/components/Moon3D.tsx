@@ -1,36 +1,41 @@
 import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls, Edges } from '@react-three/drei';
 import * as THREE from 'three';
+import { TextureLoader } from 'three';
 
 interface Moon3DProps {
   reduceMotion?: boolean;
 }
 
-const SpinningSphere: React.FC<{ reduceMotion: boolean }> = ({ reduceMotion }) => {
+const textureUrl = 'https://raw.githubusercontent.com/alexandrevacassin/codepen/refs/heads/main/planets/moon.jpg';
+
+const SpinningMoon: React.FC<{ reduceMotion: boolean }> = ({ reduceMotion }) => {
   const meshRef = useRef<THREE.Mesh>(null!);
+  const texture = useLoader(TextureLoader, textureUrl);
+
   useFrame(() => {
     if (!reduceMotion) {
-      meshRef.current.rotation.y += 0.01;
-      meshRef.current.rotation.z += 0.002;
+      meshRef.current.rotation.y += 0.005;
+      meshRef.current.rotation.z += 0.001;
     }
   });
 
   return (
     <mesh ref={meshRef}>
       <sphereGeometry args={[1.5, 32, 32]} />
-      <meshPhongMaterial color={0xffffff} transparent opacity={0.15} />
-      <Edges scale={1} color="white" />
+      <meshStandardMaterial map={texture} />
+      <Edges scale={1.01} color="white" />
     </mesh>
   );
 };
 
 const Moon3D: React.FC<Moon3DProps> = ({ reduceMotion = false }) => (
   <div className="w-full h-64 sm:h-96 md:h-full">
-    <Canvas camera={{ position: [0, 0, 5] }}>
+    <Canvas style={{ background: 'transparent' }} camera={{ position: [0, 0, 5] }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      <SpinningSphere reduceMotion={reduceMotion} />
+      <SpinningMoon reduceMotion={reduceMotion} />
       <OrbitControls />
     </Canvas>
   </div>
