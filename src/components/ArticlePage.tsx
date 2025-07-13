@@ -12,7 +12,7 @@ const ArticlePage = () => {
   }
 
   return (
-    <section className="min-h-screen py-20 bg-dark text-white px-6 md:px-10">
+    <section className="min-h-screen py-20 bg-light dark:bg-dark text-black dark:text-white px-6 md:px-10">
       <div className="max-w-3xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold">{article.title[i18n.language] ?? article.title.en}</h1>
         <audio controls src={article.audio} className="w-full">
