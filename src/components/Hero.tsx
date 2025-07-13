@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import Cube3D from './Cube3D';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import Cube3D from './Cube3D';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -34,12 +34,12 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
-      {/* 🌫️ Background gradient */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-radial from-light to-light dark:from-dark dark:to-darker opacity-60"></div>
+      {/* Dégradé d'arrière-plan */}
+      <div className="absolute inset-0 -z-0">
+        <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
       </div>
 
-      {/* 💬 Zone principale */}
+      {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
         <motion.div
           variants={containerVariants}
@@ -58,60 +58,52 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
-            {t("hero.title")}
+            {t('hero.title')}
           </motion.h1>
 
           <motion.div
             variants={itemVariants}
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 min-h-[3rem] mb-8"
           >
-            {mounted && (
-              reduceMotion ? (
-                <span>{typewriterTexts[0]}</span>
-              ) : (
-                <div className="flex items-center">
-                  <Typewriter
-                    options={{
-                      strings: typewriterTexts,
-                      autoStart: true,
-                      loop: true,
-                      delay: 50,
-                      deleteSpeed: 30,
-                    }}
-                  />
-                </div>
-              )
+            {mounted && reduceMotion ? (
+              <span>{typewriterTexts[0]}</span>
+            ) : (
+              <div className="flex items-center">
+                <Typewriter
+                  options={{
+                    strings: typewriterTexts,
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 30,
+                  }}
+                />
+              </div>
             )}
           </motion.div>
 
-          {/* 🌐 Boutons et sélecteur */}
+          {/* Boutons et sélecteurs */}
           <motion.div variants={itemVariants} className="mb-4">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() =>
-                  window.open(
-                    'https://krglobalsolutionsltd.com/',
-                    '_blank',
-                    'noopener,noreferrer'
-                  )
+                  window.open('https://krglobalsolutionsltd.com/', '_blank', 'noopener,noreferrer')
                 }
                 className="bg-zinc-800 text-white rounded-lg px-4 py-2 hover:bg-zinc-700 transition-all"
               >
                 Découvrir KR Global Solutions
               </button>
-
               <ResumeSelector />
             </div>
           </motion.div>
         </motion.div>
 
-        {/* 🔲 Cube 3D */}
+        {/* ✅ Cube 3D + infos planète */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
-            duration: reduceMotion ? 0 : 0.5,
-            delay: reduceMotion ? 0 : 0.3,
+            duration: reduceMotion ? 0.5 : 0.3,
             ease: 'easeOut',
           }}
           className="w-full md:w-2/5 flex justify-center md:justify-end"
@@ -119,14 +111,14 @@ const Hero: React.FC = () => {
           <div className="relative w-64 h-64 animate-float">
             <Cube3D reduceMotion={reduceMotion} />
             <div className={`planet-info${mounted ? ' show' : ''}`}>
-              <h2>Moon</h2>
-              <p>Earth's only natural satellite, the Moon influences our tides and culture.</p>
+              <h2>Lune</h2>
+              <p>Seul satellite naturel de la Terre, la Lune influence nos marées et notre culture.</p>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* 🖱️ Animation scroll */}
+      {/* Défilement d'animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -139,12 +131,12 @@ const Hero: React.FC = () => {
       >
         <div className="w-5 h-10 border-2 border-gray-500 dark:border-white rounded-full flex justify-center">
           <motion.div
-            animate={reduceMotion ? { y: 0 } : { y: [0, 12, 0] }}
-            transition={reduceMotion ? { duration: 0 } : { repeat: Infinity, duration: 1.2 }}
+            animate={{ y: reduceMotion ? 0 : [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 1.2 }}
             className="w-1 h-2 bg-gray-500 dark:bg-white rounded-full mt-2"
           />
         </div>
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Scroll</p>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Défilement</p>
       </motion.div>
     </section>
   );
