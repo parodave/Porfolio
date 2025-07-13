@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import { resumeData } from '../data/resume';
 
 const About: React.FC = () => {
   const { t } = useTranslation();
@@ -30,32 +29,35 @@ const About: React.FC = () => {
               <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-white"></span>
             </h2>
 
-            <p className="text-gray-700 dark:text-gray-300 mb-6">{resumeData.summary}</p>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">{t('about.summary')}</p>
 
             <h3 className="text-xl font-semibold mb-2">{t('about.languagesTitle')}</h3>
             <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
-              {resumeData.languages.map((lang) => (
-                <li key={lang}>{lang}</li>
-              ))}
+              {t('about.languages', { returnObjects: true })
+                .map((lang: string) => (
+                  <li key={lang}>{lang}</li>
+                ))}
             </ul>
 
             <h3 className="text-xl font-semibold mb-2 mt-6">{t('about.certificationsTitle')}</h3>
             <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300">
-              {resumeData.certifications.map((cert) => (
-                <li key={cert}>{cert}</li>
-              ))}
+              {t('about.certifications', { returnObjects: true })
+                .map((cert: string) => (
+                  <li key={cert}>{cert}</li>
+                ))}
             </ul>
           </motion.div>
 
           <motion.div variants={itemVariants} className="bg-white dark:bg-darker p-8 border border-gray-300 dark:border-gray-800">
             <h3 className="text-2xl font-semibold mb-6">{t('about.educationTitle')}</h3>
             <ul className="space-y-4">
-              {resumeData.education.map((edu) => (
-                <li key={edu.school} className="border-b border-gray-300 dark:border-gray-800 pb-3">
-                  <p className="font-medium">{edu.school} - {edu.location}</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">{edu.degree} ({edu.dates})</p>
-                </li>
-              ))}
+              {t('about.education', { returnObjects: true })
+                .map((edu: { school: string; location: string; degree: string; dates: string }) => (
+                  <li key={edu.school} className="border-b border-gray-300 dark:border-gray-800 pb-3">
+                    <p className="font-medium">{edu.school} - {edu.location}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">{edu.degree} ({edu.dates})</p>
+                  </li>
+                ))}
             </ul>
           </motion.div>
         </motion.div>

@@ -8,7 +8,6 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase } from 'lucide-react';
-import { resumeData } from '../data/resume';
 import { useTheme } from '../hooks/useTheme';
 
 interface ExperienceItem {
@@ -27,22 +26,13 @@ const Experience: React.FC = () => {
   });
   const { theme } = useTheme();
 
-  const experienceItems: ExperienceItem[] = [
-    ...resumeData.experience.map((exp) => ({
-      title: exp.title,
-      company: exp.company,
-      date: exp.dates,
-      description: exp.tasks ? exp.tasks.join(' ') : '',
-      icon: <Briefcase />,
-    })),
-    ...resumeData.entrepreneurialProjects.map((proj) => ({
-      title: proj.name,
-      company: proj.role,
-      date: proj.dates,
-      description: proj.details.join(' '),
-      icon: <Briefcase />,
-    })),
-  ];
+  const experienceItems: ExperienceItem[] = t('experience.items', { returnObjects: true }).map((exp: { title: string; company: string; dates: string; tasks?: string[] }) => ({
+    title: exp.title,
+    company: exp.company,
+    date: exp.dates,
+    description: exp.tasks ? exp.tasks.join(' ') : '',
+    icon: <Briefcase />,
+  }));
 
   return (
     <section id="experience" className="py-20 bg-light dark:bg-darker relative px-6 md:px-10" ref={ref}>
