@@ -1,18 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { containerVariants, itemVariants as defaultItemVariants } from '../animationVariants';
+import { containerVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
-import ProjectCard from './ProjectCard';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  link?: string; // <- rendu optionnel comme dans ProjectCard
-}
+import ProjectCardsGrid from './ProjectCardsGrid';
 
 const Projects: React.FC = () => {
   const { t } = useTranslation();
@@ -22,14 +14,6 @@ const Projects: React.FC = () => {
     threshold: 0.1,
   });
 
-  // ✅ Récupération localisée depuis les fichiers de traduction
-  const rawProjects = t('projects.items', { returnObjects: true }) as Project[];
-  const projects: Project[] = rawProjects;
-
-  const itemVariants = {
-    ...defaultItemVariants,
-    hidden: { y: 30, opacity: 0 },
-  };
 
   return (
     <section id="projects" className="py-20 bg-light dark:bg-dark relative px-6 md:px-10">
@@ -51,19 +35,8 @@ const Projects: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {projects.map((project, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                tags={project.tags}
-                link={project.link}
-              />
-            </motion.div>
-          ))}
+          <ProjectCardsGrid />
         </motion.div>
       </div>
     </section>
