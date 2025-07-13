@@ -1,8 +1,11 @@
 {
   "hero": {
     "title": "Je ne suis pas qu’un développeur.",
-    "typewriter": ["J'entreprends.", "J'apprends.", "Je construis l'avenir."],
-    "cta": "Voir mes projets"
+    "typewriter": [
+      "J'entreprends.",
+      "J'apprends.",
+      "Je construis l'avenir."
+    ]
   },
   "nav": {
     "home": "Accueil",
@@ -15,32 +18,10 @@
   },
   "blog": {
     "title": "Blog",
-    "listen": "Écouter l'audio",
     "back": "Retour aux articles"
   },
   "about": {
-    "title": "À propos de moi",
-    "paragraphs": [
-      "Passionné par la technologie et l'entrepreneuriat, j'ai commencé ma carrière comme électricien à la SNCF avant de me réorienter dans le développement web. Ce parcours atypique m'a permis d'acquérir une polyvalence et une capacité d'adaptation précieuses.",
-      "Entrepreneur dans l'âme, j'ai fondé et géré plusieurs entreprises, dont une société de location de voitures et un fast-food. Ces expériences m'ont appris à résoudre des problèmes complexes, à gérer des équipes et à développer une vision stratégique.",
-      "Récemment, j'ai travaillé pour Rino Recycling à Brisbane, où j'ai pu mettre à profit mes compétences techniques et ma créativité au service de projets innovants."
-    ],
-    "quote": "Chaque projet que je touche est une opportunité d'aller plus loin que ce qu'on attend de moi.",
-    "personalInfoTitle": "Infos personnelles",
-    "details": [
-      { "label": "Nom", "value": "Karim Hammouche" },
-      { "label": "Âge", "value": "29 ans" },
-      { "label": "Nationalité", "value": "Française" },
-      { "label": "Actuellement", "value": "en Thaïlande (2025)" }
-    ],
-    "careerTitle": "Parcours",
-    "careerList": [
-      "Ancien électricien (SNCF), technicien environnemental et agent de livraison",
-      "Développeur web formé à Le Wagon Paris (2023)",
-      "Entrepreneur: location de voitures et fast-food",
-      "Expérience récente: Rino Recycling à Brisbane (nov. 2024 – avril 2025)"
-    ],
-    "downloadCv": "Télécharger mon CV"
+    "title": "À propos de moi"
   },
   "experience": {
     "title": "Expériences Professionnelles",
@@ -51,7 +32,12 @@
         "company": "Le Wagon Paris",
         "date": "2023",
         "description": "Formation intensive au développement web full-stack. Projets pratiques et travail d'équipe sur des applications web complètes.",
-        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+        "technologies": [
+          "Ruby on Rails",
+          "JavaScript",
+          "HTML/CSS",
+          "SQL"
+        ]
       },
       {
         "title": "Responsable Opérationnel",
@@ -93,56 +79,96 @@
         "title": "KR Global Solutions LTD",
         "description": "Développement SaaS personnalisé avec intégration de l'IA et automatisation\nCréation et gestion de boutiques e-commerce\nAutomatisation des processus métier (API, outils no-code/low-code)\nDesign UX/UI et développement full-stack\nGestion de projets freelance et lancements de produits internes\nStratégie digitale, hébergement et infrastructure technique",
         "image": "https://images.pexels.com/photos/753861/pexels-photo-753861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "tags": [
+          "SaaS",
+          "AI",
+          "Automation",
+          "Digital"
+        ],
         "link": ""
       },
       {
         "title": "FelizBella",
         "description": "Création de marque cosmétique avec identité visuelle et packaging\nConfiguration e-commerce sur Shopify et stratégie marketing\nVentes en ligne B2C et support client\nGestion des fournisseurs et des stocks\nPublicité payante (Meta Ads, Google Ads)",
         "image": "https://images.pexels.com/photos/704971/pexels-photo-704971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "tags": [
+          "Cosmetics",
+          "E-commerce",
+          "Marketing",
+          "SEO"
+        ],
         "link": ""
       },
       {
         "title": "KHH Projects",
         "description": "Investissement dans des biens immobiliers en location courte durée\nGestion automatisée de propriétés Airbnb\nOptimisation de la rentabilité grâce aux outils digitaux\nDéveloppement d’un portefeuille international",
         "image": "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "tags": [
+          "Real estate",
+          "Automation",
+          "Airbnb",
+          "Management"
+        ],
         "link": ""
       },
       {
         "title": "Domaine Harrach",
         "description": "Projet de ferme fruitière bio de 3 hectares\nPratiques agricoles durables\nStratégie de distribution alimentaire locale\nPlanification des cultures et développement commercial",
         "image": "https://images.pexels.com/photos/452236/pexels-photo-452236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "tags": [
+          "Agriculture",
+          "Organic",
+          "Sustainability",
+          "Farm"
+        ],
         "link": ""
       },
       {
         "title": "TLFH",
         "description": "Logistics company overseeing delivery operations in Paris.",
         "image": "https://images.pexels.com/photos/616966/pexels-photo-616966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "tags": [
+          "Logistics",
+          "Management",
+          "B2B",
+          "Compliance"
+        ],
         "link": ""
       },
       {
         "title": "Wash Center",
         "description": "Laundry service offering modern and efficient cleaning solutions.",
         "image": "https://images.pexels.com/photos/460995/pexels-photo-460995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "tags": [
+          "Laundry",
+          "Operations",
+          "Service",
+          "Optimization"
+        ],
         "link": ""
       },
       {
         "title": "Turfu Driving",
         "description": "Vehicle rental company with automated management system via CRM. Complete management of the fleet, bookings and maintenance.",
         "image": "https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "tags": [
+          "Entrepreneurship",
+          "Management",
+          "CRM",
+          "Customer service"
+        ],
         "link": ""
       },
       {
         "title": "0'240",
         "description": "Fast-food with full management: staff, budget, supply and customer quality. Brand identity development and process optimization.",
         "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "tags": [
+          "Restaurant",
+          "Management",
+          "Marketing",
+          "Finance"
+        ],
         "link": ""
       }
     ]
@@ -154,12 +180,6 @@
       "tech": "Tech / Web",
       "tools": "Outils",
       "soft": "Soft Skills"
-    },
-    "softNames": {
-      "autonomy": "Autonomie",
-      "rigor": "Rigueur",
-      "initiative": "Esprit d'initiative",
-      "teamwork": "Travail d'équipe"
     }
   }
 }

@@ -1,8 +1,11 @@
 {
   "hero": {
     "title": "I'm more than just a developer.",
-    "typewriter": ["I build.", "I learn.", "I shape the future."],
-    "cta": "View my projects"
+    "typewriter": [
+      "I build.",
+      "I learn.",
+      "I shape the future."
+    ]
   },
   "nav": {
     "home": "Home",
@@ -15,32 +18,10 @@
   },
   "blog": {
     "title": "Blog",
-    "listen": "Listen to audio",
     "back": "Back to articles"
   },
   "about": {
-    "title": "About Me",
-    "paragraphs": [
-      "Passionate about technology and entrepreneurship, I began my career as an electrician at SNCF before moving into web development. This unusual path gave me valuable versatility and adaptability.",
-      "An entrepreneur at heart, I founded and managed several businesses, including a car rental company and a fast-food restaurant. These experiences taught me to solve complex problems, manage teams and develop a strategic vision.",
-      "Recently I worked for Rino Recycling in Brisbane, where I put my technical skills and creativity to work on innovative projects."
-    ],
-    "quote": "Each project I touch is an opportunity to go further than expected of me.",
-    "personalInfoTitle": "Personal Information",
-    "details": [
-      { "label": "Name", "value": "Karim Hammouche" },
-      { "label": "Age", "value": "29 years old" },
-      { "label": "Nationality", "value": "French" },
-      { "label": "Currently", "value": "in Thailand (2025)" }
-    ],
-    "careerTitle": "Career Path",
-    "careerList": [
-      "Former electrician (SNCF), environmental technician and delivery agent",
-      "Web developer trained at Le Wagon Paris (2023)",
-      "Entrepreneur: car rental and fast-food",
-      "Recent experience: Rino Recycling in Brisbane (Nov. 2024 – April 2025)"
-    ],
-    "downloadCv": "Download my resume"
+    "title": "About Me"
   },
   "experience": {
     "title": "Professional Experience",
@@ -51,7 +32,12 @@
         "company": "Le Wagon Paris",
         "date": "2023",
         "description": "Intensive full-stack web development training. Practical projects and teamwork on complete web applications.",
-        "technologies": ["Ruby on Rails", "JavaScript", "HTML/CSS", "SQL"]
+        "technologies": [
+          "Ruby on Rails",
+          "JavaScript",
+          "HTML/CSS",
+          "SQL"
+        ]
       },
       {
         "title": "Operations Manager",
@@ -100,7 +86,12 @@
           "Digital strategy, hosting, and technical infrastructure"
         ],
         "image": "https://images.pexels.com/photos/3771076/pexels-photo-3771076.jpeg",
-        "tags": ["SaaS", "AI", "Automation", "Digital"],
+        "tags": [
+          "SaaS",
+          "AI",
+          "Automation",
+          "Digital"
+        ],
         "link": "https://krglobalsolutionsltd.com/"
       },
       {
@@ -113,7 +104,12 @@
           "Paid advertising (Meta Ads, Google Ads)"
         ],
         "image": "https://images.pexels.com/photos/14766611/pexels-photo-14766611.jpeg",
-        "tags": ["Cosmetics", "E-commerce", "Marketing", "SEO"],
+        "tags": [
+          "Cosmetics",
+          "E-commerce",
+          "Marketing",
+          "SEO"
+        ],
         "link": ""
       },
       {
@@ -125,7 +121,12 @@
           "International portfolio development"
         ],
         "image": "https://images.pexels.com/photos/21273694/pexels-photo-21273694.jpeg",
-        "tags": ["Real estate", "Automation", "Airbnb", "Management"],
+        "tags": [
+          "Real estate",
+          "Automation",
+          "Airbnb",
+          "Management"
+        ],
         "link": ""
       },
       {
@@ -137,14 +138,24 @@
           "Crop planning and business development"
         ],
         "image": "https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg",
-        "tags": ["Agriculture", "Organic", "Sustainability", "Farm"],
+        "tags": [
+          "Agriculture",
+          "Organic",
+          "Sustainability",
+          "Farm"
+        ],
         "link": ""
       },
       {
         "title": "TLFH",
         "description": "Logistics company overseeing delivery operations in Paris.",
         "image": "https://images.pexels.com/photos/6169058/pexels-photo-6169058.jpeg",
-        "tags": ["Logistics", "Management", "B2B", "Compliance"],
+        "tags": [
+          "Logistics",
+          "Management",
+          "B2B",
+          "Compliance"
+        ],
         "link": ""
       },
       {
@@ -156,7 +167,12 @@
           "Service quality improvement and profitability"
         ],
         "image": "https://images.pexels.com/photos/6872572/pexels-photo-6872572.jpeg",
-        "tags": ["Laundry", "Operations", "Service", "Optimization"],
+        "tags": [
+          "Laundry",
+          "Operations",
+          "Service",
+          "Optimization"
+        ],
         "link": ""
       },
       {
@@ -169,7 +185,12 @@
           "Business expansion and partnerships"
         ],
         "image": "https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg",
-        "tags": ["Entrepreneurship", "Management", "CRM", "Customer service"],
+        "tags": [
+          "Entrepreneurship",
+          "Management",
+          "CRM",
+          "Customer service"
+        ],
         "link": ""
       },
       {
@@ -181,7 +202,12 @@
           "Supplier negotiation and cost control"
         ],
         "image": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "tags": ["Restaurant", "Management", "Marketing", "Finance"],
+        "tags": [
+          "Restaurant",
+          "Management",
+          "Marketing",
+          "Finance"
+        ],
         "link": ""
       }
     ]
@@ -193,12 +219,6 @@
       "tech": "Tech / Web",
       "tools": "Tools",
       "soft": "Soft Skills"
-    },
-    "softNames": {
-      "autonomy": "Autonomy",
-      "rigor": "Rigor",
-      "initiative": "Initiative",
-      "teamwork": "Teamwork"
     }
   }
 }
