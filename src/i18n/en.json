@@ -200,5 +200,16 @@
       "initiative": "Initiative",
       "teamwork": "Teamwork"
     }
+  },
+  "chat": {
+    "title": "AI Agent",
+    "subtitle": "Multilingual assistant",
+    "clear": "Clear",
+    "ready": "AI ready",
+    "supported": "7 languages supported",
+    "thinking": "AI is thinking...",
+    "placeholder": "Ask your question...",
+    "generating": "Generating...",
+    "send": "Send"
   }
 }

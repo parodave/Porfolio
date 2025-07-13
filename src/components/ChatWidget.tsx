@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { translateText } from '../utils/translation';
 import { detectLanguage, SUPPORTED_LANGUAGES, SupportedLanguage } from '../utils/language';
 import { askFallbackAI } from '../utils/fallbackAI';
@@ -10,6 +11,7 @@ export type ChatMessage = {
 };
 
 export default function ChatWidget() {
+  const { t } = useTranslation();
   const [history, setHistory] = useState<ChatMessage[]>([]);
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
@@ -139,12 +141,12 @@ export default function ChatWidget() {
             </svg>
           </div>
           <div>
-            <h3 className="text-white font-medium text-sm">Agent IA</h3>
-            <p className="text-gray-400 text-xs">Assistant multilingue</p>
+            <h3 className="text-white font-medium text-sm">{t('chat.title')}</h3>
+            <p className="text-gray-400 text-xs">{t('chat.subtitle')}</p>
           </div>
         </div>
         <button onClick={handleReset} disabled={loading} className="text-gray-400 hover:text-white transition-colors text-xs">
-          Effacer
+          {t('chat.clear')}
         </button>
       </div>
       <div className="w-full h-64 overflow-y-auto mb-4 space-y-3">
@@ -155,8 +157,8 @@ export default function ChatWidget() {
                 <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" />
               </svg>
             </div>
-            <p className="text-white/80 text-sm mb-2">IA prête</p>
-            <p className="text-gray-400 text-xs">7 langues supportées</p>
+            <p className="text-white/80 text-sm mb-2">{t('chat.ready')}</p>
+            <p className="text-gray-400 text-xs">{t('chat.supported')}</p>
           </div>
         )}
         {history.map((msg, i) => (
@@ -208,7 +210,7 @@ export default function ChatWidget() {
                     <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
                     <div className="w-1 h-1 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                   </div>
-                  <span>IA réfléchit...</span>
+                  <span>{t('chat.thinking')}</span>
                 </div>
               </div>
             </div>
@@ -222,7 +224,7 @@ export default function ChatWidget() {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={handleInputKeyDown}
-          placeholder="Posez votre question..."
+          placeholder={t('chat.placeholder')}
           className="w-full p-3 rounded-lg bg-white/5 text-white placeholder-gray-400 border border-white/20 focus:outline-none focus:border-white/40 transition text-sm"
           disabled={loading}
         />
@@ -231,7 +233,7 @@ export default function ChatWidget() {
           disabled={loading || !question.trim()}
           className={`w-full bg-white text-black font-medium py-2 rounded-lg transition text-sm ${loading || !question.trim() ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/90'}`}
         >
-          {loading ? 'Génération...' : 'Envoyer'}
+          {loading ? t('chat.generating') : t('chat.send')}
         </button>
       </div>
     </div>
