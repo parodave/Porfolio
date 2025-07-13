@@ -161,5 +161,16 @@
       "initiative": "Esprit d'initiative",
       "teamwork": "Travail d'équipe"
     }
+  },
+  "chat": {
+    "title": "Agent IA",
+    "subtitle": "Assistant multilingue",
+    "clear": "Effacer",
+    "ready": "IA prête",
+    "supported": "7 langues supportées",
+    "thinking": "IA réfléchit...",
+    "placeholder": "Posez votre question...",
+    "generating": "Génération...",
+    "send": "Envoyer"
   }
 }
