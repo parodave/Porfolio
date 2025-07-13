@@ -1,12 +1,9 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import MoonLoader from './MoonLoader';
-import MoonError from './MoonError';
-const LazyMoon = React.lazy(() => import('./Moon'));
-import ErrorBoundary from './ErrorBoundary';
 import ResumeSelector from './ResumeSelector';
+import BlackHoleBackground from './BlackHoleBackground';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -41,6 +38,9 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 -z-0">
         <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
       </div>
+
+      {/* Animated black hole background */}
+      <BlackHoleBackground show />
 
       {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
@@ -101,29 +101,6 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* 🌕 Moon 3D + infos planète */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: reduceMotion ? 0.5 : 0.3,
-            delay: reduceMotion ? 0 : 0.3,
-            ease: 'easeOut',
-          }}
-          className="w-full md:w-2/5 flex justify-center md:justify-end"
-        >
-          <div className="relative w-64 h-64 animate-float">
-            <ErrorBoundary fallback={<MoonError />}>
-              <Suspense fallback={<MoonLoader />}>
-                <LazyMoon reduceMotion={reduceMotion} />
-              </Suspense>
-            </ErrorBoundary>
-            <div className={`planet-info${mounted ? ' show' : ''}`}>
-              <h2>Lune</h2>
-              <p>Seul satellite naturel de la Terre, la Lune influence nos marées et notre culture.</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* Défilement d'animation */}
