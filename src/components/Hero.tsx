@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
-import Moon3D from './Moon3D';
+import MoonLoader from './MoonLoader';
+import MoonError from './MoonError';
+const LazyMoon = React.lazy(() => import('./Moon'));
 import ErrorBoundary from './ErrorBoundary';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
@@ -111,8 +113,10 @@ const Hero: React.FC = () => {
           className="w-full md:w-2/5 flex justify-center md:justify-end"
         >
           <div className="relative w-64 h-64 animate-float">
-            <ErrorBoundary>
-              <Moon3D reduceMotion={reduceMotion} />
+            <ErrorBoundary fallback={<MoonError />}>
+              <Suspense fallback={<MoonLoader />}>
+                <LazyMoon reduceMotion={reduceMotion} />
+              </Suspense>
             </ErrorBoundary>
             <div className={`planet-info${mounted ? ' show' : ''}`}>
               <h2>Lune</h2>
