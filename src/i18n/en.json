@@ -50,12 +50,12 @@
   "experience": {
     "title": "Professional Experience",
     "subtitle": "My diverse professional background demonstrates my versatility and adaptability.",
-    "items": [/* ... comme avant ... */]
+    "items": []
   },
   "projects": {
     "title": "Projects",
     "subtitle": "Discover my most significant entrepreneurial and professional projects.",
-    "items": [/* ... comme avant ... */]
+    "items": []
   },
   "skills": {
     "title": "Skills",
