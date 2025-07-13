@@ -42,9 +42,22 @@ const Projects: React.FC = () => {
     <Car size={24} />,
     <Utensils size={24} />,
   ];
-  const rawProjects = t('projects.items', { returnObjects: true });
-  const projects: Project[] = rawProjects.map((proj, idx) => ({
-    ...proj,
+  const projectKeys = [
+    'kr',
+    'felizbella',
+    'realestate',
+    'rino',
+    'logistics',
+    'cleaning',
+    'rental',
+    'restaurant',
+  ];
+
+  const projects: Project[] = projectKeys.map((key, idx) => ({
+    title: t(`projects.${key}.title`),
+    description: t(`projects.${key}.description`),
+    image: `https://via.placeholder.com/600x400?text=${key}`,
+    tags: [],
     icon: projectIcons[idx % projectIcons.length],
   }));
 
