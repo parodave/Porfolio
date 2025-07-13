@@ -16,13 +16,14 @@
     <meta property="og:image" content="/vite.svg" />
     <title>Karim Hammouche | Portfolio</title>
 
-    <!-- Gestion du thème (dark/light) -->
+    <!-- Initialisation du thème -->
     <script>
       (function () {
         const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = stored || (prefersDark ? 'dark' : 'light');
         document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.classList.toggle('light', theme === 'light');
         localStorage.setItem('theme', theme);
       })();
     </script>
