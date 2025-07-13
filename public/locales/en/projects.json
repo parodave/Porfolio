@@ -1,0 +1,34 @@
+{
+  "kr": {
+    "title": "KR Global Solutions",
+    "description": "Corporate website for KR Global Solutions."
+  },
+  "felizbella": {
+    "title": "Feliz Bella",
+    "description": "E-commerce platform for a beauty salon."
+  },
+  "realestate": {
+    "title": "Real Estate Agency",
+    "description": "Site showcasing property listings."
+  },
+  "rino": {
+    "title": "Rino Recycling",
+    "description": "Management tools for a recycling facility."
+  },
+  "logistics": {
+    "title": "Logistics Management",
+    "description": "Application for coordinating deliveries."
+  },
+  "cleaning": {
+    "title": "Cleaning Service",
+    "description": "Platform for booking cleaning services."
+  },
+  "rental": {
+    "title": "Car Rental Company",
+    "description": "Online car rental booking system."
+  },
+  "restaurant": {
+    "title": "Fast-Food Restaurant",
+    "description": "Ordering site for a fast-food franchise."
+  }
+}

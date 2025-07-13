@@ -11,7 +11,7 @@ interface Project {
   description: string;
   image: string;
   tags: string[];
-  link: string;
+  link?: string; // <- rendu optionnel comme dans ProjectCard
 }
 
 const Projects: React.FC = () => {
@@ -22,7 +22,8 @@ const Projects: React.FC = () => {
     threshold: 0.1,
   });
 
-  const rawProjects = t('projects.items', { returnObjects: true });
+  // ✅ Récupération localisée depuis les fichiers de traduction
+  const rawProjects = t('projects.items', { returnObjects: true }) as Project[];
   const projects: Project[] = rawProjects;
 
   const itemVariants = {
