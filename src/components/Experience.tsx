@@ -8,7 +8,7 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase } from 'lucide-react';
-import { useTheme } from '../hooks/useTheme';
+import useDarkMode from '../hooks/useDarkMode';
 
 interface ExperienceItem {
   title: string;
@@ -24,7 +24,7 @@ const Experience: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { theme } = useTheme();
+  const [theme] = useDarkMode();
 
   const experienceItems: ExperienceItem[] = t('experience.items', { returnObjects: true }).map((exp: { title: string; company: string; dates: string; tasks?: string[] }) => ({
     title: exp.title,
