@@ -6,8 +6,10 @@ import { containerVariants, itemVariants } from '../animationVariants';
 import { blogPosts } from '../data/blogData';
 import AudioPlayer from './AudioPlayer';
 import DownloadPDFButtons from './DownloadPDFButtons';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 const ArticlePage = () => {
+  useScrollToTop();
   const { slug } = useParams();
   const { t } = useTranslation();
   const post = blogPosts.find((p) => p.slug === slug);
