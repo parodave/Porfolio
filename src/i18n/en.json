@@ -12,21 +12,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
-  },
-  "blog": {
-    "title": "Blog",
-    "listen": "Listen to audio",
-    "listenButton": "Listen",
-    "downloadPdf": "Download PDF",
-    "back": "Back to articles",
-    "return": "Back to blog",
-    "print": "Print",
-    "methode4d": {
-      "title": "4D Method",
-      "description": "Discover the 4D methodology used in my projects."
-    }
+    "contact": "Contact"
   },
   "about": {
     "title": "About Me",

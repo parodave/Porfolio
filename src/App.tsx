@@ -10,10 +10,6 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
-const BlogPage = React.lazy(() => import("./components/BlogPage"));
-const ArticlePage = React.lazy(() => import("./components/ArticlePage"));
-const PrintArticlePage = React.lazy(() => import("./pages/blog/[slug]/pdf"));
-const Methode4DPage = React.lazy(() => import("./pages/methode-4d"));
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
 
@@ -75,10 +71,6 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/methode-4d" element={<Methode4DPage />} />
-          <Route path="/blog/:slug" element={<ArticlePage />} />
-          <Route path="/blog/:slug/pdf" element={<PrintArticlePage />} />
         </Routes>
       </Suspense>
       <Footer />
