@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
-import BlackHole from './BlackHole';
+import Cube3D from '@/components/Cube3D';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -39,8 +39,10 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
       </div>
 
-      {/* Animated black hole background */}
-      <BlackHole />
+      {/* 3D Cube background */}
+      <div className="relative w-full h-[300px] md:h-[500px]">
+        <Cube3D />
+      </div>
 
       {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
