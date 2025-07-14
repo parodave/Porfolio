@@ -5,6 +5,7 @@ import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import AnimatedCube from './AnimatedCube';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -53,16 +54,6 @@ const Hero: React.FC = () => {
             Karim Hammouche
           </motion.h2>
 
-          <div className="cube purple mb-6">
-            <div className="cube__inner">
-              <div className="cube__side front"></div>
-              <div className="cube__side back"></div>
-              <div className="cube__side top"></div>
-              <div className="cube__side bottom"></div>
-              <div className="cube__side left"></div>
-              <div className="cube__side right"></div>
-            </div>
-          </div>
 
           <motion.h1
             variants={itemVariants}
@@ -106,8 +97,10 @@ const Hero: React.FC = () => {
               <ResumeSelector />
             </div>
           </motion.div>
+          <div className="mt-12 md:mt-0 w-full h-[300px] md:w-[400px] md:h-[400px]">
+            <AnimatedCube />
+          </div>
         </motion.div>
-
       </div>
 
       {/* Défilement d'animation */}
