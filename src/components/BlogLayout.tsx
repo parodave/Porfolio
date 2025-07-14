@@ -1,19 +1,21 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
 
 interface BlogLayoutProps {
   title: string;
-  description: string;
-  children: React.ReactNode;
+  description?: string;
+  children: ReactNode;
 }
 
-const BlogLayout: React.FC<BlogLayoutProps> = ({ title, description, children }) => (
+const BlogLayout = ({ title, description, children }: BlogLayoutProps) => (
   <>
     <Helmet>
       <title>{title}</title>
-      <meta name="description" content={description} />
+      {description && <meta name="description" content={description} />}
     </Helmet>
-    {children}
+    <section className="min-h-screen py-20 bg-light dark:bg-dark text-black dark:text-white px-6 md:px-10">
+      <div className="max-w-3xl mx-auto space-y-6">{children}</div>
+    </section>
   </>
 );
 
