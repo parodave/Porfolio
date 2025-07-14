@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
-import Cube3D from '@/components/Cube3D';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -39,11 +38,6 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
       </div>
 
-      {/* 3D Cube background */}
-      <div className="relative w-full h-[300px] md:h-[500px]">
-        <Cube3D />
-      </div>
-
       {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
         <motion.div
@@ -58,6 +52,17 @@ const Hero: React.FC = () => {
           >
             Karim Hammouche
           </motion.h2>
+
+          <div className="cube purple mb-6">
+            <div className="cube__inner">
+              <div className="cube__side front"></div>
+              <div className="cube__side back"></div>
+              <div className="cube__side top"></div>
+              <div className="cube__side bottom"></div>
+              <div className="cube__side left"></div>
+              <div className="cube__side right"></div>
+            </div>
+          </div>
 
           <motion.h1
             variants={itemVariants}
