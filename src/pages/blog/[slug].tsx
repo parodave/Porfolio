@@ -1,13 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import BlogLayout from './BlogLayout';
-import { containerVariants, itemVariants } from '../animationVariants';
-import { blogPosts } from '../data/blogData';
-import AudioPlayer from './AudioPlayer';
-import DownloadPDFButtons from './DownloadPDFButtons';
+import BlogLayout from '../../components/BlogLayout';
+import { containerVariants, itemVariants } from '../../animationVariants';
+import { blogPosts } from '../../data/blogData';
+import AudioPlayer from '../../components/AudioPlayer';
+import DownloadPDFButtons from '../../components/DownloadPDFButtons';
 
-const ArticlePage = () => {
+const ArticlePage: React.FC = () => {
   const { slug } = useParams();
   const { t } = useTranslation();
   const post = blogPosts.find((p) => p.slug === slug);
