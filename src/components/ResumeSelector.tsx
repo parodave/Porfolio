@@ -2,15 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const resumes = [
+  { label: '🌐 Universel - CV (EN)', file: '/cv-universal.pdf' },
   { label: '🇫🇷 Français - CV', file: '/cv-fr.pdf' },
   { label: '🇬🇧 Anglais - Resume', file: '/cv-en.pdf' },
-  { label: '🇪🇸 Espagnol - CV', file: '/cv-es.pdf' },
-  { label: '🇷🇺 Russe - Резюме', file: '/cv-ru.pdf' },
-  { label: '🇨🇳 Chinois - 简历', file: '/cv-zh.pdf' },
-  { label: '🇯🇵 Japonais - 履歴書', file: '/cv-ja.pdf' },
-  { label: '🇹🇭 Thaï - ประวัติย่อ', file: '/cv-th.pdf' },
   { label: '🇸🇦 Arabe - السيرة الذاتية', file: '/cv-ar.pdf' },
-  { label: '🌐 Universel - CV (EN)', file: '/cv-universal.pdf' },
 ];
 
 const ResumeSelector: React.FC = () => {
