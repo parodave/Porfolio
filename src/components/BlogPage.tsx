@@ -5,7 +5,7 @@ import BlogCard from './BlogCard';
 import { Link } from 'react-router-dom';
 
 const BlogPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <BlogLayout title={t('blog.title')}>
