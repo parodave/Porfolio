@@ -1,32 +1,29 @@
-import { Link } from 'react-router-dom';
 import { articles } from '../data/articles';
 import { useTranslation } from 'react-i18next';
+import BlogLayout from './BlogLayout';
+import BlogCard from './BlogCard';
+import { Link } from 'react-router-dom';
 
 const BlogPage = () => {
   const { t, i18n } = useTranslation();
+
   return (
-    <section className="min-h-screen py-20 bg-light dark:bg-dark text-black dark:text-white px-6 md:px-10">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">{t('blog.title')}</h1>
-        <ul className="space-y-6">
-          {articles.map((article) => (
-            <li key={article.id} className="border-b border-gray-700 pb-4">
-              <Link
-                to={`/blog/${article.slug}`}
-                className="text-xl text-blue-400 hover:underline"
-              >
-                {article.title[i18n.language] ?? article.title.en}
-              </Link>
-            </li>
-          ))}
-          <li className="border-b border-gray-700 pb-4">
-            <Link to="/blog/methode-4d" className="text-xl text-blue-400 hover:underline">
-              Méthode 4D / 4D Method
-            </Link>
-          </li>
-        </ul>
+    <BlogLayout title={t('blog.title')}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {articles.map((article) => (
+          <BlogCard key={article.id} article={article} />
+        ))}
+        {/* Lien spécifique vers la méthode 4D */}
+        <div className="border border-gray-700 rounded-lg p-4 hover:shadow-md transition">
+          <Link to="/blog/methode-4d" className="text-xl text-blue-400 hover:underline">
+            Méthode 4D / 4D Method
+          </Link>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            {t('blog.methode4d.description', 'Découvrez la méthodologie 4D utilisée dans mes projets.')}
+          </p>
+        </div>
       </div>
-    </section>
+    </BlogLayout>
   );
 };
 
