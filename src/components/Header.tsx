@@ -20,7 +20,6 @@ const Header: React.FC = () => {
     { label: t("nav.projects"), to: "/#projects" },
     { label: t("nav.experience"), to: "/#experience" },
     { label: t("nav.contact"), to: "/#contact" },
-    { label: t("nav.blog"), to: "/blog" },
   ];
 
   useEffect(() => {

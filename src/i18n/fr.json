@@ -12,21 +12,7 @@
     "skills": "Compétences",
     "projects": "Projets",
     "experience": "Expérience",
-    "contact": "Contact",
-    "blog": "Blog"
-  },
-  "blog": {
-    "title": "Blog",
-    "listen": "Écouter l'audio",
-    "listenButton": "Écouter",
-    "downloadPdf": "Télécharger le PDF",
-    "back": "Retour aux articles",
-    "return": "Retour au blog",
-    "print": "Imprimer",
-    "methode4d": {
-      "title": "Méthode 4D",
-      "description": "Découvrez la méthodologie 4D utilisée dans mes projets."
-    }
+    "contact": "Contact"
   },
   "about": {
     "title": "À propos de moi",
