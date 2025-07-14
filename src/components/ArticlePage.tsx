@@ -1,14 +1,16 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import BlogLayout from './BlogLayout';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { blogPosts } from '../data/blogData';
 import AudioPlayer from './AudioPlayer';
 import DownloadPDFButtons from './DownloadPDFButtons';
-import { Helmet } from 'react-helmet';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 const ArticlePage = () => {
+  useScrollToTop();
   const { slug } = useParams();
   const { t } = useTranslation();
   const post = blogPosts.find((p) => p.slug === slug);
@@ -35,6 +37,7 @@ const ArticlePage = () => {
         <motion.p variants={itemVariants} className="text-sm text-gray-500">
           {post.date}
         </motion.p>
+
         {post.audioUrl && (
           <motion.div variants={itemVariants}>
             <AudioPlayer
@@ -44,11 +47,13 @@ const ArticlePage = () => {
             />
           </motion.div>
         )}
+
         {post.pdfLinks && (
           <motion.div variants={itemVariants}>
             <DownloadPDFButtons pdfLinks={post.pdfLinks} />
           </motion.div>
         )}
+
         {post.sections.map((section, idx) => (
           <motion.div key={idx} variants={itemVariants}>
             {section.heading && (
@@ -57,6 +62,7 @@ const ArticlePage = () => {
             <p>{section.text}</p>
           </motion.div>
         ))}
+
         <Link
           to="/blog"
           aria-label={t('blog.back')}
@@ -70,3 +76,4 @@ const ArticlePage = () => {
 };
 
 export default ArticlePage;
+

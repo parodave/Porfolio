@@ -20,7 +20,13 @@
     "listen": "Listen to audio",
     "listenButton": "Listen",
     "downloadPdf": "Download PDF",
-    "back": "Back to articles"
+    "back": "Back to articles",
+    "return": "Back to blog",
+    "print": "Print",
+    "methode4d": {
+      "title": "4D Method",
+      "description": "Discover the 4D methodology used in my projects."
+    }
   },
   "about": {
     "title": "About Me",
