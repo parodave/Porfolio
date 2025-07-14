@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,6 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase } from 'lucide-react';
-import useDarkMode from '../hooks/useDarkMode';
 
 interface ExperienceItem {
   title: string;
@@ -24,7 +23,17 @@ const Experience: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
-  const [theme] = useDarkMode();
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    const updateTheme = () => {
+      setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    };
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const experienceItems: ExperienceItem[] = t('experience.items', { returnObjects: true }).map((exp: { title: string; company: string; dates: string; tasks?: string[] }) => ({
     title: exp.title,
