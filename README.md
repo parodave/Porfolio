@@ -57,8 +57,11 @@ Run ESLint:
 npm run lint
 ```
 
-This project does not yet include automated tests, but you can add your
-preferred framework and run them with `npm test` once configured.
+This project uses [Vitest](https://vitest.dev/) for unit tests. Run them with:
+
+```bash
+npm test
+```
 
 ## License
 
