@@ -6,6 +6,7 @@ import { containerVariants, itemVariants } from '../animationVariants';
 import { blogPosts } from '../data/blogData';
 import AudioPlayer from './AudioPlayer';
 import DownloadPDFButtons from './DownloadPDFButtons';
+import { Helmet } from 'react-helmet';
 
 const ArticlePage = () => {
   const { slug } = useParams();
@@ -14,8 +15,14 @@ const ArticlePage = () => {
 
   if (!post) return null;
 
+  const description = post.sections[0]?.text;
+
   return (
-    <BlogLayout title={post.title} description={post.sections[0]?.text}>
+    <BlogLayout>
+      <Helmet>
+        <title>{post.title}</title>
+        {description && <meta name="description" content={description} />}
+      </Helmet>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -30,7 +37,11 @@ const ArticlePage = () => {
         </motion.p>
         {post.audioUrl && (
           <motion.div variants={itemVariants}>
-            <AudioPlayer src={post.audioUrl} />
+            <AudioPlayer
+              src={post.audioUrl}
+              aria-label="Article audio"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            />
           </motion.div>
         )}
         {post.pdfLinks && (
@@ -46,7 +57,11 @@ const ArticlePage = () => {
             <p>{section.text}</p>
           </motion.div>
         ))}
-        <Link to="/blog" className="text-blue-400 hover:underline block mt-8">
+        <Link
+          to="/blog"
+          aria-label={t('blog.back')}
+          className="text-blue-400 hover:underline block mt-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+        >
           ← {t('blog.back')}
         </Link>
       </motion.div>

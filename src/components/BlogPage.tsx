@@ -3,12 +3,16 @@ import { useTranslation } from 'react-i18next';
 import BlogLayout from './BlogLayout';
 import BlogCard from './BlogCard';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const BlogPage = () => {
   const { t } = useTranslation();
 
   return (
-    <BlogLayout title={t('blog.title')}>
+    <BlogLayout>
+      <Helmet>
+        <title>{t('blog.title')}</title>
+      </Helmet>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {articles.map((article) => (
           <BlogCard key={article.id} article={article} />

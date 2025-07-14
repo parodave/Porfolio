@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { blogPosts } from '../../../data/blogData';
 
 const PrintArticle: React.FC = () => {
@@ -10,6 +11,9 @@ const PrintArticle: React.FC = () => {
 
   return (
     <div className="p-6 space-y-4">
+      <Helmet>
+        <title>{post.title}</title>
+      </Helmet>
       <h1 className="text-3xl font-bold">{post.title}</h1>
       {post.sections.map((section, idx) => (
         <div key={idx} className="space-y-2">
@@ -19,7 +23,8 @@ const PrintArticle: React.FC = () => {
       ))}
       <button
         onClick={() => window.print()}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
+        aria-label="Print article"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
       >
         Print
       </button>
