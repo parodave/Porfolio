@@ -1,10 +1,12 @@
 import { articles } from '../data/articles';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import BlogLayout from './BlogLayout';
 import BlogCard from './BlogCard';
-import { Link } from 'react-router-dom';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 const BlogPage = () => {
+  useScrollToTop();
   const { t } = useTranslation();
 
   return (
