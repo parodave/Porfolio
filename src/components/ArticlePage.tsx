@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import BlogLayout from './BlogLayout';
 import { containerVariants, itemVariants } from '../animationVariants';
 import { blogPosts } from '../data/blogData';
@@ -16,8 +17,14 @@ const ArticlePage = () => {
 
   if (!post) return null;
 
+  const description = post.sections[0]?.text;
+
   return (
-    <BlogLayout title={post.title} description={post.sections[0]?.text}>
+    <BlogLayout>
+      <Helmet>
+        <title>{post.title}</title>
+        {description && <meta name="description" content={description} />}
+      </Helmet>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -30,16 +37,23 @@ const ArticlePage = () => {
         <motion.p variants={itemVariants} className="text-sm text-gray-500">
           {post.date}
         </motion.p>
+
         {post.audioUrl && (
           <motion.div variants={itemVariants}>
-            <AudioPlayer src={post.audioUrl} />
+            <AudioPlayer
+              src={post.audioUrl}
+              aria-label="Article audio"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            />
           </motion.div>
         )}
+
         {post.pdfLinks && (
           <motion.div variants={itemVariants}>
             <DownloadPDFButtons pdfLinks={post.pdfLinks} />
           </motion.div>
         )}
+
         {post.sections.map((section, idx) => (
           <motion.div key={idx} variants={itemVariants}>
             {section.heading && (
@@ -48,7 +62,12 @@ const ArticlePage = () => {
             <p>{section.text}</p>
           </motion.div>
         ))}
-        <Link to="/blog" className="text-blue-400 hover:underline block mt-8">
+
+        <Link
+          to="/blog"
+          aria-label={t('blog.back')}
+          className="text-blue-400 hover:underline block mt-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+        >
           ← {t('blog.back')}
         </Link>
       </motion.div>
@@ -57,3 +76,4 @@ const ArticlePage = () => {
 };
 
 export default ArticlePage;
+

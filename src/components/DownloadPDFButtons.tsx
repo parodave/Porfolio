@@ -12,7 +12,8 @@ const DownloadPDFButtons: React.FC<DownloadPDFButtonsProps> = ({ pdfLinks }) => 
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-blue-500 text-white px-4 py-2 rounded-md"
+        aria-label={`Download PDF ${lang.toUpperCase()}`}
+        className="bg-blue-500 text-white px-4 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
       >
         PDF {lang.toUpperCase()}
       </a>
