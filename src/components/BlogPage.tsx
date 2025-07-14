@@ -19,6 +19,11 @@ const BlogPage = () => {
               </Link>
             </li>
           ))}
+          <li className="border-b border-gray-700 pb-4">
+            <Link to="/blog/methode-4d" className="text-xl text-blue-400 hover:underline">
+              Méthode 4D / 4D Method
+            </Link>
+          </li>
         </ul>
       </div>
     </section>

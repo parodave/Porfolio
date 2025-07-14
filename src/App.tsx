@@ -12,6 +12,7 @@ import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
 const BlogPage = React.lazy(() => import("./components/BlogPage"));
 const ArticlePage = React.lazy(() => import("./components/ArticlePage"));
+const Methode4DPage = React.lazy(() => import("./pages/methode-4d"));
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
 
@@ -74,6 +75,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/methode-4d" element={<Methode4DPage />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
         </Routes>
       </Suspense>
