@@ -5,7 +5,6 @@ import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
-import AnimatedCube from './AnimatedCube';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -97,9 +96,6 @@ const Hero: React.FC = () => {
               <ResumeSelector />
             </div>
           </motion.div>
-          <div className="mt-12 md:mt-0 w-full h-[300px] md:w-[400px] md:h-[400px]">
-            <AnimatedCube />
-          </div>
         </motion.div>
       </div>
 

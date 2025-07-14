@@ -31,9 +31,9 @@ export default function ThemeToggle() {
       className="p-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-black hover:scale-105 transition-all"
     >
       {theme === "dark" ? (
-        <Sun size={20} className="text-yellow-400" />
+        <Sun size={20} className="text-black dark:text-white" />
       ) : (
-        <Moon size={20} className="text-gray-800" />
+        <Moon size={20} className="text-black dark:text-white" />
       )}
     </button>
   );
