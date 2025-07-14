@@ -18,6 +18,8 @@
   "blog": {
     "title": "Blog",
     "listen": "Écouter l'audio",
+    "listenButton": "Écouter",
+    "downloadPdf": "Télécharger le PDF",
     "back": "Retour aux articles"
   },
   "about": {

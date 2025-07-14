@@ -18,6 +18,8 @@
   "blog": {
     "title": "Blog",
     "listen": "Listen to audio",
+    "listenButton": "Listen",
+    "downloadPdf": "Download PDF",
     "back": "Back to articles"
   },
   "about": {
