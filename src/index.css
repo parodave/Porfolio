@@ -124,3 +124,7 @@ html.dark {
   }
 }
 
+.hero-canvas-container {
+  @apply absolute inset-0 w-full h-full -z-10;
+}
+

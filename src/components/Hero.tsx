@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* 3D Cube background */}
-      <div className="relative w-full h-[300px] md:h-[500px]">
+      <div className="hero-canvas-container pointer-events-none">
         <Cube3D />
       </div>
 

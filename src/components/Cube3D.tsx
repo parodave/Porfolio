@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -7,10 +7,10 @@ import useDarkMode from '../hooks/useDarkMode';
 const SpinningCube: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.01;
-      meshRef.current.rotation.y += 0.01;
+      meshRef.current.rotation.x += delta * 0.6;
+      meshRef.current.rotation.y += delta * 0.6;
     }
   });
 
@@ -35,8 +35,10 @@ const Cube3D: React.FC = () => {
     >
       <ambientLight intensity={0.5} color={lightColor} />
       <directionalLight position={[2, 2, 2]} intensity={1} color={lightColor} />
-      <SpinningCube />
-      <OrbitControls enableZoom={false} />
+      <Suspense fallback={null}>
+        <SpinningCube />
+      </Suspense>
+      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
     </Canvas>
   );
 };
