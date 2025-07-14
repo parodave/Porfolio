@@ -1,34 +1,55 @@
 import { useParams, Link } from 'react-router-dom';
-import { articles } from '../data/articles';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import BlogLayout from './BlogLayout';
+import { containerVariants, itemVariants } from '../animationVariants';
+import { blogPosts } from '../data/blogData';
+import AudioPlayer from './AudioPlayer';
+import DownloadPDFButtons from './DownloadPDFButtons';
 
 const ArticlePage = () => {
   const { slug } = useParams();
-  const { t, i18n } = useTranslation();
-  const article = articles.find((a) => a.slug === slug);
+  const { t } = useTranslation();
+  const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!article) return null;
-
-  const title = article.title[i18n.language] ?? article.title.en;
-  const content = article.content[i18n.language] ?? article.content.en;
+  if (!post) return null;
 
   return (
-    <BlogLayout title={title} description={content}>
-      <section className="min-h-screen py-20 bg-light dark:bg-dark text-black dark:text-white px-6 md:px-10">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <h1 className="text-3xl font-bold">{title}</h1>
-          {article.audio && (
-            <audio controls src={article.audio} className="w-full">
-              Your browser does not support the audio element.
-            </audio>
-          )}
-          <p>{content}</p>
-          <Link to="/blog" className="text-blue-400 hover:underline block mt-8">
-            ← {t('blog.back')}
-          </Link>
-        </div>
-      </section>
+    <BlogLayout title={post.title} description={post.sections[0]?.text}>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="space-y-6"
+      >
+        <motion.h1 variants={itemVariants} className="text-3xl font-bold">
+          {post.title}
+        </motion.h1>
+        <motion.p variants={itemVariants} className="text-sm text-gray-500">
+          {post.date}
+        </motion.p>
+        {post.audioUrl && (
+          <motion.div variants={itemVariants}>
+            <AudioPlayer src={post.audioUrl} />
+          </motion.div>
+        )}
+        {post.pdfLinks && (
+          <motion.div variants={itemVariants}>
+            <DownloadPDFButtons pdfLinks={post.pdfLinks} />
+          </motion.div>
+        )}
+        {post.sections.map((section, idx) => (
+          <motion.div key={idx} variants={itemVariants}>
+            {section.heading && (
+              <h2 className="text-2xl font-semibold mb-2">{section.heading}</h2>
+            )}
+            <p>{section.text}</p>
+          </motion.div>
+        ))}
+        <Link to="/blog" className="text-blue-400 hover:underline block mt-8">
+          ← {t('blog.back')}
+        </Link>
+      </motion.div>
     </BlogLayout>
   );
 };
