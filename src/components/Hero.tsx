@@ -33,6 +33,9 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
+      {/* Fond galactique en dark mode */}
+      <div className="galaxy-bg dark:block hidden fixed inset-0 -z-10 pointer-events-none transition-all duration-500" />
+
       {/* Dégradé d'arrière-plan */}
       <div className="absolute inset-0 -z-0">
         <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
