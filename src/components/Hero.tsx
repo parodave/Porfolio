@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
@@ -33,12 +35,12 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
-      {/* Fond galactique en dark mode */}
-      <div className="galaxy-bg dark:block hidden fixed inset-0 -z-10 pointer-events-none transition-all duration-500" />
+      {/* Fond galactique animé visible uniquement en dark mode */}
+      <div className="galaxy-bg hidden dark:block fixed inset-0 -z-10 pointer-events-none transition-all duration-500" />
 
-      {/* Dégradé d'arrière-plan */}
+      {/* Dégradé radial en fond, toujours visible */}
       <div className="absolute inset-0 -z-0">
-        <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
+        <div className="absolute inset-0 bg-gradient-radial from-white via-gray-100 to-gray-200 dark:from-black dark:via-zinc-900 dark:to-zinc-800 opacity-60 transition-colors duration-500" />
       </div>
 
       {/* Zone principale */}
@@ -55,7 +57,6 @@ const Hero: React.FC = () => {
           >
             Karim Hammouche
           </motion.h2>
-
 
           <motion.h1
             variants={itemVariants}
@@ -127,3 +128,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
