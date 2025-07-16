@@ -1,6 +1,4 @@
 import React, { Suspense, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Stars } from "@react-three/drei";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,6 +10,7 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
+import GlobalBackground from "./components/GlobalBackground";
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
 
@@ -67,11 +66,7 @@ function App() {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 1] }}>
-          <Stars radius={100} depth={80} count={3000} factor={4} fade />
-        </Canvas>
-      </div>
+      <GlobalBackground />
       <CursorEffect />
       <ScrollToHash />
       <Header />
