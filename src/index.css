@@ -209,8 +209,8 @@ html.dark {
   transform: rotateX(-90deg) translateZ(60px);
 }
 
-/* Galaxie animée en dark mode */
-.galaxy-bg {
+/* Galactic animated background (dark mode) */
+.stars {
   @apply fixed inset-0 -z-10 pointer-events-none transition-all duration-500;
   background-image:
     radial-gradient(2px 2px at 25% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 60%),
