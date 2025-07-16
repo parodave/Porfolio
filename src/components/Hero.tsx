@@ -33,10 +33,11 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 md:px-10"
     >
-      {/* Dégradé d'arrière-plan */}
-      <div className="absolute inset-0 -z-0">
-        <div className="absolute inset-0 bg-gradient-radial from-zinc-900 via-zinc-800 to-zinc-900 opacity-60" />
-      </div>
+      {/* Dégradé d'arrière-plan dynamique */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-radial from-white via-gray-100 to-gray-200 dark:from-black dark:via-zinc-900 dark:to-zinc-800 transition-colors duration-500"
+      />
 
       {/* Zone principale */}
       <div className="z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
