@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -8,8 +10,8 @@ const SpinningCube: React.FC = () => {
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.005;
-      meshRef.current.rotation.y += 0.005;
+      meshRef.current.rotation.x += 0.003;
+      meshRef.current.rotation.y += 0.003;
     }
   });
 
@@ -22,10 +24,10 @@ const SpinningCube: React.FC = () => {
 };
 
 const RotatingCube: React.FC = () => (
-  <div className="w-full h-full">
-    <Canvas className="w-full h-full" camera={{ position: [2, 2, 3] }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={0.5} />
+  <div className="w-full h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px]">
+    <Canvas camera={{ position: [3, 3, 4] }}>
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
       <SpinningCube />
       <OrbitControls enableZoom={false} />
     </Canvas>
@@ -33,3 +35,4 @@ const RotatingCube: React.FC = () => (
 );
 
 export default RotatingCube;
+
