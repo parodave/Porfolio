@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "codex:sync": "sh ./codex-sync.sh",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
