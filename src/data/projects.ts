@@ -18,12 +18,30 @@ export const projects: Project[] = [
     id: 'kr',
     title: { fr: 'KR Global Solutions', en: 'KR Global Solutions' },
     description: {
-      fr: `Co-fondateur de KR Global Solutions LTD, société tech spécialisée dans le développement SaaS, l’e-commerce et l’IA. Je crée des outils web sur mesure, automatise les processus métiers et accompagne la transformation digitale. Je développe également mes propres marques en ligne via KR Global.
+      fr: `Co-fondateur de KR Global Solutions LTD, société tech spécialisée dans le développement SaaS, l’e-commerce et l’IA. En freelance à l’international, je conçois des outils web, j’automatise des processus métiers et accompagne la transformation digitale. Je développe aussi mes propres marques et produits sous le nom KR Global.
 
-Expertises : Développement SaaS · E-commerce (Shopify, WooCommerce) · Intégration IA & API · No-code/Low-code · Full-stack (HTML, CSS, JS) · UX/UI · Lancement de produits · Stratégie digitale & hébergement`,
-      en: `Co-founder of KR Global Solutions LTD, a tech company specializing in SaaS, e-commerce, and AI development. I design custom web tools, automate business processes, and support digital transformation. I also launch my own online brands under KR Global.
+Développement SaaS personnalisé
+Création de boutiques e-commerce (Shopify, WooCommerce)
+Intégration d’IA (chatbots, copilotes, automatisations)
+Automatisation via API, no-code/low-code
+Développement full-stack (HTML, CSS, JS)
+UX/UI design & optimisation de l’expérience
+Lancement de produits & gestion de projets freelance
+Stratégie digitale, hébergement, infrastructure
+Marketing digital & ventes en ligne
+Travail à distance & collaboration internationale`,
+      en: `Co-founder of KR Global Solutions LTD, a tech company focused on SaaS, e-commerce, and AI. As a global freelancer, I build smart web tools, automate business processes, and support digital transformation. I also develop my own brands and SaaS products under the KR Global name.
 
-Key skills: SaaS Development · E-commerce (Shopify, WooCommerce) · AI & API Integration · No-code/Low-code · Full-stack (HTML, CSS, JS) · UX/UI Design · Product Launch · Digital Strategy & Hosting`,
+Custom SaaS solutions
+E-commerce development (Shopify, WooCommerce)
+AI integration (chatbots, copilots, automation)
+API, no-code/low-code automation
+Full-stack web development (HTML, CSS, JS)
+UX/UI design & user experience optimization
+Freelance product & project management
+Digital strategy, hosting, infrastructure
+Online marketing & digital sales
+Remote work & international collaboration`,
     },
     image: 'https://images.pexels.com/photos/6693638/pexels-photo-6693638.jpeg',
     tags: ['SaaS', 'E-commerce', 'Automation', 'IT'],
@@ -32,12 +50,22 @@ Key skills: SaaS Development · E-commerce (Shopify, WooCommerce) · AI & API In
     id: 'felizbella',
     title: { fr: 'FelizBella', en: 'FelizBella' },
     description: {
-      fr: `Co-fondateur de FelizBella, marque de cosmétiques naturels vendue en ligne. J’ai piloté le branding, la boutique e-commerce et la stratégie marketing.
+      fr: `Co-fondateur de FelizBella, marque de cosmétiques naturels vendue en ligne. J’ai contribué au branding, au développement de la boutique et à la stratégie marketing.
 
-Expertises : Création de marque (naming, design) · Développement e-commerce (Shopify, WooCommerce) · SEO · Réseaux sociaux · Suivi performance · Gestion client & logistique`,
-      en: `Co-founder of FelizBella, a natural cosmetics brand sold online. I led branding, e-commerce development, and digital marketing strategy.
+Création de marque (naming, design, storytelling)
+Développement e-commerce (Shopify, WooCommerce)
+Marketing digital (SEO, réseaux sociaux, pubs)
+Vente B2C (checkout, paiements, expéditions)
+Suivi de performance (trafic, conversions)
+Gestion client, retours & logistique`,
+      en: `Co-founder of FelizBella, a natural cosmetics brand launched online. I contributed to branding, e-commerce development, and digital marketing strategy.
 
-Key skills: Brand Creation (naming, design) · E-commerce (Shopify, WooCommerce) · SEO · Social Media · Performance Tracking · Customer & Logistics Management`,
+Brand creation (naming, design, storytelling)
+Online store setup (Shopify, WooCommerce)
+Digital marketing (SEO, social media, paid ads)
+B2C sales management (checkout, shipping, payments)
+Performance tracking (traffic, conversions)
+Customer service & operations management`,
     },
     image: 'https://images.pexels.com/photos/2622187/pexels-photo-2622187.jpeg',
     tags: ['Cosmetics', 'Shopify', 'Branding', 'Marketing'],
