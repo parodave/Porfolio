@@ -270,5 +270,15 @@
   "moon": {
     "loader": "Chargement de la Lune...",
     "error": "Erreur de chargement de la Lune."
+  },
+  "seo": {
+    "home": {
+      "title": "Karim Hammouche | Portfolio",
+      "description": "Portfolio développeur web de Karim Hammouche avec projets et expériences professionnelles."
+    },
+    "testSupabase": {
+      "title": "Test Supabase | Karim Hammouche",
+      "description": "Formulaire de démonstration utilisant Supabase."
+    }
   }
 }
