@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
-import SEO from "./components/SEO";
+import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
 import TestFormSupabase from "./components/TestFormSupabase";
 import i18n from "./i18n";
@@ -33,7 +33,10 @@ const initGA = (id: string) => {
 
 const HomePage = () => (
   <main>
-    <SEO titleKey="seo.home.title" descriptionKey="seo.home.description" />
+    <>
+      <SEO titleKey="seo.home.title" descriptionKey="seo.home.description" />
+      <StructuredSEO />
+    </>
     <Hero />
     <About />
     <Skills />
@@ -70,7 +73,10 @@ function App() {
   return (
     <div>
       <CursorEffect />
-      <SEO />
+      <>
+        <SEO />
+        <StructuredSEO />
+      </>
       <ScrollToHash />
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
