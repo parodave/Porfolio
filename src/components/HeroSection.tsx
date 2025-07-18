@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import RotatingCube from './RotatingCube';
 import ResumeSelector from './ResumeSelector';
+import Spinner from './Spinner';
+
+const RotatingCube = lazy(() => import('./RotatingCube'));
 
 const texts = ['J\u2019apprends.', 'Je cr\u00e9e.', 'Je partage.'];
 
@@ -46,7 +48,9 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center md:justify-end">
-        <RotatingCube />
+        <Suspense fallback={<Spinner />}>
+          <RotatingCube />
+        </Suspense>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
-import { useState } from "react";
-import ChatWidget from "./ChatWidget";
+import { useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import Spinner from './Spinner';
+
+const ChatWidget = lazy(() => import('./ChatWidget'));
 
 export default function FloatingAgentIA() {
   const { t } = useTranslation();
@@ -12,7 +14,9 @@ export default function FloatingAgentIA() {
       {isOpen && (
         <div className="absolute bottom-16 right-0 animate-in slide-in-from-bottom-2 duration-200">
           <div className="bg-black rounded-2xl shadow-xl border border-white overflow-hidden">
-            <ChatWidget />
+            <Suspense fallback={<Spinner />}>
+              <ChatWidget />
+            </Suspense>
           </div>
         </div>
       )}
