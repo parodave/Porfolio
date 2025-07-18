@@ -6,6 +6,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
+import SEO from "./components/SEO";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
@@ -32,6 +33,7 @@ const initGA = (id: string) => {
 
 const HomePage = () => (
   <main>
+    <SEO titleKey="seo.home.title" descriptionKey="seo.home.description" />
     <Hero />
     <About />
     <Skills />

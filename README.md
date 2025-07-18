@@ -41,6 +41,25 @@ Start the Vite development server:
 npm run dev
 ```
 
+### Syncing with GitHub
+
+Use the `codex-sync.sh` script to push your changes from Codex to GitHub:
+
+```bash
+npm run codex:sync
+```
+
+Running the script performs the following steps:
+
+1. Stages all modified files.
+2. Prompts you for a commit message.
+3. Commits your changes with that message.
+4. Switches to the `main` branch and pulls the latest commits.
+5. Merges the `codex-base` branch.
+6. Pushes the updated `main` branch to GitHub.
+
+When prompted, enter a concise commit message describing your work.
+
 ## Production Build
 
 Create an optimized production build in the `dist/` directory:
