@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
+import SEO from "./components/SEO";
 import { Routes, Route } from "react-router-dom";
 import TestFormSupabase from "./components/TestFormSupabase";
 import i18n from "./i18n";
@@ -69,6 +70,7 @@ function App() {
   return (
     <div>
       <CursorEffect />
+      <SEO />
       <ScrollToHash />
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
