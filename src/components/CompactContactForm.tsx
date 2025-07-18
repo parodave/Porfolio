@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import DOMPurify from 'dompurify';
 import { useTranslation } from 'react-i18next';
 
 // ✅ Récupération des clés depuis le .env
@@ -44,10 +45,18 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
     try {
       setInternalLoading(true);
       setInternalError('');
-      const result = await emailjs.sendForm(
+
+      const formData = new FormData(internalFormRef.current);
+      const sanitizedData = {
+        user_name: DOMPurify.sanitize(formData.get('user_name') as string),
+        user_email: DOMPurify.sanitize(formData.get('user_email') as string),
+        message: DOMPurify.sanitize(formData.get('message') as string),
+      };
+
+      const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        internalFormRef.current,
+        sanitizedData,
         EMAILJS_PUBLIC_KEY
       );
 
