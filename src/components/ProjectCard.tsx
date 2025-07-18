@@ -32,6 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <img
         src={image}
         alt={title}
+        loading="lazy"
         className="w-full h-48 object-cover rounded-t-lg transition-transform duration-500 ease-out group-hover:scale-105"
       />
     </div>
