@@ -11,6 +11,7 @@ import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
 import { Routes, Route } from "react-router-dom";
+import TestFormSupabase from "./components/TestFormSupabase";
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -71,6 +72,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/test-supabase" element={<TestFormSupabase />} />
         </Routes>
       </Suspense>
       <Footer />
