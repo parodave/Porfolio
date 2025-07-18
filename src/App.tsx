@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
-import GlobalBackground from "./components/GlobalBackground";
 import { Routes, Route } from "react-router-dom";
 import i18n from "./i18n";
 
@@ -66,7 +65,6 @@ function App() {
 
   return (
     <div>
-      <GlobalBackground />
       <CursorEffect />
       <ScrollToHash />
       <Header />
