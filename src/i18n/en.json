@@ -270,5 +270,15 @@
   "moon": {
     "loader": "Loading the Moon...",
     "error": "Failed to load the Moon."
+  },
+  "seo": {
+    "home": {
+      "title": "Karim Hammouche | Portfolio",
+      "description": "Web developer portfolio of Karim Hammouche with projects and professional experience."
+    },
+    "testSupabase": {
+      "title": "Test Supabase | Karim Hammouche",
+      "description": "Simple form demo using Supabase."
+    }
   }
 }

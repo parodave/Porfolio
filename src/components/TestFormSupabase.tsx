@@ -1,5 +1,6 @@
-import { useState } from "react"
-import { supabase } from "../lib/supabaseClient"
+import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import SEO from "./SEO";
 
 export default function TestFormSupabase() {
   const [nom, setNom] = useState("")
@@ -26,11 +27,16 @@ export default function TestFormSupabase() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto mt-8 space-y-4 border p-4 rounded-md bg-white text-black"
-    >
-      <h2 className="text-xl font-bold">Formulaire test Supabase</h2>
+    <>
+      <SEO
+        titleKey="seo.testSupabase.title"
+        descriptionKey="seo.testSupabase.description"
+      />
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md mx-auto mt-8 space-y-4 border p-4 rounded-md bg-white text-black"
+      >
+        <h2 className="text-xl font-bold">Formulaire test Supabase</h2>
 
       <input
         type="text"
@@ -56,14 +62,15 @@ export default function TestFormSupabase() {
         className="w-full border px-3 py-2 rounded"
       />
 
-      <button
-        type="submit"
-        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-      >
-        Envoyer
-      </button>
+        <button
+          type="submit"
+          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+        >
+          Envoyer
+        </button>
 
-      {success && <p className="text-green-600">Message envoyé ✅</p>}
-    </form>
-  )
+        {success && <p className="text-green-600">Message envoyé ✅</p>}
+      </form>
+    </>
+  );
 }

@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export interface ProjectCardProps {
   title: string;
-  description: string;
+  description: string[];
   image: string;
   tags: string[];
   link?: string;
@@ -38,7 +38,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     </div>
     <div className="p-4">
       <h3 className="font-bold text-lg mb-2">{title}</h3>
-      <p className="text-gray-700 dark:text-gray-400 mb-3">{description}</p>
+      <ul className="list-disc list-inside text-gray-700 dark:text-gray-400 mb-3">
+        {description.map((line, idx) => (
+          <li key={idx}>{line}</li>
+        ))}
+      </ul>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, idx) => (
           <span

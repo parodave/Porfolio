@@ -1,31 +1,55 @@
+import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 
 interface SEOProps {
-  title?: string
-  description?: string
+  titleKey?: string
+  descriptionKey?: string
+  image?: string
+  url?: string
   canonical?: string
 }
 
 const SITE_URL = 'https://karimhammouche.com'
 
-const SEO: React.FC<SEOProps> = ({ title, description, canonical }) => {
-  const { i18n } = useTranslation()
+const SEO: React.FC<SEOProps> = ({
+  titleKey,
+  descriptionKey,
+  image = '/vite.svg',
+  url,
+  canonical,
+}) => {
+  const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
 
-  const basePath = `${SITE_URL}${pathname}`
-  const canonicalUrl = canonical || basePath
-  const frUrl = `${basePath}?lang=fr`
-  const enUrl = `${basePath}?lang=en`
+  const baseUrl = url || `${SITE_URL}${pathname}`
+  const canonicalUrl = canonical || baseUrl
+  const frUrl = `${baseUrl}?lang=fr`
+  const enUrl = `${baseUrl}?lang=en`
+
+  const title = titleKey ? t(titleKey) : 'Karim Hammouche – Portfolio'
+  const description = descriptionKey ? t(descriptionKey) : 'Portfolio de Karim Hammouche, développeur créatif et entrepreneur.'
 
   return (
     <Helmet>
-      {title && <title>{title}</title>}
-      {description && <meta name="description" content={description} />}
+      {/* Standard SEO */}
+      <title>{title}</title>
+      <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
-      <link rel="alternate" href={frUrl} hrefLang="fr" />
-      <link rel="alternate" href={enUrl} hrefLang="en" />
+
+      {/* Multilingue hreflang */}
+      <link rel="alternate" hrefLang="fr" href={frUrl} />
+      <link rel="alternate" hrefLang="en" href={enUrl} />
+
+      {/* Open Graph (réseaux sociaux) */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={baseUrl} />
+      <meta property="og:image" content={image} />
+
+      {/* Langue et sens de lecture */}
       <html lang={i18n.language} dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} />
     </Helmet>
   )
