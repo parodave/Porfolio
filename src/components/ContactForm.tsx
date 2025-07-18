@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
+import DOMPurify from "dompurify"
 import { useTranslation } from "react-i18next"
 
 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID!
@@ -7,7 +8,7 @@ const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
 
 export default function ContactForm() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const form = useRef<HTMLFormElement | null>(null)
   const [status, setStatus] = useState<"success" | "error" | "loading" | null>(null)
 
@@ -16,8 +17,15 @@ export default function ContactForm() {
     if (!form.current) return
     setStatus("loading")
 
+    const formData = new FormData(form.current)
+    const sanitizedData = {
+      user_name: DOMPurify.sanitize(formData.get("user_name") as string),
+      user_email: DOMPurify.sanitize(formData.get("user_email") as string),
+      message: DOMPurify.sanitize(formData.get("message") as string),
+    }
+
     emailjs
-      .sendForm(serviceId, templateId, form.current, publicKey)
+      .send(serviceId, templateId, sanitizedData, publicKey)
       .then(
         () => {
           setStatus("success")
