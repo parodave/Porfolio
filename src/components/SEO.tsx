@@ -2,7 +2,6 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
-import { projects } from '../data/projects'
 
 interface SEOProps {
   titleKey?: string
@@ -33,30 +32,6 @@ const SEO: React.FC<SEOProps> = ({
   const title = titleKey ? t(titleKey) : 'Karim Hammouche – Portfolio'
   const description = descriptionKey ? t(descriptionKey) : 'Portfolio de Karim Hammouche, développeur créatif et entrepreneur.'
 
-  // JSON-LD : données structurées Schema.org
-  const websiteData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    url: SITE_URL,
-    name: 'Karim Hammouche | Portfolio',
-    inLanguage: lang,
-  }
-
-  const personData = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Karim Hammouche',
-    url: SITE_URL,
-  }
-
-  const projectData = projects.map((p) => ({
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: p.title[lang],
-    description: p.description[lang],
-    image: p.image,
-    ...(p.url ? { url: p.url } : {}),
-  }))
 
   return (
     <Helmet>
@@ -79,14 +54,6 @@ const SEO: React.FC<SEOProps> = ({
       {/* Langue et direction (RTL si arabe) */}
       <html lang={i18n.language} dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} />
 
-      {/* Données structurées (JSON-LD) */}
-      <script type="application/ld+json">{JSON.stringify(websiteData)}</script>
-      <script type="application/ld+json">{JSON.stringify(personData)}</script>
-      {projectData.map((data, idx) => (
-        <script key={projects[idx].id} type="application/ld+json">
-          {JSON.stringify(data)}
-        </script>
-      ))}
     </Helmet>
   )
 }
