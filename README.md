@@ -36,6 +36,14 @@ Install dependencies with:
 npm install
 ```
 
+If Three.js packages fail after a fresh install, run the helper script:
+
+```bash
+npm run fix:three-all
+```
+This reinstalls compatible versions, patches `three-stdlib` and replaces
+legacy example imports.
+
 ## Development
 
 Start the Vite development server:
