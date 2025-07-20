@@ -43,19 +43,130 @@
     "downloadPDF": "Télécharger le PDF",
     "listenAudio": "Écouter l'audio"
   },
-  "chat": {
-    "title": "Discussion",
-    "subtitle": "Posez-moi vos questions",
-    "clear": "Effacer",
-    "ready": "Je suis prêt à aider !",
-    "supported": "Supporte FR, EN, ES, JA, ZH, AR, TH",
-    "placeholder": "Tapez votre question...",
+  "hero": {
+    "title": "Développeur Web Full-Stack",
+    "discoverKr": "Découvrir KR Global Solutions",
+    "scroll": "Faites défiler",
+    "typewriter": [
+      "Développeur freelance",
+      "Passionné de tech et d'IA",
+      "Créateur digital"
+    ]
+  },
+  "about": {
+    "title": "À propos de moi",
+    "summary": "Développeur d'applications web avec une solide expérience en gestion, maintenance électrotechnique et leadership. Compétent en technologies web modernes et intégration IA. Apprentissage rapide et travail autonome ou en équipe.",
+    "languagesTitle": "Langues",
+    "languages": [
+      "Français (natif)",
+      "Anglais (avancé)",
+      "Arabe (Darija – avancé)"
+    ],
+    "certificationsTitle": "Certifications",
+    "certifications": ["Permis de conduire"],
+    "educationTitle": "Formation",
+    "education": [
+      {
+        "school": "Duke Language School",
+        "location": "Bangkok, Thaïlande",
+        "degree": "Étudiant en anglais",
+        "dates": "Mai 2025 – Sep 2025"
+      },
+      {
+        "school": "Le Wagon",
+        "location": "Paris, France",
+        "degree": "Bootcamp Développeur Web",
+        "dates": "Jan 2023 – Jul 2023"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Compétences",
+    "subtitle": "Technologies et savoir-faire",
+    "categories": {
+      "tech": "Développement",
+      "tools": "Outils",
+      "soft": "Aptitudes relationnelles"
+    }
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Quelques réalisations et collaborations"
+  },
+  "experience": {
+    "title": "Expérience",
+    "subtitle": "Parcours professionnel",
+    "items": [
+      {
+        "title": "Technicien maintenance recyclage",
+        "company": "Rino Recycling",
+        "dates": "Oct 2024 – Avr 2025",
+        "tasks": [
+          "Fonctionnement et entretien",
+          "Respect des normes de sécurité"
+        ]
+      },
+      {
+        "title": "Assistant bibliothécaire & coordinateur livraisons",
+        "company": "Cœur d’Essonne Agglomération",
+        "dates": "Sep 2019 – Avr 2024",
+        "tasks": [
+          "Gestion des prêts",
+          "Coordination des livraisons"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "N'hésitez pas à me contacter pour tout projet ou collaboration.",
+    "networks": "Réseaux sociaux",
+    "success": "Message envoyé avec succès !",
+    "error": "Échec de l'envoi du message. Veuillez réessayer."
+  },
+  "contactForm": {
+    "nameLabel": "Nom",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Votre email",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Votre message",
+    "sending": "Envoi...",
     "send": "Envoyer",
-    "generating": "Génération en cours...",
-    "thinking": "Réflexion..."
+    "success": "Merci ! Je vous répondrai bientôt.",
+    "disclaimer": "Vos informations resteront confidentielles.",
+    "error": "Échec de l'envoi. Veuillez réessayer."
+  },
+  "chat": {
+    "title": "Assistant de Chat",
+    "subtitle": "Comment puis-je vous aider ?",
+    "clear": "Effacer",
+    "placeholder": "Posez votre question...",
+    "ready": "Je suis prêt à vous aider.",
+    "supported": "Les messages sont traduits automatiquement.",
+    "thinking": "Réflexion...",
+    "send": "Envoyer",
+    "generating": "Génération..."
+  },
+  "chatWidget": {
+    "title": "Assistant de chat",
+    "subtitle": "Posez-moi vos questions",
+    "placeholder": "Tapez votre question",
+    "send": "Envoyer",
+    "generating": "Génération...",
+    "clear": "Effacer le chat"
   },
   "floatingAgentIA": {
     "open": "Ouvrir le chat",
     "close": "Fermer le chat"
+  },
+  "resumeSelector": {
+    "aria": "Sélectionnez un CV",
+    "choose": "Choisissez un CV"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "emailAria": "Envoyer un email",
+    "backToTop": "Haut de page"
   }
 }

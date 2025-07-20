@@ -43,19 +43,130 @@
     "downloadPDF": "Download PDF",
     "listenAudio": "Listen Audio"
   },
+  "hero": {
+    "title": "Full-Stack Web Developer",
+    "discoverKr": "Discover KR Global Solutions",
+    "scroll": "Scroll down",
+    "typewriter": [
+      "Freelance Developer",
+      "Tech & AI Enthusiast",
+      "Digital Creator"
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "summary": "Web application developer with a strong background in business management, electrotechnical maintenance, and team leadership. Skilled in modern web technologies and AI integration. Fast learner, autonomous, and comfortable working both independently and collaboratively.",
+    "languagesTitle": "Languages",
+    "languages": [
+      "French (native)",
+      "English (advanced)",
+      "Arabic (Darija – advanced)"
+    ],
+    "certificationsTitle": "Certifications",
+    "certifications": ["Driver’s License"],
+    "educationTitle": "Education",
+    "education": [
+      {
+        "school": "Duke Language School",
+        "location": "Bangkok, Thailand",
+        "degree": "English Language Student",
+        "dates": "May 2025 – Sep 2025"
+      },
+      {
+        "school": "Le Wagon",
+        "location": "Paris, France",
+        "degree": "Web Development Bootcamp",
+        "dates": "Jan 2023 – Jul 2023"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and abilities",
+    "categories": {
+      "tech": "Development",
+      "tools": "Tools",
+      "soft": "Soft skills"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some works and collaborations"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Professional background",
+    "items": [
+      {
+        "title": "Recycling Maintenance Technician",
+        "company": "Rino Recycling",
+        "dates": "Oct 2024 – Apr 2025",
+        "tasks": [
+          "Operated and maintained equipment",
+          "Ensured safety standards"
+        ]
+      },
+      {
+        "title": "Library Assistant & Delivery Coordinator",
+        "company": "Cœur d’Essonne Agglomération",
+        "dates": "Sep 2019 – Apr 2024",
+        "tasks": [
+          "Managed book loans",
+          "Coordinated deliveries"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Feel free to reach out for any project or collaboration.",
+    "networks": "Social networks",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "contactForm": {
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Your email",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your message",
+    "sending": "Sending...",
+    "send": "Send",
+    "success": "Thank you! I'll get back to you soon.",
+    "disclaimer": "I won't share your information.",
+    "error": "Unable to send. Please try again."
+  },
   "chat": {
-    "title": "Chat",
-    "subtitle": "Ask me anything",
+    "title": "Chat Assistant",
+    "subtitle": "How can I help you?",
     "clear": "Clear",
-    "ready": "I'm ready to help!",
-    "supported": "Supports FR, EN, ES, JA, ZH, AR, TH",
-    "placeholder": "Type your question...",
+    "placeholder": "Ask me anything...",
+    "ready": "I'm ready to assist you.",
+    "supported": "Messages are translated automatically.",
+    "thinking": "Thinking...",
+    "send": "Send",
+    "generating": "Generating..."
+  },
+  "chatWidget": {
+    "title": "Chat Assistant",
+    "subtitle": "Ask me anything",
+    "placeholder": "Type your question",
     "send": "Send",
     "generating": "Generating...",
-    "thinking": "Thinking..."
+    "clear": "Clear chat"
   },
   "floatingAgentIA": {
     "open": "Open chat",
     "close": "Close chat"
+  },
+  "resumeSelector": {
+    "aria": "Select a resume",
+    "choose": "Choose a resume"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "emailAria": "Send email",
+    "backToTop": "Back to top"
   }
 }
