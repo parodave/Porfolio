@@ -5,10 +5,7 @@ import { projects } from '../data/projects'
 
 const SITE_URL = 'https://karimhammouche.com'
 
-const StructuredSEO: React.FC = () => {
-  const { i18n } = useTranslation()
-  const lang = (i18n.language as 'fr' | 'en') || 'fr'
-
+export const getStructuredData = (lang: 'fr' | 'en') => {
   const websiteData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -28,10 +25,19 @@ const StructuredSEO: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: p.title[lang],
-    description: p.description[lang],
+    description: p.description[lang].join(' '),
     image: p.image,
     ...(p.url ? { url: p.url } : {}),
   }))
+
+  return { websiteData, personData, projectData }
+}
+
+const StructuredSEO: React.FC = () => {
+  const { i18n } = useTranslation()
+  const lang = (i18n.language as 'fr' | 'en') || 'fr'
+
+  const { websiteData, personData, projectData } = getStructuredData(lang)
 
   return (
     <Helmet>

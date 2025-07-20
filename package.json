@@ -14,7 +14,7 @@
     "fix:deps": "ts-node --loader ts-node/esm scripts/fix-deps.ts",
     "fix:three-deps": "ts-node --loader ts-node/esm scripts/fix-three-deps.ts",
     "fix:three-missing": "ts-node --loader ts-node/esm scripts/fix-three-missing.ts",
-    "fix:three-all": "npm run fix:three-deps && npm run fix:three-missing"
+    "fix:three-all": "ts-node --loader ts-node/esm scripts/fix-three-all.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

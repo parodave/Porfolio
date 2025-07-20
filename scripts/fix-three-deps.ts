@@ -90,4 +90,20 @@ async function downloadMissingFiles() {
 
 downloadMissingFiles().then(() => {
   console.log("🚀 Tous les fichiers nécessaires ont été restaurés.");
+  // Patch three-stdlib exports so these files can be imported
+  const stdlibPkgPath = join("node_modules", "three-stdlib", "package.json");
+  if (existsSync(stdlibPkgPath)) {
+    const pkg = JSON.parse(fs.readFileSync(stdlibPkgPath, "utf8")) as Record<string, any>;
+    pkg.exports = {
+      ...(pkg.exports || {}),
+      "./nodes": "../three/examples/jsm/nodes/Nodes.js",
+      "./shaders/AdditiveBlendingShader": "../three/examples/jsm/shaders/AdditiveBlendingShader.js",
+      "./renderers/webgpu/WebGPURenderer": "../three/examples/jsm/renderers/webgpu/WebGPURenderer.js",
+      "./nodes/tsl/tsl": "../three/examples/jsm/nodes/tsl/tsl.js",
+    };
+    fs.writeFileSync(stdlibPkgPath, JSON.stringify(pkg, null, 2));
+    console.log("🛠️  three-stdlib exports patched.");
+  } else {
+    console.warn("⚠️  three-stdlib package.json introuvable.");
+  }
 });
