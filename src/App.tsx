@@ -17,6 +17,8 @@ import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
 import TestFormSupabase from "./components/TestFormSupabase";
 import TravelMap from "./pages/TravelMap"; // ✅ version retenue
+import Blog from "./components/blog/Blog";
+import ArticlePage from "./components/blog/ArticlePage";
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -89,6 +91,8 @@ function App() {
           <Route path="/travel" element={<TravelMap />} />
           <Route path="/travel-map" element={<TravelMap />} />
           <Route path="/test-supabase" element={<TestFormSupabase />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<ArticlePage />} />
         </Routes>
       </Suspense>
       <Footer />

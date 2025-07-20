@@ -1,5 +1,4 @@
 {
-  ...
   "countries": {
     "title": "Countries",
     "france": "Known for its gastronomy and rich cultural heritage.",
@@ -19,6 +18,5 @@
   "world": {
     "searchPlaceholder": "Search a country...",
     "noResults": "No countries found."
-  },
-  ...
+  }
 }

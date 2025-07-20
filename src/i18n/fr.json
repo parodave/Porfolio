@@ -1,5 +1,4 @@
 {
-  ...
   "countries": {
     "title": "Pays",
     "france": "Réputée pour sa gastronomie et sa richesse culturelle.",
@@ -19,6 +18,5 @@
   "world": {
     "searchPlaceholder": "Recherchez un pays...",
     "noResults": "Aucun pays trouvé."
-  },
-  ...
+  }
 }
