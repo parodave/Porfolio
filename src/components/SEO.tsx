@@ -22,8 +22,6 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
-
-  const lang = (i18n.language as 'fr' | 'en') || 'fr'
   const baseUrl = url || `${SITE_URL}${pathname}`
   const canonicalUrl = canonical || baseUrl
   const frUrl = `${baseUrl}?lang=fr`
