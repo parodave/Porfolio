@@ -1,5 +1,13 @@
 {
-  ...
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
   "countries": {
     "title": "Countries",
     "france": "Known for its gastronomy and rich cultural heritage.",
@@ -20,5 +28,10 @@
     "searchPlaceholder": "Search a country...",
     "noResults": "No countries found."
   },
-  ...
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Read Article",
+    "downloadPDF": "Download PDF",
+    "listenAudio": "Listen Audio"
+  }
 }
