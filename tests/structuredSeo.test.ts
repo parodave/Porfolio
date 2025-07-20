@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getStructuredData } from '../src/components/StructuredSEO'
+import { getStructuredData } from '../src/utils/structuredData'
 import { projects } from '../src/data/projects'
 
 ;(['en', 'fr'] as const).forEach((lang) => {
