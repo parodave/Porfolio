@@ -81,6 +81,7 @@ This project uses [Vitest](https://vitest.dev/) for unit tests. Run them with:
 ```bash
 npm test
 ```
+Running the tests automatically creates a `dist/` directory using a setup script.
 
 ## License
 
