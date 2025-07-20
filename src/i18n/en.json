@@ -271,6 +271,15 @@
     "loader": "Loading the Moon...",
     "error": "Failed to load the Moon."
   },
+  "countries": {
+    "france": "Known for its gastronomy and rich cultural heritage.",
+    "unitedKingdom": "An island nation recognized for its history and diversity.",
+    "spain": "A sunny country famous for its beaches and lively culture.",
+    "japan": "Land of the rising sun blending tradition and technology.",
+    "china": "Vast country with ancient history and rapid modernization.",
+    "saudiArabia": "Famous for its deserts and historical significance.",
+    "thailand": "Well known for its hospitality, temples, and beaches."
+  },
   "seo": {
     "home": {
       "title": "Karim Hammouche | Portfolio",
