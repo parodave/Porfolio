@@ -19,10 +19,12 @@ export default defineConfig({
       'three/examples/jsm/nodes/Nodes.js',
       'three/examples/jsm/AdditiveBlendingShader.js',
       'three/examples/jsm/WebGPURenderer.js',
+    ],
+    exclude: [
+      'lucide-react',
       'three/webgpu',
       'three/tsl',
     ],
-    exclude: ['lucide-react'],
   },
   resolve: {
     alias: {
