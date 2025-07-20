@@ -271,6 +271,15 @@
     "loader": "Chargement de la Lune...",
     "error": "Erreur de chargement de la Lune."
   },
+  "countries": {
+    "france": "Réputée pour sa gastronomie et sa richesse culturelle.",
+    "unitedKingdom": "Nation insulaire renommée pour son histoire et sa diversité.",
+    "spain": "Pays ensoleillé célèbre pour ses plages et sa culture dynamique.",
+    "japan": "Pays du Soleil-Levant mêlant tradition et technologie.",
+    "china": "Immense pays à l'histoire millénaire et à la modernisation rapide.",
+    "saudiArabia": "Réputée pour ses déserts et son importance historique.",
+    "thailand": "Célèbre pour son hospitalité, ses temples et ses plages."
+  },
   "seo": {
     "home": {
       "title": "Karim Hammouche | Portfolio",
