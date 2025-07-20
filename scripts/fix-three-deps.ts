@@ -1,32 +1,93 @@
-import { execSync } from 'child_process';
-import fs from 'fs';
+// scripts/fix-three-deps.ts
+import { execSync } from "child_process";
+import fs, { mkdirSync, existsSync, writeFileSync } from "fs";
+import { dirname, join } from "path";
+import https from "https";
 
-/**
- * Cleanup and reinstall Three.js dependencies.
- *
- * Steps:
- * 1. Delete `node_modules` and `package-lock.json`.
- * 2. Reinstall three along with all packages that use it.
- * 3. Print a success message when done.
- */
+// Étape 1 : suppression des fichiers bloquants
+console.log("🧹 Suppression de node_modules et package-lock.json...");
 
-console.log('🧹 Removing node_modules and lockfile...');
-if (fs.existsSync('node_modules')) {
-  fs.rmSync('node_modules', { recursive: true, force: true });
+if (fs.existsSync("node_modules")) {
+  fs.rmSync("node_modules", { recursive: true, force: true });
 }
-if (fs.existsSync('package-lock.json')) {
-  fs.rmSync('package-lock.json', { force: true });
+if (fs.existsSync("package-lock.json")) {
+  fs.rmSync("package-lock.json", { force: true });
 }
 
-console.log('📦 Installing Three.js related packages...');
+// Étape 2 : réinstallation des dépendances Three.js
+console.log("📦 Réinstallation des packages liés à Three.js...");
 const packages = [
-  'three@0.154.0',
-  '@react-three/fiber@8.18.0',
-  '@react-three/drei@9.122.0',
-  '@react-three/rapier@1.5.0',
-  'react-globe.gl@2.34.0',
-  '@types/three@0.162.0'
+  "three@0.154.0",
+  "@react-three/fiber@8.18.0",
+  "@react-three/drei@9.122.0",
+  "@react-three/rapier@1.5.0",
+  "react-globe.gl@2.34.0",
+  "@types/three@0.162.0"
 ];
-execSync(`npm install ${packages.join(' ')}`, { stdio: 'inherit' });
 
-console.log('✅ Three.js dependencies reinstalled successfully.');
+execSync(`npm install ${packages.join(" ")}`, { stdio: "inherit" });
+
+// Étape 3 : téléchargement des fichiers manquants dans three/examples/jsm
+console.log("📁 Téléchargement des fichiers JSM manquants...");
+
+const filesToDownload = [
+  {
+    name: "AdditiveBlendingShader.js",
+    url: "https://unpkg.com/three@0.150.1/examples/jsm/shaders/AdditiveBlendingShader.js",
+  },
+  {
+    name: "Nodes.js",
+    url: "https://unpkg.com/three@0.150.1/examples/jsm/nodes/Nodes.js",
+  },
+  {
+    name: "WebGPURenderer.js",
+    url: "https://unpkg.com/three@0.150.1/examples/jsm/renderers/webgpu/WebGPURenderer.js",
+  },
+  {
+    name: "tsl.js",
+    url: "https://unpkg.com/three@0.150.1/examples/jsm/nodes/tsl/tsl.js",
+  },
+];
+
+const baseDir = "node_modules/three/examples/jsm";
+
+function downloadFile(url: string, dest: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        if (res.statusCode !== 200) {
+          return reject(new Error(`❌ Échec du téléchargement : ${url}`));
+        }
+
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => {
+          mkdirSync(dirname(dest), { recursive: true });
+          writeFileSync(dest, data);
+          console.log(`✅ Téléchargé : ${dest}`);
+          resolve();
+        });
+      })
+      .on("error", (err) => reject(err));
+  });
+}
+
+async function downloadMissingFiles() {
+  for (const file of filesToDownload) {
+    const relativePath = file.url.split("/examples/jsm/")[1];
+    const destPath = join(baseDir, relativePath);
+    if (existsSync(destPath)) {
+      console.log(`ℹ️  Déjà présent : ${destPath}`);
+      continue;
+    }
+    try {
+      await downloadFile(file.url, destPath);
+    } catch (err) {
+      console.error(`❌ Erreur pour ${file.name} :`, err);
+    }
+  }
+}
+
+downloadMissingFiles().then(() => {
+  console.log("🚀 Tous les fichiers nécessaires ont été restaurés.");
+});
