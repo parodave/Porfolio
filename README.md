@@ -43,6 +43,15 @@ npm run fix:three
 ```
 This reinstalls compatible versions, patches `three-stdlib` and replaces legacy example imports.
 
+### `codex:fix` helper
+
+If dependencies break inside the Codex workspace, use:
+
+```bash
+npm run codex:fix
+```
+This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports before launching the dev server.
+
 ### Troubleshooting
 
 Run the debug command if you keep seeing errors with Three.js or Vite:
