@@ -9,11 +9,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "codex:sync": "sh ./codex-sync.sh",
+    "codex:fix": "ts-node scripts/fix-portfolio.ts",
     "test": "vitest run",
     "clean:binaries": "ts-node --loader ts-node/esm --project tsconfig.node.json scripts/clean-binaries.ts",
     "fix:deps": "ts-node --loader ts-node/esm scripts/fix-deps.ts",
     "fix:three": "ts-node --loader ts-node/esm scripts/fix-three.ts",
-    "postinstall": "ts-node --loader ts-node/esm scripts/patch-three-stdlib.ts"
+    "postinstall": "ts-node --loader ts-node/esm scripts/patch-three-stdlib.ts",
+    "debug:all": "npm run fix:three && npm run dev"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

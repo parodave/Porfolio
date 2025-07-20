@@ -43,6 +43,15 @@ npm run fix:three
 ```
 This reinstalls compatible versions, patches `three-stdlib` and replaces legacy example imports.
 
+### Troubleshooting
+
+Run the debug command if you keep seeing errors with Three.js or Vite:
+
+```bash
+npm run debug:all
+```
+This removes `node_modules`, reinstalls dependencies with the `three-stdlib` patch and then starts the development server. It replaces manually deleting the `node_modules` directory and often resolves common build issues.
+
 ## Development
 
 Start the Vite development server:
