@@ -83,6 +83,15 @@ npm test
 ```
 Running the tests automatically creates a `dist/` directory using a setup script.
 
+### Cleaning binary assets
+
+Remove binary files from `public/` and `assets/` using:
+
+```bash
+npm run clean:binaries
+```
+The script respects `.gitignore`, logs each deleted file and prints a summary when finished.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
