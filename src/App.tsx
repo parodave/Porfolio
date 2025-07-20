@@ -11,6 +11,7 @@ import SEO from "./components/SEO";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
+import MapOverlay from "./components/MapOverlay";
 import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
@@ -92,6 +93,7 @@ function App() {
       </Suspense>
       <Footer />
       <FloatingAgentIA />
+      <MapOverlay />
     </div>
   );
 }
