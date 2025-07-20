@@ -1,5 +1,9 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Starfield from './Starfield';
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,6 +24,13 @@ const CameraMover: React.FC<{ direction: React.MutableRefObject<Vec2> }> = ({ di
   });
   return null;
 };
+
+const Terrain: React.FC = () => (
+  <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+    <planeGeometry args={[50, 50, 64, 64]} />
+    <meshStandardMaterial color="#272727" />
+  </mesh>
+);
 
 const TravelMap: React.FC = () => {
   const isMobile = useIsMobile();
@@ -43,15 +54,16 @@ const TravelMap: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px]">
-      <Canvas camera={{ position: [0, 2, 5] }}>
+    <div className="relative w-full h-screen">
+      <Canvas camera={{ position: [0, 5, 15], fov: 50 }}>
         <ambientLight intensity={0.5} />
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[20, 20]} />
-          <meshStandardMaterial color="lightblue" />
-        </mesh>
+        <directionalLight position={[5, 10, 5]} intensity={1.2} />
+        <Starfield />
+        <Terrain />
         <CameraMover direction={dirRef} />
+        {!isMobile && <OrbitControls enableZoom={false} />}
       </Canvas>
+
       {isMobile && (
         <div
           className="absolute bottom-4 left-4 w-24 h-24 bg-gray-200 rounded-full opacity-75 touch-none"
