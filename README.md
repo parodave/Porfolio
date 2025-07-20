@@ -95,7 +95,7 @@ Run ESLint:
 npm run lint
 ```
 
-This project uses [Vitest](https://vitest.dev/) for unit tests. Run them with:
+This project uses [Vitest](https://vitest.dev/) for unit tests. Install dependencies first with `npm install` (run `npm run fix:three` if the install fails), then run the tests with:
 
 ```bash
 npm test
