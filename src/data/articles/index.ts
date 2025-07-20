@@ -13,7 +13,11 @@ export interface Article {
   content: string;
 }
 
-const files = import.meta.glob('./*.md', { as: 'raw', eager: true });
+const files = import.meta.glob('./*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+});
 
 export const articles: Article[] = Object.entries(files).map(([path, raw]) => {
   const { data, content } = matter(raw as string);
