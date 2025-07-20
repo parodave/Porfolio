@@ -12,7 +12,7 @@ execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
 console.log('🛠️  Patching three-stdlib exports...');
 const pkgPath = join('node_modules', 'three-stdlib', 'package.json');
 if (fs.existsSync(pkgPath)) {
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as Record<string, any>;
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as Record<string, unknown>;
   pkg.exports = {
     './package.json': './package.json',
     './*': './*',
