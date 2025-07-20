@@ -8,6 +8,15 @@
     "contact": "Contact",
     "blog": "Blog"
   },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
   "countries": {
     "title": "Pays",
     "france": "Réputée pour sa gastronomie et sa richesse culturelle.",
