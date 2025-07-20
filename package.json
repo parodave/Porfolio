@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "codex:sync": "sh ./codex-sync.sh",
     "test": "vitest run",
-    "clean:binaries": "ts-node --project tsconfig.node.json scripts/clean-binaries.ts"
+    "clean:binaries": "ts-node --project tsconfig.node.json scripts/clean-binaries.ts",
+    "fix:deps": "ts-node scripts/fix-deps.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
