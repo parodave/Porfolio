@@ -39,10 +39,9 @@ npm install
 If Three.js packages fail after a fresh install, run the helper script:
 
 ```bash
-npm run fix:three-all
+npm run fix:three
 ```
-This reinstalls compatible versions, patches `three-stdlib` and replaces
-legacy example imports.
+This reinstalls compatible versions, patches `three-stdlib` and replaces legacy example imports.
 
 ## Development
 
