@@ -1,4 +1,13 @@
 {
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
   "countries": {
     "title": "Pays",
     "france": "Réputée pour sa gastronomie et sa richesse culturelle.",
@@ -18,5 +27,11 @@
   "world": {
     "searchPlaceholder": "Recherchez un pays...",
     "noResults": "Aucun pays trouvé."
+  },
+  "blog": {
+    "title": "Blog",
+    "readArticle": "Lire l'article",
+    "downloadPDF": "Télécharger le PDF",
+    "listenAudio": "Écouter l'audio"
   }
 }
