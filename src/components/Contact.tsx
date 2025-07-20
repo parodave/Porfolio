@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { containerVariants, itemVariants } from '../animationVariants';
+import { motion, AnimatePresence } from 'framer-motion';
+import { containerVariants, itemVariants, panelVariants } from '../animationVariants';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle } from 'lucide-react';
 import CompactContactForm from './CompactContactForm';
 import { sendEmail } from '../utils/emailjs';
 import SocialLinks from './SocialLinks';
 import { useTranslation } from 'react-i18next';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const Contact: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const reduceMotion = usePrefersReducedMotion();
 
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -92,20 +94,39 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            {success ? (
-              <div className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl">
-                <CheckCircle size={20} />
-                <span>{t('contact.success')}</span>
-              </div>
-            ) : (
-              <CompactContactForm
-                id="contact-form"
-                formRef={formRef}
-                handleSubmit={handleSubmit}
-                loading={loading}
-                error={error}
-              />
-            )}
+            <AnimatePresence mode="wait">
+              {success ? (
+                <motion.div
+                  key="success"
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  custom={reduceMotion}
+                  variants={panelVariants}
+                  className="p-6 border border-gray-800 bg-darker text-center text-green-500 flex items-center justify-center space-x-2 rounded-2xl"
+                >
+                  <CheckCircle size={20} />
+                  <span>{t('contact.success')}</span>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="form"
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  custom={reduceMotion}
+                  variants={panelVariants}
+                >
+                  <CompactContactForm
+                    id="contact-form"
+                    formRef={formRef}
+                    handleSubmit={handleSubmit}
+                    loading={loading}
+                    error={error}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </motion.div>
       </div>

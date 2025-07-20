@@ -19,3 +19,18 @@ export const itemVariants = {
     },
   },
 };
+
+export const panelVariants = {
+  hidden: (reduce: boolean) => ({
+    opacity: 0,
+    y: reduce ? 0 : 20,
+  }),
+  visible: (reduce: boolean) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: reduce ? 0 : 0.3,
+      ease: 'easeOut',
+    },
+  }),
+};
