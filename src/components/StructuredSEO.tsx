@@ -21,14 +21,20 @@ export const getStructuredData = (lang: 'fr' | 'en') => {
     url: SITE_URL,
   }
 
-  const projectData = projects.map((p) => ({
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: p.title[lang],
-    description: p.description[lang].join(' '),
-    image: p.image,
-    ...(p.url ? { url: p.url } : {}),
-  }))
+  const projectData = projects.map((p) => {
+    const description = Array.isArray(p.description[lang])
+      ? p.description[lang].join(' ')
+      : p.description[lang]
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: p.title[lang],
+      description,
+      image: p.image,
+      ...(p.url ? { url: p.url } : {}),
+    }
+  })
 
   return { websiteData, personData, projectData }
 }
