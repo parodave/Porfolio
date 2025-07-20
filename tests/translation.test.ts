@@ -3,8 +3,10 @@ import { translateText, LIBRETRANSLATE_URL } from '../src/utils/translation';
 
 describe('translateText', () => {
   const originalFetch = global.fetch;
+  let consoleErrorSpy: ReturnType<typeof vi.spyOn> | undefined;
 
   afterEach(() => {
+    consoleErrorSpy?.mockRestore();
     vi.restoreAllMocks();
     global.fetch = originalFetch;
   });
@@ -30,6 +32,7 @@ describe('translateText', () => {
   });
 
   it('returns original text on fetch error', async () => {
+    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     global.fetch = vi.fn().mockRejectedValue(new Error('network'));
 
     const result = await translateText('Hello', 'en', 'fr');
