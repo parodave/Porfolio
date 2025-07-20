@@ -8,6 +8,15 @@
     "contact": "Contact",
     "blog": "Blog"
   },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
   "countries": {
     "title": "Countries",
     "france": "Known for its gastronomy and rich cultural heritage.",
