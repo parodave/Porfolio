@@ -267,9 +267,16 @@
     "open": "Open AI agent",
     "close": "Close AI agent"
   },
+  "countries": {
+    "title": "Countries"
+  },
   "moon": {
     "loader": "Loading the Moon...",
     "error": "Failed to load the Moon."
+  },
+  "world": {
+    "searchPlaceholder": "Search a country...",
+    "noResults": "No countries found."
   },
   "seo": {
     "home": {

@@ -267,9 +267,16 @@
     "open": "Ouvrir l'agent IA",
     "close": "Fermer l'agent IA"
   },
+  "countries": {
+    "title": "Pays"
+  },
   "moon": {
     "loader": "Chargement de la Lune...",
     "error": "Erreur de chargement de la Lune."
+  },
+  "world": {
+    "searchPlaceholder": "Recherchez un pays...",
+    "noResults": "Aucun pays trouvé."
   },
   "seo": {
     "home": {
