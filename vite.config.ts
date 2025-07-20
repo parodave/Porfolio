@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import path from 'path';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
 
@@ -14,11 +14,20 @@ export default defineConfig({
     }),
   ],
   optimizeDeps: {
+    include: [
+      'three',
+      'three/examples/jsm/nodes/Nodes.js',
+      'three/examples/jsm/AdditiveBlendingShader.js',
+      'three/examples/jsm/WebGPURenderer.js',
+      'three/webgpu',
+      'three/tsl',
+    ],
     exclude: ['lucide-react'],
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'src'),
+      three: path.resolve(__dirname, 'node_modules/three'),
     },
   },
   test: {
