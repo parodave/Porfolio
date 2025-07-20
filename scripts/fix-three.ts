@@ -82,7 +82,7 @@ async function downloadMissingFiles() {
 async function patchStdlib() {
   const stdlibPkgPath = join('node_modules', 'three-stdlib', 'package.json');
   if (existsSync(stdlibPkgPath)) {
-    const pkg = JSON.parse(fs.readFileSync(stdlibPkgPath, 'utf8')) as Record<string, any>;
+    const pkg = JSON.parse(fs.readFileSync(stdlibPkgPath, 'utf8')) as Record<string, unknown>;
     pkg.exports = {
       ...(pkg.exports || {}),
       './nodes': '../three/examples/jsm/nodes/Nodes.js',
