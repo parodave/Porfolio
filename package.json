@@ -14,8 +14,8 @@
     "clean:binaries": "ts-node --loader ts-node/esm --project tsconfig.node.json scripts/clean-binaries.ts",
     "fix:deps": "ts-node --loader ts-node/esm scripts/fix-deps.ts",
     "fix:three": "ts-node --loader ts-node/esm scripts/fix-three.ts",
-    "postinstall": "ts-node --loader ts-node/esm scripts/patch-three-stdlib.ts",
-    "debug:all": "npm run fix:three && npm run dev"
+    "debug:all": "npm run fix:three && npm run dev",
+    "postinstall": "ts-node --loader ts-node/esm scripts/patch-three-stdlib.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
