@@ -16,9 +16,9 @@ export default defineConfig({
   optimizeDeps: {
     include: [
       'three',
-      'three/examples/jsm/nodes/Nodes.js',
-      'three/examples/jsm/AdditiveBlendingShader.js',
-      'three/examples/jsm/WebGPURenderer.js',
+      'three-stdlib/nodes',
+      'three-stdlib/shaders/AdditiveBlendingShader',
+      'three-stdlib/renderers/webgpu/WebGPURenderer',
     ],
     exclude: [
       'lucide-react',
