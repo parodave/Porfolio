@@ -42,5 +42,20 @@
     "readArticle": "Read Article",
     "downloadPDF": "Download PDF",
     "listenAudio": "Listen Audio"
+  },
+  "chat": {
+    "title": "Chat",
+    "subtitle": "Ask me anything",
+    "clear": "Clear",
+    "ready": "I'm ready to help!",
+    "supported": "Supports FR, EN, ES, JA, ZH, AR, TH",
+    "placeholder": "Type your question...",
+    "send": "Send",
+    "generating": "Generating...",
+    "thinking": "Thinking..."
+  },
+  "floatingAgentIA": {
+    "open": "Open chat",
+    "close": "Close chat"
   }
 }

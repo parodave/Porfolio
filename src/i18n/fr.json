@@ -42,5 +42,20 @@
     "readArticle": "Lire l'article",
     "downloadPDF": "Télécharger le PDF",
     "listenAudio": "Écouter l'audio"
+  },
+  "chat": {
+    "title": "Discussion",
+    "subtitle": "Posez-moi vos questions",
+    "clear": "Effacer",
+    "ready": "Je suis prêt à aider !",
+    "supported": "Supporte FR, EN, ES, JA, ZH, AR, TH",
+    "placeholder": "Tapez votre question...",
+    "send": "Envoyer",
+    "generating": "Génération en cours...",
+    "thinking": "Réflexion..."
+  },
+  "floatingAgentIA": {
+    "open": "Ouvrir le chat",
+    "close": "Fermer le chat"
   }
 }
