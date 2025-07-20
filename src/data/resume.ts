@@ -233,5 +233,44 @@ export const resumeData: ResumeData = {
       ]
     }
   ],
-  entrepreneurialProjects: [/* Already updated earlier */]
+  entrepreneurialProjects: [
+    {
+      name: "KR Global Solutions LTD",
+      role: "Founder & Director",
+      location: "Global",
+      dates: "Jun 2025 – Present",
+      details: [
+        "SaaS platform development, AI integration, digital strategy",
+        "Hosting, automation, e-commerce, and product launches"
+      ]
+    },
+    {
+      name: "FelizBella",
+      role: "Co-founder",
+      location: "Paris, France",
+      dates: "2025",
+      details: ["Cosmetics brand, e-commerce, Meta Ads, SEO, logistics"]
+    },
+    {
+      name: "KHH Global Projects",
+      role: "Co-founder",
+      location: "Morocco",
+      dates: "2023",
+      details: ["Automated short-term Airbnb rentals, profitability optimization"]
+    },
+    {
+      name: "Domaine Harrach",
+      role: "Co-founder",
+      location: "Meknès, Morocco",
+      dates: "2019",
+      details: ["3-hectare organic fruit farm, crop planning, sustainable agriculture"]
+    },
+    {
+      name: "0'240 – Fast-Food Business",
+      role: "Founder",
+      location: "Saint-Michel-sur-Orge",
+      dates: "2020 – 2022",
+      details: ["Launched and managed fast-food business, hiring, budgeting, operations"]
+    }
+  ]
 };
