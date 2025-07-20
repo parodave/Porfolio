@@ -1,26 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
+import { getCountryAudio } from '../lib/supabaseClient'
+import AudioPlayer from './AudioPlayer'
 
 interface CountryModalProps {
-  country: string | null;
-  onClose: () => void;
+  country: string | null
+  onClose: () => void
 }
 
 const CountryModal: React.FC<CountryModalProps> = ({ country, onClose }) => {
-  if (!country) return null;
+  const [audioUrl, setAudioUrl] = useState<string | null>(null)
+  const [language, setLanguage] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!country) return
+
+    async function load() {
+      setLoading(true)
+      try {
+        const data = await getCountryAudio(country)
+        setAudioUrl(data?.url || null)
+        setLanguage(data?.language || null)
+      } catch (error) {
+        console.error('Error loading country audio:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    load()
+  }, [country])
+
+  if (!country) return null
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-      <div className="bg-white dark:bg-darker p-6 rounded">
-        <p className="mb-4 text-center">Information about {country}</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+      <div className="relative w-full max-w-md rounded-lg bg-white p-6 text-black dark:bg-zinc-900 dark:text-white">
         <button
           onClick={onClose}
-          className="px-4 py-2 bg-gray-800 text-white rounded"
+          className="absolute right-3 top-3 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+          aria-label="Close"
         >
-          Close
+          &times;
         </button>
+        <h2 className="mb-4 text-xl font-semibold capitalize text-center">
+          {country}
+        </h2>
+
+        {loading && <p className="text-center text-sm text-gray-400">Loading...</p>}
+
+        {!loading && audioUrl && (
+          <>
+            {language && (
+              <p className="mb-2 text-sm text-center text-gray-500 dark:text-gray-400">
+                Language: {language}
+              </p>
+            )}
+            <AudioPlayer src={audioUrl} />
+          </>
+        )}
+
+        {!loading && !audioUrl && (
+          <p className="text-center text-sm text-gray-400">No audio available for this country.</p>
+        )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CountryModal;
+export default CountryModal
