@@ -60,7 +60,6 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         EMAILJS_PUBLIC_KEY
       );
 
-      console.log('EmailJS result:', result);
 
       if (result.text === 'OK') {
         setSuccess(true);
