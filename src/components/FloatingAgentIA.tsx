@@ -1,25 +1,39 @@
 import { useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 import Spinner from './Spinner';
+import { panelVariants } from '../animationVariants';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const ChatWidget = lazy(() => import('./ChatWidget'));
 
 export default function FloatingAgentIA() {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const reduceMotion = usePrefersReducedMotion();
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {/* Widget affiché quand ouvert */}
-      {isOpen && (
-        <div className="absolute bottom-16 right-0 animate-in slide-in-from-bottom-2 duration-200">
-          <div className="bg-black rounded-2xl shadow-xl border border-white overflow-hidden">
-            <Suspense fallback={<Spinner />}>
-              <ChatWidget />
-            </Suspense>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="chat"
+            className="absolute bottom-16 right-0"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            custom={reduceMotion}
+            variants={panelVariants}
+          >
+            <div className="bg-black rounded-2xl shadow-xl border border-white overflow-hidden">
+              <Suspense fallback={<Spinner />}>
+                <ChatWidget />
+              </Suspense>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bouton flottant */}
       <button

@@ -85,3 +85,15 @@ npm test
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## TravelMap Joystick Usage
+
+To test the new on-screen joystick:
+
+1. Start the development server with `npm run dev`.
+2. Open the site on a mobile device or using the browser's device emulator.
+3. Navigate to the component that renders `<TravelMap />`.
+4. A translucent circle appears in the bottom-left corner.
+5. Drag inside this circle to move the camera around the map.
+6. Resize to a desktop viewport and confirm the joystick is hidden.
+

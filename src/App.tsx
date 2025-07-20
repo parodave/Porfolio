@@ -15,6 +15,7 @@ import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
 import TestFormSupabase from "./components/TestFormSupabase";
+import TravelMap from "./pages/TravelMap"; // ✅ version retenue
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -64,7 +65,7 @@ function App() {
     };
   }, []);
 
-  // 📊 Init Google Analytics uniquement en production (pas en localhost)
+  // 📊 Init Google Analytics uniquement en production
   useEffect(() => {
     if (window.location.hostname !== "localhost") {
       const GA_ID = import.meta.env.VITE_GA_ID;
@@ -84,6 +85,8 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/travel" element={<TravelMap />} />
+          <Route path="/travel-map" element={<TravelMap />} />
           <Route path="/test-supabase" element={<TestFormSupabase />} />
         </Routes>
       </Suspense>

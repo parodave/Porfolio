@@ -22,14 +22,16 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
+
   const baseUrl = url || `${SITE_URL}${pathname}`
   const canonicalUrl = canonical || baseUrl
   const frUrl = `${baseUrl}?lang=fr`
   const enUrl = `${baseUrl}?lang=en`
 
   const title = titleKey ? t(titleKey) : 'Karim Hammouche – Portfolio'
-  const description = descriptionKey ? t(descriptionKey) : 'Portfolio de Karim Hammouche, développeur créatif et entrepreneur.'
-
+  const description = descriptionKey
+    ? t(descriptionKey)
+    : 'Portfolio de Karim Hammouche, développeur créatif et entrepreneur.'
 
   return (
     <Helmet>
@@ -51,7 +53,6 @@ const SEO: React.FC<SEOProps> = ({
 
       {/* Langue et direction (RTL si arabe) */}
       <html lang={i18n.language} dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} />
-
     </Helmet>
   )
 }
