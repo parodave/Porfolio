@@ -14,6 +14,7 @@ import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
 import TestFormSupabase from "./components/TestFormSupabase";
+import TravelMap from "./pages/TravelMap";
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -83,6 +84,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/test-supabase" element={<TestFormSupabase />} />
+          <Route path="/travel-map" element={<TravelMap />} />
         </Routes>
       </Suspense>
       <Footer />
