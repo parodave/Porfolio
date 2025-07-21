@@ -20,7 +20,7 @@
     "clean:binaries": "tsx scripts/clean-binaries.ts",
     "clean:optimizeDeps": "tsx scripts/clean-vite-optimize.ts",
     "debug:all": "npm run fix:three && npm run dev",
-    "postinstall": "tsx scripts/patch-three-stdlib.ts && tsx scripts/fix-react-globe.ts && tsx scripts/fix-vite-globe.ts"
+    "postinstall": "tsx scripts/patch-three-stdlib.ts && tsx scripts/patch-frame-ticker.ts && tsx scripts/fix-react-globe.ts && tsx scripts/fix-vite-globe.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
