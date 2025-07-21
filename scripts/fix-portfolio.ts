@@ -3,6 +3,7 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
+import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
 
 // 🔧 Patch react-globe.gl + cache vite
 function patchReactGlobe() {
@@ -123,23 +124,6 @@ async function removeNodeModules() {
 function installPackages() {
   console.log('📦 Reinstalling packages with legacy peer deps...');
   execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
-}
-
-// 🔧 Patch exports dans three-stdlib
-function patchThreeStdlib() {
-  console.log('🛠️  Patching three-stdlib exports...');
-  const pkgPath = join('node_modules', 'three-stdlib', 'package.json');
-  if (!fs.existsSync(pkgPath)) {
-    console.warn('⚠️  three-stdlib package.json not found.');
-    return;
-  }
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as Record<string, unknown>;
-  pkg.exports = {
-    '.': { import: './index.js', require: './index.js' },
-    './*': { import: './*.js', require: './*.js' }
-  };
-  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-  console.log('✅ Patched three-stdlib package.json.');
 }
 
 // 🔄 Corriger les imports three/examples/jsm
