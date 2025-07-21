@@ -1,5 +1,3 @@
-// scripts/fix-portfolio.ts
-
 import { execSync, spawn } from 'child_process';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
@@ -7,11 +5,7 @@ import { join } from 'path';
 import fg from 'fast-glob';
 import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
 
-<<<<<<< HEAD
-// 🔧 Patch react-globe.gl + son cache vite
-=======
 // 🔧 Patch react-globe.gl + cache vite
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function patchReactGlobe() {
   console.log('🛠️  Patching react-globe.gl imports...');
   const filesToPatch = [
@@ -25,11 +19,7 @@ function patchReactGlobe() {
     }
     let content = fs.readFileSync(filePath, 'utf8');
 
-<<<<<<< HEAD
-    // Supprimer les imports webgpu/tsl
-=======
-    // Supprimer les imports inutiles
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
+    // Supprimer les imports inutiles (webgpu/tsl)
     const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
     content = content.replace(regex, '');
 
@@ -55,11 +45,7 @@ function patchThreeGlobe() {
 
   let content = fs.readFileSync(filePath, 'utf8');
 
-<<<<<<< HEAD
-  // Supprimer les imports webgpu/tsl
-=======
   // Supprimer les imports inutiles
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
   const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
   content = content.replace(regex, '');
 
@@ -73,8 +59,6 @@ function patchThreeGlobe() {
   console.log('✅ Patched three-globe.mjs');
 }
 
-<<<<<<< HEAD
-=======
 // 🔧 Corriger ou créer FrameTicker.js manuellement
 function fixFrameTickerExport() {
   console.log('🔧 Checking FrameTicker.js export...');
@@ -129,7 +113,6 @@ export class FrameTicker {
   }
 }
 
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 // 🧹 Supprime node_modules et package-lock.json
 async function removeNodeModules() {
   console.log('🧹 Removing node_modules and package-lock.json...');
@@ -137,41 +120,13 @@ async function removeNodeModules() {
   if (fs.existsSync('package-lock.json')) fs.rmSync('package-lock.json', { force: true });
 }
 
-<<<<<<< HEAD
 // 📦 Réinstalle les packages avec legacy peer deps
-=======
-// 📦 Réinstalle les packages
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function installPackages() {
   console.log('📦 Reinstalling packages with legacy peer deps...');
   execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
 }
 
-<<<<<<< HEAD
-// 🔧 Patch exports dans three-stdlib
-function patchThreeStdlib() {
-  console.log('🛠️  Patching three-stdlib exports...');
-  const pkgPath = join('node_modules', 'three-stdlib', 'package.json');
-  if (!fs.existsSync(pkgPath)) {
-    console.warn('⚠️  three-stdlib package.json not found.');
-    return;
-  }
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as Record<string, unknown>;
-  pkg.exports = {
-    '.': { import: './index.js', require: './index.js' },
-    './*': { import: './*.js', require: './*.js' }
-  };
-  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-  console.log('✅ Patched three-stdlib package.json.');
-}
-
-<<<<<<< HEAD
-// 🔄 Remplace tous les imports vers three/examples/jsm → three-stdlib
-=======
-=======
->>>>>>> f07ad29a748853c1c2947b6aa4a16a60ace7abbe
-// 🔄 Corriger les imports three/examples/jsm
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
+// 🔄 Corriger les imports three/examples/jsm → three-stdlib
 async function replaceImports() {
   console.log('🔄 Fixing imports...');
   const files = await fg(['src/**/*.{ts,tsx}'], { absolute: true });
@@ -190,32 +145,21 @@ async function replaceImports() {
   console.log(`✅ Replaced imports in ${count} file${count === 1 ? '' : 's'}.`);
 }
 
-<<<<<<< HEAD
 // 🚀 Relance le serveur de développement
-=======
-// 🚀 Relancer le serveur
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function runDev() {
   console.log('🚀 Launching development server...');
   const dev = spawn('npm', ['run', 'dev'], { stdio: 'inherit', shell: true });
   dev.on('exit', (code) => process.exit(code ?? 0));
 }
 
-<<<<<<< HEAD
-// ▶️ Exécution principale
-=======
 // ▶️ Script principal
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 async function main() {
   await removeNodeModules();
   installPackages();
   patchThreeStdlib();
   patchReactGlobe();
   patchThreeGlobe();
-<<<<<<< HEAD
-=======
   fixFrameTickerExport();
->>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
   await replaceImports();
 
   if (process.argv.includes('--start')) {
