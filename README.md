@@ -62,6 +62,8 @@ npm run patch:frame-ticker
 ```
 This updates `frame-ticker` and rewrites imports in `react-globe.gl` and `three-globe` for compatibility.
 
+Run `tsx scripts/final-frame-ticker-fix.ts` if issues persist after patching.
+
 ### Troubleshooting
 
 Run the debug command if you keep seeing errors with Three.js or Vite:
