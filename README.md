@@ -110,13 +110,23 @@ npm run build
 
 ## Linting and Tests
 
+Before running the linter or test suite, install all dependencies:
+
+```bash
+npm install
+# or
+npm run fix:three
+```
+
+Missing packages will make `npm run lint` and `npm test` fail with "not found" errors.
+
 Run ESLint:
 
 ```bash
 npm run lint
 ```
 
-This project uses [Vitest](https://vitest.dev/) for unit tests. Install dependencies first with `npm install` (run `npm run fix:three` if the install fails), then run the tests with:
+This project uses [Vitest](https://vitest.dev/) for unit tests. After installing dependencies, run:
 
 ```bash
 npm test
