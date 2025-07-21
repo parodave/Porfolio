@@ -5,6 +5,7 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
+import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
 
 <<<<<<< HEAD
 // 🔧 Patch react-globe.gl + son cache vite
@@ -146,6 +147,7 @@ function installPackages() {
   execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
 }
 
+<<<<<<< HEAD
 // 🔧 Patch exports dans three-stdlib
 function patchThreeStdlib() {
   console.log('🛠️  Patching three-stdlib exports...');
@@ -166,6 +168,8 @@ function patchThreeStdlib() {
 <<<<<<< HEAD
 // 🔄 Remplace tous les imports vers three/examples/jsm → three-stdlib
 =======
+=======
+>>>>>>> f07ad29a748853c1c2947b6aa4a16a60ace7abbe
 // 🔄 Corriger les imports three/examples/jsm
 >>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 async function replaceImports() {
