@@ -51,6 +51,7 @@ If dependencies break inside the Codex workspace, use:
 npm run codex:fix
 ```
 This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports before launching the dev server.
+It also removes unsupported WebGPU/TSL imports from `react-globe.gl`, which resolves build errors caused by Three.js examples.
 
 ### Troubleshooting
 
