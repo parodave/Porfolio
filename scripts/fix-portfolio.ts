@@ -3,9 +3,48 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
-import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
-import { patchFrameTicker } from './patch-frame-ticker.ts';
 
+import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
+import {
+  removeThreeImports,
+  rewriteFrameTickerImports,
+} from './utils/importFixers.ts';
+import { patchFrameTickerExport } from './utils/patchFrameTicker.ts';
+
+// 🔧 Patch react-globe.gl + cache vite
+function patchReactGlobe() {
+  console.log('🛠️  Patching react-globe.gl imports...');
+  const filesToPatch = [
+    join('node_modules', 'react-globe.gl', 'dist', 'react-globe.gl.mjs'),
+    join('node_modules', '.vite', 'deps', 'react-globe_gl.js'),
+  ];
+  for (const filePath of filesToPatch) {
+    if (!fs.existsSync(filePath)) {
+      console.warn(`⚠️  ${filePath} not found, skipping.`);
+      continue;
+    }
+    let content = fs.readFileSync(filePath, 'utf8');
+    content = removeThreeImports(content);
+    content = rewriteFrameTickerImports(content);
+    fs.writeFileSync(filePath, content);
+    console.log(`✅ Patched ${filePath}`);
+  }
+}
+
+// 🔧 Patch three-globe (FrameTicker + imports inutiles)
+function patchThreeGlobe() {
+  console.log('🛠️  Patching three-globe imports...');
+  const filePath = join('node_modules', 'three-globe', 'dist', 'three-globe.mjs');
+  if (!fs.existsSync(filePath)) {
+    console.warn('⚠️  three-globe.mjs not found, skipping.');
+    return;
+  }
+  let content = fs.readFileSync(filePath, 'utf8');
+  content = removeThreeImports(content);
+  content = rewriteFrameTickerImports(content);
+  fs.writeFileSync(filePath, content);
+  console.log('✅ Patched three-globe.mjs');
+}
 
 // 🧹 Supprime node_modules et package-lock.json
 async function removeNodeModules() {
@@ -51,7 +90,9 @@ async function main() {
   await removeNodeModules();
   installPackages();
   patchThreeStdlib();
-  patchFrameTicker();
+  patchReactGlobe();
+  patchThreeGlobe();
+  patchFrameTickerExport();
   await replaceImports();
 
   if (process.argv.includes('--start')) {
@@ -65,3 +106,4 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+

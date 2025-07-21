@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { removeThreeImports } from './utils/importFixers.ts'
 
 const filePath = path.resolve('node_modules/.vite/deps/react-globe_gl.js')
 
@@ -9,8 +10,7 @@ try {
     process.exit(0)
   }
   const content = fs.readFileSync(filePath, 'utf8')
-  const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm
-  const updated = content.replace(regex, '')
+  const updated = removeThreeImports(content)
   if (updated !== content) {
     fs.writeFileSync(filePath, updated)
     console.log('✅ Removed three/webgpu and three/tsl imports from react-globe_gl.js.')
