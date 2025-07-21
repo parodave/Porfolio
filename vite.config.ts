@@ -3,7 +3,6 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -19,6 +18,7 @@ export default defineConfig({
       'lucide-react',
       'three/webgpu',
       'three/tsl',
+      'react-globe.gl', // 🛡️ Forcer Vite à ne pas le précompiler (important pour ton patch)
     ],
   },
   resolve: {
