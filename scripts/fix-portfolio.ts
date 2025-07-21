@@ -4,6 +4,29 @@ import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
 
+function patchReactGlobe() {
+  console.log('🛠️  Patching react-globe.gl imports...');
+  const filePath = join(
+    'node_modules',
+    'react-globe.gl',
+    'dist',
+    'react-globe.gl.mjs'
+  );
+  if (!fs.existsSync(filePath)) {
+    console.warn('⚠️  react-globe.gl.mjs not found, skipping patch.');
+    return;
+  }
+  const content = fs.readFileSync(filePath, 'utf8');
+  const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
+  const updated = content.replace(regex, '');
+  if (updated !== content) {
+    fs.writeFileSync(filePath, updated);
+    console.log('✅ Removed three/webgpu and three/tsl imports from react-globe.gl.');
+  } else {
+    console.log('ℹ️  No three/webgpu or three/tsl imports found in react-globe.gl.');
+  }
+}
+
 async function removeNodeModules() {
   console.log('🧹 Removing node_modules and package-lock.json...');
   if (fs.existsSync('node_modules')) fs.rmSync('node_modules', { recursive: true, force: true });
@@ -59,6 +82,7 @@ async function main() {
   await removeNodeModules();
   installPackages();
   patchThreeStdlib();
+  patchReactGlobe();
   await replaceImports();
   runDev();
 }
