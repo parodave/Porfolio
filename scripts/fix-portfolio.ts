@@ -4,6 +4,11 @@ import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
 import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
+import {
+  removeThreeImports,
+  rewriteFrameTickerImports,
+} from './utils/importFixers.ts';
+import { patchFrameTickerExport } from './utils/patchFrameTicker.ts';
 
 // 🔧 Patch react-globe.gl + cache vite
 function patchReactGlobe() {
@@ -19,15 +24,8 @@ function patchReactGlobe() {
     }
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // Supprimer les imports inutiles (webgpu/tsl)
-    const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
-    content = content.replace(regex, '');
-
-    // Corriger l'import de frame-ticker
-    content = content.replace(
-      /import\s+FrameTicker\s+from\s+['"]frame-ticker['"]/g,
-      'import { FrameTicker } from "frame-ticker"'
-    );
+    content = removeThreeImports(content);
+    content = rewriteFrameTickerImports(content);
 
     fs.writeFileSync(filePath, content);
     console.log(`✅ Patched ${filePath}`);
@@ -45,73 +43,13 @@ function patchThreeGlobe() {
 
   let content = fs.readFileSync(filePath, 'utf8');
 
-  // Supprimer les imports inutiles
-  const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
-  content = content.replace(regex, '');
-
-  // Corriger l'import de frame-ticker
-  content = content.replace(
-    /import\s+FrameTicker\s+from\s+['"]frame-ticker['"]/g,
-    'import { FrameTicker } from "frame-ticker"'
-  );
+  content = removeThreeImports(content);
+  content = rewriteFrameTickerImports(content);
 
   fs.writeFileSync(filePath, content);
   console.log('✅ Patched three-globe.mjs');
 }
 
-// 🔧 Corriger ou créer FrameTicker.js manuellement
-function fixFrameTickerExport() {
-  console.log('🔧 Checking FrameTicker.js export...');
-  const filePath = join('node_modules', 'frame-ticker', 'dist', 'FrameTicker.js');
-
-  if (!fs.existsSync(filePath)) {
-    console.warn(`⚠️  ${filePath} not found, creating it manually...`);
-    const newContent = `
-export class FrameTicker {
-  constructor(callback) {
-    this.callback = callback;
-    this.running = false;
-    this.rafId = null;
-  }
-
-  start() {
-    if (this.running) return;
-    this.running = true;
-    const loop = () => {
-      this.callback();
-      this.rafId = requestAnimationFrame(loop);
-    };
-    loop();
-  }
-
-  stop() {
-    if (!this.running) return;
-    this.running = false;
-    cancelAnimationFrame(this.rafId);
-    this.rafId = null;
-  }
-}
-    `;
-    fs.mkdirSync(join('node_modules', 'frame-ticker', 'dist'), { recursive: true });
-    fs.writeFileSync(filePath, newContent.trim());
-    console.log(`✅ Created ${filePath}`);
-    return;
-  }
-
-  let content = fs.readFileSync(filePath, 'utf8');
-
-  if (/export\s+default\s+FrameTicker/.test(content)) {
-    content = content.replace(/export\s+default\s+FrameTicker/, 'export { FrameTicker }');
-    fs.writeFileSync(filePath, content);
-    console.log(`✅ Replaced default export in ${filePath}`);
-  } else if (!/export\s+\{?\s*FrameTicker\s*\}?/.test(content)) {
-    content += `\nexport { FrameTicker };`;
-    fs.writeFileSync(filePath, content);
-    console.log(`✅ Added named export in ${filePath}`);
-  } else {
-    console.log(`✅ Export already correct in ${filePath}`);
-  }
-}
 
 // 🧹 Supprime node_modules et package-lock.json
 async function removeNodeModules() {
@@ -159,7 +97,7 @@ async function main() {
   patchThreeStdlib();
   patchReactGlobe();
   patchThreeGlobe();
-  fixFrameTickerExport();
+  patchFrameTickerExport();
   await replaceImports();
 
   if (process.argv.includes('--start')) {
