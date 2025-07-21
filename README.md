@@ -48,9 +48,9 @@ This reinstalls compatible versions, patches `three-stdlib` and replaces legacy 
 If dependencies break inside the Codex workspace, use:
 
 ```bash
-npm run codex:fix
+npm run codex:fix -- --start
 ```
-This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports before launching the dev server.
+This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports. Pass the `--start` flag to launch the dev server when the script finishes.
 It also removes unsupported WebGPU/TSL imports from `react-globe.gl`, which resolves build errors caused by Three.js examples.
 
 ### Troubleshooting

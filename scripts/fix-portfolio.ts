@@ -84,7 +84,11 @@ async function main() {
   patchThreeStdlib();
   patchReactGlobe();
   await replaceImports();
-  runDev();
+  if (process.argv.includes('--start')) {
+    runDev();
+  } else {
+    console.log('ℹ️  Skipping dev server. Pass --start to launch it automatically.');
+  }
 }
 
 main().catch((err) => {
