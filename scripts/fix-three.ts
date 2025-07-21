@@ -1,8 +1,7 @@
 import { execSync } from 'child_process';
-import fs, { existsSync, mkdirSync, writeFileSync } from 'fs';
+import fs, { existsSync, mkdirSync, copyFileSync } from 'fs';
 import fsPromises from 'fs/promises';
 import { dirname, join } from 'path';
-import https from 'https';
 import fg from 'fast-glob';
 
 // Step 1: remove existing install artifacts
@@ -22,59 +21,46 @@ const packages = [
 ];
 execSync(`npm install ${packages.join(' ')}`, { stdio: 'inherit' });
 
-// Step 3: download missing files under three/examples/jsm
-console.log('📁 Downloading missing JSM files...');
-const filesToDownload = [
+// Step 3: copy missing files under three/examples/jsm from local assets
+console.log('📁 Copying missing JSM files...');
+const filesToCopy = [
   {
-    name: 'AdditiveBlendingShader.js',
-    url: 'https://unpkg.com/three@0.150.1/examples/jsm/shaders/AdditiveBlendingShader.js',
+    src: 'scripts/assets/three/shaders/AdditiveBlendingShader.js',
+    dest: 'shaders/AdditiveBlendingShader.js'
   },
   {
-    name: 'Nodes.js',
-    url: 'https://unpkg.com/three@0.150.1/examples/jsm/nodes/Nodes.js',
+    src: 'scripts/assets/three/nodes/Nodes.js',
+    dest: 'nodes/Nodes.js'
   },
   {
-    name: 'WebGPURenderer.js',
-    url: 'https://unpkg.com/three@0.150.1/examples/jsm/renderers/webgpu/WebGPURenderer.js',
+    src: 'scripts/assets/three/renderers/webgpu/WebGPURenderer.js',
+    dest: 'renderers/webgpu/WebGPURenderer.js'
   },
   {
-    name: 'tsl.js',
-    url: 'https://unpkg.com/three@0.150.1/examples/jsm/nodes/tsl/tsl.js',
+    src: 'scripts/assets/three/nodes/tsl/tsl.js',
+    dest: 'nodes/tsl/tsl.js'
   },
 ];
 
 const baseDir = 'node_modules/three/examples/jsm';
 
-function downloadFile(url: string, dest: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        if (res.statusCode !== 200) return reject(new Error(`Failed to download ${url}`));
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => {
-          mkdirSync(dirname(dest), { recursive: true });
-          writeFileSync(dest, data);
-          console.log(`✅ Downloaded ${dest}`);
-          resolve();
-        });
-      })
-      .on('error', (err) => reject(err));
-  });
+function copyFile(src: string, dest: string) {
+  mkdirSync(dirname(dest), { recursive: true });
+  copyFileSync(src, dest);
+  console.log(`✅ Copied ${dest}`);
 }
 
-async function downloadMissingFiles() {
-  for (const file of filesToDownload) {
-    const relativePath = file.url.split('/examples/jsm/')[1];
-    const destPath = join(baseDir, relativePath);
+async function copyMissingFiles() {
+  for (const file of filesToCopy) {
+    const destPath = join(baseDir, file.dest);
     if (existsSync(destPath)) {
       console.log(`ℹ️  Already exists: ${destPath}`);
       continue;
     }
     try {
-      await downloadFile(file.url, destPath);
+      copyFile(file.src, destPath);
     } catch (err) {
-      console.error(`❌ Error downloading ${file.name}:`, err);
+      console.error(`❌ Error copying ${file.src}:`, err);
     }
   }
 }
@@ -115,7 +101,7 @@ async function replaceImports() {
 }
 
 async function main() {
-  await downloadMissingFiles();
+  await copyMissingFiles();
   await patchStdlib();
   await replaceImports();
   console.log('🚀 Fix completed.');
