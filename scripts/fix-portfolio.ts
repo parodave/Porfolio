@@ -6,7 +6,11 @@ import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
 
+<<<<<<< HEAD
 // 🔧 Patch react-globe.gl + son cache vite
+=======
+// 🔧 Patch react-globe.gl + cache vite
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function patchReactGlobe() {
   console.log('🛠️  Patching react-globe.gl imports...');
   const filesToPatch = [
@@ -20,7 +24,11 @@ function patchReactGlobe() {
     }
     let content = fs.readFileSync(filePath, 'utf8');
 
+<<<<<<< HEAD
     // Supprimer les imports webgpu/tsl
+=======
+    // Supprimer les imports inutiles
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
     const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
     content = content.replace(regex, '');
 
@@ -46,7 +54,11 @@ function patchThreeGlobe() {
 
   let content = fs.readFileSync(filePath, 'utf8');
 
+<<<<<<< HEAD
   // Supprimer les imports webgpu/tsl
+=======
+  // Supprimer les imports inutiles
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
   const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm;
   content = content.replace(regex, '');
 
@@ -60,6 +72,63 @@ function patchThreeGlobe() {
   console.log('✅ Patched three-globe.mjs');
 }
 
+<<<<<<< HEAD
+=======
+// 🔧 Corriger ou créer FrameTicker.js manuellement
+function fixFrameTickerExport() {
+  console.log('🔧 Checking FrameTicker.js export...');
+  const filePath = join('node_modules', 'frame-ticker', 'dist', 'FrameTicker.js');
+
+  if (!fs.existsSync(filePath)) {
+    console.warn(`⚠️  ${filePath} not found, creating it manually...`);
+    const newContent = `
+export class FrameTicker {
+  constructor(callback) {
+    this.callback = callback;
+    this.running = false;
+    this.rafId = null;
+  }
+
+  start() {
+    if (this.running) return;
+    this.running = true;
+    const loop = () => {
+      this.callback();
+      this.rafId = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  stop() {
+    if (!this.running) return;
+    this.running = false;
+    cancelAnimationFrame(this.rafId);
+    this.rafId = null;
+  }
+}
+    `;
+    fs.mkdirSync(join('node_modules', 'frame-ticker', 'dist'), { recursive: true });
+    fs.writeFileSync(filePath, newContent.trim());
+    console.log(`✅ Created ${filePath}`);
+    return;
+  }
+
+  let content = fs.readFileSync(filePath, 'utf8');
+
+  if (/export\s+default\s+FrameTicker/.test(content)) {
+    content = content.replace(/export\s+default\s+FrameTicker/, 'export { FrameTicker }');
+    fs.writeFileSync(filePath, content);
+    console.log(`✅ Replaced default export in ${filePath}`);
+  } else if (!/export\s+\{?\s*FrameTicker\s*\}?/.test(content)) {
+    content += `\nexport { FrameTicker };`;
+    fs.writeFileSync(filePath, content);
+    console.log(`✅ Added named export in ${filePath}`);
+  } else {
+    console.log(`✅ Export already correct in ${filePath}`);
+  }
+}
+
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 // 🧹 Supprime node_modules et package-lock.json
 async function removeNodeModules() {
   console.log('🧹 Removing node_modules and package-lock.json...');
@@ -67,7 +136,11 @@ async function removeNodeModules() {
   if (fs.existsSync('package-lock.json')) fs.rmSync('package-lock.json', { force: true });
 }
 
+<<<<<<< HEAD
 // 📦 Réinstalle les packages avec legacy peer deps
+=======
+// 📦 Réinstalle les packages
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function installPackages() {
   console.log('📦 Reinstalling packages with legacy peer deps...');
   execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
@@ -90,7 +163,11 @@ function patchThreeStdlib() {
   console.log('✅ Patched three-stdlib package.json.');
 }
 
+<<<<<<< HEAD
 // 🔄 Remplace tous les imports vers three/examples/jsm → three-stdlib
+=======
+// 🔄 Corriger les imports three/examples/jsm
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 async function replaceImports() {
   console.log('🔄 Fixing imports...');
   const files = await fg(['src/**/*.{ts,tsx}'], { absolute: true });
@@ -109,21 +186,34 @@ async function replaceImports() {
   console.log(`✅ Replaced imports in ${count} file${count === 1 ? '' : 's'}.`);
 }
 
+<<<<<<< HEAD
 // 🚀 Relance le serveur de développement
+=======
+// 🚀 Relancer le serveur
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 function runDev() {
   console.log('🚀 Launching development server...');
   const dev = spawn('npm', ['run', 'dev'], { stdio: 'inherit', shell: true });
   dev.on('exit', (code) => process.exit(code ?? 0));
 }
 
+<<<<<<< HEAD
 // ▶️ Exécution principale
+=======
+// ▶️ Script principal
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
 async function main() {
   await removeNodeModules();
   installPackages();
   patchThreeStdlib();
   patchReactGlobe();
   patchThreeGlobe();
+<<<<<<< HEAD
+=======
+  fixFrameTickerExport();
+>>>>>>> cfc38564c113f32ce7f6bb0f72156db57b002d9f
   await replaceImports();
+
   if (process.argv.includes('--start')) {
     runDev();
   } else {
