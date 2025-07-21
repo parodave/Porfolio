@@ -50,8 +50,8 @@ If dependencies break inside the Codex workspace, use:
 ```bash
 npm run codex:fix -- --start
 ```
-This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports. Pass the `--start` flag to launch the dev server when the script finishes.
-It also removes unsupported WebGPU/TSL imports from `react-globe.gl`, which resolves build errors caused by Three.js examples.
+This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports.
+It also patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
 
 ### Troubleshooting
 
