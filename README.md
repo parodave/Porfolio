@@ -53,6 +53,15 @@ npm run codex:fix -- --start
 This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports.
 It also patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
 
+### FrameTicker patch
+
+Run the FrameTicker patch if globe libraries fail to load:
+
+```bash
+npm run patch:frame-ticker
+```
+This updates `frame-ticker` and rewrites imports in `react-globe.gl` and `three-globe` for compatibility.
+
 ### Troubleshooting
 
 Run the debug command if you keep seeing errors with Three.js or Vite:
