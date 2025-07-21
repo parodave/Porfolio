@@ -6,13 +6,19 @@ function patchFile(filePath: string) {
     console.warn(`⚠️  ${filePath} not found, skipping.`)
     return
   }
+
   let content = fs.readFileSync(filePath, 'utf8')
+
+  // Supprime les imports de modules three inutiles
   const regex = /^import.*from ['"]three\/(?:webgpu|tsl)['"];?\n?/gm
   content = content.replace(regex, '')
+
+  // Corrige l'import de FrameTicker
   content = content.replace(
     /import\s+FrameTicker\s+from\s+['"]frame-ticker['"]/g,
     'import { FrameTicker } from "frame-ticker"',
   )
+
   fs.writeFileSync(filePath, content)
   console.log(`✅ Patched ${path.relative(process.cwd(), filePath)}`)
 }
@@ -65,9 +71,9 @@ export class FrameTicker {
     this.rafId = null
   }
 }
-    `
+    `.trim()
     fs.mkdirSync(path.dirname(filePath), { recursive: true })
-    fs.writeFileSync(filePath, newContent.trim())
+    fs.writeFileSync(filePath, newContent)
     console.log(`✅ Created ${path.relative(process.cwd(), filePath)}`)
     return
   }
@@ -92,6 +98,7 @@ export function patchFrameTicker() {
   fixFrameTickerExport()
 }
 
+// Exécution
 try {
   patchFrameTicker()
   console.log('✅ FrameTicker patches applied.')
