@@ -3,6 +3,7 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 import { join } from 'path';
 import fg from 'fast-glob';
+
 import { patchThreeStdlib } from './utils/patchThreeStdlib.ts';
 import {
   removeThreeImports,
@@ -15,7 +16,7 @@ function patchReactGlobe() {
   console.log('🛠️  Patching react-globe.gl imports...');
   const filesToPatch = [
     join('node_modules', 'react-globe.gl', 'dist', 'react-globe.gl.mjs'),
-    join('node_modules', '.vite', 'deps', 'react-globe_gl.js')
+    join('node_modules', '.vite', 'deps', 'react-globe_gl.js'),
   ];
   for (const filePath of filesToPatch) {
     if (!fs.existsSync(filePath)) {
@@ -23,10 +24,8 @@ function patchReactGlobe() {
       continue;
     }
     let content = fs.readFileSync(filePath, 'utf8');
-
     content = removeThreeImports(content);
     content = rewriteFrameTickerImports(content);
-
     fs.writeFileSync(filePath, content);
     console.log(`✅ Patched ${filePath}`);
   }
@@ -40,16 +39,12 @@ function patchThreeGlobe() {
     console.warn('⚠️  three-globe.mjs not found, skipping.');
     return;
   }
-
   let content = fs.readFileSync(filePath, 'utf8');
-
   content = removeThreeImports(content);
   content = rewriteFrameTickerImports(content);
-
   fs.writeFileSync(filePath, content);
   console.log('✅ Patched three-globe.mjs');
 }
-
 
 // 🧹 Supprime node_modules et package-lock.json
 async function removeNodeModules() {
@@ -111,3 +106,4 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
