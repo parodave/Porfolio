@@ -17,10 +17,20 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [typing, setTyping] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history, loading, typing]);
+
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, []);
 
   const handleReset = () => {
     setHistory([]);
@@ -41,6 +51,10 @@ export default function ChatWidget() {
     if (!question.trim()) return;
     setLoading(true);
     setTyping('');
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
 
     const detectedLang: SupportedLanguage = detectLanguage(question);
 
@@ -93,11 +107,12 @@ export default function ChatWidget() {
 
       let i = 0;
       setTyping('');
-      const interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         setTyping(answer.slice(0, i + 1));
         i++;
-        if (i >= answer.length) {
-          clearInterval(interval);
+        if (i >= answer.length && intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
           setHistory((prev) => [
             ...prev,
             { role: 'assistant', content: answer, lang: responseLanguage },
