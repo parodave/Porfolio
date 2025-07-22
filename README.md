@@ -127,6 +127,7 @@ npm run codex:fix
 ```
 
 Missing packages will make `npm run lint` and `npm test` fail with "not found" errors.
+`npm test` relies on the local `vitest` binary, so run `npm install` (or the fix script) before executing the tests, including in CI.
 
 Run ESLint:
 
