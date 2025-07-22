@@ -55,10 +55,10 @@ npm run fix:tsl
 If dependencies break inside the Codex workspace, use:
 
 ```bash
-npm run codex:fix -- --start
+npm run codex:fix -- --reinstall --start
 ```
-This wipes `node_modules`, reinstalls packages with legacy peer deps, patches `three-stdlib` and fixes outdated example imports.
-It also patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
+Add the `--reinstall` flag to wipe `node_modules` and reinstall packages with legacy peer deps. The script also patches `three-stdlib` and fixes outdated example imports.
+It patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
 
 ### FrameTicker patch
 
