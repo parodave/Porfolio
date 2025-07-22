@@ -1,4 +1,4 @@
-export default class FrameTicker {
+export class FrameTicker {
   constructor(callback) {
     this.callback = callback;
     this.running = false;
@@ -20,3 +20,4 @@ export default class FrameTicker {
     this.rafId = null;
   }
 }
+export default FrameTicker;
