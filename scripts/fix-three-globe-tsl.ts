@@ -2,23 +2,27 @@ import fs from 'fs/promises'
 import path from 'path'
 import fg from 'fast-glob'
 
-async function main() {
-  const pattern = 'node_modules/three-globe/**/*.mjs'
-  const files = await fg(pattern, { dot: true })
+async function fixTsl() {
+  const patterns = [
+    'node_modules/three-globe/**/*.{js,mjs,ts,tsx}',
+    'node_modules/globe.gl/**/*.{js,mjs,ts,tsx}',
+  ]
+  const files = await fg(patterns, { dot: true })
   for (const file of files) {
-    const content = await fs.readFile(file, 'utf8')
-    const lines = content.split(/\r?\n/)
-    const filtered = lines.filter(
-      (line) => !/from ['"]three\/tsl['"]/.test(line),
+    const original = await fs.readFile(file, 'utf8')
+    let updated = original.replace(
+      /^import\s+\*\s+as\s+tsl\s+from\s+['"]three\/tsl['"];?\r?\n?/gm,
+      '',
     )
-    if (filtered.length !== lines.length) {
-      await fs.writeFile(file, filtered.join('\n'))
-      console.log(`✅ Fixed ${path.relative(process.cwd(), file)}`)
+    updated = updated.replace(/tsl\.[a-zA-Z_$][\w$]*\([^)]*\)/g, '() => {}')
+    if (updated !== original) {
+      await fs.writeFile(file, updated)
+      console.log(`✅ Fixed TSL in ${path.relative(process.cwd(), file)}`)
     }
   }
 }
 
-main().catch((err) => {
-  console.error('❌ Failed to remove three/tsl imports:', err)
+fixTsl().catch((err) => {
+  console.error('❌ Failed to fix TSL imports:', err)
   process.exit(1)
 })
