@@ -2,20 +2,20 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { countries } from '../data/countries';
 import { useCountryStore } from '../store/countrySearch';
+import { getCurrentLang } from '../utils/getCurrentLang';
 
 const CountrySearch: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const search = useCountryStore((s) => s.search);
   const setSearch = useCountryStore((s) => s.setSearch);
   const setSelected = useCountryStore((s) => s.setSelected);
+  const lang = getCurrentLang();
 
   const results = useMemo(() => {
     return countries.filter((c) =>
-      c.name[i18n.language as 'fr' | 'en']
-        .toLowerCase()
-        .includes(search.toLowerCase()),
+      c.name[lang].toLowerCase().includes(search.toLowerCase()),
     );
-  }, [search, i18n.language]);
+  }, [search, lang]);
 
   return (
     <div className="space-y-2 max-w-md mx-auto">
@@ -40,7 +40,7 @@ const CountrySearch: React.FC = () => {
                 setSearch('');
               }}
             >
-              {c.name[i18n.language as 'fr' | 'en']}
+              {c.name[lang]}
             </li>
           ))}
         </ul>

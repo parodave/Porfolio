@@ -3,10 +3,11 @@ import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import { projects } from '../data/projects'
 import { getStructuredData } from '../utils/structuredData'
+import { getCurrentLang } from '../utils/getCurrentLang'
 
 const StructuredSEO: React.FC = () => {
-  const { i18n } = useTranslation()
-  const lang = (i18n.language as 'fr' | 'en') || 'fr'
+  useTranslation()
+  const lang = getCurrentLang()
 
   const { websiteData, personData, projectData } = getStructuredData(lang)
 
