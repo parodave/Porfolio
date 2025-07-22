@@ -14,7 +14,7 @@ if (!fs.existsSync(filePath)) {
   process.exit(1);
 }
 
-let content = fs.readFileSync(filePath, 'utf-8');
+const content = fs.readFileSync(filePath, 'utf-8');
 
 // ❌ Supprime les lignes qui importent "frame-ticker" ou "three/tsl"
 const cleaned = content
