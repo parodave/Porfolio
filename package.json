@@ -23,12 +23,13 @@
     "fix:three": "tsx scripts/fix-three.ts",
     "fix:globe": "tsx scripts/fix-globe.ts",
     "fix:tsl": "tsx scripts/fix-three-globe-tsl.ts",
+    "fix:render-objects": "tsx scripts/fix-render-objects.ts",
     "fix:three-globe-imports": "tsx scripts/fix-three-globe-imports.ts",
     "clean:binaries": "tsx scripts/clean-binaries.ts",
     "clean:optimizeDeps": "tsx scripts/clean-vite-optimize.ts",
     "debug:all": "npm run setup:all && npm run dev",
     "postinstall": "npm run setup:all && if [ \"$RUN_DEV_AFTER_INSTALL\" = \"true\" ]; then npm run dev; fi",
-    "setup:all": "npm run patch:three-stdlib && npm run patch:frame-ticker && npm run patch:react-globe && npm run patch:vite-globe && npm run fix:three && npm run fix:globe && npm run fix:frame-ticker && npm run fix:tsl && npm run clean:optimizeDeps"
+    "setup:all": "npm run patch:three-stdlib && npm run patch:frame-ticker && npm run patch:react-globe && npm run patch:vite-globe && npm run fix:three && npm run fix:globe && npm run fix:frame-ticker && npm run fix:tsl && npm run fix:render-objects && npm run clean:optimizeDeps"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
