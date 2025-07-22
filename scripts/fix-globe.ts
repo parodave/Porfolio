@@ -43,7 +43,8 @@ async function main() {
   try {
     const files = await fg([
       'node_modules/globe.gl/**/*.{js,mjs,ts,tsx}',
-      'node_modules/three-globe/**/*.{js,mjs,ts,tsx}'
+      'node_modules/three-globe/**/*.{js,mjs,ts,tsx}',
+      'node_modules/three-render-objects/**/*.{js,mjs,ts,tsx}'
     ], { dot: true });
 
     await Promise.all(files.map(fixFile));
