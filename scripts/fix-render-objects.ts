@@ -14,7 +14,7 @@ if (!fs.existsSync(target)) {
   process.exit(1)
 }
 
-let code = fs.readFileSync(target, 'utf-8')
+const code = fs.readFileSync(target, 'utf-8')
 
 // Vérifie si le patch a déjà été appliqué
 if (code.includes('/* @vite-ignore */')) {
