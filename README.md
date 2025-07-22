@@ -117,12 +117,13 @@ npm run build
 
 ## Linting and Tests
 
-Before running the linter or test suite, install all dependencies:
+Always install dependencies before running the linter or test suite. Use the
+standard install command or the custom fix script if packages break:
 
 ```bash
 npm install
 # or
-npm run fix:three
+npm run codex:fix
 ```
 
 Missing packages will make `npm run lint` and `npm test` fail with "not found" errors.
