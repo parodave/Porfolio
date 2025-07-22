@@ -87,8 +87,16 @@ function runDev() {
 
 // ▶️ Script principal
 async function main() {
-  await removeNodeModules();
-  installPackages();
+  const shouldReinstall = process.argv.includes('--reinstall');
+
+  if (shouldReinstall) {
+    await removeNodeModules();
+    installPackages();
+  } else {
+    console.log(
+      'ℹ️  Skipping reinstall. Pass --reinstall to wipe node_modules and reinstall packages.'
+    );
+  }
   patchThreeStdlib();
   patchReactGlobe();
   patchThreeGlobe();
