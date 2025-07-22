@@ -44,6 +44,12 @@ npm run fix:three
 This reinstalls compatible versions, patches `three-stdlib`, copies required
 example files from `scripts/assets/three` and replaces legacy imports.
 
+If build errors mention `three/tsl`, strip those imports from `three-globe`:
+
+```bash
+npm run fix:tsl
+```
+
 ### `codex:fix` helper
 
 If dependencies break inside the Codex workspace, use:
