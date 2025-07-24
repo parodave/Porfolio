@@ -8,7 +8,6 @@ export default defineConfig({
     react(),
     Sitemap({
       hostname: 'https://karimhammouche.com',
-      dynamicRoutes: ['/test-supabase'],
       generateRobotsTxt: false,
     }),
   ],
