@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Globe from './Globe';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
@@ -101,6 +102,9 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
         </motion.div>
+        <div className="w-full md:w-2/5">
+          <Globe />
+        </div>
       </div>
 
       {/* Défilement d'animation */}
