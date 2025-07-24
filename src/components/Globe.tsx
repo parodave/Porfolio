@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Stars, Html, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -73,6 +73,7 @@ const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) 
           <sphereGeometry args={[1, 64, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>
+
         {/* Halo */}
         <mesh>
           <sphereGeometry args={[1.05, 32, 32]} />
@@ -84,6 +85,7 @@ const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) 
             depthWrite={false}
           />
         </mesh>
+
         {/* Markers */}
         {countries.map((c) => (
           <Marker key={c.name} country={c} onSelect={onSelect} />
