@@ -1,12 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Globe from './Globe';
 import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
+import { Globe } from '@/components/Globe';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import StarBackground from './StarBackground';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -37,6 +40,7 @@ const Hero: React.FC = () => {
     >
       {/* Fond galactique animé visible uniquement en dark mode */}
       <div className="galaxy-bg hidden dark:block fixed inset-0 -z-10 pointer-events-none transition-all duration-500" />
+      <StarBackground />
 
       {/* Dégradé radial en fond, toujours visible */}
       <div className="absolute inset-0 -z-0">
@@ -100,7 +104,11 @@ const Hero: React.FC = () => {
               <ResumeSelector />
             </div>
           </motion.div>
+          <Globe />
         </motion.div>
+        <div className="w-full md:w-2/5">
+          <Globe />
+        </div>
       </div>
 
       {/* Défilement d'animation */}

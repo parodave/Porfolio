@@ -1,50 +1,129 @@
-import React, { useRef, useState } from 'react';
-import Globe, { GlobeMethods } from 'react-globe.gl';
-import { Country, countries } from '../data/countries';
-import { motion } from 'framer-motion';
-import { createRoot } from 'react-dom/client';
-import CountryInfoModal from './CountryInfoModal';
+'use client';
 
-const markerSvg = `<svg viewBox="-4 0 36 36">
-  <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-  <circle fill="black" cx="14" cy="14" r="7"></circle>
-</svg>`;
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
+import { OrbitControls, Stars, Html, useTexture } from '@react-three/drei';
+import * as THREE from 'three';
+import { countries, type Country } from '../data/countries';
+import { useCountryStore } from '../store/countrySearch';
+import CountryModal from './CountryModal';
 
-const GlobeComponent: React.FC = () => {
-  const globeRef = useRef<GlobeMethods>(null);
-  const [active, setActive] = useState<Country | null>(null);
+const EARTH_TEXTURE = 'https://unpkg.com/three-globe/example/img/earth-night.jpg';
 
-  const createMarker = (country: Country) => {
-    const el = document.createElement('div');
-    const root = createRoot(el);
-    root.render(
-      <motion.div
-        dangerouslySetInnerHTML={{ __html: markerSvg }}
-        whileHover={{ scale: 1.3 }}
-        style={{ display: 'inline-block' }}
-        onClick={() => setActive(country)}
-      />
-    );
-    el.style.pointerEvents = 'auto';
-    el.style.cursor = 'pointer';
-    return el;
-  };
+function latLngToVector3(lat: number, lng: number, radius: number) {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lng + 180) * (Math.PI / 180);
+  return new THREE.Vector3(
+    -(radius * Math.sin(phi) * Math.cos(theta)),
+    radius * Math.cos(phi),
+    radius * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+const Marker: React.FC<{
+  country: Country;
+  onSelect: (country: Country) => void;
+}> = ({ country, onSelect }) => {
+  const [hovered, setHovered] = useState(false);
+  const position = useMemo(
+    () => latLngToVector3(country.lat, country.lng, 1.02),
+    [country]
+  );
+
+  return (
+    <mesh
+      position={position}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+      onClick={() => onSelect(country)}
+    >
+      <sphereGeometry args={[hovered ? 0.03 : 0.02, 8, 8]} />
+      <meshStandardMaterial color={hovered ? 'orange' : 'red'} />
+      {hovered && (
+        <Html distanceFactor={10} style={{ pointerEvents: 'none' }}>
+          <div className="rounded bg-white px-1 py-0.5 text-xs text-black dark:bg-zinc-800 dark:text-white">
+            {country.name}
+          </div>
+        </Html>
+      )}
+    </mesh>
+  );
+};
+
+const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) => {
+  const texture = useTexture(EARTH_TEXTURE);
+  const selected = useCountryStore((s) => s.selected);
+  const { camera } = useThree();
+
+  useEffect(() => {
+    if (!selected) return;
+    const { lat, lng } = selected;
+    const pos = latLngToVector3(lat, lng, 2.5);
+    camera.position.lerp(pos, 0.2);
+    camera.lookAt(0, 0, 0);
+  }, [selected, camera]);
 
   return (
     <>
-      <div className="w-full h-96">
-        <Globe
-          ref={globeRef}
-          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-          htmlElementsData={countries}
-          htmlLat="lat"
-          htmlLng="lng"
-          htmlElement={createMarker}
-        />
-      </div>
-      <CountryInfoModal country={active} onClose={() => setActive(null)} />
+      <ambientLight intensity={0.5} />
+      <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+      <group>
+        {/* Earth sphere */}
+        <mesh>
+          <sphereGeometry args={[1, 64, 64]} />
+          <meshStandardMaterial map={texture} />
+        </mesh>
+
+        {/* Halo */}
+        <mesh>
+          <sphereGeometry args={[1.05, 32, 32]} />
+          <meshBasicMaterial
+            color="#88c"
+            transparent
+            opacity={0.2}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+
+        {/* Markers */}
+        {countries.map((c) => (
+          <Marker key={c.name} country={c} onSelect={onSelect} />
+        ))}
+      </group>
+      <OrbitControls enableZoom={false} autoRotate />
     </>
   );
 };
 
-export default GlobeComponent;
+const Globe: React.FC = () => {
+  const setSelected = useCountryStore((s) => s.setSelected);
+  const selected = useCountryStore((s) => s.selected);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleSelect = (c: Country) => {
+    setSelected(c);
+    setModalOpen(true);
+  };
+
+  return (
+    <div className="w-full h-96 relative">
+      <Canvas>
+        <Suspense fallback={null}>
+          <GlobeScene onSelect={handleSelect} />
+        </Suspense>
+      </Canvas>
+      {modalOpen && selected && (
+        <CountryModal
+          country={selected.name}
+          onClose={() => {
+            setModalOpen(false);
+            setSelected(undefined);
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+export default Globe;
