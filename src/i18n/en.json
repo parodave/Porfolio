@@ -5,8 +5,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
   "navigation": {
     "home": "Home",
@@ -14,14 +13,27 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
-  "blog": {
-    "title": "Blog",
-    "readArticle": "Read Article",
-    "downloadPDF": "Download PDF",
-    "listenAudio": "Listen Audio"
+  "countries": {
+    "title": "Countries",
+    "france": "Known for its gastronomy and rich cultural heritage.",
+    "unitedKingdom": "An island nation recognized for its history and diversity.",
+    "spain": "A sunny country famous for its beaches and lively culture.",
+    "japan": "Land of the rising sun blending tradition and technology.",
+    "china": "Vast country with ancient history and rapid modernization.",
+    "saudiArabia": "Famous for its deserts and historical significance.",
+    "thailand": "Well known for its hospitality, temples, and beaches.",
+    "morocco": "Country of contrasts with vibrant culture and desert landscapes.",
+    "brazil": "Colorful nation known for Carnival and the Amazon rainforest.",
+    "canada": "Land of lakes, forests, and multicultural cities.",
+    "australia": "Continent-country with beaches, wildlife, and adventure.",
+    "germany": "Strong economy and rich historical and cultural influence.",
+    "unitedStates": "A land of opportunity with diverse landscapes and cultures."
+  },
+  "world": {
+    "searchPlaceholder": "Search a country...",
+    "noResults": "No countries found."
   },
   "hero": {
     "title": "Full-Stack Web Developer",
@@ -43,7 +55,9 @@
       "Arabic (Darija – advanced)"
     ],
     "certificationsTitle": "Certifications",
-    "certifications": ["Driver’s License"],
+    "certifications": [
+      "Driver’s License"
+    ],
     "educationTitle": "Education",
     "education": [
       {

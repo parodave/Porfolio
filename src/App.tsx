@@ -13,8 +13,7 @@ import FloatingAgentIA from "./components/FloatingAgentIA";
 import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
-import Blog from "./components/blog/Blog";
-import ArticlePage from "./components/blog/ArticlePage";
+import TravelMap from "./pages/TravelMap"; // ✅ version retenue
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -52,7 +51,7 @@ function App() {
   useEffect(() => {
     const updateLang = (lng: string) => {
       document.documentElement.lang = lng;
-      document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
     };
 
     i18n.on("languageChanged", updateLang);
@@ -83,8 +82,8 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<ArticlePage />} />
+          <Route path="/travel" element={<TravelMap />} />
+          <Route path="/travel-map" element={<TravelMap />} />
         </Routes>
       </Suspense>
       <Footer />
