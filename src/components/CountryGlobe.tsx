@@ -10,14 +10,22 @@ const CountryGlobe: React.FC = () => {
     if (selected && globeRef.current) {
       globeRef.current.pointOfView(
         { lat: selected.lat, lng: selected.lng, altitude: 1.5 },
-        1000,
+        1000
       );
     }
   }, [selected]);
 
   return (
-    <div className="w-full h-96">
-      <Globe ref={globeRef} globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg" />
+    <div className="w-full h-96 bg-black">
+      <Globe
+        ref={globeRef}
+        backgroundColor="rgba(0,0,0,0)"
+        globeImageUrl="/public/textures/earth_day.jpg"
+        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+        showAtmosphere={true}
+        atmosphereColor="white"
+        atmosphereAltitude={0.25}
+      />
     </div>
   );
 };
