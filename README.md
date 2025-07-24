@@ -44,12 +44,6 @@ npm run fix:three
 This reinstalls compatible versions, patches `three-stdlib`, copies required
 example files from `scripts/assets/three` and replaces legacy imports.
 
-If build errors mention `three/tsl`, strip those imports from `three-globe`:
-
-```bash
-npm run fix:tsl
-```
-
 ### `codex:fix` helper
 
 If dependencies break inside the Codex workspace, use:
@@ -58,18 +52,6 @@ If dependencies break inside the Codex workspace, use:
 npm run codex:fix -- --reinstall --start
 ```
 Add the `--reinstall` flag to wipe `node_modules` and reinstall packages with legacy peer deps. The script also patches `three-stdlib` and fixes outdated example imports.
-It patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
-
-### FrameTicker patch
-
-Run the FrameTicker patch if globe libraries fail to load:
-
-```bash
-npm run patch:frame-ticker
-```
-This updates `frame-ticker` and rewrites imports in `react-globe.gl` and `three-globe` for compatibility.
-
-Run `tsx scripts/final-frame-ticker-fix.ts` if issues persist after patching.
 
 ### Troubleshooting
 
