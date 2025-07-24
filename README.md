@@ -37,3 +37,25 @@ Dark and light versions of the texture are swapped automatically based on the
 current theme.
 
 These images are tracked using **Git LFS**. Running `npm run clean:binaries` will delete binary files in `public/` and `assets/`, so make sure the globe textures are restored afterwards with `git checkout` or avoid cleaning them.
+
+## Git LFS Setup
+
+Install Git LFS before cloning so that the textures download properly. On macOS use:
+
+```bash
+brew install git-lfs
+```
+
+On Debian/Ubuntu use:
+
+```bash
+apt install git-lfs
+```
+
+After installing, run:
+
+```bash
+git lfs install
+```
+
+The textures in `public/textures/` are tracked with Git LFS and require LFS to pull successfully.
