@@ -96,8 +96,8 @@
         "company": "Rino Recycling",
         "dates": "Oct 2024 – Apr 2025",
         "tasks": [
-          "Operated and maintained equipment",
-          "Ensured safety standards"
+          "Operated and maintained recycling equipment",
+          "Ensured safety standards and logistics support"
         ]
       },
       {
@@ -105,8 +105,80 @@
         "company": "Cœur d’Essonne Agglomération",
         "dates": "Sep 2019 – Apr 2024",
         "tasks": [
-          "Managed book loans",
-          "Coordinated deliveries"
+          "Managed book loans and deliveries",
+          "Supervised drivers and maintained catalog systems"
+        ]
+      },
+      {
+        "title": "Dishwasher / Waiter",
+        "company": "Sofitel",
+        "dates": "Apr 2019 – Aug 2019",
+        "tasks": [
+          "Assisted kitchen and kept areas clean",
+          "Served diners and handled orders"
+        ]
+      },
+      {
+        "title": "Maintenance Technician",
+        "company": "Aximum",
+        "dates": "Mar 2018 – Mar 2019",
+        "tasks": [
+          "Maintained and repaired traffic signals",
+          "Diagnosed issues and ensured compliance"
+        ]
+      },
+      {
+        "title": "Environmental Technician",
+        "company": "Cœur d’Essonne Agglomération",
+        "dates": "Mar 2017 – Feb 2018",
+        "tasks": [
+          "Inspected sanitation networks and enforced regulations",
+          "Collected data and resolved environmental issues"
+        ]
+      },
+      {
+        "title": "Sales Agent",
+        "company": "SNCF Réseau",
+        "dates": "Oct 2016 – Feb 2017",
+        "tasks": [
+          "Assisted passengers and sold tickets",
+          "Managed incidents using SNCF systems"
+        ]
+      },
+      {
+        "title": "Sales Representative",
+        "company": "Frankel",
+        "dates": "Jun 2016 – Sep 2016",
+        "tasks": [
+          "Prospected B2B clients and prepared quotations",
+          "Negotiated deals and collaborated with team"
+        ]
+      },
+      {
+        "title": "Electrical Maintenance Intern",
+        "company": "Eiffage",
+        "dates": "Oct 2013 – Dec 2013",
+        "tasks": [
+          "Assisted with electrical maintenance and diagnostics",
+          "Followed safety standards and supported team"
+        ]
+      },
+      {
+        "title": "Electrical Maintenance Intern",
+        "company": "EDF",
+        "dates": "Oct 2012 – Dec 2012",
+        "tasks": [
+          "Performed electrical diagnostics and maintenance",
+          "Ensured compliance with safety standards"
+        ]
+      },
+      {
+        "title": "Multi-skilled Agent / Delivery Driver",
+        "company": "Various municipalities & companies",
+        "dates": "Various periods",
+        "tasks": [
+          "Delivered parcels and logistics support",
+          "Offered technical assistance to municipalities"
         ]
       }
     ]

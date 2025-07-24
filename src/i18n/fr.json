@@ -96,8 +96,8 @@
         "company": "Rino Recycling",
         "dates": "Oct 2024 – Avr 2025",
         "tasks": [
-          "Fonctionnement et entretien",
-          "Respect des normes de sécurité"
+          "Exploitation et maintenance des équipements",
+          "Sécurité et soutien logistique"
         ]
       },
       {
@@ -105,8 +105,80 @@
         "company": "Cœur d’Essonne Agglomération",
         "dates": "Sep 2019 – Avr 2024",
         "tasks": [
-          "Gestion des prêts",
-          "Coordination des livraisons"
+          "Gestion des prêts et livraisons",
+          "Supervision des chauffeurs et catalogage"
+        ]
+      },
+      {
+        "title": "Plongeur / serveur",
+        "company": "Sofitel",
+        "dates": "Avr 2019 – Aoû 2019",
+        "tasks": [
+          "Aide en cuisine et propreté",
+          "Service en salle et prise de commandes"
+        ]
+      },
+      {
+        "title": "Technicien de maintenance",
+        "company": "Aximum",
+        "dates": "Mar 2018 – Mar 2019",
+        "tasks": [
+          "Entretien et réparation des feux de signalisation",
+          "Diagnostic des pannes et respect des normes"
+        ]
+      },
+      {
+        "title": "Technicien environnement",
+        "company": "Cœur d’Essonne Agglomération",
+        "dates": "Mar 2017 – Fév 2018",
+        "tasks": [
+          "Inspection des réseaux et application des règlements",
+          "Collecte de données et résolution des problèmes environnementaux"
+        ]
+      },
+      {
+        "title": "Agent de vente",
+        "company": "SNCF Réseau",
+        "dates": "Oct 2016 – Fév 2017",
+        "tasks": [
+          "Assistance aux voyageurs et vente de billets",
+          "Gestion des incidents via les systèmes SNCF"
+        ]
+      },
+      {
+        "title": "Commercial sédentaire",
+        "company": "Frankel",
+        "dates": "Jun 2016 – Sep 2016",
+        "tasks": [
+          "Prospection B2B et préparation de devis",
+          "Négociation et travail en équipe"
+        ]
+      },
+      {
+        "title": "Stagiaire maintenance électrique",
+        "company": "Eiffage",
+        "dates": "Oct 2013 – Déc 2013",
+        "tasks": [
+          "Maintenance et diagnostics électriques",
+          "Respect des normes de sécurité et support"
+        ]
+      },
+      {
+        "title": "Stagiaire maintenance électrique",
+        "company": "EDF",
+        "dates": "Oct 2012 – Déc 2012",
+        "tasks": [
+          "Diagnostics et maintenance électriques",
+          "Conformité aux normes de sécurité"
+        ]
+      },
+      {
+        "title": "Agent polyvalent / livreur",
+        "company": "Diverses municipalités et entreprises",
+        "dates": "Périodes diverses",
+        "tasks": [
+          "Livraison de colis et soutien logistique",
+          "Assistance technique aux municipalités"
         ]
       }
     ]
