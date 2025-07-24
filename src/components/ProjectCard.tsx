@@ -33,6 +33,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         src={image}
         alt={`${title} ${tags.slice(0, 2).join(' ')} project`}
         loading="lazy"
+        width={1080}
+        height={720}
         className="w-full h-48 object-cover rounded-t-lg transition-transform duration-500 ease-out group-hover:scale-105"
       />
     </div>
