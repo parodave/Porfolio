@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { z } from 'zod'
-import { supabase } from '../lib/supabaseClient'
 import { sendContactEmail } from '../lib/emailjs'
 import { useTranslation } from 'react-i18next'
 import { Send, CheckCircle } from 'lucide-react'
@@ -39,22 +38,6 @@ export default function OptimizedContactForm() {
     try {
       setLoading(true)
       setError(null)
-
-      const { error: insertError } = await supabase
-        .from('contact_messages')
-        .insert({
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          origin: window.location.href,
-          date: new Date().toISOString(),
-        })
-
-      if (insertError) {
-        console.error(insertError)
-        setError(t('contactForm.error'))
-        return
-      }
 
       await sendContactEmail({
         user_name: data.name,

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { getCountryAudio } from '../lib/supabaseClient'
 import AudioPlayer from './AudioPlayer'
 
 interface CountryModalProps {
@@ -12,23 +11,11 @@ const CountryModal: React.FC<CountryModalProps> = ({ country, onClose }) => {
   const [language, setLanguage] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
+  // Reset audio state when the modal changes country
   useEffect(() => {
-    if (!country) return
-
-    async function load() {
-      setLoading(true)
-      try {
-        const data = await getCountryAudio(country)
-        setAudioUrl(data?.url || null)
-        setLanguage(data?.language || null)
-      } catch (error) {
-        console.error('Error loading country audio:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    load()
+    setAudioUrl(null)
+    setLanguage(null)
+    setLoading(false)
   }, [country])
 
   if (!country) return null
