@@ -1,0 +1,15 @@
+[
+  {"name": "France", "lat": 46.2276, "lng": 2.2137, "continent": "Europe"},
+  {"name": "United Kingdom", "lat": 55.3781, "lng": -3.4360, "continent": "Europe"},
+  {"name": "Spain", "lat": 40.4637, "lng": -3.7492, "continent": "Europe"},
+  {"name": "Japan", "lat": 36.2048, "lng": 138.2529, "continent": "Asia"},
+  {"name": "China", "lat": 35.8617, "lng": 104.1954, "continent": "Asia"},
+  {"name": "Saudi Arabia", "lat": 23.8859, "lng": 45.0792, "continent": "Asia"},
+  {"name": "Thailand", "lat": 15.8700, "lng": 100.9925, "continent": "Asia"},
+  {"name": "Morocco", "lat": 31.7917, "lng": -7.0926, "continent": "Africa"},
+  {"name": "Brazil", "lat": -14.2350, "lng": -51.9253, "continent": "South America"},
+  {"name": "Canada", "lat": 56.1304, "lng": -106.3468, "continent": "North America"},
+  {"name": "Australia", "lat": -25.2744, "lng": 133.7751, "continent": "Oceania"},
+  {"name": "Germany", "lat": 51.1657, "lng": 10.4515, "continent": "Europe"},
+  {"name": "United States", "lat": 37.0902, "lng": -95.7129, "continent": "North America"}
+]
