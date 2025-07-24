@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { itemVariants } from '../animationVariants';
 import Typewriter from 'typewriter-effect';
 import ResumeSelector from './ResumeSelector';
+import { Globe } from '@/components/Globe';
 import { useTranslation } from 'react-i18next';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
@@ -100,6 +101,7 @@ const Hero: React.FC = () => {
               <ResumeSelector />
             </div>
           </motion.div>
+          <Globe />
         </motion.div>
       </div>
 
