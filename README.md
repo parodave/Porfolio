@@ -18,8 +18,9 @@ cp .env.example .env
 ## How the Globe Works
 
 The site features a 3D globe rendered with `react-globe.gl`. Country markers are
-loaded from [`src/data/visitedCountries.json`](src/data/visitedCountries.json)
-and the earth textures are stored in [`public/textures/`](public/textures/).
+defined in [`src/data/countries.ts`](src/data/countries.ts) (generated from
+[`data/countries.json`](data/countries.json)), and the earth textures are stored
+in [`public/textures/`](public/textures/).
 Dark and light versions of the texture are swapped automatically based on the
 current theme.
 
