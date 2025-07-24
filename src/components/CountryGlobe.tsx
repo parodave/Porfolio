@@ -1,21 +1,40 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import Globe, { GlobeMethods } from 'react-globe.gl';
 import * as THREE from 'three';
 import { useCountryStore } from '../store/countrySearch';
+import { useTheme } from '../hooks/useTheme';
 import { continents, Continent } from '../data/continents';
 import ContinentModal from './ContinentModal';
 
 const CountryGlobe: React.FC = () => {
   const globeRef = useRef<GlobeMethods>(null);
   const haloRef = useRef<THREE.Mesh>();
+  const { theme } = useTheme();
   const selected = useCountryStore((s) => s.selected);
+  const [globeUrl, setGlobeUrl] = useState('');
   const [activeContinent, setActiveContinent] = useState<Continent | null>(null);
+
+  useEffect(() => {
+    setGlobeUrl(
+      theme === 'dark'
+        ? '//unpkg.com/three-globe/example/img/earth-dark.jpg'
+        : '//unpkg.com/three-globe/example/img/earthmap4k.jpg'
+    );
+  }, [theme]);
+
+  useEffect(() => {
+    if (globeRef.current && globeUrl) {
+      globeRef.current.globeImageUrl(globeUrl);
+    }
+  }, [globeUrl]);
 
   useEffect(() => {
     if (selected && globeRef.current) {
       globeRef.current.pointOfView(
         { lat: selected.lat, lng: selected.lng, altitude: 1.5 },
-        1000,
+        1000
       );
     }
   }, [selected]);
@@ -64,7 +83,7 @@ const CountryGlobe: React.FC = () => {
     <div className="w-full h-96 relative">
       <Globe
         ref={globeRef}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+        globeImageUrl={globeUrl}
         pointsData={continents}
         pointLat={(d) => d.lat}
         pointLng={(d) => d.lng}
