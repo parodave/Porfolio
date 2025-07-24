@@ -1,15 +1,14 @@
 'use client';
 
 import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Stars, Html, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { countries, type Country } from '../data/countries';
 import { useCountryStore } from '../store/countrySearch';
 import CountryModal from './CountryModal';
 
-const EARTH_TEXTURE =
-  'https://unpkg.com/three-globe/example/img/earth-night.jpg';
+const EARTH_TEXTURE = 'https://unpkg.com/three-globe/example/img/earth-night.jpg';
 
 function latLngToVector3(lat: number, lng: number, radius: number) {
   const phi = (90 - lat) * (Math.PI / 180);
@@ -69,7 +68,7 @@ const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) 
       <ambientLight intensity={0.5} />
       <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
       <group>
-        {/* Earth */}
+        {/* Earth sphere */}
         <mesh>
           <sphereGeometry args={[1, 64, 64]} />
           <meshStandardMaterial map={texture} />
