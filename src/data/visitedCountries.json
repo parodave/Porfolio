@@ -1,0 +1,7 @@
+[
+  { "name": "France", "lat": 46.603354, "lng": 1.888334, "continent": "Europe" },
+  { "name": "Morocco", "lat": 31.7917, "lng": -7.0926, "continent": "Africa" },
+  { "name": "Thailand", "lat": 15.8700, "lng": 100.9925, "continent": "Asia" },
+  { "name": "Australia", "lat": -25.2744, "lng": 133.7751, "continent": "Oceania" }
+]
+
