@@ -5,13 +5,11 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-import CountriesSection from "./components/CountriesSection";
 import Contact from "./components/Contact";
 import SEO from "./components/SEO";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
-import MapOverlay from "./components/MapOverlay";
 import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
@@ -44,7 +42,6 @@ const HomePage = () => (
     <Skills />
     <Projects />
     <Experience />
-    <CountriesSection />
     <Contact />
   </main>
 );
@@ -54,7 +51,7 @@ function App() {
   useEffect(() => {
     const updateLang = (lng: string) => {
       document.documentElement.lang = lng;
-      document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
     };
 
     i18n.on("languageChanged", updateLang);
@@ -91,7 +88,6 @@ function App() {
       </Suspense>
       <Footer />
       <FloatingAgentIA />
-      <MapOverlay />
     </div>
   );
 }
