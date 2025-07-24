@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
+'use client';
+
+import React, { Suspense, useState } from 'react';
+import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
+import { TextureLoader } from 'three';
 import * as THREE from 'three';
+import { useTheme } from '../hooks/useTheme';
 import countries from '../../data/countries.json';
 import ContinentModal from './ContinentModal';
 
@@ -52,6 +56,20 @@ const Marker: React.FC<{
   );
 };
 
+const Earth: React.FC = () => {
+  const { theme } = useTheme();
+  const dayTexture = useLoader(TextureLoader, '/textures/earth_day.jpg');
+  const nightTexture = useLoader(TextureLoader, '/textures/earth_night.jpg');
+  const texture = theme === 'dark' ? nightTexture : dayTexture;
+
+  return (
+    <mesh>
+      <sphereGeometry args={[RADIUS, 64, 64]} />
+      <meshStandardMaterial map={texture} />
+    </mesh>
+  );
+};
+
 const Globe: React.FC = () => {
   const [continent, setContinent] = useState<string | null>(null);
 
@@ -60,14 +78,13 @@ const Globe: React.FC = () => {
       <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={0.6} />
         <pointLight position={[5, 5, 5]} />
-        <mesh>
-          <sphereGeometry args={[RADIUS, 32, 32]} />
-          <meshStandardMaterial color="#0a2351" wireframe />
-        </mesh>
+        <Suspense fallback={null}>
+          <Earth />
+        </Suspense>
         {(countries as Country[]).map((c) => (
           <Marker key={c.name} country={c} onSelect={(cont) => setContinent(cont)} />
         ))}
-        <OrbitControls />
+        <OrbitControls enableZoom={false} autoRotate />
       </Canvas>
       {continent && (
         <ContinentModal continent={continent} onClose={() => setContinent(null)} />
