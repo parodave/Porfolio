@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CountrySearch from './CountrySearch';
-import Globe from './Globe';
+import Globe from '@/components/Globe';
 
 const CountriesSection: React.FC = () => {
   const { t } = useTranslation();
