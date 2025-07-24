@@ -7,6 +7,12 @@
   and `@react-three/rapier` **1.x** – newer major versions of these
   packages require React 19
 
+After cloning the repository, install Git LFS and enable it:
+
+```bash
+./scripts/setup-git-lfs.sh
+```
+
 ## Environment Variables
 
 Copy `.env.example` to `.env` and populate your EmailJS configuration:
