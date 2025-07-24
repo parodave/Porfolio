@@ -27,16 +27,6 @@ cp .env.example .env
 * `npm test` or `npx vitest` to run tests.
 * `npm run build` to create a production build.
 
-## How the Globe Works
-
-The site features a 3D globe rendered with `react-globe.gl`. Country markers are
-defined in [`src/data/countries.ts`](src/data/countries.ts) (generated from
-[`data/countries.json`](data/countries.json)), and the earth textures are stored
-in [`public/textures/`](public/textures/).
-Dark and light versions of the texture are swapped automatically based on the
-current theme.
-
-These images are tracked using **Git LFS**. Running `npm run clean:binaries` will delete binary files in `public/` and `assets/`, so make sure the globe textures are restored afterwards with `git checkout` or avoid cleaning them.
 
 ## Git LFS Setup
 
