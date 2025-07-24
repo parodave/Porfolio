@@ -15,6 +15,12 @@ Copy `.env.example` to `.env` and populate your EmailJS configuration:
 cp .env.example .env
 ```
 
+## Development
+
+* `npm run dev` to start the local server.
+* `npm test` or `npx vitest` to run tests.
+* `npm run build` to create a production build.
+
 ## How the Globe Works
 
 The site features a 3D globe rendered with `react-globe.gl`. Country markers are
