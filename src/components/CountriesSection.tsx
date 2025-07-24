@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CountrySearch from './CountrySearch';
-import Globe from './Globe';
+import CountryGlobe from './CountryGlobe';
 
 const CountriesSection: React.FC = () => {
   const { t } = useTranslation();
@@ -9,7 +9,7 @@ const CountriesSection: React.FC = () => {
     <section id="countries" className="py-10 space-y-4">
       <h2 className="text-center text-2xl font-bold">{t('countries.title')}</h2>
       <CountrySearch />
-      <Globe />
+      <CountryGlobe />
     </section>
   );
 };
