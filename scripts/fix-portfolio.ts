@@ -1,6 +1,5 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
-import path from 'path';
 
 function safeExec(cmd: string, label = '') {
   try {
@@ -8,6 +7,7 @@ function safeExec(cmd: string, label = '') {
     execSync(cmd, { stdio: 'inherit' });
   } catch (err) {
     console.warn(`⚠️  Skipped: ${cmd}`);
+    console.error(err);
   }
 }
 
