@@ -36,20 +36,6 @@ Install dependencies with:
 npm install
 ```
 
-If Three.js packages fail after a fresh install, run the helper script:
-
-```bash
-npm run fix:three
-```
-This reinstalls compatible versions, patches `three-stdlib`, copies required
-example files from `scripts/assets/three` and replaces legacy imports.
-
-If build errors mention `three/tsl`, strip those imports from `three-globe`:
-
-```bash
-npm run fix:tsl
-```
-
 ### `codex:fix` helper
 
 If dependencies break inside the Codex workspace, use:
@@ -59,26 +45,6 @@ npm run codex:fix -- --reinstall --start
 ```
 Add the `--reinstall` flag to wipe `node_modules` and reinstall packages with legacy peer deps. The script also patches `three-stdlib` and fixes outdated example imports.
 It patches `three-globe` imports, removes unsupported WebGPU/TSL imports from `react-globe.gl` and ensures a proper `FrameTicker` export. Pass the `--start` flag to launch the dev server when the script finishes.
-
-### FrameTicker patch
-
-Run the FrameTicker patch if globe libraries fail to load:
-
-```bash
-npm run patch:frame-ticker
-```
-This updates `frame-ticker` and rewrites imports in `react-globe.gl` and `three-globe` for compatibility.
-
-Run `tsx scripts/final-frame-ticker-fix.ts` if issues persist after patching.
-
-### Troubleshooting
-
-Run the debug command if you keep seeing errors with Three.js or Vite:
-
-```bash
-npm run debug:all
-```
-This removes `node_modules`, reinstalls dependencies with the `three-stdlib` patch and then starts the development server. It replaces manually deleting the `node_modules` directory and often resolves common build issues.
 
 ## Development
 
@@ -155,14 +121,30 @@ The script respects `.gitignore`, logs each deleted file and prints a summary wh
 
 This project is licensed under the [MIT License](LICENSE).
 
-## TravelMap Joystick Usage
+## Interactive Globe
 
-To test the new on-screen joystick:
+The site includes a `CountryGlobe` component powered by `react-globe.gl`. It
+displays a 3D globe that focuses on selected countries.
 
-1. Start the development server with `npm run dev`.
-2. Open the site on a mobile device or using the browser's device emulator.
-3. Navigate to the component that renders `<TravelMap />`.
-4. A translucent circle appears in the bottom-left corner.
-5. Drag inside this circle to move the camera around the map.
-6. Resize to a desktop viewport and confirm the joystick is hidden.
+```tsx
+import CountryGlobe from './components/CountryGlobe';
+
+export default function Example() {
+  return <CountryGlobe />;
+}
+```
+
+### Dark mode textures
+
+You can swap the globe texture based on the current theme:
+
+```tsx
+const isDark = document.documentElement.classList.contains('dark');
+const globeTexture = isDark
+  ? '//unpkg.com/three-globe/example/img/earth-night.jpg'
+  : '//unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
+
+<CountryGlobe globeImageUrl={globeTexture} />;
+```
+
 
