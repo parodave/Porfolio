@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import * as THREE from 'three';
-import countriesData from '../../data/visitedCountries.json';
+import countriesData from '../data/visitedCountries.json';
 import { VisitedCountry } from '../types/visited-country';
 
 const countries = countriesData as VisitedCountry[];
