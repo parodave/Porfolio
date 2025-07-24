@@ -1,15 +1,12 @@
+'use client';
+
 import React, { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Stars, useTexture } from '@react-three/drei';
+import { OrbitControls, Stars, Html, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { countries, type Country } from '../data/countries';
 import { useCountryStore } from '../store/countrySearch';
 import CountryModal from './CountryModal';
-
-interface MarkerProps {
-  country: Country;
-  onSelect: (country: Country) => void;
-}
 
 const EARTH_TEXTURE =
   'https://unpkg.com/three-globe/example/img/earth-night.jpg';
@@ -20,16 +17,20 @@ function latLngToVector3(lat: number, lng: number, radius: number) {
   return new THREE.Vector3(
     -(radius * Math.sin(phi) * Math.cos(theta)),
     radius * Math.cos(phi),
-    radius * Math.sin(phi) * Math.sin(theta),
+    radius * Math.sin(phi) * Math.sin(theta)
   );
 }
 
-const Marker: React.FC<MarkerProps> = ({ country, onSelect }) => {
+const Marker: React.FC<{
+  country: Country;
+  onSelect: (country: Country) => void;
+}> = ({ country, onSelect }) => {
   const [hovered, setHovered] = useState(false);
   const position = useMemo(
     () => latLngToVector3(country.lat, country.lng, 1.02),
-    [country],
+    [country]
   );
+
   return (
     <mesh
       position={position}
@@ -39,6 +40,13 @@ const Marker: React.FC<MarkerProps> = ({ country, onSelect }) => {
     >
       <sphereGeometry args={[hovered ? 0.03 : 0.02, 8, 8]} />
       <meshStandardMaterial color={hovered ? 'orange' : 'red'} />
+      {hovered && (
+        <Html distanceFactor={10} style={{ pointerEvents: 'none' }}>
+          <div className="rounded bg-white px-1 py-0.5 text-xs text-black dark:bg-zinc-800 dark:text-white">
+            {country.name}
+          </div>
+        </Html>
+      )}
     </mesh>
   );
 };
@@ -61,10 +69,12 @@ const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) 
       <ambientLight intensity={0.5} />
       <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
       <group>
+        {/* Earth */}
         <mesh>
           <sphereGeometry args={[1, 64, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>
+        {/* Halo */}
         <mesh>
           <sphereGeometry args={[1.05, 32, 32]} />
           <meshBasicMaterial
@@ -75,11 +85,12 @@ const GlobeScene: React.FC<{ onSelect: (c: Country) => void }> = ({ onSelect }) 
             depthWrite={false}
           />
         </mesh>
+        {/* Markers */}
         {countries.map((c) => (
-          <Marker key={c.code} country={c} onSelect={onSelect} />
+          <Marker key={c.name} country={c} onSelect={onSelect} />
         ))}
       </group>
-      <OrbitControls enableZoom={false} />
+      <OrbitControls enableZoom={false} autoRotate />
     </>
   );
 };
@@ -103,7 +114,7 @@ const Globe: React.FC = () => {
       </Canvas>
       {modalOpen && selected && (
         <CountryModal
-          country={selected.name.en}
+          country={selected.name}
           onClose={() => {
             setModalOpen(false);
             setSelected(undefined);
