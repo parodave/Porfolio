@@ -18,7 +18,6 @@ export default defineConfig({
       'lucide-react',
       'three/webgpu',
       'three/tsl',
-      'react-globe.gl', // 🛡️ Forcer Vite à ne pas le précompiler (important pour ton patch)
     ],
   },
   resolve: {
