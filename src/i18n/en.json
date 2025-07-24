@@ -5,8 +5,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
   "navigation": {
     "home": "Home",
@@ -14,8 +13,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
   "countries": {
     "title": "Countries",
@@ -37,12 +35,6 @@
     "searchPlaceholder": "Search a country...",
     "noResults": "No countries found."
   },
-  "blog": {
-    "title": "Blog",
-    "readArticle": "Read Article",
-    "downloadPDF": "Download PDF",
-    "listenAudio": "Listen Audio"
-  },
   "hero": {
     "title": "Full-Stack Web Developer",
     "discoverKr": "Discover KR Global Solutions",
@@ -63,7 +55,9 @@
       "Arabic (Darija – advanced)"
     ],
     "certificationsTitle": "Certifications",
-    "certifications": ["Driver’s License"],
+    "certifications": [
+      "Driver’s License"
+    ],
     "educationTitle": "Education",
     "education": [
       {

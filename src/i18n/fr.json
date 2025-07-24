@@ -5,8 +5,7 @@
     "skills": "Compétences",
     "projects": "Projets",
     "experience": "Expérience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
   "navigation": {
     "home": "Accueil",
@@ -14,8 +13,7 @@
     "skills": "Compétences",
     "projects": "Projets",
     "experience": "Expérience",
-    "contact": "Contact",
-    "blog": "Blog"
+    "contact": "Contact"
   },
   "countries": {
     "title": "Pays",
@@ -37,12 +35,6 @@
     "searchPlaceholder": "Recherchez un pays...",
     "noResults": "Aucun pays trouvé."
   },
-  "blog": {
-    "title": "Blog",
-    "readArticle": "Lire l'article",
-    "downloadPDF": "Télécharger le PDF",
-    "listenAudio": "Écouter l'audio"
-  },
   "hero": {
     "title": "Développeur Web Full-Stack",
     "discoverKr": "Découvrir KR Global Solutions",
@@ -63,7 +55,9 @@
       "Arabe (Darija – avancé)"
     ],
     "certificationsTitle": "Certifications",
-    "certifications": ["Permis de conduire"],
+    "certifications": [
+      "Permis de conduire"
+    ],
     "educationTitle": "Formation",
     "education": [
       {
