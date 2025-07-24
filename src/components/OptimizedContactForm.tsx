@@ -40,13 +40,21 @@ export default function OptimizedContactForm() {
       setLoading(true)
       setError(null)
 
-      await supabase.from('contact_messages').insert({
-        name: data.name,
-        email: data.email,
-        message: data.message,
-        origin: window.location.href,
-        date: new Date().toISOString(),
-      })
+      const { error: insertError } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          origin: window.location.href,
+          date: new Date().toISOString(),
+        })
+
+      if (insertError) {
+        console.error(insertError)
+        setError(t('contactForm.error'))
+        return
+      }
 
       await sendContactEmail({
         user_name: data.name,
