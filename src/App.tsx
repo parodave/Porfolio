@@ -72,10 +72,7 @@ function App() {
   return (
     <div>
       <CursorEffect />
-      <>
-        <SEO />
-        <StructuredSEO />
-      </>
+      <StructuredSEO />
       <ScrollToHash />
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
