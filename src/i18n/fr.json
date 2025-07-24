@@ -17,26 +17,6 @@
     "contact": "Contact",
     "blog": "Blog"
   },
-  "countries": {
-    "title": "Pays",
-    "france": "Réputée pour sa gastronomie et sa richesse culturelle.",
-    "unitedKingdom": "Nation insulaire renommée pour son histoire et sa diversité.",
-    "spain": "Pays ensoleillé célèbre pour ses plages et sa culture dynamique.",
-    "japan": "Pays du Soleil-Levant mêlant tradition et technologie.",
-    "china": "Immense pays à l'histoire millénaire et à la modernisation rapide.",
-    "saudiArabia": "Réputée pour ses déserts et son importance historique.",
-    "thailand": "Célèbre pour son hospitalité, ses temples et ses plages.",
-    "morocco": "Pays de contrastes à la culture vibrante et aux paysages désertiques.",
-    "brazil": "Nation colorée connue pour le Carnaval et la forêt amazonienne.",
-    "canada": "Terre de lacs, de forêts et de villes multiculturelles.",
-    "australia": "Continent-pays aux plages, à la faune unique et à l'esprit d'aventure.",
-    "germany": "Économie puissante et riche patrimoine historique et culturel.",
-    "unitedStates": "Pays d’opportunités aux paysages et cultures très diversifiés."
-  },
-  "world": {
-    "searchPlaceholder": "Recherchez un pays...",
-    "noResults": "Aucun pays trouvé."
-  },
   "blog": {
     "title": "Blog",
     "readArticle": "Lire l'article",

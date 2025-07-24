@@ -5,17 +5,14 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-import CountriesSection from "./components/CountriesSection";
 import Contact from "./components/Contact";
 import SEO from "./components/SEO";
 import Footer from "./components/Footer";
 import CursorEffect from "./components/CursorEffect";
 import FloatingAgentIA from "./components/FloatingAgentIA";
-import MapOverlay from "./components/MapOverlay";
 import ScrollToHash from "./components/ScrollToHash";
 import StructuredSEO from "./components/StructuredSEO";
 import { Routes, Route } from "react-router-dom";
-import TravelMap from "./pages/TravelMap"; // ✅ version retenue
 import Blog from "./components/blog/Blog";
 import ArticlePage from "./components/blog/ArticlePage";
 import i18n from "./i18n";
@@ -46,7 +43,6 @@ const HomePage = () => (
     <Skills />
     <Projects />
     <Experience />
-    <CountriesSection />
     <Contact />
   </main>
 );
@@ -87,15 +83,12 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/travel" element={<TravelMap />} />
-          <Route path="/travel-map" element={<TravelMap />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
         </Routes>
       </Suspense>
       <Footer />
       <FloatingAgentIA />
-      <MapOverlay />
     </div>
   );
 }
