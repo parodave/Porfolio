@@ -1,10 +1,27 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Globe, { GlobeMethods } from 'react-globe.gl';
 import { useCountryStore } from '../store/countrySearch';
+import { useTheme } from '../hooks/useTheme';
 
 const CountryGlobe: React.FC = () => {
   const globeRef = useRef<GlobeMethods>(null);
+  const { theme } = useTheme();
   const selected = useCountryStore((s) => s.selected);
+  const [globeUrl, setGlobeUrl] = useState('');
+
+  useEffect(() => {
+    setGlobeUrl(
+      theme === 'dark'
+        ? '//unpkg.com/three-globe/example/img/earth-dark.jpg'
+        : '//unpkg.com/three-globe/example/img/earthmap4k.jpg',
+    );
+  }, [theme]);
+
+  useEffect(() => {
+    if (globeRef.current && globeUrl) {
+      globeRef.current.globeImageUrl(globeUrl);
+    }
+  }, [globeUrl]);
 
   useEffect(() => {
     if (selected && globeRef.current) {
@@ -17,7 +34,7 @@ const CountryGlobe: React.FC = () => {
 
   return (
     <div className="w-full h-96">
-      <Globe ref={globeRef} globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg" />
+      <Globe ref={globeRef} globeImageUrl={globeUrl} />
     </div>
   );
 };
