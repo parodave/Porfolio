@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { panelVariants } from '../animationVariants';
@@ -16,6 +18,7 @@ const ContinentModal: React.FC<ContinentModalProps> = ({
   onViewProjects,
 }) => {
   const reduceMotion = usePrefersReducedMotion();
+
   return (
     <AnimatePresence>
       {continent && (
@@ -41,23 +44,33 @@ const ContinentModal: React.FC<ContinentModalProps> = ({
             >
               &times;
             </button>
+
             <h2 className="mb-4 text-xl font-semibold text-center capitalize">
               {continent.name}
             </h2>
-            <img
-              src={continent.image}
-              alt={continent.name}
-              className="w-full h-48 object-cover rounded mb-4"
-            />
-            <p className="mb-4 text-sm text-center">{continent.description}</p>
-            <div className="text-center">
-              <button
-                onClick={() => onViewProjects && onViewProjects(continent)}
-                className="px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700"
-              >
-                Voir les projets
-              </button>
-            </div>
+
+            {continent.image && (
+              <img
+                src={continent.image}
+                alt={continent.name}
+                className="w-full h-48 object-cover rounded mb-4"
+              />
+            )}
+
+            {continent.description && (
+              <p className="mb-4 text-sm text-center">{continent.description}</p>
+            )}
+
+            {onViewProjects && (
+              <div className="text-center">
+                <button
+                  onClick={() => onViewProjects(continent)}
+                  className="px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700"
+                >
+                  Voir les projets
+                </button>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
