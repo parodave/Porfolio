@@ -19,6 +19,7 @@ import TestFormSupabase from "./components/TestFormSupabase";
 import TravelMap from "./pages/TravelMap"; // ✅ version retenue
 import Blog from "./components/blog/Blog";
 import ArticlePage from "./components/blog/ArticlePage";
+import StarryBackground from "./components/blog/StarryBackground";
 import i18n from "./i18n";
 
 // 📈 Fonction pour initialiser Google Analytics
@@ -79,6 +80,7 @@ function App() {
   return (
     <div>
       <CursorEffect />
+      <StarryBackground />
       <>
         <SEO />
         <StructuredSEO />
