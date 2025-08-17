@@ -1,6 +1,2 @@
 { "extends": ["next/core-web-vitals"],
-  "rules": {
-    "@next/next/no-img-element": "warn",
-    "react-hooks/exhaustive-deps": "warn"
-  }
-}
+  "rules": { "@next/next/no-img-element":"warn","react-hooks/exhaustive-deps":"warn" } }

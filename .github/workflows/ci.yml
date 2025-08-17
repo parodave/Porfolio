@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '18.20.4'
           cache: 'npm'
-          cache-dependency-path: ./package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci --legacy-peer-deps || npm i --legacy-peer-deps
       - run: npm run lint || true
       - run: npm run typecheck || true
