@@ -1,9 +1,7 @@
 {
+  "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "rewrites": [{
-    "source": "/(.*)",
-    "destination": "/"
-  }]
+  "installCommand": "npm ci --legacy-peer-deps || npm i --legacy-peer-deps",
+  "devCommand": "npm run dev",
+  "framework": "nextjs"
 }
