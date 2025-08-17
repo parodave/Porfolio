@@ -1,5 +1,8 @@
-{ "version": 2,
-  "installCommand": "cd '.' && npm ci --legacy-peer-deps || npm i --legacy-peer-deps",
-  "buildCommand": "cd '.' && npm run build",
-  "devCommand": "cd '.' && npm run dev",
-  "framework": "nextjs" }
+{
+  "version": 2,
+  "installCommand": "cd . && npm ci --legacy-peer-deps || npm i --legacy-peer-deps",
+  "buildCommand": "cd . && npm run build",
+  "devCommand": "cd . && npm run dev",
+  "framework": "nextjs"
+}
+
