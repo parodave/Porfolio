@@ -13,10 +13,11 @@ console.log('🛠️  Patching three-stdlib exports...');
 const pkgPath = join('node_modules', 'three-stdlib', 'package.json');
 if (fs.existsSync(pkgPath)) {
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as Record<string, unknown>;
+  const pkgExports = (pkg.exports ?? {}) as Record<string, unknown>;
   pkg.exports = {
     './package.json': './package.json',
     './*': './*',
-    ...pkg.exports,
+    ...pkgExports,
   };
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
   console.log('✅ three-stdlib exports patched.');

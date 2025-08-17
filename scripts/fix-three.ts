@@ -69,8 +69,9 @@ async function patchStdlib() {
   const stdlibPkgPath = join('node_modules', 'three-stdlib', 'package.json');
   if (existsSync(stdlibPkgPath)) {
     const pkg = JSON.parse(fs.readFileSync(stdlibPkgPath, 'utf8')) as Record<string, unknown>;
+    const pkgExports = (pkg.exports ?? {}) as Record<string, unknown>;
     pkg.exports = {
-      ...(pkg.exports || {}),
+      ...pkgExports,
       './nodes': '../three/examples/jsm/nodes/Nodes.js',
       './shaders/AdditiveBlendingShader': '../three/examples/jsm/shaders/AdditiveBlendingShader.js',
       './renderers/webgpu/WebGPURenderer': '../three/examples/jsm/renderers/webgpu/WebGPURenderer.js',
