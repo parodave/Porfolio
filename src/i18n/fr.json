@@ -64,94 +64,128 @@
     "subtitle": "Parcours professionnel",
     "items": [
       {
-        "title": "Technicien maintenance recyclage",
+        "role": "Technicien de maintenance en recyclage",
         "company": "Rino Recycling",
-        "dates": "Oct 2024 – Avr 2025",
-        "tasks": [
-          "Exploitation et maintenance des équipements",
-          "Sécurité et soutien logistique"
-        ]
+        "description": [
+          "Exploitation et surveillance des équipements de recyclage",
+          "Maintenance préventive et dépannage",
+          "Tri selon les standards qualité et respect des règles HSE",
+          "Soutien logistique et coordination d’équipe"
+        ],
+        "date": "Oct 2024 – Avr 2025"
       },
       {
-        "title": "Assistant bibliothécaire & coordinateur livraisons",
+        "role": "Assistant bibliothécaire & Chauffeur-livreur",
         "company": "Cœur d’Essonne Agglomération",
-        "dates": "Sep 2019 – Avr 2024",
-        "tasks": [
-          "Gestion des prêts et livraisons",
-          "Supervision des chauffeurs et catalogage"
-        ]
+        "description": [
+          "Classement, prêts/retours et assistance aux usagers",
+          "Coordination des tournées et supervision des livreurs",
+          "Livraisons, suivi des véhicules et tenue des registres"
+        ],
+        "date": "Sept 2019 – Avr 2024"
       },
       {
-        "title": "Plongeur / serveur",
-        "company": "Sofitel",
-        "dates": "Avr 2019 – Aoû 2019",
-        "tasks": [
-          "Aide en cuisine et propreté",
-          "Service en salle et prise de commandes"
-        ]
+        "role": "Plongeur, Aide de cuisine & Serveur",
+        "company": "Sofitel (Accor Hotels)",
+        "description": [
+          "Préparation, dressage et service en salle",
+          "Nettoyage et organisation de la cuisine"
+        ],
+        "date": "Avr 2019 – Août 2019"
       },
       {
-        "title": "Technicien de maintenance",
+        "role": "Technicien de maintenance",
         "company": "Aximum",
-        "dates": "Mar 2018 – Mar 2019",
-        "tasks": [
-          "Entretien et réparation des feux de signalisation",
-          "Diagnostic des pannes et respect des normes"
-        ]
+        "description": [
+          "Maintenance préventive/curative des signalisations tricolores",
+          "Dépannage, tests et conformité sécurité/réglementaire"
+        ],
+        "date": "Mar 2018 – Mar 2019"
       },
       {
-        "title": "Technicien environnement",
+        "role": "Technicien environnement",
         "company": "Cœur d’Essonne Agglomération",
-        "dates": "Mar 2017 – Fév 2018",
-        "tasks": [
-          "Inspection des réseaux et application des règlements",
-          "Collecte de données et résolution des problèmes environnementaux"
-        ]
+        "description": [
+          "Contrôle des réseaux d’assainissement et prélèvements",
+          "Rapports d’analyses et conformité réglementaire"
+        ],
+        "date": "Mar 2017 – Fév 2018"
       },
       {
-        "title": "Agent de vente",
+        "role": "Agent de vente en gare",
         "company": "SNCF Réseau",
-        "dates": "Oct 2016 – Fév 2017",
-        "tasks": [
-          "Assistance aux voyageurs et vente de billets",
-          "Gestion des incidents via les systèmes SNCF"
-        ]
+        "description": [
+          "Vente de billets et assistance voyageurs",
+          "Gestion des incidents et communication"
+        ],
+        "date": "Oct 2016 – Fév 2017"
       },
       {
-        "title": "Commercial sédentaire",
+        "role": "Représentant commercial",
         "company": "Frankel",
-        "dates": "Jun 2016 – Sep 2016",
-        "tasks": [
-          "Prospection B2B et préparation de devis",
-          "Négociation et travail en équipe"
-        ]
+        "description": [
+          "Prospection B2B, devis et négociation",
+          "Collaboration équipe commerciale & reporting"
+        ],
+        "date": "Juin 2016 – Sept 2016"
       },
       {
-        "title": "Stagiaire maintenance électrique",
+        "role": "Stagiaire commercial",
+        "company": "Frankel",
+        "description": [
+          "Prospection, préparation de devis",
+          "Support aux ventes"
+        ],
+        "date": "2014 – 2016"
+      },
+      {
+        "role": "Stagiaire — Technicien de maintenance électrique",
         "company": "Eiffage",
-        "dates": "Oct 2013 – Déc 2013",
-        "tasks": [
-          "Maintenance et diagnostics électriques",
-          "Respect des normes de sécurité et support"
-        ]
+        "description": [
+          "Lecture de schémas, diagnostic des pannes",
+          "Maintenance préventive et corrective"
+        ],
+        "date": "Oct 2013 – Déc 2013"
       },
       {
-        "title": "Stagiaire maintenance électrique",
+        "role": "Stagiaire — Technicien de maintenance électrique",
         "company": "EDF",
-        "dates": "Oct 2012 – Déc 2012",
-        "tasks": [
-          "Diagnostics et maintenance électriques",
-          "Conformité aux normes de sécurité"
-        ]
+        "description": [
+          "Interventions sur systèmes basse tension",
+          "Mesures, contrôles et sécurité électrique"
+        ],
+        "date": "Oct 2012 – Déc 2012"
+      }
+    ]
+  },
+
+  "education": {
+    "title": "Éducation",
+    "items": [
+      {
+        "school": "Duke Language School",
+        "degree": "Étudiant en langue anglaise",
+        "date": "Mai 2025 – Sep 2025"
       },
       {
-        "title": "Agent polyvalent / livreur",
-        "company": "Diverses municipalités et entreprises",
-        "dates": "Périodes diverses",
-        "tasks": [
-          "Livraison de colis et soutien logistique",
-          "Assistance technique aux municipalités"
-        ]
+        "school": "Patong Language School",
+        "degree": "Étudiant en langue anglaise",
+        "date": "Juin 2024 – Sep 2024"
+      },
+      {
+        "school": "Le Wagon — Paris",
+        "degree": "Développeur d’applications web (Bootcamp)",
+        "date": "Jan 2023 – Juil 2023"
+      },
+      {
+        "school": "Lycée Parc de Vilgénis — Massy",
+        "degree": "BTS (Technicien supérieur en commerce et vente)",
+        "date": "2014 – 2016"
+      },
+      {
+        "school": "Lycée Léonard de Vinci — Saint-Michel-sur-Orge",
+        "degree": "Baccalauréat pro — Maintenance/Électronique",
+        "date": "2011 – 2014"
       }
     ]
   },

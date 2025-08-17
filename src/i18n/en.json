@@ -64,94 +64,128 @@
     "subtitle": "Professional background",
     "items": [
       {
-        "title": "Recycling Maintenance Technician",
+        "role": "Recycling Maintenance Technician",
         "company": "Rino Recycling",
-        "dates": "Oct 2024 – Apr 2025",
-        "tasks": [
-          "Operated and maintained recycling equipment",
-          "Ensured safety standards and logistics support"
-        ]
+        "description": [
+          "Operated and monitored recycling equipment",
+          "Preventive maintenance and troubleshooting",
+          "Sorting to quality standards and HSE compliance",
+          "Logistics support and team coordination"
+        ],
+        "date": "Oct 2024 – Apr 2025"
       },
       {
-        "title": "Library Assistant & Delivery Coordinator",
+        "role": "Library Assistant & Delivery Driver",
         "company": "Cœur d’Essonne Agglomération",
-        "dates": "Sep 2019 – Apr 2024",
-        "tasks": [
-          "Managed book loans and deliveries",
-          "Supervised drivers and maintained catalog systems"
-        ]
+        "description": [
+          "Shelving, loans/returns, and reader assistance",
+          "Delivery route coordination and driver supervision",
+          "Deliveries, fleet follow-up, and records keeping"
+        ],
+        "date": "Sep 2019 – Apr 2024"
       },
       {
-        "title": "Dishwasher / Waiter",
-        "company": "Sofitel",
-        "dates": "Apr 2019 – Aug 2019",
-        "tasks": [
-          "Assisted kitchen and kept areas clean",
-          "Served diners and handled orders"
-        ]
+        "role": "Dishwasher, Kitchen Assistant & Waiter",
+        "company": "Sofitel (Accor Hotels)",
+        "description": [
+          "Food prep, plating, and customer service",
+          "Kitchen cleaning and organization"
+        ],
+        "date": "Apr 2019 – Aug 2019"
       },
       {
-        "title": "Maintenance Technician",
+        "role": "Maintenance Technician",
         "company": "Aximum",
-        "dates": "Mar 2018 – Mar 2019",
-        "tasks": [
-          "Maintained and repaired traffic signals",
-          "Diagnosed issues and ensured compliance"
-        ]
+        "description": [
+          "Preventive/corrective maintenance of traffic signals",
+          "Troubleshooting, testing, and safety compliance"
+        ],
+        "date": "Mar 2018 – Mar 2019"
       },
       {
-        "title": "Environmental Technician",
+        "role": "Environmental Technician",
         "company": "Cœur d’Essonne Agglomération",
-        "dates": "Mar 2017 – Feb 2018",
-        "tasks": [
-          "Inspected sanitation networks and enforced regulations",
-          "Collected data and resolved environmental issues"
-        ]
+        "description": [
+          "Sanitation network inspections and sampling",
+          "Analysis reports and regulatory compliance"
+        ],
+        "date": "Mar 2017 – Feb 2018"
       },
       {
-        "title": "Sales Agent",
+        "role": "Station Sales Agent",
         "company": "SNCF Réseau",
-        "dates": "Oct 2016 – Feb 2017",
-        "tasks": [
-          "Assisted passengers and sold tickets",
-          "Managed incidents using SNCF systems"
-        ]
+        "description": [
+          "Ticket sales and passenger assistance",
+          "Incident handling and communication"
+        ],
+        "date": "Oct 2016 – Feb 2017"
       },
       {
-        "title": "Sales Representative",
+        "role": "Sales Representative",
         "company": "Frankel",
-        "dates": "Jun 2016 – Sep 2016",
-        "tasks": [
-          "Prospected B2B clients and prepared quotations",
-          "Negotiated deals and collaborated with team"
-        ]
+        "description": [
+          "B2B prospecting, quotations, and negotiation",
+          "Team collaboration and sales reporting"
+        ],
+        "date": "Jun 2016 – Sep 2016"
       },
       {
-        "title": "Electrical Maintenance Intern",
+        "role": "Sales Intern",
+        "company": "Frankel",
+        "description": [
+          "Prospecting and quotation preparation",
+          "Sales support"
+        ],
+        "date": "2014 – 2016"
+      },
+      {
+        "role": "Intern — Electrical Maintenance Technician",
         "company": "Eiffage",
-        "dates": "Oct 2013 – Dec 2013",
-        "tasks": [
-          "Assisted with electrical maintenance and diagnostics",
-          "Followed safety standards and supported team"
-        ]
+        "description": [
+          "Reading schematics and fault diagnostics",
+          "Preventive and corrective maintenance"
+        ],
+        "date": "Oct 2013 – Dec 2013"
       },
       {
-        "title": "Electrical Maintenance Intern",
+        "role": "Intern — Electrical Maintenance Technician",
         "company": "EDF",
-        "dates": "Oct 2012 – Dec 2012",
-        "tasks": [
-          "Performed electrical diagnostics and maintenance",
-          "Ensured compliance with safety standards"
-        ]
+        "description": [
+          "Low-voltage interventions, measuring & control tools",
+          "Electrical safety and team collaboration"
+        ],
+        "date": "Oct 2012 – Dec 2012"
+      }
+    ]
+  },
+
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "school": "Duke Language School",
+        "degree": "English Language Student",
+        "date": "May 2025 – Sep 2025"
       },
       {
-        "title": "Multi-skilled Agent / Delivery Driver",
-        "company": "Various municipalities & companies",
-        "dates": "Various periods",
-        "tasks": [
-          "Delivered parcels and logistics support",
-          "Offered technical assistance to municipalities"
-        ]
+        "school": "Patong Language School",
+        "degree": "English Language Student",
+        "date": "Jun 2024 – Sep 2024"
+      },
+      {
+        "school": "Le Wagon — Paris",
+        "degree": "Web Application Developer (Bootcamp)",
+        "date": "Jan 2023 – Jul 2023"
+      },
+      {
+        "school": "Lycée Parc de Vilgénis — Massy",
+        "degree": "Higher National Diploma of Business and Sales Technician (BTS)",
+        "date": "2014 – 2016"
+      },
+      {
+        "school": "Lycée Léonard de Vinci — Saint-Michel-sur-Orge",
+        "degree": "High school diploma — Electrical/Electronic Maintenance & Repair",
+        "date": "2011 – 2014"
       }
     ]
   },
