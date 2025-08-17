@@ -19,7 +19,6 @@ const Header: React.FC = () => {
     { label: t("nav.skills"), to: "/#skills" },
     { label: t("nav.projects"), to: "/#projects" },
     { label: t("nav.experience"), to: "/#experience" },
-    { label: t("nav.contact"), to: "/#contact" },
   ];
 
   useEffect(() => {

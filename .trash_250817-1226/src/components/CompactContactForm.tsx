@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import DOMPurify from 'dompurify';
 import { useTranslation } from 'react-i18next';
 
@@ -32,8 +31,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
 
   useEffect(() => {
     try {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-    } catch (err) {
+          } catch (err) {
       console.error('EmailJS init error', err);
     }
   }, []);
@@ -53,8 +51,7 @@ const CompactContactForm: React.FC<CompactContactFormProps> = ({
         message: DOMPurify.sanitize(formData.get('message') as string),
       };
 
-      const result = await emailjs.send(
-        EMAILJS_SERVICE_ID,
+      const result = await         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         sanitizedData,
         EMAILJS_PUBLIC_KEY
