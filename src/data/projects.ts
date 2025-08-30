@@ -174,6 +174,6 @@ export const projects: Project[] = [
     },
     image: 'https://images.pexels.com/photos/4659806/pexels-photo-4659806.jpeg?auto=compress&cs=tinysrgb&w=800',
     tags: ['DAO', 'Blockchain', 'Business', 'Community'],
-    externalUrl: 'https://dao-the-hand.vercel.app/',
+    externalUrl: 'https://the-hand-dao.vercel.app/',
   },
 ];
